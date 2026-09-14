@@ -20,6 +20,7 @@ defineProps<AwardHeroProps>()
     <NuxtPicture
       class="hidden h-full w-full object-contain lg:flex lg:justify-center"
       :src="image"
+      :img-attrs="{ class: 'w-full h-full' }"
       alt="RuCode Festival"
     />
   </section>

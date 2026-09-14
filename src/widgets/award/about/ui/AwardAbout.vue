@@ -6,7 +6,7 @@ defineProps<AwardAboutProps>()
 
 <template>
   <section class="container flex flex-col items-center justify-center gap-6">
-    <UiHeading class="text-purple-primary font-bold" tag="h2">О премии</UiHeading>
+    <UiHeading class="text-purple-primary font-bold" tag="h2">{{ title }}</UiHeading>
     <UiText class="max-w-171 text-center">{{ description }}</UiText>
   </section>
 </template>
