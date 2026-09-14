@@ -4,6 +4,7 @@ type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 defineProps<{
   tag: HeadingTag
   as?: HeadingTag
+  html?: string
 }>()
 
 const classes: Record<HeadingTag, string> = {
@@ -18,6 +19,7 @@ const classes: Record<HeadingTag, string> = {
 
 <template>
   <component :is="tag" :class="['leading-[1.1] font-bold tracking-wider', classes[as ?? tag]]">
-    <slot />
+    <div v-if="html" v-html="html" />
+    <slot else />
   </component>
 </template>

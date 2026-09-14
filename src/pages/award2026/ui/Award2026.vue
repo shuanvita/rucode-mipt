@@ -10,14 +10,23 @@ import { PeopleSlider } from '~/widgets/people-slider'
 import { StagesTimeline } from '~/widgets/award/stages'
 import { NominationsTabs } from '~/widgets/award2026/nominations-tabs'
 
-import { peopleSlider, partners, cta, faq, stagesTimeline } from '../model/Award2026.data'
+import {
+  peopleSlider,
+  partners,
+  cta,
+  faq,
+  stagesTimeline,
+  hero,
+  about,
+  participants,
+} from '../model/Award2026.data'
 </script>
 
 <template>
   <div class="space-y-15">
-    <AwardHero />
-    <AwardAbout id="premium" />
-    <AwardParticipants />
+    <AwardHero v-bind="hero" />
+    <AwardAbout id="premium" v-bind="about" />
+    <AwardParticipants v-bind="participants" />
     <WhyParticipate />
     <NominationsTabs id="nominations" />
     <StagesTimeline id="stages" v-bind="stagesTimeline" />

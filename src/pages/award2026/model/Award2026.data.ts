@@ -3,6 +3,37 @@ import type { PartnersSectionProps } from '~/widgets/partners'
 import type { AwardCtaProps } from '~/widgets/award/cta'
 import type { FaqSectionProps } from '~/widgets/faq'
 import type { StagesTimelineProps } from '~/widgets/award/stages'
+import type { AwardParticipantsProps } from '~/widgets/award/participants'
+import type { AwardAboutProps } from '~/widgets/award/about'
+import type { AwardHeroProps } from '~/widgets/award/hero'
+
+export const hero: AwardHeroProps = {
+  title:
+    'Премия <span class="text-yellow-primary">RuCode:</span> искусственный интеллект в пространстве науки и технологий',
+  action: {
+    to: 'https://edu.mipt.ru/member/meroprijatija/rucode-premiya-2026',
+    text: 'Подать заявку',
+  },
+  image: '/images/award2026/hero.png',
+  imageMobile: '/images/award2026/hero-mob.png',
+}
+
+export const about: AwardAboutProps = {
+  title: 'О премии',
+  description:
+    'RuCode.Премия — кульминационное событие для подведения итогов фестиваля RuCode, награждения инициативных и вовлечённых участников фестиваля и выделения заслуг в области популяризации технологий искусственного интеллекта',
+}
+
+export const participants: AwardParticipantsProps = {
+  title: 'Кто может участвовать?',
+  cards: [
+    'Авторы образовательного контента',
+    'Блогеры и популяризаторы технологий',
+    'Эксперты и практикующие специалисты',
+    'Преподаватели',
+    'Независимые авторы и создатели ИИ-контента',
+  ],
+}
 
 export const peopleSlider: PeopleSliderProps = {
   title: 'Организационный комитет',
