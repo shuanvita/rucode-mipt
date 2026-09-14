@@ -5,7 +5,9 @@ defineProps<SimpleNominationCard>()
 </script>
 
 <template>
-  <div class="flex lg:min-h-[294px]  flex-col rounded-[15px] lg:rounded-[50px] border border-white p-6 lg:p-15">
+  <div
+    class="flex flex-col rounded-[15px] border border-white p-6 lg:min-h-[294px] lg:rounded-[50px] lg:p-15"
+  >
     <UiHeading class="mb-3 uppercase" tag="h2">{{ title }}</UiHeading>
     <div class="space-y-4 text-white/80">
       <UiText v-for="(text, index) in description" :key="`text-${index}`">

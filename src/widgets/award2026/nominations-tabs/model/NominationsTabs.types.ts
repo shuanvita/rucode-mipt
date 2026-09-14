@@ -1,3 +1,17 @@
+export interface NominationsTabsProps {
+  title?: string
+  description?: string
+  tabs: {
+    label: string
+    description?: string
+    nominations: (SimpleNominationCard | PartnerNominationCard)[]
+  }[]
+  action?: {
+    to: string
+    text: string
+  }
+}
+
 export interface SimpleNominationCard {
   type: 'simple'
   title: string

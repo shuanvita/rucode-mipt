@@ -1,23 +1,12 @@
 <script setup lang="ts">
-const cards = [
-  {
-    title:
-      'Информационная поддержка и продвижение в СМИ и на ресурсах фестиваль <span class="text-yellow-primary">RuCode</span>',
-  },
-  { title: 'Взаимодействие с МФТИ и вузами консорциума Фестиваля' },
-  { title: 'звание, диплом и Знак Премии для лауреатов' },
-  {
-    title:
-      'Участие в мероприятиях Премии и Фестиваля <span class="text-yellow-primary">RuCode</span>',
-  },
-  { title: 'Возможность размещения уникального логотипа на своих ресурсах' },
-  { title: 'Индивидуальный план проекта' },
-]
+import type { WhyParticipateProps } from '~/widgets/award2026/why-participate'
+
+defineProps<WhyParticipateProps>()
 </script>
 
 <template>
   <section class="relative container flex flex-col space-y-8 lg:space-y-11">
-    <UiHeading class="max-w-62.5 lg:max-w-85" tag="h2">Зачем участвовать?</UiHeading>
+    <UiHeading class="max-w-62.5 lg:max-w-85" tag="h2">{{ title }}</UiHeading>
     <ul class="grid gap-6 md:grid-cols-2 lg:gap-10 xl:grid-cols-2">
       <li
         v-for="card in cards"

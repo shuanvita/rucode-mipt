@@ -20,6 +20,6 @@ const classes: Record<HeadingTag, string> = {
 <template>
   <component :is="tag" :class="['leading-[1.1] font-bold tracking-wider', classes[as ?? tag]]">
     <div v-if="html" v-html="html" />
-    <slot else />
+    <slot v-else />
   </component>
 </template>

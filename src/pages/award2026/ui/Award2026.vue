@@ -19,6 +19,8 @@ import {
   hero,
   about,
   participants,
+  whyParticipate,
+  nominationsTabs,
 } from '../model/Award2026.data'
 </script>
 
@@ -27,8 +29,8 @@ import {
     <AwardHero v-bind="hero" />
     <AwardAbout id="premium" v-bind="about" />
     <AwardParticipants v-bind="participants" />
-    <WhyParticipate />
-    <NominationsTabs id="nominations" />
+    <WhyParticipate v-bind="whyParticipate" />
+    <NominationsTabs id="nominations" v-bind="nominationsTabs" />
     <StagesTimeline id="stages" v-bind="stagesTimeline" />
     <PeopleSlider v-bind="peopleSlider" id="committee" />
     <PartnersSection id="partners" :items="partners.items" />
