@@ -1,4 +1,5 @@
 import type { PeopleSliderProps } from '~/widgets/people-slider'
+import type { PartnersSectionProps } from '~/widgets/partners'
 
 export const peopleSlider: PeopleSliderProps = {
   title: 'Организационный комитет',
@@ -34,6 +35,31 @@ export const peopleSlider: PeopleSliderProps = {
       name: 'Егор Быковский',
       text: 'Директор, Центр научной коммуникации МФТИ',
       photo: '/images/bykovskiy.png',
+    },
+  ],
+}
+
+export const partners: PartnersSectionProps = {
+  items: [
+    {
+      title: 'Генеральный партнёр',
+      images: [
+        {
+          src: '/images/award2026/mts.png',
+          alt: 'МТС',
+          class: 'w-[101px] lg:w-[178px]',
+        },
+      ],
+    },
+    {
+      title: 'Партнёры',
+      images: [
+        {
+          src: '/images/award2026/sber.svg',
+          alt: 'Сбер',
+          class: 'w-33 lg:w-53.25',
+        },
+      ],
     },
   ],
 }
