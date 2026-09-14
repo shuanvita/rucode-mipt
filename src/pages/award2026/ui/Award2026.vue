@@ -4,13 +4,13 @@ import { AwardAbout } from '~/widgets/award/about'
 import { AwardParticipants } from '~/widgets/award/participants'
 import { WhyParticipate } from '~/widgets/award2026/why-participate'
 import { AwardFaq } from '~/widgets/award2026/award-faq'
-import { AwardCta } from '~/widgets/award2026/award-cta'
+import { AwardCta } from '~/widgets/award/cta'
 import { PartnersSection } from '~/widgets/partners'
 import { PeopleSlider } from '~/widgets/people-slider'
 import { StagesTimeline } from '~/widgets/stages-timeline'
 import { NominationsTabs } from '~/widgets/award2026/nominations-tabs'
 
-import { peopleSlider, partners } from '../model/Award2026.data'
+import { peopleSlider, partners, cta } from '../model/Award2026.data'
 </script>
 
 <template>
@@ -22,8 +22,8 @@ import { peopleSlider, partners } from '../model/Award2026.data'
     <NominationsTabs id="nominations" />
     <StagesTimeline id="stages" />
     <PeopleSlider v-bind="peopleSlider" id="committee" />
-    <PartnersSection :items="partners.items" id="partners" />
-    <AwardCta />
+    <PartnersSection id="partners" :items="partners.items" />
+    <AwardCta v-bind="cta" />
     <AwardFaq class="mb-10 lg:mb-15" />
   </div>
 </template>

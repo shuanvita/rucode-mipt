@@ -1,5 +1,6 @@
 import type { PeopleSliderProps } from '~/widgets/people-slider'
 import type { PartnersSectionProps } from '~/widgets/partners'
+import type { AwardCtaProps } from '~/widgets/award/cta'
 
 export const peopleSlider: PeopleSliderProps = {
   title: 'Организационный комитет',
@@ -62,4 +63,12 @@ export const partners: PartnersSectionProps = {
       ],
     },
   ],
+}
+
+export const cta: AwardCtaProps = {
+  title: 'Станьте лауреатом RuCode Премии',
+  action: {
+    to: 'https://edu.mipt.ru/member/meroprijatija/rucode-premiya-2026',
+    text: 'Подать заявку',
+  },
 }
