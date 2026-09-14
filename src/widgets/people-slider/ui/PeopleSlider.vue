@@ -37,7 +37,7 @@ defineProps<PeopleSliderProps>()
 <template>
   <section class="relative container flex flex-col items-center space-y-5 lg:space-y-10">
     <UiHeading class="text-purple-primary text-center" tag="h2">{{ title }}</UiHeading>
-    <UiText class="max-w-146 text-center">{{ description }}</UiText>
+    <UiText v-if="description" class="max-w-146 text-center">{{ description }}</UiText>
     <div class="relative mx-auto w-full max-w-254.5">
       <UiSlider :items="people" :options="sliderOptions" class="pt-4">
         <template #default="{ item }">
@@ -47,7 +47,10 @@ defineProps<PeopleSliderProps>()
       <button
         type="button"
         aria-label="Предыдущий слайд"
-        :class="[prevClass, 'text-purple-primary hover:text-purple-primary/80 absolute top-1/2 left-0 z-10 grid size-12.5 -translate-y-1/2 place-items-center transition-colors not-disabled:cursor-pointer min-[1200px]:-left-15']"
+        :class="[
+          prevClass,
+          'text-purple-primary hover:text-purple-primary/80 absolute top-1/2 left-0 z-10 grid size-12.5 -translate-y-1/2 place-items-center transition-colors not-disabled:cursor-pointer min-[1200px]:-left-15',
+        ]"
       >
         <UiSvg name="arrow-left" />
       </button>
@@ -55,7 +58,10 @@ defineProps<PeopleSliderProps>()
       <button
         type="button"
         aria-label="Следующий слайд"
-        :class="[nextClass, 'text-purple-primary hover:text-purple-primary/80 absolute top-1/2 right-0 z-10 grid size-12.5 -translate-y-1/2 place-items-center transition-colors not-disabled:cursor-pointer min-[1200px]:-right-15']"
+        :class="[
+          nextClass,
+          'text-purple-primary hover:text-purple-primary/80 absolute top-1/2 right-0 z-10 grid size-12.5 -translate-y-1/2 place-items-center transition-colors not-disabled:cursor-pointer min-[1200px]:-right-15',
+        ]"
       >
         <UiSvg name="arrow-right" />
       </button>

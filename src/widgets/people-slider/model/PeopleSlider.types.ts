@@ -1,6 +1,6 @@
 export interface PeopleSliderProps {
   title: string
-  description: string
+  description?: string
   people: Person[]
 }
 
