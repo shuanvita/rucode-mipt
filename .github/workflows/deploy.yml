@@ -1,10 +1,13 @@
-name: Deploy to nuxt.rucode.ru
+name: Deploy to nuxt.rucode.net
 
 on:
   push:
     branches:
       - main
   workflow_dispatch:
+
+env:
+  DEPLOY_PATH: /var/www/nuxt.rucode.net
 
 jobs:
   deploy:
@@ -23,33 +26,41 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Lint & test
+        run: |
+          npm run lint:fsd
+          npm run test
+
       - name: Build application
         run: npm run build
 
       - name: Deploy .output to server
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_KEY }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
           source: ".output"
-          target: ${{ secrets.DEPLOY_PATH }}
+          target: ${{ env.DEPLOY_PATH }}
 
-      - name: Deploy ecosystem.config.js to server
+      - name: Deploy ecosystem.config.cjs to server
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_KEY }}
-          source: "ecosystem.config.js"
-          target: ${{ secrets.DEPLOY_PATH }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          source: "ecosystem.config.cjs"
+          target: ${{ env.DEPLOY_PATH }}
 
       - name: Restart application
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_KEY }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
           script: |
-            cd ${{ secrets.DEPLOY_PATH }}
-            pm2 restart nuxt-rucode || pm2 start ecosystem.config.js --name nuxt-rucode
+            cd ${{ env.DEPLOY_PATH }}
+            pm2 restart nuxt-rucode || pm2 start ecosystem.config.cjs --name nuxt-rucode
