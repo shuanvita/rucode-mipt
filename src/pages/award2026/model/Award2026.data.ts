@@ -2,6 +2,7 @@ import type { PeopleSliderProps } from '~/widgets/people-slider'
 import type { PartnersSectionProps } from '~/widgets/partners'
 import type { AwardCtaProps } from '~/widgets/award/cta'
 import type { FaqSectionProps } from '~/widgets/faq'
+import type { StagesTimelineProps } from '~/widgets/award/stages'
 
 export const peopleSlider: PeopleSliderProps = {
   title: 'Организационный комитет',
@@ -137,6 +138,27 @@ export const faq: FaqSectionProps = {
     {
       heading: 'Что делать при технических проблемах?',
       content: 'Свяжитесь с организационным комитетом по контактам, указанным на сайте.',
+    },
+  ],
+}
+
+export const stagesTimeline: StagesTimelineProps = {
+  title: 'Этапы проведения',
+  stages: [
+    { number: 1, title: '3 августа - 10 октября', description: 'Сбор заявок', variant: 'active' },
+    { number: 2, title: '10-15 октября', description: 'Техническая экспертиза заявок' },
+    {
+      number: 3,
+      title: '15-27 октября',
+      description: 'Народное голосование в номинации "Генерация будущего"',
+    },
+    { number: 4, title: '15-27 октября', description: 'Оценка экспертных заявок' },
+    { number: 5, title: '27-30 октября', description: 'Формирование шорт-листа' },
+    {
+      number: 6,
+      title: 'Секрет',
+      description: 'Торжественная церемония награждения Премии',
+      variant: 'secret',
     },
   ],
 }

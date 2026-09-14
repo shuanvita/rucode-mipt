@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { StageCardTypes } from '~/shared/ui/stage-card'
+import type { StageCardProps } from '~/widgets/award/stages'
 
-defineProps<StageCardTypes>()
+defineProps<Omit<StageCardProps, 'span'>>()
 </script>
 
 <template>
   <div
-    class="flex min-h-[180px] flex-col gap-[30px] rounded-2xl bg-(image:--participant-card-bg) px-6 py-7"
+    class="flex min-h-45 flex-col gap-8 rounded-2xl bg-(image:--participant-card-bg) px-6 py-7"
     :class="{
       'bg-(image:--stage-active-gradient)': variant === 'active',
       'bg-(image:--stage-secret-gradient) font-bold': variant === 'secret',

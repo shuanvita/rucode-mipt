@@ -7,10 +7,10 @@ import { FaqSection } from '~/widgets/faq'
 import { AwardCta } from '~/widgets/award/cta'
 import { PartnersSection } from '~/widgets/partners'
 import { PeopleSlider } from '~/widgets/people-slider'
-import { StagesTimeline } from '~/widgets/stages-timeline'
+import { StagesTimeline } from '~/widgets/award/stages'
 import { NominationsTabs } from '~/widgets/award2026/nominations-tabs'
 
-import { peopleSlider, partners, cta, faq } from '../model/Award2026.data'
+import { peopleSlider, partners, cta, faq, stagesTimeline } from '../model/Award2026.data'
 </script>
 
 <template>
@@ -20,7 +20,7 @@ import { peopleSlider, partners, cta, faq } from '../model/Award2026.data'
     <AwardParticipants />
     <WhyParticipate />
     <NominationsTabs id="nominations" />
-    <StagesTimeline id="stages" />
+    <StagesTimeline id="stages" v-bind="stagesTimeline" />
     <PeopleSlider v-bind="peopleSlider" id="committee" />
     <PartnersSection id="partners" :items="partners.items" />
     <AwardCta v-bind="cta" />
