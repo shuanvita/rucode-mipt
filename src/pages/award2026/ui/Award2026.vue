@@ -10,31 +10,20 @@ import { PeopleSlider } from '~/widgets/people-slider'
 import { StagesTimeline } from '~/widgets/award/stages'
 import { NominationsTabs } from '~/widgets/award2026/nominations-tabs'
 
-import {
-  peopleSlider,
-  partners,
-  cta,
-  faq,
-  stagesTimeline,
-  hero,
-  about,
-  participants,
-  whyParticipate,
-  nominationsTabs,
-} from '../model/Award2026.data'
+import { award26Data } from '../model/Award2026.data'
 </script>
 
 <template>
   <div class="space-y-15">
-    <AwardHero v-bind="hero" />
-    <AwardAbout id="premium" v-bind="about" />
-    <AwardParticipants v-bind="participants" />
-    <WhyParticipate v-bind="whyParticipate" />
-    <NominationsTabs id="nominations" v-bind="nominationsTabs" />
-    <StagesTimeline id="stages" v-bind="stagesTimeline" />
-    <PeopleSlider v-bind="peopleSlider" id="committee" />
-    <PartnersSection id="partners" :items="partners.items" />
-    <AwardCta v-bind="cta" />
-    <FaqSection v-bind="faq" class="mb-10 lg:mb-15" />
+    <AwardHero v-bind="award26Data.hero" />
+    <AwardAbout id="premium" v-bind="award26Data.about" />
+    <AwardParticipants v-bind="award26Data.participants" />
+    <WhyParticipate v-bind="award26Data.whyParticipate" />
+    <NominationsTabs id="nominations" v-bind="award26Data.nominationsTabs" />
+    <StagesTimeline id="stages" v-bind="award26Data.stagesTimeline" />
+    <PeopleSlider v-bind="award26Data.peopleSlider" id="committee" />
+    <PartnersSection id="partners" :items="award26Data.partners.items" />
+    <AwardCta v-bind="award26Data.cta" />
+    <FaqSection v-bind="award26Data.faq" class="mb-10 lg:mb-15" />
   </div>
 </template>

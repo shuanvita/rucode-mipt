@@ -9,7 +9,7 @@ import type { AwardHeroProps } from '~/widgets/award/hero'
 import type { WhyParticipateProps } from '~/widgets/award2026/why-participate'
 import type { NominationsTabsProps } from '~/widgets/award2026/nominations-tabs'
 
-export const hero: AwardHeroProps = {
+const hero: AwardHeroProps = {
   title:
     'Премия <span class="text-yellow-primary">RuCode:</span> искусственный интеллект в пространстве науки и технологий',
   action: {
@@ -20,13 +20,13 @@ export const hero: AwardHeroProps = {
   imageMobile: '/images/award2026/hero-mob.png',
 }
 
-export const about: AwardAboutProps = {
+const about: AwardAboutProps = {
   title: 'О премии',
   description:
     'RuCode.Премия — кульминационное событие для подведения итогов фестиваля RuCode, награждения инициативных и вовлечённых участников фестиваля и выделения заслуг в области популяризации технологий искусственного интеллекта',
 }
 
-export const participants: AwardParticipantsProps = {
+const participants: AwardParticipantsProps = {
   title: 'Кто может участвовать?',
   cards: [
     'Авторы образовательного контента',
@@ -37,7 +37,7 @@ export const participants: AwardParticipantsProps = {
   ],
 }
 
-export const whyParticipate: WhyParticipateProps = {
+const whyParticipate: WhyParticipateProps = {
   title: 'Зачем участвовать?',
   cards: [
     {
@@ -55,7 +55,7 @@ export const whyParticipate: WhyParticipateProps = {
   ],
 }
 
-export const nominationsTabs: NominationsTabsProps = {
+const nominationsTabs: NominationsTabsProps = {
   title: 'Направления и номинации',
   tabs: [
     {
@@ -167,7 +167,7 @@ export const nominationsTabs: NominationsTabsProps = {
   },
 }
 
-export const stagesTimeline: StagesTimelineProps = {
+const stagesTimeline: StagesTimelineProps = {
   title: 'Этапы проведения',
   stages: [
     { number: 1, title: '3 августа - 10 октября', description: 'Сбор заявок', variant: 'active' },
@@ -188,7 +188,7 @@ export const stagesTimeline: StagesTimelineProps = {
   ],
 }
 
-export const peopleSlider: PeopleSliderProps = {
+const peopleSlider: PeopleSliderProps = {
   title: 'Организационный комитет',
   description:
     'Определяет номинантов Премии по итогам отборочного тура. Оказывает содействие в привлечении партнеров и спонсоров. Утверждает состава Экспертного совета. Оказывает содействие в организации Церемонии награждения.',
@@ -226,7 +226,7 @@ export const peopleSlider: PeopleSliderProps = {
   ],
 }
 
-export const partners: PartnersSectionProps = {
+const partners: PartnersSectionProps = {
   items: [
     {
       title: 'Генеральный партнёр',
@@ -251,7 +251,7 @@ export const partners: PartnersSectionProps = {
   ],
 }
 
-export const cta: AwardCtaProps = {
+const cta: AwardCtaProps = {
   title: 'Станьте лауреатом RuCode Премии',
   action: {
     to: 'https://edu.mipt.ru/member/meroprijatija/rucode-premiya-2026',
@@ -259,7 +259,7 @@ export const cta: AwardCtaProps = {
   },
 }
 
-export const faq: FaqSectionProps = {
+const faq: FaqSectionProps = {
   title: 'Вы спрашиваете, мы отвечаем',
   items: [
     {
@@ -325,3 +325,16 @@ export const faq: FaqSectionProps = {
     },
   ],
 }
+
+export const award26Data = {
+  hero,
+  about,
+  participants,
+  whyParticipate,
+  nominationsTabs,
+  stagesTimeline,
+  peopleSlider,
+  partners,
+  cta,
+  faq,
+} as const
