@@ -39,7 +39,7 @@ const socials = [
 
       <div
         class="order-2 flex flex-col items-center gap-4 lg:order-0 lg:col-start-2 lg:items-start"
-        aria-label="Навигация в подвале"
+        aria-label="Навигация в подвале сайта"
       >
         <NuxtLink
           v-for="link in config.links"
