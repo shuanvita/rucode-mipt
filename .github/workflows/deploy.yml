@@ -43,6 +43,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           source: ".output"
           target: ${{ env.DEPLOY_PATH }}
+          debug: true
 
       - name: Deploy ecosystem.config.cjs to server
         uses: appleboy/scp-action@v0.1.7
