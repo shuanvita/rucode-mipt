@@ -14,6 +14,9 @@ defineProps<AwardHeroProps>()
         alt="Rucode Festival"
         width="458"
         height="397"
+        loading="eager"
+        fetchpriority="high"
+        preload
       />
       <UiAction class="h-13 lg:w-full" :to="action?.to">{{ action?.text }}</UiAction>
     </div>
@@ -22,6 +25,9 @@ defineProps<AwardHeroProps>()
       :src="image"
       :img-attrs="{ class: 'w-full h-full' }"
       alt="RuCode Festival"
+      loading="eager"
+      fetchpriority="high"
+      preload
     />
   </section>
 </template>
