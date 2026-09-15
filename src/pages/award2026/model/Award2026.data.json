@@ -1,7 +1,5 @@
 {
   "hero": {
-    "order": 10,
-    "enabled": true,
     "title": "Премия <span class=\"text-yellow-primary\">RuCode:</span> искусственный интеллект в пространстве науки и технологий",
     "action": {
       "to": "https://edu.mipt.ru/member/meroprijatija/rucode-premiya-2026",
@@ -11,14 +9,10 @@
     "imageMobile": "/images/award2026/hero-mob.png"
   },
   "about": {
-    "order": 20,
-    "enabled": true,
     "title": "О премии",
     "description": "RuCode.Премия — кульминационное событие для подведения итогов фестиваля RuCode, награждения инициативных и вовлечённых участников фестиваля и выделения заслуг в области популяризации технологий искусственного интеллекта"
   },
   "participants": {
-    "order": 30,
-    "enabled": true,
     "title": "Кто может участвовать?",
     "cards": [
       "Авторы образовательного контента",
@@ -29,8 +23,6 @@
     ]
   },
   "whyParticipate": {
-    "order": 40,
-    "enabled": true,
     "title": "Зачем участвовать?",
     "cards": [
       {
@@ -54,8 +46,6 @@
     ]
   },
   "nominationsTabs": {
-    "order": 50,
-    "enabled": true,
     "title": "Направления и номинации",
     "tabs": [
       {
@@ -166,47 +156,53 @@
     "description": ""
   },
   "stagesTimeline": {
-    "order": 60,
-    "enabled": true,
     "title": "Этапы проведения",
     "stages": [
       {
         "number": 1,
         "title": "3 августа - 10 октября",
         "description": "Сбор заявок",
-        "variant": "active"
+        "variant": "active",
+        "span": ""
       },
       {
         "number": 2,
         "title": "10-15 октября",
-        "description": "Техническая экспертиза заявок"
+        "description": "Техническая экспертиза заявок",
+        "variant": "",
+        "span": ""
       },
       {
         "number": 3,
         "title": "15-27 октября",
-        "description": "Народное голосование в номинации \"Генерация будущего\""
+        "description": "Народное голосование в номинации \"Генерация будущего\"",
+        "variant": "",
+        "span": ""
       },
       {
         "number": 4,
         "title": "15-27 октября",
-        "description": "Оценка экспертных заявок"
+        "description": "Оценка экспертных заявок",
+        "variant": "",
+        "span": ""
       },
       {
         "number": 5,
         "title": "27-30 октября",
-        "description": "Формирование шорт-листа"
+        "description": "Формирование шорт-листа",
+        "variant": "",
+        "span": ""
       },
       {
         "number": 6,
         "title": "Секрет",
         "description": "Торжественная церемония награждения Премии",
-        "variant": "secret"
+        "variant": "secret",
+        "span": ""
       }
     ]
   },
   "peopleSlider": {
-    "order": 70,
-    "enabled": true,
     "title": "Организационный комитет",
     "description": "Определяет номинантов Премии по итогам отборочного тура. Оказывает содействие в привлечении партнеров и спонсоров. Утверждает состава Экспертного совета. Оказывает содействие в организации Церемонии награждения.",
     "people": [
@@ -243,8 +239,6 @@
     ]
   },
   "partners": {
-    "order": 80,
-    "enabled": true,
     "items": [
       {
         "title": "Генеральный партнёр",
@@ -275,8 +269,6 @@
     ]
   },
   "cta": {
-    "order": 90,
-    "enabled": true,
     "title": "Станьте лауреатом RuCode Премии",
     "action": {
       "to": "https://edu.mipt.ru/member/meroprijatija/rucode-premiya-2026",
@@ -284,8 +276,6 @@
     }
   },
   "faq": {
-    "order": 100,
-    "enabled": true,
     "title": "Вы спрашиваете, мы отвечаем",
     "items": [
       {
