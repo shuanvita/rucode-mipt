@@ -43,6 +43,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           source: ".output"
           target: ${{ env.DEPLOY_PATH }}
+          rm: true
 
       - name: Deploy ecosystem.config.cjs to server
         uses: appleboy/scp-action@v0.1.7
@@ -63,4 +64,6 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd ${{ env.DEPLOY_PATH }}
-            /usr/local/bin/pm2 restart nuxt-rucode || /usr/local/bin/pm2 start ecosystem.config.cjs --name nuxt-rucode
+            /usr/local/bin/pm2 delete nuxt-rucode || true
+            /usr/local/bin/pm2 start ecosystem.config.cjs
+            /usr/local/bin/pm2 save
