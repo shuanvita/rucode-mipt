@@ -34,6 +34,17 @@ jobs:
       - name: Build application
         run: npm run build
 
+      - name: Clean old .output on server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            rm -rf ${{ env.DEPLOY_PATH }}/.output
+            mkdir -p ${{ env.DEPLOY_PATH }}
+
       - name: Deploy .output to server
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -43,7 +54,6 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           source: ".output"
           target: ${{ env.DEPLOY_PATH }}
-          rm: true
 
       - name: Deploy ecosystem.config.cjs to server
         uses: appleboy/scp-action@v0.1.7
