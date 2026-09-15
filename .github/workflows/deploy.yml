@@ -43,7 +43,6 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           source: ".output"
           target: ${{ env.DEPLOY_PATH }}
-          debug: true
 
       - name: Deploy ecosystem.config.cjs to server
         uses: appleboy/scp-action@v0.1.7
@@ -63,9 +62,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            export PATH="$HOME/.nvm/versions/node/$(ls $HOME/.nvm/versions/node 2>/dev/null | tail -1)/bin:/usr/local/bin:/usr/bin:$PATH"
             cd ${{ env.DEPLOY_PATH }}
-            which pm2
-            pm2 restart nuxt-rucode || pm2 start ecosystem.config.cjs --name nuxt-rucode
+            /usr/local/bin/pm2 restart nuxt-rucode || /usr/local/bin/pm2 start ecosystem.config.cjs --name nuxt-rucode
