@@ -1,5 +1,7 @@
 {
   "hero": {
+    "order": 10,
+    "enabled": true,
     "title": "Премия <span class=\"text-yellow-primary\">RuCode:</span> искусственный интеллект в пространстве науки и технологий",
     "action": {
       "to": "https://edu.mipt.ru/member/meroprijatija/rucode-premiya-2026",
@@ -9,10 +11,14 @@
     "imageMobile": "/images/award2026/hero-mob.png"
   },
   "about": {
+    "order": 20,
+    "enabled": true,
     "title": "О премии",
     "description": "RuCode.Премия — кульминационное событие для подведения итогов фестиваля RuCode, награждения инициативных и вовлечённых участников фестиваля и выделения заслуг в области популяризации технологий искусственного интеллекта"
   },
   "participants": {
+    "order": 30,
+    "enabled": true,
     "title": "Кто может участвовать?",
     "cards": [
       "Авторы образовательного контента",
@@ -23,6 +29,8 @@
     ]
   },
   "whyParticipate": {
+    "order": 40,
+    "enabled": true,
     "title": "Зачем участвовать?",
     "cards": [
       {
@@ -46,6 +54,8 @@
     ]
   },
   "nominationsTabs": {
+    "order": 50,
+    "enabled": true,
     "title": "Направления и номинации",
     "tabs": [
       {
@@ -156,6 +166,8 @@
     "description": ""
   },
   "stagesTimeline": {
+    "order": 60,
+    "enabled": true,
     "title": "Этапы проведения",
     "stages": [
       {
@@ -193,6 +205,8 @@
     ]
   },
   "peopleSlider": {
+    "order": 70,
+    "enabled": true,
     "title": "Организационный комитет",
     "description": "Определяет номинантов Премии по итогам отборочного тура. Оказывает содействие в привлечении партнеров и спонсоров. Утверждает состава Экспертного совета. Оказывает содействие в организации Церемонии награждения.",
     "people": [
@@ -229,6 +243,8 @@
     ]
   },
   "partners": {
+    "order": 80,
+    "enabled": true,
     "items": [
       {
         "title": "Генеральный партнёр",
@@ -259,6 +275,8 @@
     ]
   },
   "cta": {
+    "order": 90,
+    "enabled": true,
     "title": "Станьте лауреатом RuCode Премии",
     "action": {
       "to": "https://edu.mipt.ru/member/meroprijatija/rucode-premiya-2026",
@@ -266,6 +284,8 @@
     }
   },
   "faq": {
+    "order": 100,
+    "enabled": true,
     "title": "Вы спрашиваете, мы отвечаем",
     "items": [
       {
