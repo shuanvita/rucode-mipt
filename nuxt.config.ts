@@ -13,7 +13,11 @@ export default defineNuxtConfig({
     },
   },
 
-  nitro: { preset: 'node-server' },
+  features: { inlineStyles: true },
+
+  nitro: {
+    preset: 'node-server',
+  },
 
   fonts: {
     families: [{ name: 'Montserrat', weights: [300, 400, 500, 600, 700, 800, 900] }],
@@ -43,6 +47,9 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      cssCodeSplit: true,
+    },
     optimizeDeps: {
       include: ['@vue/devtools-core', '@vue/devtools-kit'],
     },
