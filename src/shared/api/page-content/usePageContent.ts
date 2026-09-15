@@ -5,7 +5,8 @@ export function usePageContent(slug: string, fallback: CmsPage) {
     try {
       return { page: await $fetch<CmsPage>(`/api/cms${slug}`), isFallback: false }
     } catch (e) {
-      if (import.meta.dev) console.error(`[cms] fetch failed for ${slug}, using fallback`, e)
+      if (import.meta.dev)
+        console.error(`[api] ошибка получения контента ${slug}, используются данные из проекта`, e)
       return { page: fallback, isFallback: true }
     }
   })
