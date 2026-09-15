@@ -6,6 +6,7 @@ module.exports = {
       exec_mode: 'cluster',
       instances: 'max',
       script: './.output/server/index.mjs',
+      interpreter: '/home/anvshurygin/.nvm/versions/node/v24.21.0/bin/node',
       env: {
         NODE_ENV: 'production',
         PORT: 3000,
