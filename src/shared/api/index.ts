@@ -1,1 +1,5 @@
-export { usePageContent } from './page-content/usePageContent.ts'
+export { usePageContent } from './page-content/usePageContent'
+export { createFallbackBlock } from './page-content/createFallbackBlock'
+export { useContentBlocks } from './page-content/useContentBlocks'
+export type { ContentPage, ContentBlock } from './page-content/usePageContent.types'
+export { default as ContentBlockRender } from './page-content/ContentBlockRender.vue'

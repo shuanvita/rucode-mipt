@@ -10,20 +10,37 @@ import { PeopleSlider } from '~/widgets/people-slider'
 import { StagesTimeline } from '~/widgets/award/stages'
 import { NominationsTabs } from '~/widgets/award2026/nominations-tabs'
 
-import { award26Data } from '../model/Award2026.data'
+import { award2026Data } from '../model/Award2026.data'
+
+import { usePageContent, useContentBlocks, ContentBlockRender } from '~/shared/api'
+
+const blockComponents: Record<string, Component> = {
+  hero: AwardHero,
+  about: AwardAbout,
+  participants: AwardParticipants,
+  whyParticipate: WhyParticipate,
+  nominationsTabs: NominationsTabs,
+  stagesTimeline: StagesTimeline,
+  peopleSlider: PeopleSlider,
+  partners: PartnersSection,
+  cta: AwardCta,
+  faq: FaqSection,
+}
+
+const anchorIds: Record<string, string> = {
+  about: 'premium',
+  nominationsTabs: 'nominations',
+  stagesTimeline: 'stages',
+  peopleSlider: 'committee',
+  partners: 'partners',
+}
+
+const { data } = await usePageContent('/award2026', award2026Data)
+const blocks = useContentBlocks(() => data.value?.page.blocks, blockComponents, '/award2026')
 </script>
 
 <template>
   <div class="space-y-15">
-    <AwardHero v-bind="award26Data.hero" />
-    <AwardAbout id="premium" v-bind="award26Data.about" />
-    <AwardParticipants v-bind="award26Data.participants" />
-    <WhyParticipate v-bind="award26Data.whyParticipate" />
-    <NominationsTabs id="nominations" v-bind="award26Data.nominationsTabs" />
-    <StagesTimeline id="stages" v-bind="award26Data.stagesTimeline" />
-    <PeopleSlider v-bind="award26Data.peopleSlider" id="committee" />
-    <PartnersSection id="partners" :items="award26Data.partners.items" />
-    <AwardCta v-bind="award26Data.cta" />
-    <FaqSection v-bind="award26Data.faq" class="mb-10 lg:mb-15" />
+    <ContentBlockRender :blocks="blocks" :components="blockComponents" :anchor-ids="anchorIds" />
   </div>
 </template>

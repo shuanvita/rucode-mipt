@@ -1,13 +1,13 @@
-export interface CmsBlock<T extends string = string, D = Record<string, unknown>> {
+export interface ContentBlock<T = unknown> {
   id: string
-  type: T
+  type: string
   order: number
   enabled: boolean
-  data: D
+  data: T
 }
 
-export interface CmsPage {
+export interface ContentPage {
   slug: string
   version: number
-  blocks: CmsBlock[]
+  blocks: ContentBlock[]
 }

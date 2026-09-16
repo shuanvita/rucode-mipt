@@ -8,6 +8,8 @@ import type { AwardAboutProps } from '~/widgets/award/about'
 import type { AwardHeroProps } from '~/widgets/award/hero'
 import type { WhyParticipateProps } from '~/widgets/award2026/why-participate'
 import type { NominationsTabsProps } from '~/widgets/award2026/nominations-tabs'
+import { createFallbackBlock } from '~/shared/api'
+import type { ContentPage } from '~/shared/api'
 
 const hero: AwardHeroProps = {
   title:
@@ -326,15 +328,19 @@ const faq: FaqSectionProps = {
   ],
 }
 
-export const award26Data = {
-  hero,
-  about,
-  participants,
-  whyParticipate,
-  nominationsTabs,
-  stagesTimeline,
-  peopleSlider,
-  partners,
-  cta,
-  faq,
-} as const
+export const award2026Data: ContentPage = {
+  slug: '/award2026',
+  version: 1,
+  blocks: [
+    createFallbackBlock('hero', 10, hero),
+    createFallbackBlock('about', 20, about),
+    createFallbackBlock('participants', 30, participants),
+    createFallbackBlock('whyParticipate', 40, whyParticipate),
+    createFallbackBlock('nominationsTabs', 50, nominationsTabs),
+    createFallbackBlock('stagesTimeline', 60, stagesTimeline),
+    createFallbackBlock('peopleSlider', 70, peopleSlider),
+    createFallbackBlock('partners', 80, partners),
+    createFallbackBlock('cta', 90, cta),
+    createFallbackBlock('faq', 100, faq),
+  ],
+}
