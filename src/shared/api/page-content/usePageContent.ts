@@ -7,7 +7,7 @@ export function usePageContent(slug: string, fallback: CmsPage) {
     } catch (e) {
       if (import.meta.dev)
         console.error(
-          `[api] ошибка получения контента ${slug}, используются локальные данные из проекта`,
+          `[api] ошибка получения контента ${slug}, используются локальные данные из проекта `,
           e,
         )
       return { page: fallback, isFallback: true }
