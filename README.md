@@ -2,6 +2,20 @@
 
 Проект RuCode с архитектурой **Feature-Sliced Design (FSD)**, Tailwind CSS v4 и набором модулей Nuxt (`@nuxt/image`, `@nuxt/fonts`, `@nuxt/scripts`, `nuxt-svgo`, `@nuxt/eslint`).
 
+## Список страниц (актуально на 17.09.26)
+- https://rucode.net - Главная
+- https://rucode.net/award2025 - Премия 2025
+- https://rucode.net/award2026 - Премия 2026
+- https://aitesting.rucode.net/ - Тестирование по ИИ
+- https://rucode.net/ai_champ/ - Чемпионат по ИИ
+- https://rucode.net/champ/ - Чемпионат RuCode
+- https://rucode.net/consortium/ - Консорциум
+- https://rucode.net/mws/ - Навигатор
+- https://rucode.net/practikum/ - Практикум
+- https://rucode.net/mts/ - МТС
+- https://rucode.net/final-2024/ - Финал 2024г.
+- https://rucode.net/capital-2024/ - Столица RuCode
+
 ## Требования
 
 - Node.js 22+
