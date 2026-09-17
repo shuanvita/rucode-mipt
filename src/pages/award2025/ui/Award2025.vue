@@ -8,7 +8,7 @@ import { AwardCta } from '~/widgets/award/cta'
 import { PartnersSection } from '~/widgets/partners'
 import { PeopleSlider } from '~/widgets/people-slider'
 import { StagesTimeline } from '~/widgets/award/stages'
-import { NominationsTabs } from '~/widgets/award2026/nominations-tabs'
+import { NominationsTabs } from '~/widgets/award2025/nominations-tabs'
 
 import { award2025Data } from '../model/Award2025.data.ts'
 

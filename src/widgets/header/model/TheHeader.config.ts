@@ -39,6 +39,5 @@ export const headerConfigs: Record<HeaderConfigKey, HeaderConfig> = {
       { href: '#ceremony', title: 'Церемония' },
       { href: '#partners', title: 'Партнёры' },
     ],
-    cta: { label: 'Войти', variant: 'primary', class: 'px-4 py-2 text-[11px]' },
   },
 }

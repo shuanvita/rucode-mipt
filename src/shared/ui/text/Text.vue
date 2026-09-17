@@ -9,6 +9,7 @@ withDefaults(
     size?: TextSize
     weight?: TextWeight
     truncate?: boolean
+    html?: string
   }>(),
   {
     as: 'p',
@@ -40,6 +41,13 @@ const weightClasses: Record<TextWeight, string> = {
 <template>
   <component
     :is="as"
+    v-if="html"
+    :class="[sizeClasses[size], weightClasses[weight], { truncate, 'min-w-0': truncate }]"
+    v-html="html"
+  />
+  <component
+    :is="as"
+    v-else
     :class="[sizeClasses[size], weightClasses[weight], { truncate, 'min-w-0': truncate }]"
   >
     <slot />

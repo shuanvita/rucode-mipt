@@ -30,6 +30,7 @@ const [isMenuOpen, toggleMenu] = useToggle(false)
         </UiAction>
       </nav>
       <UiAction
+        v-if="config.cta"
         to="https://edu.mipt.ru/member/meroprijatija/rucode-premiya-2026"
         target="_blank"
         v-bind="config.cta"

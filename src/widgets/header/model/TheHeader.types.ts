@@ -5,7 +5,7 @@ export interface NavLink {
 
 export interface HeaderConfig {
   links: NavLink[]
-  cta: {
+  cta?: {
     label: string
     to?: string
     variant?: 'primary' | 'secondary' | 'custom'
