@@ -30,4 +30,15 @@ export const headerConfigs: Record<HeaderConfigKey, HeaderConfig> = {
     ],
     cta: { label: 'Войти', variant: 'primary', class: 'px-4 py-2 text-[11px]' },
   },
+  award2025: {
+    links: [
+      { href: '#premium', title: 'О премии' },
+      { href: '#nominations', title: 'Направления и номинации' },
+      { href: '#stages', title: 'Этапы' },
+      { href: '#committee', title: 'Орг. комитет' },
+      { href: '#ceremony', title: 'Церемония' },
+      { href: '#partners', title: 'Партнёры' },
+    ],
+    cta: { label: 'Войти', variant: 'primary', class: 'px-4 py-2 text-[11px]' },
+  },
 }

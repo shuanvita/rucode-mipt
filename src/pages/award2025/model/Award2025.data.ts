@@ -16,7 +16,7 @@ const hero: AwardHeroProps = {
     'Премия <span class="text-yellow-primary">RuCode:</span> искусственный интеллект в пространстве науки и технологий',
   action: {
     to: 'https://edu.mipt.ru/member/meroprijatija/rucode-premiya-2026',
-    text: 'Подать заявку',
+    text: 'Подать заявку на 2026',
   },
   image: '/images/award/hero.png',
   imageMobile: '/images/award/hero-mob.png',
@@ -31,11 +31,11 @@ const about: AwardAboutProps = {
 const participants: AwardParticipantsProps = {
   title: 'Кто может участвовать?',
   cards: [
-    'Авторы образовательного контента',
-    'Блогеры и популяризаторы технологий',
-    'Эксперты и практикующие специалисты',
-    'Преподаватели',
-    'Независимые авторы и создатели ИИ-контента',
+    'Образовательные и научные организации и ИТ‑компании',
+    'Преподаватели школ, СПО и вузов',
+    'Учащиеся школ, СПО и студенты вузов',
+    'Разработчики и исследователи',
+    'Популяризаторы науки',
   ],
 }
 
@@ -328,7 +328,7 @@ const faq: FaqSectionProps = {
   ],
 }
 
-export const award2026Data: ContentPage = {
+export const award2025Data: ContentPage = {
   slug: '/award2026',
   version: 1,
   blocks: [

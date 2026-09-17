@@ -15,4 +15,4 @@ export interface HeaderConfig {
   }
 }
 
-export type HeaderConfigKey = 'home' | 'award'
+export type HeaderConfigKey = 'home' | 'award' | 'award2025'
