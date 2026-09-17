@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// TODO Возможно nuxt-svgo не поддерживает SSR. Из-за этого warning гидрации. Временный обходной путь ClientOnly.
 import type { Component } from 'vue'
 
 const props = withDefaults(defineProps<{ name: string; decorative?: boolean }>(), {
@@ -33,5 +34,10 @@ if (import.meta.dev) {
 </script>
 
 <template>
-  <component v-if="icon" :is="icon" role="img" :aria-hidden="decorative || undefined" />
+  <ClientOnly v-if="icon">
+    <component :is="icon" role="img" :aria-hidden="decorative || undefined" />
+    <template #fallback>
+      <span class="inline-block" :style="{ width: '1em', height: '1em' }" aria-hidden="true" />
+    </template>
+  </ClientOnly>
 </template>

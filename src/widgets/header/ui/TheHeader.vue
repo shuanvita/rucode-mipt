@@ -47,7 +47,7 @@ onClickOutside(ctaDropdownRef, () => toggleCtaDropdown(false))
 
         <ul
           v-show="isCtaDropdownOpen"
-          class="absolute top-full right-0 mt-2 min-w-50 space-y-2 rounded-2xl bg-black/90 p-3"
+          class="absolute top-full right-0 z-99 mt-2 min-w-50 space-y-2 rounded-2xl bg-black/90 p-3"
         >
           <li v-for="item in config.cta.items" :key="item.href">
             <UiAction
