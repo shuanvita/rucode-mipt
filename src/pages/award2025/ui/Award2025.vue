@@ -3,7 +3,7 @@ import { AwardHero } from '~/widgets/award/hero'
 import { AwardAbout } from '~/widgets/award/about'
 import { AwardParticipants } from '~/widgets/award/participants'
 import { WhyParticipate } from '~/widgets/award2025/why-participate'
-import { FaqSection } from '~/widgets/faq'
+import { AwardCeremony } from '~/widgets/award2025/award-ceremony'
 import { AwardCta } from '~/widgets/award/cta'
 import { PartnersSection } from '~/widgets/partners'
 import { PeopleSlider } from '~/widgets/people-slider'
@@ -21,16 +21,17 @@ const blockComponents: Record<string, Component> = {
   whyParticipate: WhyParticipate,
   nominationsTabs: NominationsTabs,
   stagesTimeline: StagesTimeline,
+  awardCeremony: AwardCeremony,
   peopleSlider: PeopleSlider,
   partners: PartnersSection,
   cta: AwardCta,
-  faq: FaqSection,
 }
 
 const anchorIds: Record<string, string> = {
   about: 'premium',
   nominationsTabs: 'nominations',
   stagesTimeline: 'stages',
+  awardCeremony: 'ceremony',
   peopleSlider: 'committee',
   partners: 'partners',
 }

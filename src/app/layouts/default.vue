@@ -6,14 +6,17 @@ import { TheFooter } from '~/widgets/footer'
 const route = useRoute()
 const headerKey = (route.meta.headerConfig as HeaderConfigKey) ?? 'home'
 const config = headerConfigs[headerKey] ?? headerConfigs.home
+const noFooterSpacing = computed(() => route.meta.noFooterSpacing === true)
 </script>
 
 <template>
-  <div class="flex flex-col space-y-8 overflow-hidden">
-    <TheHeader :config="config" />
-    <main>
-      <slot />
-    </main>
-    <TheFooter :config="config" />
+  <div class="flex flex-col overflow-hidden">
+    <TheHeader class="mb-8" :config="config" />
+    <div class="flex flex-col space-y-8">
+      <main>
+        <slot />
+      </main>
+    </div>
+    <TheFooter :class="noFooterSpacing ? '' : 'mt-8'" :config="config" />
   </div>
 </template>

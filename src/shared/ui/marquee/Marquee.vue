@@ -51,8 +51,13 @@ onBeforeUnmount(() => observer?.disconnect())
       :class="[
         'marquee flex w-max',
         gap,
-        isVertical ? 'marquee-vertical flex-col' : 'marquee-horizontal flex-row',
-        { reverse },
+        {
+          'marquee-vertical': isVertical,
+          'flex-col': isVertical,
+          'marquee-horizontal': !isVertical,
+          'flex-row': !isVertical,
+          reverse: reverse,
+        },
       ]"
       :style="{
         '--marquee-duration': `${speed}s`,

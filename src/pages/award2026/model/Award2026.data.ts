@@ -234,7 +234,7 @@ const partners: PartnersSectionProps = {
       title: 'Генеральный партнёр',
       images: [
         {
-          src: '/images/award2026/mts.png',
+          src: '/images/partners/mts.png',
           alt: 'МТС',
           class: 'w-[101px] lg:w-[178px]',
         },
@@ -244,7 +244,7 @@ const partners: PartnersSectionProps = {
       title: 'Партнёры',
       images: [
         {
-          src: '/images/award2026/sber.svg',
+          src: '/images/partners/sber.svg',
           alt: 'Сбер',
           class: 'w-33 lg:w-53.25',
         },

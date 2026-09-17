@@ -20,9 +20,7 @@ defineProps<Omit<StageCardProps, 'span'>>()
       >
         {{ number }}
       </div>
-      <p class="text-[16px]">
-        {{ description }}
-      </p>
+      <p class="text-[16px]" v-html="description" />
     </div>
   </div>
 </template>
