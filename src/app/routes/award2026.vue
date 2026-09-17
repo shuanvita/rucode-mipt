@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Award2026 } from '@/pages/award2026'
 
-definePageMeta({ headerConfig: 'award' })
+definePageMeta({ headerConfig: 'award2026' })
 
 useHead({
   title: 'Всероссийский фестиваль по искусственному интеллекту и алгоритмическому программированию',

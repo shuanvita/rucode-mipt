@@ -13,22 +13,12 @@ export const headerConfigs: Record<HeaderConfigKey, HeaderConfig> = {
       label: 'Мероприятия',
       hasDropdown: true,
       items: [
-        { href: '/testing', title: 'Тестирование' },
-        { href: '/championship', title: 'Чемпионат по ИИ' },
-        { href: '/premium', title: 'RUCODE.Премия' },
-        { href: '/algorithmic', title: 'Алгоритмическое программирование' },
+        { href: 'https://aitesting.rucode.net/', title: 'Тестирование' },
+        { href: '/ai_champ', title: 'Чемпионат по ИИ' },
+        { href: '/award2026', title: 'RUCODE.Премия' },
+        { href: '/champ', title: 'Алгоритмическое программирование' },
       ],
     },
-  },
-  award: {
-    links: [
-      { href: '#premium', title: 'О премии' },
-      { href: '#nominations', title: 'Направления и номинации' },
-      { href: '#stages', title: 'Этапы' },
-      { href: '#committee', title: 'Орг. комитет' },
-      { href: '#partners', title: 'Партнёры' },
-    ],
-    cta: { label: 'Войти', variant: 'primary', class: 'px-4 py-2 text-[11px]' },
   },
   award2025: {
     links: [
@@ -39,5 +29,20 @@ export const headerConfigs: Record<HeaderConfigKey, HeaderConfig> = {
       { href: '#ceremony', title: 'Церемония' },
       { href: '#partners', title: 'Партнёры' },
     ],
+  },
+  award2026: {
+    links: [
+      { href: '#premium', title: 'О премии' },
+      { href: '#nominations', title: 'Направления и номинации' },
+      { href: '#stages', title: 'Этапы' },
+      { href: '#committee', title: 'Орг. комитет' },
+      { href: '#partners', title: 'Партнёры' },
+    ],
+    cta: {
+      label: 'Войти',
+      to: 'https://edu.mipt.ru/member/meroprijatija/rucode-premiya-2026',
+      variant: 'primary',
+      class: 'px-4 py-2 text-[11px]',
+    },
   },
 }

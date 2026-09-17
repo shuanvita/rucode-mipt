@@ -61,17 +61,16 @@ src/
 
 ## UI-компоненты
 
-Компоненты из `src/shared/ui/**/*.vue` авто-импортируются с префиксом `ui` (`<UiButton>`, `<UiLink>`). Авто-импорт ограничен `.vue`-файлами, поэтому барелл-файлы `index.ts` не конфликтуют.
+Компоненты из `src/shared/ui/**/*.vue` авто-импортируются с префиксом `ui` (`<UiAction>`). Авто-импорт ограничен `.vue`-файлами, поэтому барелл-файлы `index.ts` не конфликтуют.
 
 ```vue
-<UiButton variant="primary">Купить</UiButton>
-<UiLink to="/about">О нас</UiLink>
-<UiLink to="https://nuxt.com" target="_blank" variant="outline">Nuxt</UiLink>
+<UiAction variant="primary">Купить</UiAction>
+<UiAction to="https://nuxt.com" variant="secondary">Nuxt</UiAction>
 ```
 
 ## Иконки (nuxt-svgo)
 
-SVG из `src/shared/assets/svg/` авто-импортируются как компоненты с префиксом `svg` (`arrow.svg` → `<SvgArrow>`). Размер и цвет задаётся через CSS (например, `class="w-6 h-6"`).
+SVG из `src/shared/icons` авто-импортируются как компоненты с префиксом `svg` (`arrow.svg` → `<SvgArrow>`). Размер и цвет задаётся через CSS (например, `class="w-6 h-6"`).
 
 ## Полезные ссылки
 

@@ -1,7 +1,6 @@
 import type { PeopleSliderProps } from '~/widgets/people-slider'
 import type { PartnersSectionProps } from '~/widgets/partners'
 import type { AwardCtaProps } from '~/widgets/award/cta'
-import type { FaqSectionProps } from '~/widgets/faq'
 import type { StagesTimelineProps } from '~/widgets/award/stages'
 import type { AwardParticipantsProps } from '~/widgets/award/participants'
 import type { AwardAboutProps } from '~/widgets/award/about'

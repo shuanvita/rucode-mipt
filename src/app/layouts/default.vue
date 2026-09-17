@@ -4,8 +4,8 @@ import type { HeaderConfigKey } from '~/widgets/header'
 import { TheFooter } from '~/widgets/footer'
 
 const route = useRoute()
-const headerKey = (route.meta.headerConfig as HeaderConfigKey) ?? 'home'
-const config = headerConfigs[headerKey] ?? headerConfigs.home
+const headerKey = computed(() => (route.meta.headerConfig as HeaderConfigKey) ?? 'home')
+const config = computed(() => headerConfigs[headerKey.value] ?? headerConfigs.home)
 const noFooterSpacing = computed(() => route.meta.noFooterSpacing === true)
 </script>
 
