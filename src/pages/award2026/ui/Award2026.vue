@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { AwardHero } from '~/widgets/award/hero'
-import { AwardAbout } from '~/widgets/award/about'
+import { InfoBlock } from '~/widgets/info-block'
 import { AwardParticipants } from '~/widgets/award/participants'
 import { WhyParticipate } from '~/widgets/award2026/why-participate'
 import { FaqSection } from '~/widgets/faq'
@@ -16,7 +16,7 @@ import { usePageContent, useContentBlocks, ContentBlockRender } from '~/shared/a
 
 const blockComponents: Record<string, Component> = {
   hero: AwardHero,
-  about: AwardAbout,
+  about: InfoBlock,
   participants: AwardParticipants,
   whyParticipate: WhyParticipate,
   nominationsTabs: NominationsTabs,

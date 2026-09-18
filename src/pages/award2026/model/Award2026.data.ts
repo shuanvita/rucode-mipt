@@ -4,7 +4,7 @@ import type { AwardCtaProps } from '~/widgets/award/cta'
 import type { FaqSectionProps } from '~/widgets/faq'
 import type { StagesTimelineProps } from '~/widgets/award/stages'
 import type { AwardParticipantsProps } from '~/widgets/award/participants'
-import type { AwardAboutProps } from '~/widgets/award/about'
+import type { InfoBlockProps } from '~/widgets/info-block'
 import type { AwardHeroProps } from '~/widgets/award/hero'
 import type { WhyParticipateProps } from '~/widgets/award2026/why-participate'
 import type { NominationsTabsProps } from '~/widgets/award2026/nominations-tabs'
@@ -22,10 +22,11 @@ const hero: AwardHeroProps = {
   imageMobile: '/images/award/hero-mob.png',
 }
 
-const about: AwardAboutProps = {
+const about: InfoBlockProps = {
   title: 'О премии',
   description:
     'RuCode.Премия — кульминационное событие для подведения итогов фестиваля RuCode, награждения инициативных и вовлечённых участников фестиваля и выделения заслуг в области популяризации технологий искусственного интеллекта',
+  descriptionClass: 'max-w-171',
 }
 
 const participants: AwardParticipantsProps = {
