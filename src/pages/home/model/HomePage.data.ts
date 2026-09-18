@@ -21,6 +21,27 @@ const about: InfoBlockProps = {
   isBackground: true,
 }
 
+const achievements = {
+  title: 'Достижения 2025 года',
+  cards: [
+    {
+      id: crypto.randomUUID(),
+      image: '/images/home/achievements-1.png',
+      text: 'Лауреат Премии Рунета в номинации «Образовательный проект в ИТ»',
+    },
+    {
+      id: crypto.randomUUID(),
+      image: '/images/home/achievements-2.png',
+      text: 'Номинация «За вклад в развитие практического образования в сфере искусственного интеллекта» первой в России национальной премией сообществ',
+    },
+    {
+      id: crypto.randomUUID(),
+      image: '/images/home/achievements-3.png',
+      text: '«Самое массовое соревнование по программированию» по версии Книги Рекордов России 2025 г.',
+    },
+  ],
+}
+
 const partners: PartnersSectionProps = {
   items: [
     {
@@ -52,6 +73,7 @@ export const homePageData: ContentPage = {
   blocks: [
     createFallbackBlock('hero', 10, hero),
     createFallbackBlock('about', 20, about),
+    createFallbackBlock('achievements', 30, achievements),
     createFallbackBlock('partners', 80, partners),
   ],
 }

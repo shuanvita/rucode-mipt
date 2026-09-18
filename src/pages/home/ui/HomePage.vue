@@ -4,11 +4,13 @@ import { homePageData } from '../model/HomePage.data'
 import { usePageContent, useContentBlocks, ContentBlockRender } from '~/shared/api'
 import { HomeHero } from '~/widgets/home/hero'
 import { InfoBlock } from '~/widgets/info-block'
+import { AchievementsSection } from '~/widgets/home/achievements'
 import { PartnersSection } from '~/widgets/partners'
 
 const blockComponents: Record<string, Component> = {
   hero: HomeHero,
   about: InfoBlock,
+  achievements: AchievementsSection,
   partners: PartnersSection,
 }
 
