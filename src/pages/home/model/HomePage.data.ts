@@ -42,6 +42,93 @@ const achievements = {
   ],
 }
 
+const tracks = {
+  title: 'Треки фестиваля',
+  cards: [
+    {
+      id: crypto.randomUUID(),
+      image: '/images/home/track-1.png',
+      tag: '#научпоп',
+      tagClass: 'text-blue-400 border-blue-400',
+      text: 'Рассказываем простым языком и доступно объясняем о возможностях применения искусственного интеллекта и достижениях российских исследователей в этой области.',
+      links: [
+        {
+          id: crypto.randomUUID(),
+          text: 'Всероссийское тестирование RuCode по искусственному интеллекту',
+          to: 'https://aitesting.rucode.net',
+        },
+        {
+          id: crypto.randomUUID(),
+          text: 'RuCode.Премия',
+          to: '/award2026',
+        },
+      ],
+    },
+    {
+      id: crypto.randomUUID(),
+      image: '/images/home/track-2.png',
+      tag: '#образование',
+      tagClass: 'text-emerald-300 border-emerald-300',
+      text: 'В образовательный трек фестиваля RuCode входят онлайн-курсы по искусственному интеллекту и алгоритмическому программированию, интенсивы с лекциями от ведущих экспертов отрасли.',
+      links: [
+        {
+          id: crypto.randomUUID(),
+          text: 'RuCode.Премия',
+          to: '/award2026',
+        },
+        {
+          id: crypto.randomUUID(),
+          text: 'Сборы к IOI',
+          to: '#',
+        },
+      ],
+    },
+    {
+      id: crypto.randomUUID(),
+      image: '/images/home/track-3.png',
+      tag: '#достижения',
+      tagClass: 'text-amber-400 border-amber-400',
+      text: 'Участники могут посоревноваться на разных уровнях чемпионата по искусственному интеллекту, проверить себя в тестировании и побороться за престижную премию Rucode.',
+      links: [
+        {
+          id: crypto.randomUUID(),
+          text: 'Всероссийское тестирование RuCode по искусственному интеллекту',
+          to: 'https://aitesting.rucode.net',
+        },
+        {
+          id: crypto.randomUUID(),
+          text: 'Чемпионат RuCode по искусственному интеллекту',
+          to: '/ai_champ',
+        },
+        {
+          id: crypto.randomUUID(),
+          text: 'Чемпионат RuCode по алгоритмическому программированию',
+          to: '/champ',
+        },
+        {
+          id: crypto.randomUUID(),
+          text: 'RuCode.Премия',
+          to: '/award2026',
+        },
+      ],
+    },
+    {
+      id: crypto.randomUUID(),
+      image: '/images/home/track-4.png',
+      tag: '#карьера',
+      tagClass: 'text-rose-500 border-rose-500',
+      text: 'Участвуй в карьерных лекциях от HR экспертов и строй успешную карьеру в IT, используя навыки и достижения, полученные в образовательных программах и чемпионатах RuCode.',
+      links: [
+        {
+          id: crypto.randomUUID(),
+          text: 'RuCode.Премия',
+          to: '/award2026',
+        },
+      ],
+    },
+  ],
+}
+
 const partners: PartnersSectionProps = {
   items: [
     {
@@ -74,6 +161,7 @@ export const homePageData: ContentPage = {
     createFallbackBlock('hero', 10, hero),
     createFallbackBlock('about', 20, about),
     createFallbackBlock('achievements', 30, achievements),
+    createFallbackBlock('tracks', 40, tracks),
     createFallbackBlock('partners', 80, partners),
   ],
 }

@@ -13,5 +13,3 @@ defineProps<AchievementsSectionProps>()
     </div>
   </section>
 </template>
-
-<style scoped></style>
