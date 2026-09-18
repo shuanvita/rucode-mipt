@@ -22,7 +22,7 @@ withDefaults(
 const sizeClasses: Record<TextSize, string> = {
   xs: 'text-xs',
   sm: 'text-[13px]/[1.3]',
-  base: 'text-[12px] sm:text-[14px] md:text-[16px] tracking-[0.8px]',
+  base: 'text-[14px] md:text-[16px] tracking-[0.8px]',
   lg: 'text-[16px] lg:text-[18px] tracking-[0.8px]',
   xl: 'text-[14px] md:text-[16px] lg:text-[20px] xl:text-[24px]',
 }

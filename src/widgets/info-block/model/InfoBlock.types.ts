@@ -3,4 +3,5 @@ export interface InfoBlockProps {
   description: string
   titleClass?: string
   descriptionClass?: string
+  isBackground?: boolean
 }
