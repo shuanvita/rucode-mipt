@@ -26,8 +26,7 @@ function selectTab(index: number) {
 
 const baseWrapperClass = 'flex flex-col items-center justify-center gap-4 lg:flex-row lg:gap-11'
 const baseItemClass =
-  'min-w-[305px] cursor-pointer rounded-[45px] px-11 py-3 text-[24px] font-extrabold tracking-[5%] uppercase lg:min-w-auto lg:px-12'
-
+  'min-w-[305px] cursor-pointer rounded-[45px] px-11 py-3 text-[24px] font-extrabold tracking-[5%] uppercase transition duration-200 ease-out lg:min-w-auto lg:px-12'
 const mergedWrapperClass = computed(() => twMerge(baseWrapperClass, props.wrapperClass))
 const mergedItemClass = computed(() => twMerge(baseItemClass, props.itemClass))
 </script>
@@ -44,7 +43,7 @@ const mergedItemClass = computed(() => twMerge(baseItemClass, props.itemClass))
           mergedItemClass,
           activeTab === index
             ? 'bg-(image:--stage-secret-gradient)'
-            : 'bg-(image:--participant-card-bg)',
+            : 'bg-(image:--participant-card-bg) enabled:hover:-translate-y-0.5 enabled:hover:brightness-125 enabled:active:translate-y-0',
           item.disabled && 'cursor-not-allowed opacity-40',
         ]"
         @click="selectTab(index)"

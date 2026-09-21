@@ -7,12 +7,14 @@ import { InfoBlock } from '~/widgets/info-block'
 import { AchievementsSection } from '~/widgets/home/achievements'
 import { PartnersSection } from '~/widgets/partners'
 import { TracksSection } from '~/widgets/home/tracks'
+import { CalendarSection } from '~/widgets/home/calendar'
 
 const blockComponents: Record<string, Component> = {
   hero: HomeHero,
   about: InfoBlock,
   achievements: AchievementsSection,
   tracks: TracksSection,
+  calendar: CalendarSection,
   partners: PartnersSection,
 }
 

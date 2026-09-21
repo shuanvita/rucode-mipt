@@ -4,6 +4,7 @@ import type { PartnersSectionProps } from '~/widgets/partners'
 
 import { createFallbackBlock } from '~/shared/api'
 import type { ContentPage } from '~/shared/api'
+import type { CalendarSectionProps } from '~/widgets/home/calendar'
 
 const hero: HomeHeroProps = {
   action: {
@@ -129,6 +130,191 @@ const tracks = {
   ],
 }
 
+const calendar: CalendarSectionProps = {
+  title: 'Календарь',
+  tabs: [
+    {
+      label: 'Всероссийский фестиваль RuCode',
+      cards: [
+        {
+          id: crypto.randomUUID(),
+          link: 'https://aitesting.rucode.net',
+          date: {
+            from: {
+              day: 17,
+              month: 'августа',
+            },
+            to: {
+              day: 30,
+              month: 'ноября',
+            },
+          },
+          title: 'Всероссийское тестирование RuCode по искусственному интеллекту',
+          tags: [
+            {
+              id: crypto.randomUUID(),
+              text: '#научпоп',
+              color: 'text-blue-400',
+            },
+            {
+              id: crypto.randomUUID(),
+              text: '#достижения',
+              color: 'text-yellow-300',
+            },
+          ],
+          format: {
+            text: 'Очно',
+          },
+        },
+        {
+          id: crypto.randomUUID(),
+          link: '/award2026',
+          date: {
+            from: {
+              day: 3,
+              month: 'августа',
+            },
+            to: {
+              day: 30,
+              month: 'ноября',
+            },
+          },
+          title: 'RuCode.Премия',
+          tags: [
+            {
+              id: crypto.randomUUID(),
+              text: '#образование',
+              color: 'text-emerald-300',
+            },
+            {
+              id: crypto.randomUUID(),
+              text: '#карьера',
+              color: 'text-rose-500',
+            },
+            {
+              id: crypto.randomUUID(),
+              text: '#научпоп',
+              color: 'text-blue-400',
+            },
+            {
+              id: crypto.randomUUID(),
+              text: '#достижения',
+              color: 'text-yellow-300',
+            },
+          ],
+          format: {
+            text: 'Очно',
+          },
+        },
+        {
+          id: crypto.randomUUID(),
+          link: '/ai_champ',
+          date: {
+            from: {
+              day: 24,
+              month: 'августа',
+            },
+            to: {
+              day: 30,
+              month: 'ноября',
+            },
+          },
+          title: 'Чемпионат RuCode по искусственному интеллекту',
+          tags: [
+            {
+              id: crypto.randomUUID(),
+              text: '#достижения',
+              color: 'text-yellow-300',
+            },
+            {
+              id: crypto.randomUUID(),
+              text: '#образование',
+              color: 'text-emerald-300',
+            },
+          ],
+          format: {
+            text: 'Очно',
+          },
+        },
+      ],
+    },
+    {
+      label: 'Международный чемпионат РуКод по алгоритмическому программированию',
+      cards: [
+        {
+          id: crypto.randomUUID(),
+          link: '/champ',
+          date: {
+            from: {
+              day: 17,
+              month: 'апреля',
+            },
+            to: {
+              day: 5,
+              month: 'октября',
+            },
+          },
+          title: 'Регистрация',
+          format: {
+            text: 'Онлайн',
+            color: 'bg-purple-primary',
+          },
+        },
+        {
+          id: crypto.randomUUID(),
+          link: '/',
+          date: {
+            from: {
+              day: 25,
+              month: 'июня',
+            },
+            to: {
+              day: 3,
+              month: 'июля',
+            },
+          },
+          title: 'Тренировочные сборы',
+          format: {
+            text: 'Очно',
+          },
+        },
+        {
+          id: crypto.randomUUID(),
+          link: '/champ',
+          date: {
+            from: {
+              day: 18,
+              month: 'октября',
+            },
+          },
+          title: 'Финал',
+          format: {
+            text: 'Очно',
+          },
+        },
+        {
+          id: crypto.randomUUID(),
+          link: '/champ',
+          date: {
+            from: {
+              day: 5,
+              month: 'декабря',
+            },
+            to: {
+              day: 6,
+              month: 'декабря',
+            },
+          },
+          title: 'Суперфинал',
+          format: {
+            text: 'Очно',
+          },
+        },
+      ],
+    },
+  ],
+}
+
 const partners: PartnersSectionProps = {
   items: [
     {
@@ -162,6 +348,7 @@ export const homePageData: ContentPage = {
     createFallbackBlock('about', 20, about),
     createFallbackBlock('achievements', 30, achievements),
     createFallbackBlock('tracks', 40, tracks),
+    createFallbackBlock('calendar', 50, calendar),
     createFallbackBlock('partners', 80, partners),
   ],
 }
