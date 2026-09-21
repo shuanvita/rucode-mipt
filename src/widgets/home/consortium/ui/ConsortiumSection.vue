@@ -128,7 +128,7 @@ useResizeObserver(mapRef, place)
           :aria-expanded="card.id === activeId"
           :aria-controls="card.id === activeId ? popupId : undefined"
           :style="{ left: card.coordinates.x, top: card.coordinates.y }"
-          class="consortium-pin group absolute size-2.5 cursor-pointer rounded-full outline-offset-4 outline-white transition duration-200 after:absolute after:-inset-2.5 hover:z-20 focus-visible:z-20 focus-visible:outline-2 aria-expanded:z-20 min-[360px]:size-3 min-[450px]:size-4"
+          class="consortium-pin group absolute size-2.5 cursor-pointer rounded-full outline-offset-4 outline-white transition duration-200 after:absolute after:-inset-2.5 hover:z-20 focus-visible:z-20 focus-visible:outline-2 min-[360px]:size-3 min-[450px]:size-4"
           @click="toggle(card.id)"
         >
           <span
@@ -141,7 +141,7 @@ useResizeObserver(mapRef, place)
             as="span"
             size="xs"
             aria-hidden="true"
-            class="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 rounded-md bg-black/75 px-2 py-1 whitespace-nowrap text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100"
+            class="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 rounded-md bg-black/75 px-2 py-1 whitespace-nowrap text-white opacity-0 transition-opacity group-hover:opacity-100"
           >
             {{ card.city }}
           </UiText>
@@ -186,8 +186,8 @@ useResizeObserver(mapRef, place)
   --shadow-color: #ffffffbf;
   background: var(--point-color);
   box-shadow:
-    0 6.26px 6.26px 0 #00000040,
-    0 4.26px 4.26px 1px var(--shadow-color);
+    0 6px 6px 0 #00000040,
+    0 4px 4px 1px var(--shadow-color);
 }
 
 .consortium-pin[aria-expanded='true'] {
