@@ -1,17 +1,33 @@
 <script setup lang="ts">
-import { onClickOutside, onKeyStroke, useMediaQuery, useResizeObserver } from '@vueuse/core'
+import {
+  onClickOutside,
+  onKeyStroke,
+  useMediaQuery,
+  usePreferredReducedMotion,
+  useResizeObserver,
+} from '@vueuse/core'
 import type { ConsortiumSectionProps } from '~/widgets/home/consortium'
 import ConsortiumCard from './ConsortiumCard.vue'
 
 const props = defineProps<ConsortiumSectionProps>()
 
+/**
+ * Отступы попапа от левого верхнего угла пина, px.
+ * right/bottom — как в старой реализации (+20 / +15), left/top — зеркальные, для разворота.
+ */
 const OFFSET = { right: 20, left: 4, bottom: 15, top: 4 } as const
 
 const popupId = useId()
 const mapRef = ref<HTMLElement | null>(null)
 const popupRef = ref<HTMLElement | null>(null)
+const mobileCardRef = ref<HTMLElement | null>(null)
 
+// Как в старой версии: от 640px попап рядом с пином, ниже — карточка под картой.
+// На SSR вернёт false, но попап рендерится только после клика, так что hydration mismatch невозможен.
 const isLargeScreen = useMediaQuery('(min-width: 640px)')
+const reducedMotion = usePreferredReducedMotion()
+
+/* ---------- Выбор пина ---------- */
 
 const activeId = ref<string | null>(null)
 const activeCard = computed(() => props.cards.find((card) => card.id === activeId.value) ?? null)
@@ -23,7 +39,17 @@ const close = () => {
   activeId.value = null
 }
 
+// Закрытие кнопкой внутри карточки: после unmount фокус пропал бы в body, возвращаем его на пин
+const closeFromCard = () => {
+  const pin = mapRef.value?.querySelector<HTMLElement>(
+    '[data-consortium-pin][aria-expanded="true"]',
+  )
+  close()
+  pin?.focus()
+}
+
 onKeyStroke('Escape', close)
+// Клик по пину обрабатывает toggle, поэтому пины из «внешних» кликов исключаем
 onClickOutside(popupRef, close, { ignore: ['[data-consortium-pin]'] })
 
 /* ---------- Позиционирование попапа ---------- */
@@ -45,6 +71,11 @@ const popupStyle = computed(() => {
   }
 })
 
+// Анимация появления «растёт» из угла, обращённого к пину
+const cardOrigin = computed(() => ({
+  transformOrigin: `${placement.y === 'bottom' ? 'top' : 'bottom'} ${placement.x === 'right' ? 'left' : 'right'}`,
+}))
+
 /**
  * По умолчанию попап открывается справа-снизу от пина (card.side — предпочтение из данных).
  * Если он вылезает за карту, выбираем сторону, где вылет меньше. Размеры попапа не зависят
@@ -57,7 +88,6 @@ function place() {
   if (!card || !popup || !map) return
 
   const { width: mapW, height: mapH } = map.getBoundingClientRect()
-  // offsetWidth/offsetHeight не зависят от transform, поэтому анимации появления не мешают
   const w = popup.offsetWidth
   const h = popup.offsetHeight
   const px = (parseFloat(card.coordinates.x) / 100) * mapW
@@ -78,8 +108,20 @@ function place() {
   placement.y = overflow.bottom > 0 && overflow.top < overflow.bottom ? 'top' : 'bottom'
 }
 
-// flush: 'post' — DOM с попапом уже готов, можно мерить. Правка placement до paint, мерцания нет.
-watch([activeCard, isLargeScreen], place, { flush: 'post' })
+// flush: 'post' — DOM уже готов. Правка placement до paint, мерцания нет.
+watch(
+  [activeCard, isLargeScreen],
+  () => {
+    if (isLargeScreen.value) return place()
+
+    // На мобильных карточка под картой может оказаться за пределами экрана
+    mobileCardRef.value?.scrollIntoView({
+      behavior: reducedMotion.value === 'reduce' ? 'auto' : 'smooth',
+      block: 'nearest',
+    })
+  },
+  { flush: 'post' },
+)
 useResizeObserver(mapRef, place)
 </script>
 
@@ -89,6 +131,9 @@ useResizeObserver(mapRef, place)
     <UiText class="mx-auto max-w-190">{{ description }}</UiText>
 
     <div>
+      <!-- Подсказка: без неё не очевидно, что белые точки кликабельны -->
+      <p v-if="hint" class="mb-4 text-sm text-white/60">{{ hint }}</p>
+
       <!-- 1060px и пропорция 1.82 — как в старой реализации, под них откалиброваны coordinates -->
       <div ref="mapRef" class="relative mx-auto max-w-265">
         <img
@@ -109,42 +154,59 @@ useResizeObserver(mapRef, place)
           :aria-expanded="card.id === activeId"
           :aria-controls="card.id === activeId ? popupId : undefined"
           :style="{ left: card.coordinates.x, top: card.coordinates.y }"
-          class="absolute z-20 size-2.5 cursor-pointer rounded-full bg-(--point-color) shadow-[0_6.26px_6.26px_0_#00000040,0_6.26px_6.26px_0_var(--shadow-color)] transition-[background-color,box-shadow] duration-200 after:absolute after:-inset-2.5 hover:[--point-color:#FFD102] hover:[--shadow-color:#ECD778BF] min-[360px]:size-3 min-[450px]:size-4 sm:shadow-[0_6.26px_6.26px_0_#00000040,0_4.26px_4.26px_1px_var(--shadow-color)]"
+          class="group absolute size-2.5 cursor-pointer touch-manipulation rounded-full bg-(--point-color) shadow-[0_6.26px_6.26px_0_#00000040,0_6.26px_6.26px_0_var(--shadow-color)] outline-offset-4 outline-white transition-[background-color,box-shadow] duration-200 after:absolute after:-inset-2.5 hover:[--point-color:#FFD102] hover:[--shadow-color:#ECD778BF] focus-visible:outline-2 motion-reduce:transition-none min-[360px]:size-3 min-[450px]:size-4 sm:shadow-[0_6.26px_6.26px_0_#00000040,0_4.26px_4.26px_1px_var(--shadow-color)]"
           :class="
             card.id === activeId
-              ? '[--point-color:#FFD102] [--shadow-color:#ECD778BF]'
-              : '[--point-color:white] [--shadow-color:#FFFFFFBF]'
+              ? 'z-20 [--point-color:#FFD102] [--shadow-color:#ECD778BF]'
+              : 'z-10 [--point-color:white] [--shadow-color:#FFFFFFBF] hover:z-20'
           "
           @click="toggle(card.id)"
-        />
-
-        <Transition
-          enter-active-class="transition-opacity duration-200"
-          enter-from-class="opacity-0"
-          leave-active-class="transition-opacity duration-150"
-          leave-to-class="opacity-0"
         >
-          <div
-            v-if="activeCard && isLargeScreen"
-            :id="popupId"
-            ref="popupRef"
-            role="region"
-            :aria-label="activeCard.city"
-            :style="popupStyle"
-            class="absolute z-30 w-121 max-w-full"
+          <!-- Активный пин «пульсирует», чтобы связь пин ↔ карточка читалась сразу -->
+          <span
+            v-if="card.id === activeId"
+            aria-hidden="true"
+            class="absolute inset-0 rounded-full bg-(--point-color) opacity-60 motion-safe:animate-ping"
+          />
+          <!-- Название города по ховеру/фокусу (только на устройствах с hover) -->
+          <span
+            v-else
+            aria-hidden="true"
+            class="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 rounded-md bg-black/75 px-2 py-1 text-xs whitespace-nowrap text-white opacity-0 transition-opacity group-hover:opacity-100"
           >
-            <ConsortiumCard :city="activeCard.city" :items="activeCard.items" />
-          </div>
-        </Transition>
+            {{ card.city }}
+          </span>
+        </button>
+
+        <div
+          v-if="activeCard && isLargeScreen"
+          :id="popupId"
+          ref="popupRef"
+          role="region"
+          :aria-label="activeCard.city"
+          :style="popupStyle"
+          class="absolute z-30 w-121 max-w-full"
+        >
+          <!-- key: при переключении между пинами карточка пересоздаётся и анимируется заново -->
+          <ConsortiumCard
+            :key="activeCard.id"
+            :city="activeCard.city"
+            :items="activeCard.items"
+            :style="cardOrigin"
+            @close="closeFromCard"
+          />
+        </div>
       </div>
 
-      <ConsortiumCard
-        v-if="activeCard && !isLargeScreen"
-        :id="popupId"
-        :city="activeCard.city"
-        :items="activeCard.items"
-        class="mt-4"
-      />
+      <div v-if="activeCard && !isLargeScreen" ref="mobileCardRef" class="mt-4">
+        <ConsortiumCard
+          :id="popupId"
+          :key="activeCard.id"
+          :city="activeCard.city"
+          :items="activeCard.items"
+          @close="closeFromCard"
+        />
+      </div>
     </div>
 
     <UiAction v-if="action" :to="action.to" class="py-5">

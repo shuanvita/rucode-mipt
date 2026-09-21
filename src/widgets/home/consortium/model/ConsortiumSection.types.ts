@@ -2,6 +2,7 @@ export interface ConsortiumSectionProps {
   title: string
   description: string
   cards: ConsortiumCardProps[]
+  hint?: string
   action?: {
     text: string
     to: string
