@@ -8,6 +8,7 @@ import { AchievementsSection } from '~/widgets/home/achievements'
 import { PartnersSection } from '~/widgets/partners'
 import { TracksSection } from '~/widgets/home/tracks'
 import { CalendarSection } from '~/widgets/home/calendar'
+import { ConsortiumSection } from '~/widgets/home/consortium'
 
 const blockComponents: Record<string, Component> = {
   hero: HomeHero,
@@ -15,13 +16,14 @@ const blockComponents: Record<string, Component> = {
   achievements: AchievementsSection,
   tracks: TracksSection,
   calendar: CalendarSection,
+  consortium: ConsortiumSection,
   partners: PartnersSection,
 }
 
 const anchorIds: Record<string, string> = {
   tracks: 'tracks',
   calendar: 'calendar',
-  organizers: 'organizers',
+  consortium: 'consortium',
   videos: 'videos',
 }
 
