@@ -321,13 +321,14 @@ const consortium: ConsortiumSectionProps = {
   description:
     'Консорциум — это сеть научно-образовательных организаций с множеством возможностей для развития тесного сотрудничества и совместного проведения крупных мероприятий, проектной деятельности и программ в ИТ-образовательном пространстве.',
   hint: 'Нажмите на точку на карте, чтобы узнать подробнее',
+  imageMap: '/images/home/map.webp',
   cards: [
     {
-      id: 'dolgoprudny',
+      id: crypto.randomUUID(),
       city: 'Долгопрудный',
       items: [
         {
-          id: 'dolgoprudny-1',
+          id: crypto.randomUUID(),
           title: 'ФГАОУ ВО «Московский физико-технический институт»',
           image: 'https://rucode.net/wp-content/uploads/2024/03/o1.png',
           description: 'Самая массовая площадка RuCode 2023',
@@ -336,11 +337,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '19.6%', y: '38.0%' },
     },
     {
-      id: 'moscow',
+      id: crypto.randomUUID(),
       city: 'Москва',
       items: [
         {
-          id: 'moscow-1',
+          id: crypto.randomUUID(),
           title: 'ФГАОУ ВО «Национальный исследовательский технологический университет «МИСИС»',
           image: 'https://rucode.net/wp-content/uploads/2025/02/misis.svg',
           description: 'Новый соорганизатор RuCode',
@@ -349,11 +350,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '19.6%', y: '41.8%' },
     },
     {
-      id: 'innopolis',
+      id: crypto.randomUUID(),
       city: 'Иннополис',
       items: [
         {
-          id: 'innopolis-1',
+          id: crypto.randomUUID(),
           title: 'АНО ВО «Университет Иннополис»',
           image: 'https://rucode.net/wp-content/uploads/2024/03/o14.png',
           description:
@@ -363,18 +364,18 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '25.6%', y: '52.7%' },
     },
     {
-      id: 'perm',
+      id: crypto.randomUUID(),
       city: 'Пермь',
       items: [
         {
-          id: 'perm-1',
+          id: crypto.randomUUID(),
           title: 'МинЦифры Пермского края',
           image: 'https://rucode.net/wp-content/uploads/2024/03/o5.png',
           description:
             'Самые красивые фотографии чемпионата RuCode, координирует взаимодействие органов государственной власти Пермского края, осуществляет создание, развитие информационных систем, а также обеспечение их эксплуатации',
         },
         {
-          id: 'perm-2',
+          id: crypto.randomUUID(),
           title: 'ФГАОУ ВО «Пермский государственный национальный исследовательский университет»',
           image: 'https://rucode.net/wp-content/uploads/2024/03/o5.png',
           description:
@@ -384,11 +385,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '30.9%', y: '53.2%' },
     },
     {
-      id: 'kaliningrad',
+      id: crypto.randomUUID(),
       city: 'Калининград',
       items: [
         {
-          id: 'kaliningrad-1',
+          id: crypto.randomUUID(),
           title: 'ФГАОУ ВО «Балтийский федеральный университет имени Иммануила Канта»',
           image: 'https://rucode.net/wp-content/uploads/2024/03/o4.png',
           description:
@@ -398,12 +399,12 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '12.4%', y: '19.8%' },
     },
     {
-      id: 'vladivostok',
+      id: crypto.randomUUID(),
       side: 'left',
       city: 'Владивосток',
       items: [
         {
-          id: 'vladivostok-1',
+          id: crypto.randomUUID(),
           title: 'ФГАОУ ВО «Дальневосточный федеральный университет»',
           image: 'https://rucode.net/wp-content/uploads/2024/03/o6.png',
           description:
@@ -413,18 +414,18 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '85.6%', y: '94.8%' },
     },
     {
-      id: 'vladikavkaz',
+      id: crypto.randomUUID(),
       city: 'Владикавказ',
       items: [
         {
-          id: 'vladikavkaz-1',
+          id: crypto.randomUUID(),
           title:
             'ФГБОУ ВО «Северо-Кавказский горно-металлургический институт (государственный технологический университет)»',
           image: 'https://rucode.net/wp-content/uploads/2025/04/logo-skgmi_vladikavkaz.webp',
           description: 'Новый соорганизатор RuCode',
         },
         {
-          id: 'vladikavkaz-2',
+          id: crypto.randomUUID(),
           title: 'АНО дополнительного образования «Учебный центр Стартап»',
           image: 'https://rucode.net/wp-content/uploads/2025/04/cropped-startup-logo.png',
           description: 'Новый соорганизатор RuCode',
@@ -433,11 +434,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '10.6%', y: '66.8%' },
     },
     {
-      id: 'volzhsky',
+      id: crypto.randomUUID(),
       city: 'Волжский',
       items: [
         {
-          id: 'volzhsky-1',
+          id: crypto.randomUUID(),
           title: 'ФГАОУ ВО «Волгоградский государственный университет» Волжский филиал',
           image: 'https://rucode.net/wp-content/uploads/2024/03/o17.png',
           description:
@@ -447,11 +448,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '16.6%', y: '57.8%' },
     },
     {
-      id: 'nizhny-novgorod',
+      id: crypto.randomUUID(),
       city: 'Нижний Новгород',
       items: [
         {
-          id: 'nizhny-novgorod-1',
+          id: crypto.randomUUID(),
           title:
             'ФГАОУ ВО «Национальный исследовательский Нижегородский государственный университет им. Н.И. Лобачевского»',
           image: 'https://rucode.net/wp-content/uploads/2024/03/o11.png',
@@ -462,11 +463,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '23%', y: '47%' },
     },
     {
-      id: 'tomsk',
+      id: crypto.randomUUID(),
       city: 'Томск',
       items: [
         {
-          id: 'tomsk-1',
+          id: crypto.randomUUID(),
           title: 'ФГАОУ ВО «Национальный исследовательский Томский государственный университет»',
           image: 'https://rucode.net/wp-content/uploads/2024/03/o10.png',
           description:
@@ -476,11 +477,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '45%', y: '67%' },
     },
     {
-      id: 'stavropol',
+      id: crypto.randomUUID(),
       city: 'Ставрополь',
       items: [
         {
-          id: 'stavropol-1',
+          id: crypto.randomUUID(),
           title: 'ФГАОУ ВО «Северо - Кавказский федеральный университет»',
           image: 'https://rucode.net/wp-content/uploads/2024/05/2024-05-27-16.26.01.png',
           description:
@@ -490,11 +491,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '11.6%', y: '63.8%' },
     },
     {
-      id: 'krasnoyarsk',
+      id: crypto.randomUUID(),
       city: 'Красноярск',
       items: [
         {
-          id: 'krasnoyarsk-1',
+          id: crypto.randomUUID(),
           title: 'ФГАОУ ВО «Сибирский федеральный университет»',
           image: 'https://rucode.net/wp-content/uploads/2024/03/08.png',
           description:
@@ -504,11 +505,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '52%', y: '67%' },
     },
     {
-      id: 'yekaterinburg',
+      id: crypto.randomUUID(),
       city: 'Екатеринбург',
       items: [
         {
-          id: 'yekaterinburg-1',
+          id: crypto.randomUUID(),
           title: 'ФГАОУ ВО «УрФУ имени первого Президента России Б.Н. Ельцина',
           image: 'https://rucode.net/wp-content/uploads/2024/03/o9.png',
           description:
@@ -518,12 +519,12 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '34%', y: '59.5%' },
     },
     {
-      id: 'chita',
+      id: crypto.randomUUID(),
       side: 'left',
       city: 'Чита',
       items: [
         {
-          id: 'chita-1',
+          id: crypto.randomUUID(),
           title: 'ФГБОУ ВО «Забайкальский государственный университет»',
           image: 'https://rucode.net/wp-content/uploads/2024/03/o7.png',
           description:
@@ -533,11 +534,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '70.6%', y: '84.8%' },
     },
     {
-      id: 'izhevsk',
+      id: crypto.randomUUID(),
       city: 'Ижевск',
       items: [
         {
-          id: 'izhevsk-1',
+          id: crypto.randomUUID(),
           title:
             'ФГБОУ ВО «Ижевский государственный технический университет имени М.Т. Калашникова»',
           image: 'https://rucode.net/wp-content/uploads/2024/03/o12.png',
@@ -547,11 +548,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '28.5%', y: '52.8%' },
     },
     {
-      id: 'kursk',
+      id: crypto.randomUUID(),
       city: 'Курск',
       items: [
         {
-          id: 'kursk-1',
+          id: crypto.randomUUID(),
           title: 'ФГБОУ ВО «Курский государственный университет»',
           image: 'https://rucode.net/wp-content/uploads/2024/03/o15.png',
           description:
@@ -561,11 +562,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '14.8%', y: '43%' },
     },
     {
-      id: 'petrozavodsk',
+      id: crypto.randomUUID(),
       city: 'Петрозаводск',
       items: [
         {
-          id: 'petrozavodsk-1',
+          id: crypto.randomUUID(),
           title: 'ФГБОУ ВО «Петрозаводский государственный университет»',
           image: 'https://rucode.net/wp-content/uploads/2024/03/o13.png',
           description:
@@ -575,11 +576,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '27%', y: '22.8%' },
     },
     {
-      id: 'saratov',
+      id: crypto.randomUUID(),
       city: 'Саратов',
       items: [
         {
-          id: 'saratov-1',
+          id: crypto.randomUUID(),
           title: 'ФГБОУ ВО «Саратовский государственный университет имени Н.Г. Чернышевского»',
           image:
             'https://rucode.net/wp-content/uploads/2024/04/tild3061-3763-4539-b438-313933663938____.png',
@@ -590,11 +591,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '20.6%', y: '57.8%' },
     },
     {
-      id: 'tyumen',
+      id: crypto.randomUUID(),
       city: 'Тюмень',
       items: [
         {
-          id: 'tyumen-1',
+          id: crypto.randomUUID(),
           title: 'ФГБОУ ВО «Тюменский индустриальный университет»',
           image: 'https://rucode.net/wp-content/uploads/2024/03/o16.png',
           description:
@@ -604,11 +605,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '37%', y: '63.5%' },
     },
     {
-      id: 'ufa',
+      id: crypto.randomUUID(),
       city: 'Уфа',
       items: [
         {
-          id: 'ufa-1',
+          id: crypto.randomUUID(),
           title: 'ФГБОУ ВО «Уфимский университет науки и технологий»',
           image: 'https://rucode.net/wp-content/uploads/2024/03/o18.png',
           description:
@@ -618,11 +619,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '27.6%', y: '59.8%' },
     },
     {
-      id: 'sirius',
+      id: crypto.randomUUID(),
       city: 'Сириус',
       items: [
         {
-          id: 'sirius-1',
+          id: crypto.randomUUID(),
           title: 'АНО ВО «Университет «Сириус»',
           image: 'https://rucode.net/wp-content/uploads/2024/03/o21.png',
           description:
@@ -632,11 +633,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '9%', y: '57.8%' },
     },
     {
-      id: 'murmansk',
+      id: crypto.randomUUID(),
       city: 'Мурманск',
       items: [
         {
-          id: 'murmansk-1',
+          id: crypto.randomUUID(),
           title: 'ФГАОУ ВО «Мурманский арктический университет»',
           image: 'https://rucode.net/wp-content/uploads/2024/03/o19.png',
           description:
@@ -646,11 +647,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '30.6%', y: '14.8%' },
     },
     {
-      id: 'ulyanovsk',
+      id: crypto.randomUUID(),
       city: 'Ульяновск',
       items: [
         {
-          id: 'ulyanovsk-1',
+          id: crypto.randomUUID(),
           title: 'АНО ДО «Агентство технологического развития Ульяновской области»',
           image: 'https://rucode.net/wp-content/uploads/2024/03/o22.png',
           description:
@@ -660,11 +661,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '23.6%', y: '53.8%' },
     },
     {
-      id: 'novosibirsk',
+      id: crypto.randomUUID(),
       city: 'Новосибирск',
       items: [
         {
-          id: 'novosibirsk-1',
+          id: crypto.randomUUID(),
           title:
             'ФГАОУ ВО «Новосибирский национальный исследовательский государственный университет»',
           image: 'https://rucode.net/wp-content/uploads/2024/03/o3.png',
@@ -675,11 +676,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '39.6%', y: '73.5%' },
     },
     {
-      id: 'irkutsk',
+      id: crypto.randomUUID(),
       city: 'Иркутск',
       items: [
         {
-          id: 'irkutsk-1',
+          id: crypto.randomUUID(),
           title: 'Деловая Россия',
           image: 'https://rucode.net/wp-content/uploads/2024/03/o24.png',
           description:
@@ -689,11 +690,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '60%', y: '76%' },
     },
     {
-      id: 'voronezh',
+      id: crypto.randomUUID(),
       city: 'Воронеж',
       items: [
         {
-          id: 'voronezh-1',
+          id: crypto.randomUUID(),
           title: 'ФГБОУ ВО «Воронежский государственный университет»',
           image: 'https://rucode.net/wp-content/uploads/2025/04/vsu150x200.jpg',
           description: 'Новый соорганизатор RuCode',
@@ -702,11 +703,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '16.6%', y: '50%' },
     },
     {
-      id: 'astrakhan',
+      id: crypto.randomUUID(),
       city: 'Астрахань',
       items: [
         {
-          id: 'astrakhan-1',
+          id: crypto.randomUUID(),
           title: 'Общество с ограниченной ответственностью Центр подготовки персонала «ЗоргоСфера»',
           image: new URL('/src/assets/zorgosphere.png', import.meta.url).href,
           description: 'Новый соорганизатор RuCode',
@@ -715,11 +716,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '16.5%', y: '67.8%' },
     },
     {
-      id: 'chelyabinsk',
+      id: crypto.randomUUID(),
       city: 'Челябинск',
       items: [
         {
-          id: 'chelyabinsk-1',
+          id: crypto.randomUUID(),
           title: 'ФГБОУ ВО «Челябинский государственный университет»',
           image: 'https://rucode.net/wp-content/uploads/2025/04/chelgu-tri-czveta.png',
           description: 'Новый соорганизатор RuCode',
@@ -728,11 +729,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '31%', y: '64.8%' },
     },
     {
-      id: 'samara',
+      id: crypto.randomUUID(),
       city: 'Самара',
       items: [
         {
-          id: 'samara-1',
+          id: crypto.randomUUID(),
           title: 'ФГБОУ ВО "Поволжский государственный университет телекоммуникаций и информатики"',
           image:
             'https://rucode.net/wp-content/uploads/2025/04/logo_pguti_color-e1744755070924.png',
@@ -742,11 +743,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '23.6%', y: '57.8%' },
     },
     {
-      id: 'khanty-mansiysk',
+      id: crypto.randomUUID(),
       city: 'Ханты-Мансийск',
       items: [
         {
-          id: 'khanty-mansiysk-1',
+          id: crypto.randomUUID(),
           title: 'ФГБОУ ВО «Югорский государственный университет»',
           image: 'https://rucode.net/wp-content/uploads/2025/04/logo2-e1744755044894.png',
           description: 'Новый соорганизатор RuCode',
@@ -755,11 +756,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '41%', y: '57%' },
     },
     {
-      id: 'kostroma',
+      id: crypto.randomUUID(),
       city: 'Кострома',
       items: [
         {
-          id: 'kostroma-1',
+          id: crypto.randomUUID(),
           title: 'ФГБОУ ВО «Костромской государственный университет»',
           image: 'https://rucode.net/wp-content/uploads/2025/04/color_logo_1.png',
           description: 'Новый соорганизатор RuCode',
@@ -768,11 +769,11 @@ const consortium: ConsortiumSectionProps = {
       coordinates: { x: '25%', y: '40.8%' },
     },
     {
-      id: 'alchevsk',
+      id: crypto.randomUUID(),
       city: 'Алчевск',
       items: [
         {
-          id: 'alchevsk-1',
+          id: crypto.randomUUID(),
           title: 'ФГБОУ ВО «Донбасский государственный технический университет»',
           image: 'https://rucode.net/wp-content/uploads/2025/04/0_logo-e1744756863909.png',
           description: 'Новый соорганизатор RuCode',
