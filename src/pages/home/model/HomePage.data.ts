@@ -6,6 +6,8 @@ import { createFallbackBlock } from '~/shared/api'
 import type { ContentPage } from '~/shared/api'
 import type { CalendarSectionProps } from '~/widgets/home/calendar'
 import type { ConsortiumSectionProps } from '~/widgets/home/consortium'
+import type { PhotoGalleryProps } from '~/widgets/home/photo-gallery'
+import type { VideoGalleryProps } from '~/widgets/home/video-gallery'
 
 const hero: HomeHeroProps = {
   action: {
@@ -811,6 +813,140 @@ const partners: PartnersSectionProps = {
   ],
 }
 
+const photos: PhotoGalleryProps = {
+  title: 'Фото',
+  photos: [
+    { image: '/images/home/gallery-1.png', alt: 'gallery-1' },
+    { image: '/images/home/gallery-2.png', alt: 'gallery-2' },
+    { image: '/images/home/gallery-3.png', alt: 'gallery-3' },
+    { image: '/images/home/gallery-4.png', alt: 'gallery-4' },
+    { image: '/images/home/gallery-5.png', alt: 'gallery-5' },
+    { image: '/images/home/gallery-6.png', alt: 'gallery-6' },
+    { image: '/images/home/gallery-7.png', alt: 'gallery-7' },
+    { image: '/images/home/gallery-8.png', alt: 'gallery-8' },
+  ],
+}
+
+const videos: VideoGalleryProps = {
+  title: 'Видео',
+  items: [
+    {
+      image: '/images/home/video-1.png',
+      videoUrl: 'https://vk.com/video_ext.php?oid=-44001716&id=456239577&hd=2&js_api=1',
+      caption: 'Всероссийский Классный час RuCode',
+      tags: [
+        {
+          label: '#научпоп',
+          color: 'text-blue-400',
+        },
+        {
+          label: '#образование',
+          color: 'text-emerald-300',
+        },
+      ],
+    },
+    {
+      image: '/images/home/video-2.png',
+      videoUrl: 'https://vk.com/video_ext.php?oid=-44001716&id=456239616&hd=3&js_api=1',
+      caption: 'Многократные чемпионы RuCode',
+      tags: [
+        {
+          label: '#чемпионат',
+          color: 'text-amber-400',
+        },
+      ],
+    },
+    {
+      image: '/images/home/video-3.png',
+      videoUrl: 'https://vk.com/video_ext.php?oid=-49378&id=456239110&hd=3&js_api=1',
+      caption: 'RuCode 2023: как это было?',
+      tags: [
+        {
+          label: '#научпоп',
+          color: 'text-blue-400',
+        },
+        {
+          label: '#образование',
+          color: 'text-emerald-300',
+        },
+        {
+          label: '#чемпионат',
+          color: 'text-amber-400',
+        },
+        {
+          label: '#карьера',
+          color: 'text-rose-500',
+        },
+      ],
+    },
+    {
+      image: '/images/home/video-4.png',
+      videoUrl: 'https://vk.com/video_ext.php?oid=-44001716&id=456239579&hd=2&js_api=1',
+      caption: 'Искусственный интеллект или люди — кто победит?',
+      tags: [
+        {
+          label: '#научпоп',
+          color: 'text-blue-400',
+        },
+        {
+          label: '#образование',
+          color: 'text-emerald-300',
+        },
+        {
+          label: '#чемпионат',
+          color: 'text-amber-400',
+        },
+      ],
+    },
+    {
+      image: '/images/home/video-5.png',
+      videoUrl: 'https://vk.com/video_ext.php?oid=-44001716&id=456239580&hd=2&js_api=1',
+      caption: 'Столица RuCode 2023',
+      tags: [
+        {
+          label: '#научпоп',
+          color: 'text-blue-400',
+        },
+        {
+          label: '#образование',
+          color: 'text-emerald-300',
+        },
+        {
+          label: '#чемпионат',
+          color: 'text-amber-400',
+        },
+        {
+          label: '#карьера',
+          color: 'text-rose-500',
+        },
+      ],
+    },
+    {
+      image: '/images/home/video-6.png',
+      videoUrl: 'https://vk.com/video_ext.php?oid=-44001716&id=456239570&hd=2&js_api=1',
+      caption: 'Вести-Урал: интервью у руководителя Программного комитета фестиваля RuCode',
+      tags: [
+        {
+          label: '#научпоп',
+          color: 'text-blue-400',
+        },
+        {
+          label: '#образование',
+          color: 'text-emerald-300',
+        },
+        {
+          label: '#чемпионат',
+          color: 'text-amber-400',
+        },
+        {
+          label: '#карьера',
+          color: 'text-rose-500',
+        },
+      ],
+    },
+  ],
+}
+
 export const homePageData: ContentPage = {
   slug: '/',
   version: 1,
@@ -822,5 +958,7 @@ export const homePageData: ContentPage = {
     createFallbackBlock('calendar', 50, calendar),
     createFallbackBlock('consortium', 60, consortium),
     createFallbackBlock('partners', 80, partners),
+    createFallbackBlock('photos', 90, photos),
+    createFallbackBlock('videos', 100, videos),
   ],
 }

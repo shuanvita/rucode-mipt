@@ -9,7 +9,7 @@ interface ModalProps {
 
 const props = withDefaults(defineProps<ModalProps>(), { size: 'md' })
 const panelRef = ref<HTMLElement>()
-const isLocked = useScrollLock(document?.body)
+const isLocked = useScrollLock(import.meta.client ? document.body : null)
 const isOpen = defineModel<boolean>({ required: true })
 
 defineOptions({
@@ -37,6 +37,7 @@ const sizeClasses: Record<ModalSize, string> = {
 const modalSizeClass = computed(() => sizeClasses[props.size])
 
 watch(isOpen, async (value) => {
+  isLocked.value = value
   if (value) {
     await nextTick()
     panelRef.value?.focus()
@@ -49,7 +50,7 @@ watch(isOpen, async (value) => {
     <Transition name="modal">
       <div
         v-if="isOpen"
-        class="fixed inset-0 z-999 flex items-center justify-center bg-black/10"
+        class="fixed inset-0 z-999 flex items-center justify-center bg-black/40"
         role="dialog"
         aria-modal="true"
         @click="closeOnOverlayClick"
@@ -58,7 +59,7 @@ watch(isOpen, async (value) => {
           ref="panelRef"
           tabindex="-1"
           :class="[
-            'bg-dark-primary outline-none flex w-full max-w-250 flex-col space-y-4 rounded-2xl p-16 shadow-xl max-md:p-6',
+            'bg-dark-primary flex w-full max-w-250 flex-col space-y-4 rounded-2xl p-8 shadow-xl outline-none max-md:p-6',
             modalSizeClass,
           ]"
           v-bind="$attrs"
