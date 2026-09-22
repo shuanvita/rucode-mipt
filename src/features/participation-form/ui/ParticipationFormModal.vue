@@ -6,7 +6,8 @@ import ParticipationFormSuccess from './ParticipationFormSuccess.vue'
 
 const isOpen = defineModel<boolean>({ required: true })
 
-const { formData, errors, status, submitErrorMessage, submit, reset } = useParticipationForm()
+const { formData, errors, status, submitErrorMessage, isValid, touch, submit, reset } =
+  useParticipationForm()
 
 watch(isOpen, (value) => {
   if (!value) reset()
@@ -18,9 +19,9 @@ watch(isOpen, (value) => {
     <ParticipationFormSuccess v-if="status === 'success'" @close="isOpen = false" />
 
     <form v-else class="flex flex-col gap-5" @submit.prevent="submit">
-      <ParticipationFormFields :form-data="formData" :errors="errors" />
+      <ParticipationFormFields v-model:form-data="formData" :errors="errors" @blur="touch" />
 
-      <UiAction type="submit" class="w-full" :disabled="status === 'submitting'">
+      <UiAction type="submit" class="w-full" :disabled="status === 'submitting' || !isValid">
         {{ status === 'submitting' ? 'Отправка…' : 'Отправить форму' }}
       </UiAction>
 

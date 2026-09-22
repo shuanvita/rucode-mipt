@@ -45,14 +45,12 @@ const boxClass = computed(() =>
         :aria-describedby="ariaDescribedby"
       />
       <span :class="boxClass">
-        <svg
+        <UiSvg
           v-if="modelValue"
-          viewBox="0 0 12 10"
-          class="size-2.5 fill-none stroke-black stroke-2"
-          aria-hidden="true"
-        >
-          <path d="M1 5L4.5 8.5L11 1" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
+          class="size-3 fill-none stroke-black stroke-2"
+          name="check"
+          decorative
+        />
       </span>
       <span class="text-fg/80 text-sm">
         <slot />

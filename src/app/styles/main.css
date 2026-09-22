@@ -10,6 +10,8 @@
   --color-yellow-primary: #FFD102;
   --color-yellow-secondary: #cba603;
   --color-fg: #ffffff;
+  --color-red: #FF5252;
+  --color-destructive: #FF5252;
 
   --color-btn-primary: oklch(0.852 0.199 91.936);
   --color-btn-primary-hover: #cba603;

@@ -1,3 +1,4 @@
+import { getPhoneCountry } from '~/shared/config'
 import type { ParticipationFormData } from '../model/ParticipationForm.types'
 
 export interface SubmitParticipationResult {
@@ -19,7 +20,7 @@ export async function submitParticipationForm(
   body.append('name', data.name.trim())
   body.append('patronymic', data.patronymic.trim())
   body.append('email', data.email.trim())
-  body.append('phone', `+7${data.phone}`)
+  body.append('phone', `+${getPhoneCountry(data.phoneCountry).dialCode}${data.phone}`)
   body.append('region', data.region)
 
   try {

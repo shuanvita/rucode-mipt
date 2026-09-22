@@ -9,6 +9,7 @@ function validForm() {
     patronymic: '',
     email: 'ivan@example.com',
     phone: '9161234567',
+    phoneCountry: 'RU',
     region: 'moscow',
     agreement: true,
   }
@@ -38,5 +39,14 @@ describe('validateParticipationForm', () => {
 
   it('требует отмеченный чекбокс согласия', () => {
     expect(validateParticipationForm({ ...validForm(), agreement: false }).agreement).toBeTruthy()
+  })
+
+  it('проверяет длину номера в зависимости от страны', () => {
+    expect(
+      validateParticipationForm({ ...validForm(), phoneCountry: 'BY', phone: '9161234567' }).phone,
+    ).toBeTruthy()
+    expect(
+      validateParticipationForm({ ...validForm(), phoneCountry: 'BY', phone: '291234567' }).phone,
+    ).toBeUndefined()
   })
 })
