@@ -13,7 +13,7 @@ watch(isOpen, (value) => {
 </script>
 
 <template>
-  <UiModal v-model="isOpen" size="lg">
+  <UiModal v-model="isOpen" size="xl">
     <ParticipationFormSuccess v-if="status === 'success'" @close="isOpen = false" />
 
     <form v-else class="flex flex-col gap-5" @submit.prevent="submit">
