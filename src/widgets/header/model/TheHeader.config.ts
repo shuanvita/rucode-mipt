@@ -6,8 +6,8 @@ export const headerConfigs: Record<HeaderConfigKey, HeaderConfig> = {
       { href: '#tracks', title: 'Треки фестиваля' },
       { href: '#calendar', title: 'Календарь' },
       { href: '#consortium', title: 'Консорциум' },
-      { href: '#video', title: 'Видео' },
-      { href: '#participate', title: 'Хочу участвовать' },
+      { href: '#videos', title: 'Видео' },
+      { href: 'https://edu.mipt.ru/member/?rucode=1', title: 'Хочу участвовать' },
     ],
     cta: {
       label: 'Мероприятия',
