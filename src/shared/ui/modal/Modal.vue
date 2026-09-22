@@ -59,12 +59,21 @@ watch(isOpen, async (value) => {
           ref="panelRef"
           tabindex="-1"
           :class="[
-            'bg-dark-primary flex w-full max-w-250 flex-col space-y-4 rounded-2xl p-8 shadow-xl outline-none max-md:p-6',
+            'bg-dark-primary relative flex w-full max-w-250 flex-col space-y-4 rounded-2xl p-8 shadow-xl outline-none max-md:p-6',
             modalSizeClass,
           ]"
           v-bind="$attrs"
           @click.stop
         >
+          <UiAction
+            class="absolute top-3 right-3 size-8 text-white/70 hover:bg-white/15 hover:text-white"
+            variant="custom"
+            icon="close"
+            icon-size="size-4"
+            aria-label="Закрыть"
+            @click="isOpen = false"
+          />
+
           <slot />
         </div>
       </div>

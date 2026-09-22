@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import type { HomeHeroProps } from '~/widgets/home/hero'
+import { ParticipationFormModal } from '~/features/participation-form'
 
 defineProps<HomeHeroProps>()
 
-defineEmits(['openForm'])
+defineOptions({
+  inheritAttrs: false,
+})
 
+const isFormOpen = ref(false)
 const videoRef = ref<HTMLVideoElement | null>(null)
 
 onMounted(() => {
@@ -15,6 +19,7 @@ onMounted(() => {
 
 <template>
   <section
+    v-bind="$attrs"
     class="relative container flex flex-col overflow-hidden rounded-3xl py-8 md:items-center md:justify-center lg:min-h-153"
   >
     <video
@@ -35,9 +40,11 @@ onMounted(() => {
     >
       <NuxtPicture class="w-150 max-w-full max-md:w-44.25" :src="logo" alt="Rucode Festival" />
 
-      <UiAction v-if="action" :to="action.to" class="mt-10 py-5" @click="$emit('openForm')">
+      <UiAction v-if="action" class="mt-10 py-5" @click="isFormOpen = true">
         {{ action.text ?? 'Хочу участвовать' }}
       </UiAction>
     </div>
   </section>
+
+  <ParticipationFormModal v-model="isFormOpen" />
 </template>
