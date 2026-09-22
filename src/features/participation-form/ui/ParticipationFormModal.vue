@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// TODO Уточнить по форме. Какие поля ожидает бек + endpoint отправки. Стилизация формы сделать как в production
 import { useParticipationForm } from '../api/useParticipationForm'
 import ParticipationFormFields from './ParticipationFormFields.vue'
 import ParticipationFormSuccess from './ParticipationFormSuccess.vue'

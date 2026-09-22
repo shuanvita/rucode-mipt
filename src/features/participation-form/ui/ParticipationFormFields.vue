@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RUSSIAN_REGIONS } from '~/shared/config'
-import type { ParticipationFormData, ParticipationFormErrors } from '../model/ParticipationForm.types'
+import type { ParticipationFormData, ParticipationFormErrors } from '~/features/participation-form'
 
 defineProps<{
   formData: ParticipationFormData
@@ -51,10 +51,14 @@ defineProps<{
     :error-message="errors.region"
   />
 
-  <UiCheckbox v-model="formData.agreement" :error="!!errors.agreement" :error-message="errors.agreement">
+  <UiCheckbox
+    v-model="formData.agreement"
+    :error="!!errors.agreement"
+    :error-message="errors.agreement"
+  >
     Я подтверждаю, что принимаю
     <NuxtLink to="/privacy-policy" class="text-purple-light underline" target="_blank">
-      соглашение об обработке персональных данных МФТИ
-    </NuxtLink>.
+      соглашение об обработке персональных данных МФТИ </NuxtLink
+    >.
   </UiCheckbox>
 </template>
