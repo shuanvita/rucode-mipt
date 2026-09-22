@@ -1,24 +1,16 @@
 <script setup lang="ts">
-import type { MediaAspect, MediaTag } from '~/shared/ui/media-gallery'
+import type { MediaCardProps } from '~/shared/ui/media-gallery'
 
-const props = withDefaults(
-  defineProps<{
-    image: string
-    alt?: string
-    caption?: string
-    tags?: MediaTag[]
-    video?: boolean
-    aspect?: MediaAspect
-  }>(),
-  { alt: '', tags: () => [] },
-)
+const props = defineProps<MediaCardProps>()
 
-const aspectClasses: Record<MediaAspect, string> = {
+const aspectClasses: Record<NonNullable<MediaCardProps['aspect']>, string> = {
   photo: 'aspect-[3/2]',
   video: 'aspect-video',
 }
 
-const aspectClass = computed(() => aspectClasses[props.aspect ?? (props.video ? 'video' : 'photo')])
+const aspectClass = computed(
+  () => aspectClasses[props.aspect ?? (props.videoUrl ? 'video' : 'photo')],
+)
 </script>
 
 <template>
@@ -35,17 +27,16 @@ const aspectClass = computed(() => aspectClasses[props.aspect ?? (props.video ? 
       />
 
       <span
-        v-if="video"
+        v-if="videoUrl"
         class="absolute inset-0 grid place-items-center bg-black/0 transition-colors group-hover:bg-black/20"
       >
         <UiSvg class="h-12 w-12" name="play" decorative />
       </span>
     </span>
 
-    <!--    <span v-if="caption" class="mt-3 block leading-snug">{{ caption }}</span>-->
     <UiText v-if="caption" class="mt-3" size="sm">{{ caption }}</UiText>
 
-    <span v-if="tags.length" class="mt-1 flex flex-wrap gap-x-2 text-xs">
+    <span v-if="tags?.length" class="mt-1 flex flex-wrap gap-2">
       <UiText
         v-for="tag in tags"
         :key="tag.label"
@@ -55,9 +46,6 @@ const aspectClass = computed(() => aspectClasses[props.aspect ?? (props.video ? 
       >
         {{ tag.label }}
       </UiText>
-      <!--      <span v-for="tag in tags" :key="tag.label" :style="{ color: tag.color }">-->
-      <!--        {{ tag.label }}-->
-      <!--      </span>-->
     </span>
   </button>
 </template>

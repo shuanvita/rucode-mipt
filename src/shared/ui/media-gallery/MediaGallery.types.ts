@@ -1,8 +1,3 @@
-export interface MediaTag {
-  label: string
-  color?: string
-}
-
 export interface MediaCardProps {
   image: string
   videoUrl?: string
@@ -12,11 +7,5 @@ export interface MediaCardProps {
     label: string
     color?: string
   }[]
+  aspect?: 'photo' | 'video'
 }
-
-export interface MediaGalleryProps {
-  title?: string
-  items: MediaCardProps[]
-}
-
-export type MediaAspect = 'photo' | 'video'
