@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends MediaCardProps">
-import type { MediaAspect, MediaCardProps } from './MediaGallery.types'
+import type { MediaAspect, MediaCardProps } from '~/shared/ui/media-gallery'
 
 type Columns = 2 | 3 | 4
 

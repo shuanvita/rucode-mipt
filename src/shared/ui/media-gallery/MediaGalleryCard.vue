@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { MediaAspect, MediaTag } from './MediaGallery.types'
+import type { MediaAspect, MediaTag } from '~/shared/ui/media-gallery'
 
 const props = withDefaults(
   defineProps<{

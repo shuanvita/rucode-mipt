@@ -1,4 +1,4 @@
-import type { MediaCardProps } from '~/shared/ui/media-gallery/MediaGallery.types.ts'
+import type { MediaCardProps } from '~/shared/ui/media-gallery'
 
 export interface PhotoGalleryProps {
   title: string

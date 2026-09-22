@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { VideoGalleryProps } from '~/widgets/home/video-gallery'
-import type { MediaCardProps } from '~/shared/ui/media-gallery/MediaGallery.types.ts'
+import type { MediaCardProps } from '~/shared/ui/media-gallery'
 
 defineProps<VideoGalleryProps>()
 
