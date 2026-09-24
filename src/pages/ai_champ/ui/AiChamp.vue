@@ -4,15 +4,19 @@ import { aiChampData } from '../model/AiChamp.data'
 import { usePageContent, useContentBlocks, ContentBlockRender } from '~/shared/api'
 import { AiChampHero } from '~/widgets/ai_champ/hero'
 import { AiChampBenefits } from '~/widgets/ai_champ/benefits'
+import { AiChampLeagues } from '~/widgets/ai_champ/leagues'
+import { AiChampStages } from '~/widgets/ai_champ/stages'
 
 const blockComponents: Record<string, Component> = {
   hero: AiChampHero,
   benefits: AiChampBenefits,
+  leagues: AiChampLeagues,
+  stages: AiChampStages,
 }
 
 const anchorIds: Record<string, string> = {
-  about: 'premium',
-  partners: 'partners',
+  leagues: 'leagues',
+  stages: 'stages',
 }
 
 const { data } = await usePageContent('/ai_champ', aiChampData)
