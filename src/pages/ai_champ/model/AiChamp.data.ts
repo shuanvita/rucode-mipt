@@ -3,6 +3,7 @@ import type { ContentPage } from '~/shared/api'
 import type { AiChampBenefitsProps } from '~/widgets/ai_champ/benefits'
 import type { AiChampLeaguesProps } from '~/widgets/ai_champ/leagues'
 import type { AiChampStagesProps } from '~/widgets/ai_champ/stages'
+import type { AiChampTasksProps } from '~/widgets/ai_champ/tasks'
 
 const hero = {
   title:
@@ -113,6 +114,99 @@ const stages: AiChampStagesProps = {
   ],
 }
 
+const tasks: AiChampTasksProps = {
+  title: 'Задачи',
+  visibleCards: [
+    {
+      id: crypto.randomUUID(),
+      badge: {
+        text: 'Задачи уровня Base',
+        variant: 'base',
+      },
+      title: 'Задачи будут доступны с 24 августа',
+    },
+    {
+      id: crypto.randomUUID(),
+      badge: {
+        text: 'Задачи уровня Pro',
+        variant: 'pro',
+      },
+      title: 'Задачи будут доступны с 1 сентября',
+    },
+  ],
+  description: 'Сейчас вы можете посмотреть задачи 2025 года и потренироваться в личном кабинете',
+  subtitle: 'Задачи чемпионата 2025',
+  btnText: 'Изучить',
+  hiddenCards: [
+    {
+      id: crypto.randomUUID(),
+      badge: {
+        text: 'Задачи уровня Base',
+        variant: 'base',
+      },
+      subtitle: 'Контент-мейкер',
+      logo: '/images/partners/mts-white.png',
+      description:
+        'Задача разработать ML-модель для MTS Web Services, предсказывающую просмотр видео пользователями более чем на 50% на основе истории просмотров, метаданных видео и демографических сведений',
+      footer: 'Условия уже доступны в личном кабинете',
+    },
+    {
+      id: crypto.randomUUID(),
+      badge: {
+        text: 'Задачи уровня Base',
+        variant: 'base',
+      },
+      subtitle: 'Найди инвестора',
+      logo: '/images/partners/sber.svg',
+      description:
+        'Банк запустил линейку инновационных вложений — от мета вселенной до NFT-котов.  Ваша задача предсказать готовность клиентов банка инвестировать в новые инновационные проекты, используя данные предыдущих предложений',
+      footer: 'Условия уже доступны в личном кабинете',
+    },
+    {
+      id: crypto.randomUUID(),
+      badge: {
+        text: 'Задачи уровня Pro',
+        variant: 'pro',
+      },
+      subtitle: 'Что посмотрим?',
+      logo: '/images/partners/mts-white.png',
+      description:
+        'MTS Web Services планирует создать персонализированную систему рекомендаций на базе Transformer-модели, формирующую для каждого пользователя упорядоченный топ-10 видеороликов, по его предпочтениям и истории просмотров',
+      footer: 'Условия уже доступны в личном кабинете',
+    },
+    {
+      id: crypto.randomUUID(),
+      badge: {
+        text: 'Задачи уровня Pro',
+        variant: 'pro',
+      },
+      subtitle: 'CAPEX vs OPEX',
+      logo: '/images/partners/astra.png',
+      description:
+        'Перед компанией стоит задача разработки автоматического классификатора IT-задач по их текстовому описанию. Модель должна обеспечить корректную финансовую отчетность компании и использоваться для прогнозирования категорий расходов в тестовых данных',
+      footer: 'Условия уже доступны в личном кабинете',
+    },
+    {
+      id: crypto.randomUUID(),
+      badge: {
+        text: 'Задачи уровня Pro',
+        variant: 'pro',
+      },
+      subtitle: 'Финансовый щит',
+      logo: '/images/partners/sber.svg',
+      description:
+        'Банку требуется классификатор транзакций в реальном времени, способный выявлять мошенничество среди потока поступающих данных с учётом изменения поведения пользователей и преступников. Модель должна обучаться и выдавать прогнозы',
+      footer: 'Условия уже доступны в личном кабинете',
+    },
+  ],
+  hiddenContent: 'Для решения задач необходимо зарегистрироваться в личном кабинете.',
+  hideText: 'Скрыть',
+  action: {
+    to: 'https://edu.mipt.ru/member/meroprijatija/chempionat-rucode-po-iskusstvennomu-intellektu-2026',
+    text: 'Потренироваться',
+  },
+}
+
 export const aiChampData: ContentPage = {
   slug: '/ai_champ',
   version: 1,
@@ -121,5 +215,6 @@ export const aiChampData: ContentPage = {
     createFallbackBlock('benefits', 20, benefits),
     createFallbackBlock('leagues', 30, leagues),
     createFallbackBlock('stages', 40, stages),
+    createFallbackBlock('tasks', 50, tasks),
   ],
 }

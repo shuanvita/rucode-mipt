@@ -13,7 +13,7 @@ const classes: Record<HeadingTag, string> = {
   h3: 'text-[19px]',
   h4: 'text-[15px] sm:text-[18px] md:text-[24px]',
   h5: 'text-lg',
-  h6: 'text-base',
+  h6: 'text-base leading-[1.3]',
 }
 </script>
 

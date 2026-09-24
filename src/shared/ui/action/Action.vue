@@ -20,6 +20,8 @@ const variants: Record<ActionVariant, string> = {
     'px-6 py-3 bg-btn-primary hover:bg-btn-primary-hover text-black font-bold text-[12px] uppercase',
   secondary:
     'px-6 py-3 ring-1 ring-btn-primary hover:bg-btn-primary hover:text-dark-primary text-[12px] text-btn-primary font-bold uppercase',
+  ghost:
+    'px-6 py-3 ring-1 ring-white hover:bg-white hover:text-dark-primary text-[12px] text-white font-bold uppercase',
   custom: '',
 }
 
