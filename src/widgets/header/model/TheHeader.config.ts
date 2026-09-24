@@ -45,4 +45,18 @@ export const headerConfigs: Record<HeaderConfigKey, HeaderConfig> = {
       class: 'px-4 py-2 text-[11px]',
     },
   },
+  ai_champ: {
+    links: [
+      { href: '#leagues', title: 'Лиги RuCode' },
+      { href: '#stages', title: 'Этапы' },
+      { href: '#tasks', title: 'Задачи' },
+      { href: '#preparation', title: 'Подготовка' },
+    ],
+    cta: {
+      label: 'Войти',
+      to: 'https://edu.mipt.ru/member/meroprijatija/chempionat-rucode-po-iskusstvennomu-intellektu-2026',
+      variant: 'primary',
+      class: 'px-4 py-2 text-[11px]',
+    },
+  },
 }
