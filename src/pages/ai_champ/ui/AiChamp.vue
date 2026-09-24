@@ -7,6 +7,7 @@ import { AiChampBenefits } from '~/widgets/ai_champ/benefits'
 import { AiChampLeagues } from '~/widgets/ai_champ/leagues'
 import { AiChampStages } from '~/widgets/ai_champ/stages'
 import { AiChampTasks } from '~/widgets/ai_champ/tasks'
+import { AiChampPreparation } from '~/widgets/ai_champ/preparation'
 
 const blockComponents: Record<string, Component> = {
   hero: AiChampHero,
@@ -14,12 +15,14 @@ const blockComponents: Record<string, Component> = {
   leagues: AiChampLeagues,
   stages: AiChampStages,
   tasks: AiChampTasks,
+  preparation: AiChampPreparation,
 }
 
 const anchorIds: Record<string, string> = {
   leagues: 'leagues',
   stages: 'stages',
   tasks: 'tasks',
+  preparation: 'preparation',
 }
 
 const { data } = await usePageContent('/ai_champ', aiChampData)

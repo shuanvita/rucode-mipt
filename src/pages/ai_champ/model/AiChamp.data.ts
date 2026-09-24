@@ -4,6 +4,7 @@ import type { AiChampBenefitsProps } from '~/widgets/ai_champ/benefits'
 import type { AiChampLeaguesProps } from '~/widgets/ai_champ/leagues'
 import type { AiChampStagesProps } from '~/widgets/ai_champ/stages'
 import type { AiChampTasksProps } from '~/widgets/ai_champ/tasks'
+import type { AiChampPreparationProps } from '~/widgets/ai_champ/preparation'
 
 const hero = {
   title:
@@ -207,6 +208,35 @@ const tasks: AiChampTasksProps = {
   },
 }
 
+const preparation: AiChampPreparationProps = {
+  title: 'Подготовка к чемпионату',
+  subtitle: 'Тренировочный контест',
+  slides: [
+    {
+      title: 'Задача 1',
+      description: [
+        'Компания MTS Web Services хочет усовершенствовать систему рекомендаций видеохостинга. Нужно предсказать, досмотрит ли пользователь видео больше чем наполовину, используя историю просмотров, метаданные видео и демографические данные пользователей.',
+      ],
+    },
+    {
+      title: 'Задача 2',
+      description: [
+        'Сбер хочет в режиме, близком к реальному времени, выявлять мошеннические транзакции, чтобы вовремя их блокировать или запрашивать дополнительную верификацию. Нужно построить модель классификации, которая по данным о клиенте и транзакции предскажет вероятность мошенничества, учитывая, что поведение клиентов и злоумышленников со временем меняется (дрейф данных).',
+      ],
+    },
+    {
+      title: 'Задача 3',
+      description: [
+        'Компания MTS Web Services развивает систему рекомендаций видеохостинга. Нужно построить модель на архитектуре Transformer, которая для каждого пользователя составит упорядоченный топ-10 самых релевантных видео на основе истории просмотров, метаданных видео и данных о пользователях.',
+      ],
+    },
+  ],
+  action: {
+    to: 'https://edu.mipt.ru/member',
+    text: 'Начать тренировочный контест',
+  },
+}
+
 export const aiChampData: ContentPage = {
   slug: '/ai_champ',
   version: 1,
@@ -216,5 +246,6 @@ export const aiChampData: ContentPage = {
     createFallbackBlock('leagues', 30, leagues),
     createFallbackBlock('stages', 40, stages),
     createFallbackBlock('tasks', 50, tasks),
+    createFallbackBlock('preparation', 60, preparation),
   ],
 }
