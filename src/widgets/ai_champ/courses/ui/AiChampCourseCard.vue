@@ -12,7 +12,7 @@ defineProps<AiChampCourseCardProps>()
     <UiHeading class="text-yellow-primary" tag="h6">{{ title }}</UiHeading>
 
     <div class="space-y-4">
-      <UiText class="text-left" v-for="text in description" :key="text">{{ text }}</UiText>
+      <UiText v-for="text in description" :key="text" class="text-left">{{ text }}</UiText>
     </div>
 
     <ul v-if="list?.length" class="space-y-2">
