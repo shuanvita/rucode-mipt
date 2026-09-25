@@ -5,6 +5,9 @@ import type { AiChampLeaguesProps } from '~/widgets/ai_champ/leagues'
 import type { AiChampStagesProps } from '~/widgets/ai_champ/stages'
 import type { AiChampTasksProps } from '~/widgets/ai_champ/tasks'
 import type { AiChampPreparationProps } from '~/widgets/ai_champ/preparation'
+import type { AiChampCoursesProps } from '~/widgets/ai_champ/courses'
+import type { AiChampMaterialsProps } from '~/widgets/ai_champ/materials'
+import type { PartnersSectionProps } from '~/widgets/partners'
 
 const hero = {
   title:
@@ -237,6 +240,91 @@ const preparation: AiChampPreparationProps = {
   },
 }
 
+const courses: AiChampCoursesProps = {
+  title: 'Онлайн-курсы',
+  slides: [
+    {
+      id: crypto.randomUUID(),
+      title: 'Основы искусственного интеллекта',
+      description: [
+        'Искусственный интеллект — один из самых активно растущих секторов IT. Курс поможет войти в мир искусственного интеллекта, станет тем самым «быстрым стартом», который позволит познакомиться со сферой ИИ, а в дальнейшем начать исследования и/или карьеру в этой области',
+      ],
+      list: [
+        'Машинное обучение',
+        'Компьютерное зрение',
+        'Обработка естественного языка',
+        'Математические идеи в анализе данных и ИИ',
+      ],
+      action: {
+        to: 'https://edu.mipt.ru/member/meroprijatija/rucode-bystryy-start-v-ii',
+        text: 'Пройти',
+      },
+    },
+    {
+      id: crypto.randomUUID(),
+      title: 'Python для искусственного интеллекта',
+      description: [
+        'Курс поможет войти в мир программирования на Python. Слушатели познакомятся с базовыми аспектами этого языка для успешного программирования на начальном уровне. Пройдя этот курс, вы узнаете, в каких средах разработки программируют на Python и сможете выбрать для себя наиболее подходящую, разберётесь в работе с контейнерами и списками, узнаете, что такое циклы, множества и словари, поймёте, как реализовать свои функции и классы, как работать с .py и jupyter файлами, а также познакомитесь с некоторыми библиотеками языка Python',
+      ],
+      action: {
+        to: 'https://edu.mipt.ru/member/meroprijatija/python-dlya-iskusstvennogo-intellekta',
+        text: 'Пройти',
+      },
+    },
+    {
+      id: crypto.randomUUID(),
+      title: 'Искусственный интеллект: научные достижения и прикладные задачи',
+      description: [
+        'Курс «Введение в искусственный интеллект» предоставляет базовые знания и практические навыки для понимания ИИ и его применения. Он состоит из двух модулей.  Модуль 1 знакомит с историей и современными направлениями искусственного интеллекта. Модуль 2 — практикум по технологиям ИИ, где слушатели познакомятся с типами и возможностями ИИ, методами его реализации и искусственными нейронными сетями, изучив основы разработки и применения ИИ-технологий на практике',
+      ],
+      action: {
+        to: 'https://edu.mipt.ru/member/meroprijatija/python-dlya-iskusstvennogo-intellekta',
+        text: 'Пройти',
+      },
+    },
+  ],
+}
+
+const materials: AiChampMaterialsProps = {
+  title: 'Полезные материалы',
+  imagePerson: '/images/ai_champ/person.png',
+  namePerson: 'Александра Дунаева',
+  text: 'В конце октября вам предстоит отправить код своего лучшего решения на проверку. Позаботьтесь о том, чтобы сохранить код модели, которая показала наилучший результат. Также рекомендуется указывать seed в имени файла с ответами — это упростит воспроизведение результатов. Профессионалы используют для этого системы логирования экспериментов, такие как W&B, Comet, MLflow, ClearML или Aim. Ознакомьтесь с AutoML, например библиотекой <a class="text-yellow-primary underline hover:text-white hover:no-underline transition-all duration-200" href="https://developers.sber.ru/portal/products/lightautoml" target="_blank">LightAutoML</a> от Сбера. Это сэкономит время при решении некоторых задач.',
+  footer: {
+    image: '/images/ai_champ/notebook.png',
+    text: 'Сборник задач по машинному обучению для школьников',
+    action: {
+      to: '/files/sbornik-zadach-2024.pdf',
+      text: 'Скачать',
+    },
+  },
+}
+
+const partners: PartnersSectionProps = {
+  items: [
+    {
+      title: 'Генеральный партнёр',
+      images: [
+        {
+          src: '/images/partners/mts.png',
+          alt: 'МТС',
+          class: 'w-[101px] lg:w-[178px]',
+        },
+      ],
+    },
+    {
+      title: 'Партнёры',
+      images: [
+        {
+          src: '/images/partners/sber.svg',
+          alt: 'Сбер',
+          class: 'w-33 lg:w-53.25',
+        },
+      ],
+    },
+  ],
+}
+
 export const aiChampData: ContentPage = {
   slug: '/ai_champ',
   version: 1,
@@ -247,5 +335,8 @@ export const aiChampData: ContentPage = {
     createFallbackBlock('stages', 40, stages),
     createFallbackBlock('tasks', 50, tasks),
     createFallbackBlock('preparation', 60, preparation),
+    createFallbackBlock('courses', 70, courses),
+    createFallbackBlock('materials', 80, materials),
+    createFallbackBlock('partners', 90, partners),
   ],
 }

@@ -8,6 +8,9 @@ import { AiChampLeagues } from '~/widgets/ai_champ/leagues'
 import { AiChampStages } from '~/widgets/ai_champ/stages'
 import { AiChampTasks } from '~/widgets/ai_champ/tasks'
 import { AiChampPreparation } from '~/widgets/ai_champ/preparation'
+import { AiChampCourses } from '~/widgets/ai_champ/courses'
+import { PartnersSection } from '~/widgets/partners'
+import { AiChampMaterials } from '~/widgets/ai_champ/materials'
 
 const blockComponents: Record<string, Component> = {
   hero: AiChampHero,
@@ -16,6 +19,9 @@ const blockComponents: Record<string, Component> = {
   stages: AiChampStages,
   tasks: AiChampTasks,
   preparation: AiChampPreparation,
+  courses: AiChampCourses,
+  materials: AiChampMaterials,
+  partners: PartnersSection,
 }
 
 const anchorIds: Record<string, string> = {

@@ -27,7 +27,8 @@ const variants: Record<ActionVariant, string> = {
 
 const isExternal = computed(() => {
   if (typeof props.external === 'boolean') return props.external
-  return typeof props.to === 'string' && /^(https?:\/\/|mailto:|tel:)/.test(props.to)
+  if (typeof props.to !== 'string') return false
+  return /^(https?:\/\/|mailto:|tel:)/.test(props.to) || /\.[a-z0-9]{2,5}$/i.test(props.to)
 })
 
 const target = computed(() => props.target ?? (isExternal.value ? '_blank' : '_self'))
