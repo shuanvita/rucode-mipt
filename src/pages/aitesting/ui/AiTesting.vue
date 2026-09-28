@@ -3,9 +3,11 @@ import { aiTestingData } from '../model/AiTesting.data'
 
 import { usePageContent, useContentBlocks, ContentBlockRender } from '~/shared/api'
 import { AiTestingHero } from '~/widgets/ai_testing/hero'
+import { AiTestingFormat } from '~/widgets/ai_testing/format'
 
 const blockComponents: Record<string, Component> = {
   hero: AiTestingHero,
+  format: AiTestingFormat,
 }
 
 const anchorIds: Record<string, string> = {
