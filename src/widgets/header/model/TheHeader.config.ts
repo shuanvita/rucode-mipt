@@ -73,4 +73,19 @@ export const headerConfigs: Record<HeaderConfigKey, HeaderConfig> = {
       class: 'px-4 py-2 text-[11px]',
     },
   },
+  champ: {
+    links: [
+      { href: '#about', title: 'О чемпионате' },
+      { href: '#stages', title: 'Этапы' },
+      { href: '#why', title: 'Зачем участвовать' },
+      { href: '#achievements', title: 'Достижения' },
+      { href: '#gallery', title: 'Фотогалерея' },
+    ],
+    cta: {
+      label: 'Войти',
+      to: 'https://edu.mipt.ru/member',
+      variant: 'primary',
+      class: 'px-4 py-2 text-[11px]',
+    },
+  },
 }
