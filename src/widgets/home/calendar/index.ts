@@ -1,2 +1,2 @@
 export { default as CalendarSection } from './ui/CalendarSection.vue'
-export type { CalendarSectionProps, CalendarCardProps } from './model/CalendarSection.types'
+export type { CalendarSectionProps } from './model/CalendarSection.types'

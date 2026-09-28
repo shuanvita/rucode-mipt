@@ -12,7 +12,7 @@ defineProps<{
       title
     }}</UiHeading>
     <NuxtPicture
-      class="flex h-auto w-full max-w-[320px] justify-center object-contain"
+      class="flex h-auto w-full justify-center object-contain lg:max-w-[320px]"
       :src="image"
       :alt="alt"
       loading="eager"

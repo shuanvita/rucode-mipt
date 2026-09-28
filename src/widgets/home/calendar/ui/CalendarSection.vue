@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { CalendarSectionProps } from '~/widgets/home/calendar'
-import CalendarCard from '~/widgets/home/calendar/ui/CalendarCard.vue'
 
 defineProps<CalendarSectionProps>()
 </script>
@@ -18,7 +17,7 @@ defineProps<CalendarSectionProps>()
             ]"
           >
             <template v-for="card in tabs[index]?.cards" :key="card.id">
-              <CalendarCard v-bind="card" />
+              <UiCalendarCard v-bind="card" />
             </template>
           </div>
         </div>
