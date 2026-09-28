@@ -5,16 +5,18 @@ import { usePageContent, useContentBlocks, ContentBlockRender } from '~/shared/a
 import { AiTestingHero } from '~/widgets/ai_testing/hero'
 import { AiTestingFormat } from '~/widgets/ai_testing/format'
 import { AiTestingDates } from '~/widgets/ai_testing/dates'
+import { AiTestingDemo } from '~/widgets/ai_testing/demo'
 
 const blockComponents: Record<string, Component> = {
   hero: AiTestingHero,
   format: AiTestingFormat,
   calendar: AiTestingDates,
+  demo: AiTestingDemo,
 }
 
 const anchorIds: Record<string, string> = {
   format: 'format',
-  demotest: 'demotest',
+  demo: 'demo',
   calendar: 'calendar',
   partners: 'partners',
 }

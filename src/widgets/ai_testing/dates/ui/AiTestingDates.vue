@@ -5,7 +5,7 @@ defineProps<AiTestingDatesProps>()
 </script>
 
 <template>
-  <section class="relative container">
+  <section class="relative container lg:mt-40">
     <UiHeading
       v-if="title"
       class="text-purple-primary mb-8 text-center leading-none lg:mb-10"

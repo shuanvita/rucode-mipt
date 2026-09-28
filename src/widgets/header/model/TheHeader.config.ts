@@ -62,7 +62,7 @@ export const headerConfigs: Record<HeaderConfigKey, HeaderConfig> = {
   aitesting: {
     links: [
       { href: '#format', title: 'Формат проведения' },
-      { href: '#demotest', title: 'Демо-тест' },
+      { href: '#demo', title: 'Демо-тест' },
       { href: '#calendar', title: 'Календарь' },
       { href: '#partners', title: 'Партнёры' },
     ],

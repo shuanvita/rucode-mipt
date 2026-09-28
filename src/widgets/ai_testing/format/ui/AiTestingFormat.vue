@@ -6,7 +6,7 @@ defineProps<AiTestingFormatProps>()
 </script>
 
 <template>
-  <section class="container">
+  <section class="container lg:mt-40">
     <UiHeading class="text-purple-primary mb-8 text-center leading-none lg:mb-10" tag="h2">{{
       title
     }}</UiHeading>

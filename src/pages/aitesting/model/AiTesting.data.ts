@@ -1,7 +1,11 @@
 import { createFallbackBlock } from '~/shared/api'
 import type { ContentPage } from '~/shared/api'
+import type { AiTestingDemoProps } from '~/widgets/ai_testing/demo/model/AiTestingDemo.types.ts'
+import type { AiTestingDatesProps } from '~/widgets/ai_testing/dates/model/AiTestingDates.types.ts'
+import type { AiTestingFormatProps } from '~/widgets/ai_testing/format/model/AiTestingFormat.types.ts'
+import type { AiTestingHeroProps } from '~/widgets/ai_testing/hero'
 
-const hero = {
+const hero: AiTestingHeroProps = {
   title: 'Всероссийское тестирование RuCode по искусственному интеллекту',
   description: [
     'Прими участие во Всероссийском тестировании и узнай, насколько хорошо ты разбираешься в технологиях искусственного интеллекта!',
@@ -14,7 +18,7 @@ const hero = {
   },
 }
 
-const format = {
+const format: AiTestingFormatProps = {
   title: 'Формат проведения',
   online: {
     title: 'Онлайн',
@@ -27,7 +31,7 @@ const format = {
   text: 'Выбирай удобный формат: очно на площадках партнёров фестиваля RuCode или онлайн — на платформе МФТИ. Тестирование можно провести в любой школе — подай заявку и становись частью фестиваля! Тестирование RuCode ждет всех: школьников, студентов, преподавателей и специалистов. Самые быстрые и эрудированные получат ценные призы! Успей зарегистрироваться!',
 }
 
-const calendar = {
+const calendar: AiTestingDatesProps = {
   cards: [
     {
       id: crypto.randomUUID(),
@@ -83,6 +87,39 @@ const calendar = {
   ],
 }
 
+const demo: AiTestingDemoProps = {
+  title: 'Демо-тестирование',
+  image: '/images/ai-testing/boy.png',
+  text: 'Пройди пробное тестирование и узнай кто ты!',
+  cards: [
+    {
+      id: crypto.randomUUID(),
+      image: '/images/ai-testing/demo-1.png',
+      text: 'поисковик-любитель',
+    },
+    {
+      id: crypto.randomUUID(),
+      image: '/images/ai-testing/question.png',
+    },
+    {
+      id: crypto.randomUUID(),
+      image: '/images/ai-testing/demo-2.png',
+      text: 'чайник-новичок',
+    },
+    {
+      id: crypto.randomUUID(),
+      image: '/images/ai-testing/question.png',
+    },
+    {
+      id: crypto.randomUUID(),
+      image: '/images/ai-testing/demo-3.png',
+      text: 'гуру-энтузиаст',
+    },
+  ],
+  footerText: 'Поделись результатом с друзьми в социальных сетях, получай призы!',
+  btnText: 'Пройти',
+}
+
 export const aiTestingData: ContentPage = {
   slug: '/aitesting',
   version: 1,
@@ -90,5 +127,6 @@ export const aiTestingData: ContentPage = {
     createFallbackBlock('hero', 10, hero),
     createFallbackBlock('format', 20, format),
     createFallbackBlock('calendar', 30, calendar),
+    createFallbackBlock('demo', 40, demo),
   ],
 }

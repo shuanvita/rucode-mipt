@@ -8,9 +8,11 @@ defineProps<{
 
 <template>
   <div class="flex flex-col items-center">
-    <UiHeading class="text-purple-primary mb-5 text-center leading-none lg:mb-10" tag="h3">{{
-      title
-    }}</UiHeading>
+    <UiHeading
+      class="text-purple-primary mb-5 text-center text-[20px] leading-none lg:mb-10 lg:text-[32px]"
+      tag="h3"
+      >{{ title }}</UiHeading
+    >
     <NuxtPicture
       class="flex h-auto w-full justify-center object-contain lg:max-w-[320px]"
       :src="image"
