@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import type { AiChampCoursesProps } from '~/widgets/ai_champ/courses'
-import AiChampCourseCard from '~/widgets/ai_champ/courses/ui/AiChampCourseCard.vue'
+import type { EventsSliderProps } from '~/shared/ui/events-slider'
 
-const props = defineProps<AiChampCoursesProps>()
+const props = defineProps<EventsSliderProps>()
 
 const defaultActiveId = computed(() => props.slides?.[1]?.id ?? props.slides?.[0]?.id)
 
@@ -87,7 +86,7 @@ function cardStyle() {
     <div v-if="slides?.length" class="w-full max-w-100 space-y-7 lg:hidden">
       <UiSlider ref="mobileSliderRef" :items="slides" :options="mobileSliderOptions" class="w-full">
         <template #default="{ item }">
-          <AiChampCourseCard v-bind="item" />
+          <UiEventsSliderCard v-bind="item" />
         </template>
       </UiSlider>
 
@@ -130,7 +129,7 @@ function cardStyle() {
     <TransitionGroup
       v-if="slides?.length"
       tag="div"
-      name="course"
+      name="event"
       class="hidden w-full flex-wrap items-center justify-center gap-6 py-8 lg:flex"
     >
       <div
@@ -142,14 +141,14 @@ function cardStyle() {
         :style="cardStyle()"
         @click="activeId = item.id"
       >
-        <AiChampCourseCard v-bind="item" :active="item.id === activeId" />
+        <UiEventsSliderCard v-bind="item" :active="item.id === activeId" />
       </div>
     </TransitionGroup>
   </section>
 </template>
 
 <style scoped>
-.course-move {
+.event-move {
   transition: transform 0.5s ease;
 }
 </style>

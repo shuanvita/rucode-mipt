@@ -2,9 +2,11 @@ import { createFallbackBlock } from '~/shared/api'
 import type { ContentPage } from '~/shared/api'
 import type { AiTestingDemoProps } from '~/widgets/ai_testing/demo'
 import type { AiTestingDatesProps } from '~/widgets/ai_testing/dates'
+import type { AiTestingCalendarProps } from '~/widgets/ai_testing/calendar'
 import type { AiTestingFormatProps } from '~/widgets/ai_testing/format'
 import type { AiTestingHeroProps } from '~/widgets/ai_testing/hero'
 import type { AiTestingAboutProps } from '~/widgets/ai_testing/about'
+import type { PartnersSectionProps } from '~/widgets/partners'
 
 const hero: AiTestingHeroProps = {
   title: 'Всероссийское тестирование RuCode по искусственному интеллекту',
@@ -134,6 +136,111 @@ const about: AiTestingAboutProps = {
   },
 }
 
+const championships: AiTestingCalendarProps = {
+  title: 'Календарь ближайших событий',
+  slides: [
+    {
+      id: crypto.randomUUID(),
+      title: 'RuCode.Премия',
+      date: {
+        from: {
+          day: 3,
+          month: 'августа',
+        },
+        to: {
+          day: 30,
+          month: 'ноября',
+        },
+      },
+      format: {
+        text: 'Очно',
+        color: 'bg-purple-primary',
+      },
+      description: [
+        'Всероссийская награда за достижения в применении и продвижении технологий искусственного интеллекта в науке и образовании. Это ключевое событие Фестиваля RuCode, на котором подводят итоги года и отмечают тех, кто вносит весомый вклад в развитие и популяризацию ИИ в России.',
+      ],
+      action: {
+        to: '/award2026',
+        text: 'Узнать больше',
+      },
+    },
+    {
+      id: crypto.randomUUID(),
+      title: 'Чемпионат RuCode по искусственному интеллекту',
+      date: {
+        from: {
+          day: 24,
+          month: 'августа',
+        },
+        to: {
+          day: 30,
+          month: 'ноября',
+        },
+      },
+      format: {
+        text: 'Онлайн',
+      },
+      description: [
+        'Испытай себя в решении R&D-задач от партнёров чемпионата и методистов RuCode! Это возможность прокачать навыки машинного обучения на реальных кейсах, выиграть ценные призы, пообщаться с экспертами и сделать первый шаг к карьере в IT. Принимай вызов, решай задачи и становись частью сообщества, которое создаёт будущее искусственного интеллекта в России!',
+      ],
+      action: {
+        to: '/ai_champ',
+        text: 'Узнать больше',
+      },
+    },
+    {
+      id: crypto.randomUUID(),
+      title: 'Чемпионат Рукод',
+      date: {
+        from: {
+          day: 17,
+          month: 'апреля',
+        },
+        to: {
+          day: 13,
+          month: 'декабря',
+        },
+      },
+      format: {
+        text: 'Очно',
+        color: 'bg-purple-primary',
+      },
+      description: [
+        'Международное соревнование по алгоритмическому программированию, где школьники, студенты и специалисты соревнуются в решении задач с помощью написания эффективного и оптимизированного кода.',
+      ],
+      action: {
+        to: '/champ',
+        text: 'Узнать больше',
+      },
+    },
+  ],
+}
+
+const partners: PartnersSectionProps = {
+  items: [
+    {
+      title: 'Генеральный партнёр',
+      images: [
+        {
+          src: '/images/partners/mts.png',
+          alt: 'МТС',
+          class: 'w-[101px] lg:w-[178px]',
+        },
+      ],
+    },
+    {
+      title: 'Партнёры',
+      images: [
+        {
+          src: '/images/partners/sber.svg',
+          alt: 'Сбер',
+          class: 'w-33 lg:w-53.25',
+        },
+      ],
+    },
+  ],
+}
+
 export const aiTestingData: ContentPage = {
   slug: '/aitesting',
   version: 1,
@@ -143,5 +250,7 @@ export const aiTestingData: ContentPage = {
     createFallbackBlock('calendar', 30, calendar),
     createFallbackBlock('demo', 40, demo),
     createFallbackBlock('about', 50, about),
+    createFallbackBlock('championships', 60, championships),
+    createFallbackBlock('partners', 70, partners),
   ],
 }

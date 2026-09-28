@@ -5,7 +5,7 @@ import type { AiChampLeaguesProps } from '~/widgets/ai_champ/leagues'
 import type { AiChampStagesProps } from '~/widgets/ai_champ/stages'
 import type { AiChampTasksProps } from '~/widgets/ai_champ/tasks'
 import type { AiChampPreparationProps } from '~/widgets/ai_champ/preparation'
-import type { AiChampCoursesProps } from '~/widgets/ai_champ/courses'
+import type { EventsSliderProps } from '~/shared/ui/events-slider'
 import type { AiChampMaterialsProps } from '~/widgets/ai_champ/materials'
 import type { PartnersSectionProps } from '~/widgets/partners'
 
@@ -240,7 +240,7 @@ const preparation: AiChampPreparationProps = {
   },
 }
 
-const courses: AiChampCoursesProps = {
+const courses: EventsSliderProps = {
   title: 'Онлайн-курсы',
   slides: [
     {
