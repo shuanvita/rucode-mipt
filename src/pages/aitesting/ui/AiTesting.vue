@@ -6,12 +6,14 @@ import { AiTestingHero } from '~/widgets/ai_testing/hero'
 import { AiTestingFormat } from '~/widgets/ai_testing/format'
 import { AiTestingDates } from '~/widgets/ai_testing/dates'
 import { AiTestingDemo } from '~/widgets/ai_testing/demo'
+import { AiTestingAbout } from '~/widgets/ai_testing/about'
 
 const blockComponents: Record<string, Component> = {
   hero: AiTestingHero,
   format: AiTestingFormat,
   calendar: AiTestingDates,
   demo: AiTestingDemo,
+  about: AiTestingAbout,
 }
 
 const anchorIds: Record<string, string> = {

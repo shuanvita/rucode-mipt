@@ -1,9 +1,10 @@
 import { createFallbackBlock } from '~/shared/api'
 import type { ContentPage } from '~/shared/api'
-import type { AiTestingDemoProps } from '~/widgets/ai_testing/demo/model/AiTestingDemo.types.ts'
-import type { AiTestingDatesProps } from '~/widgets/ai_testing/dates/model/AiTestingDates.types.ts'
-import type { AiTestingFormatProps } from '~/widgets/ai_testing/format/model/AiTestingFormat.types.ts'
+import type { AiTestingDemoProps } from '~/widgets/ai_testing/demo'
+import type { AiTestingDatesProps } from '~/widgets/ai_testing/dates'
+import type { AiTestingFormatProps } from '~/widgets/ai_testing/format'
 import type { AiTestingHeroProps } from '~/widgets/ai_testing/hero'
+import type { AiTestingAboutProps } from '~/widgets/ai_testing/about'
 
 const hero: AiTestingHeroProps = {
   title: 'Всероссийское тестирование RuCode по искусственному интеллекту',
@@ -120,6 +121,19 @@ const demo: AiTestingDemoProps = {
   btnText: 'Пройти',
 }
 
+const about: AiTestingAboutProps = {
+  title:
+    'Организуйте тестирование <span class="text-yellow-primary">RuCode</span> на базе вашей образовательной организации',
+  description: [
+    'Приглашаем школы, колледжи, университеты, технопарки и образовательные центры стать <span class="text-purple-primary">официальными площадками тестирования RuCode</span>',
+    'Вы получите готовый формат проведения, методическую поддержку и возможность познакомить участников с современными технологиями искусственного интеллекта',
+  ],
+  cta: {
+    to: 'https://edu.mipt.ru/member/system/opros/2263',
+    text: 'Стать площадкой',
+  },
+}
+
 export const aiTestingData: ContentPage = {
   slug: '/aitesting',
   version: 1,
@@ -128,5 +142,6 @@ export const aiTestingData: ContentPage = {
     createFallbackBlock('format', 20, format),
     createFallbackBlock('calendar', 30, calendar),
     createFallbackBlock('demo', 40, demo),
+    createFallbackBlock('about', 50, about),
   ],
 }
