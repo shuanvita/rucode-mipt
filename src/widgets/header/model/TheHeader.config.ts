@@ -13,7 +13,7 @@ export const headerConfigs: Record<HeaderConfigKey, HeaderConfig> = {
       label: 'Мероприятия',
       hasDropdown: true,
       items: [
-        { href: 'https://aitesting.rucode.net/', title: 'Тестирование' },
+        { href: '/aitesting', title: 'Тестирование' },
         { href: '/ai_champ', title: 'Чемпионат по ИИ' },
         { href: '/award2026', title: 'RUCODE.Премия' },
         { href: '/champ', title: 'Алгоритмическое программирование' },
@@ -55,6 +55,20 @@ export const headerConfigs: Record<HeaderConfigKey, HeaderConfig> = {
     cta: {
       label: 'Войти',
       to: 'https://edu.mipt.ru/member/meroprijatija/chempionat-rucode-po-iskusstvennomu-intellektu-2026',
+      variant: 'primary',
+      class: 'px-4 py-2 text-[11px]',
+    },
+  },
+  aitesting: {
+    links: [
+      { href: '#format', title: 'Формат проведения' },
+      { href: '#demotest', title: 'Демо-тест' },
+      { href: '#calendar', title: 'Календарь' },
+      { href: '#partners', title: 'Партнёры' },
+    ],
+    cta: {
+      label: 'Войти',
+      to: 'https://edu.mipt.ru/member/?rucode=1',
       variant: 'primary',
       class: 'px-4 py-2 text-[11px]',
     },
