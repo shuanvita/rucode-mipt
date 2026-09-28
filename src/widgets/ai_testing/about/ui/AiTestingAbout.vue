@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { AiTestingAboutProps } from '../model/AiTestingAbout.types'
+import type { AiTestingAboutProps } from '~/widgets/ai_testing/about'
 
 defineProps<AiTestingAboutProps>()
 </script>
