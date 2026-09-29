@@ -8,6 +8,7 @@ import type { ChampTracksProps } from '~/widgets/champ/tracks'
 import type { ChampWhyProps } from '~/widgets/champ/why'
 import type { ChampHowProps } from '~/widgets/champ/how'
 import type { ChampVenuesProps } from '~/widgets/champ/venues'
+import type { ChampGalleryProps } from '~/widgets/champ/gallery'
 import type { ChampFaqProps } from '~/widgets/champ/faq'
 import type { PartnersSectionProps } from '~/widgets/partners'
 
@@ -220,6 +221,20 @@ const achievements = {
   ],
 }
 
+const gallery: ChampGalleryProps = {
+  title: 'Фотогалерея',
+  images: [
+    '/images/champ/gallery-1.jpg',
+    '/images/champ/gallery-2.jpg',
+    '/images/champ/gallery-3.jpg',
+    '/images/champ/gallery-4.jpg',
+    '/images/champ/gallery-5.jpg',
+    '/images/champ/gallery-6.jpg',
+    '/images/champ/gallery-7.jpg',
+  ],
+  cta: { text: 'Больше фото', to: 'https://vk.com/albums-44001716' },
+}
+
 const venues: ChampVenuesProps = {
   title: 'Площадки финала\nв 2026 году',
   items: [
@@ -415,6 +430,7 @@ export const champPageData: ContentPage = {
     createFallbackBlock('achievements', 80, achievements),
     createFallbackBlock('venues', 90, venues),
     createFallbackBlock('partners', 100, partners),
+    createFallbackBlock('gallery', 110, gallery),
     createFallbackBlock('faq', 120, faq),
   ],
 }

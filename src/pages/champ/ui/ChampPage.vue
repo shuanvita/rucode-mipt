@@ -10,6 +10,7 @@ import { ChampTracks } from '~/widgets/champ/tracks'
 import { ChampWhy } from '~/widgets/champ/why'
 import { ChampHow } from '~/widgets/champ/how'
 import { ChampVenues } from '~/widgets/champ/venues'
+import { ChampGallery } from '~/widgets/champ/gallery'
 import { ChampFaq } from '~/widgets/champ/faq'
 import { AchievementsSection } from '~/widgets/home/achievements'
 import { PartnersSection } from '~/widgets/partners'
@@ -24,6 +25,7 @@ const blockComponents: Record<string, Component> = {
   how: ChampHow,
   achievements: AchievementsSection,
   venues: ChampVenues,
+  gallery: ChampGallery,
   partners: PartnersSection,
   faq: ChampFaq,
 }
