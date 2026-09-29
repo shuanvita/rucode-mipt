@@ -65,7 +65,9 @@ const items = computed(() => [
         />
         <div :class="['absolute z-10 -translate-1/2', item.content]">
           <h3 :class="['font-montserrat font-bold', item.title]">{{ item.data.title }}</h3>
-          <p :class="['font-light whitespace-pre-line', item.text]">{{ item.data.text }}</p>
+          <UiText size="custom" weight="light" :class="['whitespace-pre-line', item.text]">{{
+            item.data.text
+          }}</UiText>
         </div>
       </div>
     </div>

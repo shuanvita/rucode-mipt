@@ -4,6 +4,7 @@ const contentId = useId()
 withDefaults(
   defineProps<{
     title: string
+    subtitle?: string
     icon?: string
     iconSize?: string
     disabled?: boolean
@@ -27,12 +28,17 @@ function onToggle() {
     <button
       :aria-controls="contentId"
       type="button"
-      class="focus-visible:outline-ring hover:text-purple-light flex w-full cursor-pointer justify-between gap-4 px-6 py-4 font-bold text-[16] transition-colors duration-200 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-1 disabled:pointer-events-none disabled:opacity-40 lg:items-center lg:px-7 lg:py-6 lg:text-[20px]"
+      class="focus-visible:outline-ring bg-dark-primary hover:text-purple-light flex w-full cursor-pointer justify-between gap-4 px-6 py-4 font-bold text-[16] transition-colors duration-200 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-1 disabled:pointer-events-none disabled:opacity-40 lg:items-center lg:px-7 lg:py-6 lg:text-[20px]"
       :aria-expanded="isOpen"
       :disabled="disabled"
       @click="onToggle"
     >
-      <span class="text-left">{{ title }}</span>
+      <span class="text-left">
+        {{ title }}
+        <span v-if="subtitle" class="mt-2 block text-base font-light lg:text-xl">{{
+          subtitle
+        }}</span>
+      </span>
 
       <slot name="icon" :is-open="isOpen">
         <UiSvg
@@ -52,7 +58,7 @@ function onToggle() {
       :style="{ gridTemplateRows: isOpen ? '1fr' : '0fr' }"
     >
       <div class="overflow-hidden" :inert="!isOpen">
-        <div class="px-7 pb-4 text-[18px] font-light">
+        <div class="bg-dark-primary px-7 pb-4 text-[18px] font-light">
           <slot />
         </div>
       </div>

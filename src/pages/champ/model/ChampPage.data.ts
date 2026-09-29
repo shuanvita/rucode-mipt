@@ -6,6 +6,7 @@ import type { ChampAboutProps } from '~/widgets/champ/about'
 import type { ChampDivisionsProps } from '~/widgets/champ/divisions'
 import type { ChampTracksProps } from '~/widgets/champ/tracks'
 import type { ChampWhyProps } from '~/widgets/champ/why'
+import type { ChampHowProps } from '~/widgets/champ/how'
 
 const hero: ChampHeroProps = {
   title: 'Международный чемпионат РУКОД_',
@@ -153,6 +154,45 @@ const why: ChampWhyProps = {
   },
 }
 
+const how: ChampHowProps = {
+  title: 'Как проходит чемпионат',
+  stages: [
+    {
+      title: 'Регистрация',
+      date: '[старт 16 апреля]',
+      text: 'Регистрируйся в личном кабинете участника и заполняй анкету, чтобы получить доступ к полезным материалам для подготовки и возможность принять участие в онлайн-чемпионате.',
+      note: 'С 27 апреля стартует тренировочный контест с рекомендациями по выбору дивизиона.',
+      cta: {
+        to: 'https://edu.mipt.ru/member/meroprijatija/mezhdunarodnyy-chempionat-rucode/',
+        text: 'Зарегистрироваться',
+      },
+    },
+    {
+      title: 'Онлайн-чемпионат',
+      date: '[28 июня]',
+      text: 'Индивидуальный онлайн-чемпионат пройдёт для всех дивизионов. Это возможность наилучшим образом подготовиться к Финалу и познакомиться с системой проверки решений.',
+    },
+    {
+      title: 'Тренировочные сборы',
+      date: '[июнь]',
+      text: 'Международные сборы РуКод на кампусе МФТИ для сборных команд РФ, БРИКС, СНГ с целью подготовки сильнейших команд к IOI, включающие интенсивную образовательную программу.',
+    },
+    {
+      title: 'Финал',
+      date: '[18 октября]',
+      text: 'Командный очный этап на площадках России и за рубежом:',
+      list: ['3 дивизиона,', '6 языков программирования,', '5 часов сложных и интересных задач'],
+      note: 'Всем участникам велком-паки на площадках, а также сертификаты за участие! Лучшие команды получат дипломы, призы и мерч.',
+    },
+    {
+      title: 'Суперфинал',
+      date: '[5-6 декабря]',
+      text: 'Командный этап для топ-участников дивизиона A-B и участников тренировочных сборов. Пройдет на площадке Столицы «РуКод» в очном формате с самыми сложными задачами.',
+      note: 'Победители получат ценные призы, дипломы и всеобщее признание!',
+    },
+  ],
+}
+
 export const champPageData: ContentPage = {
   slug: '/champ',
   version: 1,
@@ -163,5 +203,6 @@ export const champPageData: ContentPage = {
     createFallbackBlock('divisions', 40, divisions),
     createFallbackBlock('tracks', 50, tracks),
     createFallbackBlock('why', 60, why),
+    createFallbackBlock('how', 70, how),
   ],
 }

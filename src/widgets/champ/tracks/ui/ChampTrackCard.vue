@@ -10,6 +10,8 @@ defineProps<ChampTrackCard>()
     <h3 class="font-montserrat mt-3.5 text-center text-xl font-extrabold md:text-3xl">
       {{ title }}
     </h3>
-    <p class="mx-auto mt-2 max-w-72 text-center text-sm md:text-lg">{{ text }}</p>
+    <UiText size="custom" class="mx-auto mt-2 max-w-72 text-center text-sm md:text-lg">{{
+      text
+    }}</UiText>
   </article>
 </template>

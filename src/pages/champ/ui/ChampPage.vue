@@ -8,6 +8,7 @@ import { ChampNumbers } from '~/widgets/champ/numbers'
 import { ChampDivisions } from '~/widgets/champ/divisions'
 import { ChampTracks } from '~/widgets/champ/tracks'
 import { ChampWhy } from '~/widgets/champ/why'
+import { ChampHow } from '~/widgets/champ/how'
 
 const blockComponents: Record<string, Component> = {
   hero: ChampHero,
@@ -16,6 +17,7 @@ const blockComponents: Record<string, Component> = {
   divisions: ChampDivisions,
   tracks: ChampTracks,
   why: ChampWhy,
+  how: ChampHow,
 }
 
 const anchorIds: Record<string, string> = {
