@@ -7,3 +7,5 @@ export {
   getPhoneDigitsLength,
 } from './phoneCountries'
 export type { PhoneCountry } from './phoneCountries'
+export { LOCALES, DEFAULT_LOCALE } from './locales'
+export type { Locale } from './locales'

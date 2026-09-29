@@ -38,7 +38,10 @@ const anchorIds: Record<string, string> = {
   gallery: 'gallery',
 }
 
-const { data } = await usePageContent('/champ', champPageData)
+const { data } = await usePageContent('/champ', {
+  ru: champPageData,
+  en: () => import('../model/ChampPage.data.en').then((module) => module.champPageDataEn),
+})
 const blocks = useContentBlocks(() => data.value?.page.blocks, blockComponents, '/champ')
 </script>
 

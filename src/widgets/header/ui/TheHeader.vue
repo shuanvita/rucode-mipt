@@ -2,6 +2,7 @@
 import { useToggle, onClickOutside } from '@vueuse/core'
 import type { HeaderConfig } from '../model/TheHeader.types'
 import { MobileMenu } from '~/widgets/header'
+import { LanguageSwitcher } from '~/features/language-switcher'
 
 defineProps<{
   config: HeaderConfig
@@ -17,11 +18,11 @@ onClickOutside(ctaDropdownRef, () => toggleCtaDropdown(false))
 <template>
   <header class="container flex max-w-300 items-center justify-between px-10 pt-6">
     <UiAction variant="custom" class="max-w-25 lg:max-w-31" to="/">
-      <NuxtPicture width="167" height="110" src="logo.svg" alt="Rucode Festival logo" />
+      <NuxtPicture width="167" height="110" src="logo.svg" :alt="$t('header.logoAlt')" />
     </UiAction>
 
     <div class="hidden items-center gap-6 lg:flex">
-      <nav class="flex items-center gap-5" aria-label="Основная навигация">
+      <nav class="flex items-center gap-5" :aria-label="$t('header.mainNav')">
         <UiAction
           v-for="link in config.links"
           :key="link.href"
@@ -30,7 +31,7 @@ onClickOutside(ctaDropdownRef, () => toggleCtaDropdown(false))
           :to="link.href"
           active-class="text-yellow-primary"
         >
-          {{ link.title }}
+          {{ link.titleKey ? $t(link.titleKey) : link.title }}
         </UiAction>
       </nav>
 
@@ -42,7 +43,7 @@ onClickOutside(ctaDropdownRef, () => toggleCtaDropdown(false))
           :aria-expanded="isCtaDropdownOpen"
           @click="toggleCtaDropdown()"
         >
-          {{ config.cta.label }}
+          {{ config.cta.labelKey ? $t(config.cta.labelKey) : config.cta.label }}
         </UiAction>
 
         <ul
@@ -68,13 +69,15 @@ onClickOutside(ctaDropdownRef, () => toggleCtaDropdown(false))
         :variant="config.cta.variant"
         :class="config.cta.class"
       >
-        {{ config.cta.label }}
+        {{ config.cta.labelKey ? $t(config.cta.labelKey) : config.cta.label }}
       </UiAction>
+
+      <LanguageSwitcher />
     </div>
 
     <UiAction
       class="focus-visible:outline-ring flex h-8 w-8 items-center justify-center lg:hidden"
-      aria-label="Открыть меню"
+      :aria-label="$t('header.openMenu')"
       variant="custom"
       @click="toggleMenu(true)"
     >

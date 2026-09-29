@@ -33,13 +33,13 @@ const socials = [
           width="144"
           height="144"
           src="logo-white.svg"
-          alt="Rucode Festival logo"
+          :alt="$t('footer.logoAlt')"
         />
       </NuxtLink>
 
       <div
         class="order-2 flex flex-col items-center gap-4 lg:order-0 lg:col-start-2 lg:items-start"
-        aria-label="Навигация в подвале сайта"
+        :aria-label="$t('footer.nav')"
       >
         <NuxtLink
           v-for="link in config.links"
@@ -48,7 +48,7 @@ const socials = [
           :to="link.href"
           active-class="text-yellow-primary"
         >
-          {{ link.title }}
+          {{ link.titleKey ? $t(link.titleKey) : link.title }}
         </NuxtLink>
       </div>
 
@@ -77,15 +77,24 @@ const socials = [
         >
           + 7 (495) 128-34-32
         </UiAction>
-        <div class="mb-10">Режим работы: 10:00-18:00</div>
+        <div class="mb-10">{{ $t('footer.workHours') }}</div>
 
         <UiAction
           class="text-[12px] underline hover:no-underline"
           variant="custom"
           target="_blank"
-          to="https://rucode.net/wp-content/uploads/2026/08/polozhenie-rucode.premii.pdf"
+          :to="
+            config.regulation?.href ??
+            'https://rucode.net/wp-content/uploads/2026/08/polozhenie-rucode.premii.pdf'
+          "
         >
-          Положение о проведении Премии
+          {{
+            config.regulation
+              ? config.regulation.titleKey
+                ? $t(config.regulation.titleKey)
+                : config.regulation.title
+              : 'Положение о проведении Премии'
+          }}
         </UiAction>
       </div>
 

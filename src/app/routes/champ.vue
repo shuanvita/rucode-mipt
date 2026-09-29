@@ -1,22 +1,24 @@
 <script setup lang="ts">
 import { ChampPage } from '~/pages/champ'
 
-definePageMeta({ headerConfig: 'champ' })
+definePageMeta({ headerConfig: 'champ', i18n: { locales: ['ru', 'en'] } })
+
+const { t } = useI18n()
 
 useHead({
-  title: 'Международный чемпионат РуКод',
+  title: () => t('meta.champ.title'),
   meta: [
     {
       name: 'description',
-      content: 'Интеллектуальный вызов для тех, кто выбирает путь в ИТ',
+      content: () => t('meta.champ.description'),
     },
     {
       property: 'og:title',
-      content: 'Интеллектуальный вызов для тех, кто выбирает путь в ИТ',
+      content: () => t('meta.champ.title'),
     },
     {
       property: 'og:description',
-      content: 'Интеллектуальный вызов для тех, кто выбирает путь в ИТ',
+      content: () => t('meta.champ.description'),
     },
   ],
 })

@@ -75,14 +75,20 @@ export const headerConfigs: Record<HeaderConfigKey, HeaderConfig> = {
   },
   champ: {
     links: [
-      { href: '#about', title: 'О чемпионате' },
-      { href: '#how', title: 'Этапы' },
-      { href: '#why', title: 'Зачем участвовать' },
-      { href: '#achievements', title: 'Достижения' },
-      { href: '#gallery', title: 'Фотогалерея' },
+      { href: '#about', title: 'О чемпионате', titleKey: 'nav.champ.about' },
+      { href: '#how', title: 'Этапы', titleKey: 'nav.champ.stages' },
+      { href: '#why', title: 'Зачем участвовать', titleKey: 'nav.champ.why' },
+      { href: '#achievements', title: 'Достижения', titleKey: 'nav.champ.achievements' },
+      { href: '#gallery', title: 'Фотогалерея', titleKey: 'nav.champ.gallery' },
     ],
+    regulation: {
+      href: 'https://rucode.net/wp-content/uploads/2026/04/reglament_mezhdunarodnogo_chempionata_rukod.pdf',
+      title: 'Регламент чемпионата',
+      titleKey: 'footer.champRegulation',
+    },
     cta: {
       label: 'Войти',
+      labelKey: 'header.login',
       to: 'https://edu.mipt.ru/member',
       variant: 'primary',
       class: 'px-4 py-2 text-[11px]',

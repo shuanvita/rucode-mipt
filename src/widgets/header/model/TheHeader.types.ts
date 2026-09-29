@@ -1,12 +1,16 @@
 export interface NavLink {
   href: string
   title: string
+  titleKey?: string
 }
 
 export interface HeaderConfig {
   links: NavLink[]
+  /** Ссылка на регламент в подвале; если не задана — положение о Премии */
+  regulation?: NavLink
   cta?: {
     label: string
+    labelKey?: string
     to?: string
     variant?: 'primary' | 'secondary' | 'custom'
     class?: string

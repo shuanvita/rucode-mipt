@@ -4,6 +4,13 @@ import type { HeaderConfigKey } from '~/widgets/header'
 import { TheFooter } from '~/widgets/footer'
 
 const route = useRoute()
+const localeHead = useLocaleHead({ seo: true })
+
+useHead(() => ({
+  htmlAttrs: { lang: localeHead.value.htmlAttrs?.lang },
+  link: localeHead.value.link,
+  meta: localeHead.value.meta,
+}))
 const headerKey = computed(() => (route.meta.headerConfig as HeaderConfigKey) ?? 'home')
 const config = computed(() => headerConfigs[headerKey.value] ?? headerConfigs.home)
 const noFooterSpacing = computed(() => route.meta.noFooterSpacing === true)

@@ -27,7 +27,7 @@ defineProps<ChampHeroProps>()
         <NuxtPicture
           class="h-auto w-auto max-w-[80%] justify-center object-contain"
           :src="image"
-          alt="Всероссийское тестирование RuCode"
+          :alt="imageAlt"
           loading="eager"
           fetchpriority="high"
           preload

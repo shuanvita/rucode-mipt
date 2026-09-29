@@ -11,11 +11,13 @@ import type { ChampVenuesProps } from '~/widgets/champ/venues'
 import type { ChampGalleryProps } from '~/widgets/champ/gallery'
 import type { ChampFaqProps } from '~/widgets/champ/faq'
 import type { PartnersSectionProps } from '~/widgets/partners'
+import type { AchievementsSectionProps } from '~/widgets/home/achievements'
 
 const hero: ChampHeroProps = {
   title: 'Международный чемпионат РУКОД_',
   description: ['Интеллектуальный вызов для тех, кто выбирает путь в ИТ'],
   image: '/images/champ/hero.png',
+  imageAlt: 'Всероссийское тестирование RuCode',
   cta: {
     to: 'https://edu.mipt.ru/member/meroprijatija/mezhdunarodnyy-chempionat-rucode',
     text: 'Зарегистрироваться',
@@ -197,7 +199,7 @@ const how: ChampHowProps = {
   ],
 }
 
-const achievements = {
+const achievements: AchievementsSectionProps = {
   title: 'Достижения 2025 года',
   titleColor: 'yellow',
   titleAlign: 'left',
@@ -433,4 +435,19 @@ export const champPageData: ContentPage = {
     createFallbackBlock('gallery', 110, gallery),
     createFallbackBlock('faq', 120, faq),
   ],
+}
+
+export const champBlockData = {
+  hero,
+  about,
+  numbers,
+  divisions,
+  tracks,
+  why,
+  how,
+  achievements,
+  venues,
+  partners,
+  gallery,
+  faq,
 }

@@ -1,0 +1,362 @@
+{
+  "header": {
+    "nav": {
+      "about": "About",
+      "stages": "Contest Rounds",
+      "why": "Why participate",
+      "achievements": "Awards",
+      "gallery": "Photo Gallery"
+    },
+    "logoAlt": "RuCode",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "title": "International <br> Contest",
+    "subtitle": "An intellectual challenge for those <br> choosing an IT path",
+    "register": "Register",
+    "rucodeAlt": "RuCode"
+  },
+  "footer": {
+    "logoAlt": "RuCode",
+    "supportTitle": "Organization & <br> Technical Support",
+    "partnershipTitle": "Partnership & <br> Media Coverage",
+    "connectionTitle": "Organisers Contacts",
+    "workTime": "(UTC+3) 10:00–18:00",
+    "champRegl": "The rules of the Championship",
+    "champReglLink": "https://rucode.net/wp-content/uploads/2026/04/reglament_mezhdunarodnogo_chempionata_rukod.pdf"
+  },
+  "why": {
+    "title": "Why participate",
+    "skills": {
+      "title": "Practical skills",
+      "text": "Get new relevant knowledge, practice skills and open new opportunities for professional and personal development"
+    },
+    "portfolio": {
+      "title": "Strong portfolio",
+      "text": "Strengthen your portfolio by participating in a prestigious IT competition and get an additional argument for future employers"
+    },
+    "prep": {
+      "title": "Preparation for international competitions",
+      "text": "Level up your algorithmic and engineering skills and prepare for participation in international programming competitions"
+    },
+    "community": {
+      "title": "IT Specialists Community",
+      "text": "Join a strong professional community, meet like-minded people and expand your network of useful contacts"
+    },
+    "prizes": {
+      "title": "Prize fund",
+      "text": "Compete for championship prizes and get a chance to win gifts from our partners"
+    }
+  },
+  "venue": {
+    "title": "Final Venues in 2026",
+    "districts": [
+      {
+        "heading": "Central Federal District of Russia",
+        "venues": [
+          "Voronezh State University, Voronezh, Voronezh Oblast",
+          "Kostroma State University, Kostroma, Kostroma Oblast",
+          "Kursk State University, Kursk, Kursk Oblast",
+          "Bauman Moscow State Technical University, Moscow",
+          "National University of Science and Technology «MISIS», Moscow",
+          "Moscow Institute of Physics and Technology, Dolgoprudny, Moscow Oblast",
+          "Tambov Office of Russian Academy «Cifra», Tambov, Tambov Oblast"
+        ]
+      },
+      {
+        "heading": "Northwestern Federal District of Russia",
+        "venues": [
+          "Immanuel Kant Baltic Federal University, Kaliningrad, Kaliningrad Oblast",
+          "Petrozavodsk State University, Petrozavodsk, Republic of Karelia",
+          "Murmansk Arctic University, Murmansk, Murmansk Oblast",
+          "Yaroslav-the-Wise Novgorod State University, Veliky Novgorod, Novgorod Oblast",
+          "Peter the Great St. Petersburg Polytechnic University, St. Petersburg"
+        ]
+      },
+      {
+        "heading": "Southern and North Caucasus Federal Districts, New Regions of Russia",
+        "venues": [
+          "ZorgoSfera Personnel Training Center, Astrakhan, Astrakhan Oblast",
+          "Volzhsky Campus of Volgograd State University, Volzhsky, Volgograd Oblast",
+          "Kuban State University, Krasnodar, Krasnodar Krai",
+          "Southern Federal University, Krasnodar, Krasnodar Krai",
+          "Donbas State Technical University, Alchevsk, Lugansk People's Republic",
+          "Rostov-on-Don Office of Russian Academy «Cifra», Rostov-on-Don, Rostov-on-Don Oblast",
+          "North Caucasian Institute of Mining and Metallurgy, Vladikavkaz, Republic of North Ossetia — Alania",
+          "North Caucasus Federal University, Stavropol, Stavropol Krai",
+          "Sirius University of Science and Technology, Sirius Federal Territory",
+          "Southern State University, Rostov-on-Don, Rostov-on-Don Oblast"
+        ]
+      },
+      {
+        "heading": "Volga Federal District of Russia",
+        "venues": [
+          "Ufa University of Science and Technology, Ufa, Republic of Bashkortostan",
+          "Lobachevsky State University of Nizhny Novgorod, Nizhny Novgorod, Nizhny Novgorod Oblast",
+          "Perm State University, Perm, Perm Krai",
+          "Saratov Chernyshevsky State University, Saratov, Saratov Oblast",
+          "Volga State University of Telecommunications and Informatics, Samara, Samara Oblast",
+          "Innopolis University, Innopolis, Republic of Tatarstan",
+          "Kalashnikov Izhevsk State Technical University, Izhevsk, Udmurt Republic",
+          "IT-Cube.Ulyanovsk, Ulyanovsk, Ulyanovsk Oblast"
+        ]
+      },
+      {
+        "heading": "Ural Federal District of Russia",
+        "venues": [
+          "Ural Federal University, Yekaterinburg, Sverdlovsk Oblast",
+          "Industrial University of Tyumen, Tyumen, Tyumen Oblast",
+          "Yugra State University, Khanty-Mansiysk, Khanty-Mansi Autonomous Okrug — Yugra",
+          "Chelyabinsk State University, Chelyabinsk, Chelyabinsk Oblast",
+          "South Ural State University, Chelyabinsk, Chelyabinsk Oblast"
+        ]
+      },
+      {
+        "heading": "Siberian and Far Eastern Federal Districts of Russia",
+        "venues": [
+          "Transbaikal State University, Chita, Zabaykalsky Krai",
+          "Irkutsk National Research Technical University, Irkutsk, Irkutsk Oblast",
+          "Siberian Federal University, Krasnoyarsk, Krasnoyarsk Krai",
+          "Novosibirsk State University, Novosibirsk, Novosibirsk Oblast",
+          "Far Eastern Federal University, Vladivostok, Primorsky Krai",
+          "Tomsk State University, Tomsk, Tomsk Oblast",
+          "Omsk Region Federation of Sports Programming"
+        ]
+      },
+      {
+        "heading": "Foreign Venues",
+        "venues": [
+          "Russian-Armenian (Slavic) University, Yerevan, Republic of Armenia",
+          "Belarusian State University, Minsk, Republic of Belarus",
+          "Yanka Kupala State University of Grodno, Grodno, Republic of Belarus",
+          "Kyrgyz-Russian Slavic University, Bishkek, Kyrgyz Republic",
+          "Lomonosov MSU branch in Dushanbe, Dushanbe, Tajikistan",
+          "Baky Tylla Educational Center, Ashgabat, Turkmenistan"
+        ]
+      }
+    ]
+  },
+  "faq": {
+    "title": "Q&A",
+    "items": [
+      {
+        "heading": "How to register for the Contest?",
+        "content": "Registration takes place through your <a class='text-ui-purple underline' href='https://edu.mipt.ru/member/meroprijatija/mezhdunarodnyy-chempionat-rucode/'>personal account</a>: complete the registration form. Once all required survey questions are filled out, you officially become a participant of the RuCode Championship! To participate in the Final, you will additionally need to select a venue, division, and create a team."
+      },
+      {
+        "heading": "Who can participate?",
+        "content": "School students from 12 years old, university students, IT specialists, and everyone interested in programming can participate."
+      },
+      {
+        "heading": "Can I participate without programming experience?",
+        "content": "Yes, choose division E-F for beginners with simple tasks. Helpful materials and courses from RuCode will assist in your preparation, becoming available after registration."
+      },
+      {
+        "heading": "Which programming languages are allowed?",
+        "content": "C, C++, Java, Python, Kotlin, Rust"
+      },
+      {
+        "heading": "Is it required to pass qualifications and training stage to participate in the Final and subsequent stages?",
+        "content": "No, this year no selection is required to participate in the Final — teams can participate in the Final stage directly. Note that the best teams from division A-B and training camp participants will be invited to the Superfinal; see details in the Regulations."
+      },
+      {
+        "heading": "Do I need to create my own team or can I participate alone?",
+        "content": "Participation in the training round and online contest is individual; subsequent stages are in teams (up to 3 people). You need to create a team even if you plan to compete solo."
+      },
+      {
+        "heading": "What to do if I can't find teammates?",
+        "content": "Participate alone — a team of 1 person is allowed, or find teammates in our social networks: write your city and division to find a team and friends."
+      },
+      {
+        "heading": "How to choose a division?",
+        "content": "Based on the results of the training round, a division will be recommended to the participant. Also refer to clause 5 of the regulations: \"Contest Divisions and Recommendations for Choosing Them.\""
+      },
+      {
+        "heading": "Will there be merch?",
+        "content": "Yes, all Final participants will receive welcome kits at the contest venues."
+      },
+      {
+        "heading": "Will there be certificates? Diplomas?",
+        "content": "Yes. Participants of the online championship, Final, and Superfinal will receive a participation certificate, and the top participants will receive winner and prize diplomas."
+      },
+      {
+        "heading": "Where is the Contest held?",
+        "content": "The training and online championships are held in a remote format — you can solve tasks from anywhere in the world. The Final is held in-person at RuCode contest venues in Russia and abroad; in the Superfinal, teams will compete in-person at the RuCode Capital venue."
+      }
+    ],
+    "q4": {
+      "p1": "Yes, only teams whose captain has completed the Qualification Round may advance to the Final.",
+      "p2": "However, the following categories may skip the Qualification Round and proceed directly to the Final:",
+      "winnersList": [
+        "Winners and prize-winners of ICPC regional finals and semifinals from the past three years;",
+        "Winners and prize-winners of the RuCode Final from the past three years;",
+        "Winners and prize-winners of the final round of the All-Russian Olympiad in Informatics (AROI) from the past three years;",
+        "Winners and prize-winners of national informatics olympiads in BRICS and CIS countries or other friendly nations from the past three years;"
+      ],
+      "p3": "Division C–D teams that placed in the top three at a previous RuCode Final may be invited to participate in Division A–B without qualification.",
+      "p4": "If a team (1 to 3 members) is composed of at least two-thirds ICPC medalists, A–B finalists from the past two years, or national olympiad winners, it is strongly recommended they only compete in Division A–B to ensure fair play"
+    },
+    "submit": "Register"
+  },
+  "about": {
+    "title": "About the contest",
+    "description": "RuCode Championship is an international algorithmic programming competition where school students, university students, and professionals compete in solving problems by writing efficient and optimized code. The festival is organized by leading universities, public organizations and regional authoutities",
+    "stats": [
+      { "heading": "10+", "content": "participating countries" },
+      { "heading": "40+", "content": "hosting universities in Russia and friendly countries" },
+      { "heading": "5+", "content": "programming languages supported" },
+      { "heading": "A large-scale IT festival", "content": "at RuCode Superfinal" }
+    ]
+  },
+  "aboutDivision": {
+    "title": "RuCode Divisions",
+    "subtitle": "Divisions are RuCode Skill Tiers. Participants independently select their division:",
+    "items": [
+      {
+        "heading": "A-B",
+        "description": "Professional Division. Recommended for competitors with a proven track record in national or international programming olympiads and competitions"
+      },
+      {
+        "heading": "C-D",
+        "description": "Intermediate Division. Designed for programmers who have mastered foundational algorithms and aim to tackle more complex challenges to advance their skills"
+      },
+      {
+        "heading": "E-F",
+        "description": "Junior Division. Ideal for beginners and those taking their first steps in programming, offering a supportive environment to build core competencies"
+      }
+    ]
+  },
+  "howItsGoing": {
+    "title": "RuCode Rounds",
+    "items": [
+      {
+        "heading": "Registration",
+        "description": "[start April, 16]"
+      },
+      {
+        "heading": "Training and Preparation",
+        "description": "[June, 28]"
+      },
+      {
+        "heading": "Training Camp",
+        "description": "[June]"
+      },
+      {
+        "heading": "Final",
+        "description": "[October, 18]"
+      },
+      {
+        "heading": "Superfinal",
+        "description": "[December, 12-13]"
+      }
+    ],
+    "content0": {
+      "text1": "Register in your personal account and fill out the application form to get access to useful preparation materials and the opportunity to participate in the online championship",
+      "text2": "Starting April 27, a practice contest with division selection recommendations begins",
+      "important": "",
+      "list": [],
+      "button": "Register"
+    },
+    "content1": {
+      "text1": "The individual online championship is held for all divisions. It is an opportunity to prepare for the Final in the most effective way and to get familiar with the evaluation system",
+      "text2": "",
+      "important": "",
+      "list": []
+    },
+    "content2": {
+      "text1": "RuCode international training camps are held on the Moscow Institute of Physics and Technology campus for teams from Russia, BRICS, and CIS countries and aimed at preparing the strongest teams for the IOI, featuring an intensive educational program",
+      "text2": "",
+      "important": "",
+      "list": []
+    },
+    "content3": {
+      "text1": "An offline team stage held at venues in Russia and abroad:",
+      "text2": "All participants receive welcome packs at the venues, as well as participation certificates! The best teams will be awarded diplomas, prizes, and merch",
+      "important": "",
+      "list": [
+        "3 divisions,",
+        "6 programming languages,",
+        "5 hours of challenging and engaging problems"
+      ]
+    },
+    "content4": {
+      "text1": "A team round for tops from Divisions A–B and training camps participants. It takes place in person at the RuCode Capital venue, featuring the most challenging problems",
+      "text2": "Winners receive valuable prizes, diplomas, and widespread recognition!",
+      "important": "",
+      "list": []
+    }
+  },
+  "partners": {
+    "general": "The main <br> partner",
+    "partners": "Partner",
+    "partnersSber": "https://rucode.net/wp-content/uploads/2026/09/logo-sber-chb-angl.svg",
+    "support": "Supported by"
+  },
+  "achievements": {
+    "title": "Rucode <br> Awards 2025",
+    "items": [
+      {
+        "alt": "Runet Prize",
+        "text": "Runet Prize Winner in “Educational IT Project” category"
+      },
+      {
+        "alt": "People's Front",
+        "text": "Nominee of Russia’s First National Communities Award \"For Contribution to the Development of Practical Education in Artificial Intelligence\""
+      },
+      {
+        "alt": "Russian Book of Records",
+        "text": "Official Record Holder: Russia’s Largest Programming Competition in 2025 by Russian Book of Records"
+      }
+    ]
+  },
+  "aboutTracks": {
+    "title": "RuCode Tracks",
+    "description": "A track is a dedicated thematic branch within the championship program where participants follow their own educational and competitive trajectory",
+    "tracks": [
+      {
+        "title": "Educational",
+        "description": "Lectures, webinars, practice pool, online contest"
+      },
+      {
+        "title": "Competitive",
+        "description": "Opportunity to prove yourself, enrich your portfolio with unique experience, win valuable prizes, receive diplomas, certificates, and merch"
+      },
+      {
+        "title": "Career Opportunities",
+        "description": "Interaction with IT industry leaders and employer partners"
+      }
+    ]
+  },
+  "gallery": {
+    "title": "Photo Gallery",
+    "button": "More photos"
+  },
+  "stats2025": {
+    "title": "RuCode 2025 <br> Numbers",
+    "items": {
+      "venues": {
+        "number": "44",
+        "description": "venues in Russia and abroad"
+      },
+      "applications": {
+        "number": "9800",
+        "description": "applications submitted"
+      },
+      "years": {
+        "number": "7",
+        "description": "years of RuCode <br/>Championship <br/>history"
+      },
+      "participants": {
+        "number": "99",
+        "description": "Superfinalists"
+      }
+    }
+  },
+  "images": {
+    "headerLogo": "/header-logo.svg",
+    "footerLogo": "/footer-logo-en.svg",
+    "hero": "/hero.png",
+    "rucode": "/rucode-en.svg"
+  }
+}

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useScrollLock, onKeyStroke } from '@vueuse/core'
 import type { HeaderConfig } from '../model/TheHeader.types'
+import { LanguageSwitcher } from '~/features/language-switcher'
 
 const props = defineProps<{
   config: HeaderConfig
@@ -44,18 +45,18 @@ onKeyStroke('Escape', () => {
         class="bg-dark-primary fixed inset-0 z-50 flex flex-col overflow-y-auto px-6 py-5 lg:hidden"
         role="dialog"
         aria-modal="true"
-        aria-label="Мобильное меню"
+        :aria-label="$t('header.mobileMenu')"
       >
         <button
           type="button"
           class="focus-visible:outline-ring ml-auto flex h-8 w-8 items-center justify-center focus-visible:outline-1"
-          aria-label="Закрыть меню"
+          :aria-label="$t('header.closeMenu')"
           @click="close"
         >
           <UiSvg name="close" class="h-5 w-5" />
         </button>
 
-        <nav class="mt-6 flex flex-col gap-6" aria-label="Основная навигация">
+        <nav class="mt-6 flex flex-col gap-6" :aria-label="$t('header.mainNav')">
           <NuxtLink
             v-for="link in config.links"
             :key="link.href"
@@ -64,7 +65,7 @@ onKeyStroke('Escape', () => {
             active-class="text-yellow-primary"
             @click="close"
           >
-            {{ link.title }}
+            {{ link.titleKey ? $t(link.titleKey) : link.title }}
           </NuxtLink>
         </nav>
 
@@ -96,8 +97,10 @@ onKeyStroke('Escape', () => {
           :variant="config.cta.variant ?? 'primary'"
           @click="close"
         >
-          {{ config.cta.label }}
+          {{ config.cta.labelKey ? $t(config.cta.labelKey) : config.cta.label }}
         </UiAction>
+
+        <LanguageSwitcher class="mt-8" />
       </div>
     </Transition>
   </Teleport>

@@ -1,4 +1,5 @@
 import tailwindcss from '@tailwindcss/vite'
+import type { NuxtPage } from 'nuxt/schema'
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -6,7 +7,6 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      htmlAttrs: { lang: 'ru' },
       title:
         'Всероссийский фестиваль по искусственному интеллекту и алгоритмическому программированию',
       link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
@@ -27,6 +27,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/fonts',
     '@nuxt/image',
+    '@nuxtjs/i18n',
     '@nuxt/scripts',
     '@pinia/nuxt',
     'nuxt-svgo',
@@ -63,5 +64,33 @@ export default defineNuxtConfig({
 
   image: {
     format: ['webp'],
+  },
+
+  hooks: {
+    'pages:extend'(pages) {
+      const restrictToDefaultLocale = (list: NuxtPage[]) => {
+        for (const page of list) {
+          page.meta ??= {}
+          page.meta.i18n ??= { locales: ['ru'] }
+          if (page.children) restrictToDefaultLocale(page.children)
+        }
+      }
+      restrictToDefaultLocale(pages)
+    },
+  },
+
+  i18n: {
+    locales: [
+      { code: 'ru', language: 'ru-RU', files: ['ru.json'] },
+      { code: 'en', language: 'en-US', files: ['en.json'] },
+    ],
+    defaultLocale: 'ru',
+    strategy: 'prefix_except_default',
+    customRoutes: 'meta',
+    detectBrowserLanguage: false,
+    // Для hreflang/canonical; на проде переопределяется переменной NUXT_PUBLIC_I18N_BASE_URL
+    baseUrl: 'https://rucode.net',
+    restructureDir: 'src/app/i18n',
+    langDir: 'locales',
   },
 })
