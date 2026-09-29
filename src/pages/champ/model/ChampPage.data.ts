@@ -3,7 +3,7 @@ import type { ContentPage } from '~/shared/api'
 import type { ChampHeroProps } from '~/widgets/champ/hero'
 
 const hero: ChampHeroProps = {
-  title: 'Международный чемпионат РуКод_',
+  title: 'Международный чемпионат РУКОД_',
   description: ['Интеллектуальный вызов для тех, кто выбирает путь в ИТ'],
   image: '/images/champ/hero.png',
   cta: {
