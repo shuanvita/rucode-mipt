@@ -2,7 +2,7 @@ import { createFallbackBlock } from '~/shared/api'
 import type { ContentPage } from '~/shared/api'
 import type { ChampHeroProps } from '~/widgets/champ/hero'
 import type { ChampNumbersProps } from '~/widgets/champ/numbers'
-import type { ChampAboutProps } from '~/widgets/champ/about/model/ChampAbout.types.ts'
+import type { ChampAboutProps } from '~/widgets/champ/about'
 
 const hero: ChampHeroProps = {
   title: 'Международный чемпионат РУКОД_',
