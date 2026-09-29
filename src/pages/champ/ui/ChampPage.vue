@@ -12,6 +12,7 @@ import { ChampHow } from '~/widgets/champ/how'
 import { ChampVenues } from '~/widgets/champ/venues'
 import { ChampFaq } from '~/widgets/champ/faq'
 import { AchievementsSection } from '~/widgets/home/achievements'
+import { PartnersSection } from '~/widgets/partners'
 
 const blockComponents: Record<string, Component> = {
   hero: ChampHero,
@@ -23,6 +24,7 @@ const blockComponents: Record<string, Component> = {
   how: ChampHow,
   achievements: AchievementsSection,
   venues: ChampVenues,
+  partners: PartnersSection,
   faq: ChampFaq,
 }
 

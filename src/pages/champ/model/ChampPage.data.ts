@@ -9,6 +9,7 @@ import type { ChampWhyProps } from '~/widgets/champ/why'
 import type { ChampHowProps } from '~/widgets/champ/how'
 import type { ChampVenuesProps } from '~/widgets/champ/venues'
 import type { ChampFaqProps } from '~/widgets/champ/faq'
+import type { PartnersSectionProps } from '~/widgets/partners'
 
 const hero: ChampHeroProps = {
   title: 'Международный чемпионат РУКОД_',
@@ -373,6 +374,33 @@ const faq: ChampFaqProps = {
   },
 }
 
+const partners: PartnersSectionProps = {
+  items: [
+    {
+      title: 'Генеральный партнёр',
+      titleClass: 'text-yellow-primary',
+      images: [
+        {
+          src: '/images/partners/mts.png',
+          alt: 'МТС',
+          class: 'w-[101px] lg:w-[178px]',
+        },
+      ],
+    },
+    {
+      title: 'Партнёры',
+      titleClass: 'text-yellow-primary',
+      images: [
+        {
+          src: '/images/partners/sber.svg',
+          alt: 'Сбер',
+          class: 'w-33 lg:w-53.25',
+        },
+      ],
+    },
+  ],
+}
+
 export const champPageData: ContentPage = {
   slug: '/champ',
   version: 1,
@@ -385,7 +413,8 @@ export const champPageData: ContentPage = {
     createFallbackBlock('why', 60, why),
     createFallbackBlock('how', 70, how),
     createFallbackBlock('achievements', 80, achievements),
-    createFallbackBlock('venues', 85, venues),
-    createFallbackBlock('faq', 90, faq),
+    createFallbackBlock('venues', 90, venues),
+    createFallbackBlock('partners', 100, partners),
+    createFallbackBlock('faq', 120, faq),
   ],
 }
