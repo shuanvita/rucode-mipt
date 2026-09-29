@@ -11,7 +11,7 @@ defineProps<ChampAboutProps>()
       title
     }}</UiHeading>
     <UiText v-if="description" class="mb-15 max-w-200">{{ description }}</UiText>
-    <div class="relative grid gap-10 lg:grid-cols-4 lg:gap-16">
+    <div class="relative grid gap-10 lg:grid-cols-2 lg:gap-16 xl:grid-cols-4">
       <ChampAboutCard v-for="card in cards" :key="card.id" v-bind="card" />
       <NuxtPicture
         class="absolute top-40 -left-40 -z-9 max-w-70 -translate-y-1/2"

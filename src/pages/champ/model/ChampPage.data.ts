@@ -3,6 +3,7 @@ import type { ContentPage } from '~/shared/api'
 import type { ChampHeroProps } from '~/widgets/champ/hero'
 import type { ChampNumbersProps } from '~/widgets/champ/numbers'
 import type { ChampAboutProps } from '~/widgets/champ/about'
+import type { ChampDivisionsProps } from '~/widgets/champ/divisions'
 
 const hero: ChampHeroProps = {
   title: 'Международный чемпионат РУКОД_',
@@ -70,6 +71,26 @@ const numbers: ChampNumbersProps = {
   },
 }
 
+const divisions: ChampDivisionsProps = {
+  title: 'О дивизионах',
+  description:
+    'Дивизионы — это уровни сложности чемпионата «РуКод». Участник сам выбирает, в какой дивизион подать заявку',
+  cards: [
+    {
+      title: 'А-В',
+      text: 'дивизион профессионалов для участников с опытом успешных выступлений на олимпиадных турнирах и соревнованиях по программированию национального и международного уровня',
+    },
+    {
+      title: 'С-D',
+      text: 'средний дивизион для тех, кто уже освоил основные алгоритмы и стремится развивать навыки программирования на более сложном уровне',
+    },
+    {
+      title: 'E-F',
+      text: 'младший дивизион для начинающих программистов и тех, кто делает первые шаги в мире программирования',
+    },
+  ],
+}
+
 export const champPageData: ContentPage = {
   slug: '/champ',
   version: 1,
@@ -77,5 +98,6 @@ export const champPageData: ContentPage = {
     createFallbackBlock('hero', 10, hero),
     createFallbackBlock('about', 20, about),
     createFallbackBlock('numbers', 30, numbers),
+    createFallbackBlock('divisions', 40, divisions),
   ],
 }

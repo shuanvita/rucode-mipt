@@ -53,7 +53,7 @@ const items = computed(() => [
       title
     }}</UiHeading>
     <div
-      class="relative h-230 not-min-[440px]:-mt-10 not-min-[440px]:h-195 not-min-[440px]:scale-80 not-lg:min-[440px]:mt-10 md:h-550 lg:h-195"
+      class="relative h-230 not-min-[440px]:-mt-10 not-min-[440px]:h-195 not-min-[440px]:scale-80 not-lg:min-[440px]:mt-10 md:h-320 lg:h-195"
     >
       <div v-for="item in items" :key="item.key" :class="['absolute text-center', item.wrapper]">
         <img

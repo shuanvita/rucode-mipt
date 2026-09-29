@@ -5,11 +5,13 @@ import { usePageContent, useContentBlocks, ContentBlockRender } from '~/shared/a
 import { ChampHero } from '~/widgets/champ/hero'
 import { ChampAbout } from '~/widgets/champ/about'
 import { ChampNumbers } from '~/widgets/champ/numbers'
+import { ChampDivisions } from '~/widgets/champ/divisions'
 
 const blockComponents: Record<string, Component> = {
   hero: ChampHero,
   about: ChampAbout,
   numbers: ChampNumbers,
+  divisions: ChampDivisions,
 }
 
 const anchorIds: Record<string, string> = {
