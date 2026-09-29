@@ -76,7 +76,7 @@ export const headerConfigs: Record<HeaderConfigKey, HeaderConfig> = {
   champ: {
     links: [
       { href: '#about', title: 'О чемпионате' },
-      { href: '#stages', title: 'Этапы' },
+      { href: '#how', title: 'Этапы' },
       { href: '#why', title: 'Зачем участвовать' },
       { href: '#achievements', title: 'Достижения' },
       { href: '#gallery', title: 'Фотогалерея' },

@@ -32,9 +32,10 @@ const blockComponents: Record<string, Component> = {
 
 const anchorIds: Record<string, string> = {
   about: 'about',
-  demo: 'demo',
-  calendar: 'calendar',
-  partners: 'partners',
+  how: 'how',
+  why: 'why',
+  achievements: 'achievements',
+  gallery: 'gallery',
 }
 
 const { data } = await usePageContent('/champ', champPageData)
