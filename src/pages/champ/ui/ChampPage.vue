@@ -4,10 +4,12 @@ import { champPageData } from '../model/ChampPage.data'
 import { usePageContent, useContentBlocks, ContentBlockRender } from '~/shared/api'
 import { ChampHero } from '~/widgets/champ/hero'
 import { ChampAbout } from '~/widgets/champ/about'
+import { ChampNumbers } from '~/widgets/champ/numbers'
 
 const blockComponents: Record<string, Component> = {
   hero: ChampHero,
   about: ChampAbout,
+  numbers: ChampNumbers,
 }
 
 const anchorIds: Record<string, string> = {

@@ -1,6 +1,7 @@
 import { createFallbackBlock } from '~/shared/api'
 import type { ContentPage } from '~/shared/api'
 import type { ChampHeroProps } from '~/widgets/champ/hero'
+import type { ChampNumbersProps } from '~/widgets/champ/numbers'
 import type { ChampAboutProps } from '~/widgets/champ/about/model/ChampAbout.types.ts'
 
 const hero: ChampHeroProps = {
@@ -45,8 +46,36 @@ const about: ChampAboutProps = {
   ],
 }
 
+const numbers: ChampNumbersProps = {
+  title: 'Рукод 2025 в цифрах',
+  numbersOne: {
+    title: '7',
+    text: 'лет существования\nЧемпионата\n«РуКод»',
+    image: '/images/champ/numbers-1.svg',
+  },
+  numbersTwo: {
+    title: '99',
+    text: 'участников\nСуперфинала',
+    image: '/images/champ/numbers-4.svg',
+  },
+  numbersThree: {
+    title: '44',
+    text: 'площадки\nв России\nи зарубежом',
+    image: '/images/champ/numbers-1.png',
+  },
+  numbersFour: {
+    title: '9800',
+    text: 'заявок на участие',
+    image: '/images/champ/numbers-2.png',
+  },
+}
+
 export const champPageData: ContentPage = {
   slug: '/champ',
   version: 1,
-  blocks: [createFallbackBlock('hero', 10, hero), createFallbackBlock('about', 20, about)],
+  blocks: [
+    createFallbackBlock('hero', 10, hero),
+    createFallbackBlock('about', 20, about),
+    createFallbackBlock('numbers', 30, numbers),
+  ],
 }
