@@ -5,6 +5,7 @@ import type { ChampNumbersProps } from '~/widgets/champ/numbers'
 import type { ChampAboutProps } from '~/widgets/champ/about'
 import type { ChampDivisionsProps } from '~/widgets/champ/divisions'
 import type { ChampTracksProps } from '~/widgets/champ/tracks'
+import type { ChampWhyProps } from '~/widgets/champ/why'
 
 const hero: ChampHeroProps = {
   title: 'Международный чемпионат РУКОД_',
@@ -118,6 +119,40 @@ const tracks: ChampTracksProps = {
   ],
 }
 
+const why: ChampWhyProps = {
+  title: 'Зачем участвовать',
+  cards: [
+    {
+      title: 'Практические навыки',
+      text: 'Получить новые актуальные знания, отработать практические навыки и открыть новые возможности для профессионального и личного развития',
+    },
+    {
+      image: 'champ-why-1',
+      title: 'Сильное портфолио',
+      text: 'Усильте своё портфолио участием в престижном ИТ-соревновании и получите дополнительный аргумент для будущих работодателей',
+    },
+    {
+      image: 'champ-why-2',
+      isActive: true,
+      title: 'Подготовка к международным соревнованиям',
+      text: 'Прокачайте свои алгоритмические и инженерные навыки и подготовьтесь к участию в международных соревнованиях по программированию',
+    },
+    {
+      image: 'champ-why-3',
+      title: 'Сообщество ИТ-специалистов',
+      text: 'Присоединитесь к сильному профессиональному комьюнити, познакомьтесь с единомышленниками и расширьте сеть полезных контактов',
+    },
+    {
+      title: 'Призовой фонд',
+      text: 'Боритесь за призы чемпионата и получите шанс выиграть подарки от наших партнёров',
+    },
+  ],
+  cta: {
+    to: 'https://edu.mipt.ru/member/meroprijatija/mezhdunarodnyy-chempionat-rucode',
+    text: 'Зарегистрироваться',
+  },
+}
+
 export const champPageData: ContentPage = {
   slug: '/champ',
   version: 1,
@@ -127,5 +162,6 @@ export const champPageData: ContentPage = {
     createFallbackBlock('numbers', 30, numbers),
     createFallbackBlock('divisions', 40, divisions),
     createFallbackBlock('tracks', 50, tracks),
+    createFallbackBlock('why', 60, why),
   ],
 }

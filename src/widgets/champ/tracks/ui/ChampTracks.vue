@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ChampTracksProps } from '../model/ChampTracks.types'
+import type { ChampTracksProps } from '~/widgets/champ/tracks'
 import ChampTrackCard from './ChampTrackCard.vue'
 
 defineProps<ChampTracksProps>()

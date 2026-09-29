@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ChampAboutProps } from '../model/ChampAbout.types'
+import type { ChampAboutProps } from '~/widgets/champ/about'
 import ChampAboutCard from '~/widgets/champ/about/ui/ChampAboutCard.vue'
 
 defineProps<ChampAboutProps>()
