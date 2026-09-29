@@ -6,7 +6,10 @@ defineProps<AchievementCardProps>()
 
 <template>
   <div
-    class="border-purple-primary flex min-h-80 flex-col items-center justify-center gap-6 rounded-4xl border-3 px-7 py-4 lg:min-h-105"
+    :class="[
+      'border-purple-primary flex min-h-80 flex-col items-center justify-center gap-6 rounded-4xl border-3 px-7 py-4 lg:min-h-105',
+      shadow && 'shadow-[0_0_25px_-5px_var(--color-purple-primary)]',
+    ]"
   >
     <NuxtPicture
       :img-attrs="{

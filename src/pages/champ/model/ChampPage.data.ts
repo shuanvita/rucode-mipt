@@ -194,6 +194,30 @@ const how: ChampHowProps = {
   ],
 }
 
+const achievements = {
+  title: 'Достижения 2025 года',
+  titleColor: 'yellow',
+  titleAlign: 'left',
+  cardShadow: true,
+  cards: [
+    {
+      id: crypto.randomUUID(),
+      image: '/images/home/achievements-1.png',
+      text: 'Лауреат Премии Рунета в номинации «Образовательный проект в ИТ»',
+    },
+    {
+      id: crypto.randomUUID(),
+      image: '/images/home/achievements-2.png',
+      text: 'Номинация «За вклад в развитие практического образования в сфере искусственного интеллекта» первой в России национальной премией сообществ',
+    },
+    {
+      id: crypto.randomUUID(),
+      image: '/images/home/achievements-3.png',
+      text: '«Самое массовое соревнование по программированию» по версии Книги Рекордов России 2025 г.',
+    },
+  ],
+}
+
 const faq: ChampFaqProps = {
   title: 'Вы спрашиваете, мы отвечаем',
   items: [
@@ -270,6 +294,7 @@ export const champPageData: ContentPage = {
     createFallbackBlock('tracks', 50, tracks),
     createFallbackBlock('why', 60, why),
     createFallbackBlock('how', 70, how),
-    createFallbackBlock('faq', 80, faq),
+    createFallbackBlock('achievements', 80, achievements),
+    createFallbackBlock('faq', 90, faq),
   ],
 }
