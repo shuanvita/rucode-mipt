@@ -6,12 +6,14 @@ import { ChampHero } from '~/widgets/champ/hero'
 import { ChampAbout } from '~/widgets/champ/about'
 import { ChampNumbers } from '~/widgets/champ/numbers'
 import { ChampDivisions } from '~/widgets/champ/divisions'
+import { ChampTracks } from '~/widgets/champ/tracks'
 
 const blockComponents: Record<string, Component> = {
   hero: ChampHero,
   about: ChampAbout,
   numbers: ChampNumbers,
   divisions: ChampDivisions,
+  tracks: ChampTracks,
 }
 
 const anchorIds: Record<string, string> = {

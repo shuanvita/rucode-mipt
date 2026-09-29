@@ -10,7 +10,9 @@ defineProps<ChampAboutProps>()
     <UiHeading v-if="title" class="text-yellow-primary mb-8 leading-none lg:mb-10" tag="h2">{{
       title
     }}</UiHeading>
-    <UiText v-if="description" class="mb-15 max-w-200">{{ description }}</UiText>
+    <UiText v-if="description" size="lg" weight="light" class="mb-15 max-w-200">{{
+      description
+    }}</UiText>
     <div class="relative grid gap-10 lg:grid-cols-2 lg:gap-16 xl:grid-cols-4">
       <ChampAboutCard v-for="card in cards" :key="card.id" v-bind="card" />
       <NuxtPicture

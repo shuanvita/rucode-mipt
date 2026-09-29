@@ -4,6 +4,7 @@ import type { ChampHeroProps } from '~/widgets/champ/hero'
 import type { ChampNumbersProps } from '~/widgets/champ/numbers'
 import type { ChampAboutProps } from '~/widgets/champ/about'
 import type { ChampDivisionsProps } from '~/widgets/champ/divisions'
+import type { ChampTracksProps } from '~/widgets/champ/tracks'
 
 const hero: ChampHeroProps = {
   title: 'Международный чемпионат РУКОД_',
@@ -91,6 +92,32 @@ const divisions: ChampDivisionsProps = {
   ],
 }
 
+const tracks: ChampTracksProps = {
+  title: 'О треках',
+  description:
+    'Трек — это отдельное тематическое направление программы чемпионата, внутри которого участники проходят собственную образовательную и соревновательную траекторию',
+  cards: [
+    {
+      image: '/images/champ/track-1.png',
+      color: '#66C4AE',
+      title: 'Образовательный',
+      text: 'лекции, вебинары, банк задач, онлайн-чемпионат',
+    },
+    {
+      image: '/images/champ/track-2.png',
+      color: '#FAB417',
+      title: 'Соревновательный',
+      text: 'возможность проявить себя, получить опыт в портфолио, выиграть ценные призы, получить дипломы и сертификаты, мерч',
+    },
+    {
+      image: '/images/champ/track-3.png',
+      color: '#E4345B',
+      title: 'Карьерные возможности',
+      text: 'взаимодействие с лидерами ИТ-индустрии, партнёры-работодатели',
+    },
+  ],
+}
+
 export const champPageData: ContentPage = {
   slug: '/champ',
   version: 1,
@@ -99,5 +126,6 @@ export const champPageData: ContentPage = {
     createFallbackBlock('about', 20, about),
     createFallbackBlock('numbers', 30, numbers),
     createFallbackBlock('divisions', 40, divisions),
+    createFallbackBlock('tracks', 50, tracks),
   ],
 }
