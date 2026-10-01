@@ -19,6 +19,10 @@ const props = withDefaults(
     disabled?: boolean
   }>(),
   {
+    label: '',
+    placeholder: '',
+    errorMessage: '',
+    name: '',
     disabled: false,
   },
 )
