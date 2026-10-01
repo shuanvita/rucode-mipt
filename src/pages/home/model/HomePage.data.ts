@@ -59,7 +59,7 @@ const tracks = {
         {
           id: crypto.randomUUID(),
           text: 'Всероссийское тестирование RuCode по искусственному интеллекту',
-          to: 'https://aitesting.rucode.net',
+          to: '/aitesting',
         },
         {
           id: crypto.randomUUID(),
@@ -97,7 +97,7 @@ const tracks = {
         {
           id: crypto.randomUUID(),
           text: 'Всероссийское тестирование RuCode по искусственному интеллекту',
-          to: 'https://aitesting.rucode.net',
+          to: '/aitesting',
         },
         {
           id: crypto.randomUUID(),
@@ -141,7 +141,7 @@ const calendar: CalendarSectionProps = {
       cards: [
         {
           id: crypto.randomUUID(),
-          link: 'https://aitesting.rucode.net',
+          link: '/aitesting',
           date: {
             from: {
               day: 17,

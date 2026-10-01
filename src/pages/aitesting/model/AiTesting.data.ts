@@ -38,7 +38,7 @@ const calendar: AiTestingDatesProps = {
   cards: [
     {
       id: crypto.randomUUID(),
-      link: 'https://aitesting.rucode.net/#Award2026',
+      link: '/aitesting',
       date: {
         from: {
           day: 1,
