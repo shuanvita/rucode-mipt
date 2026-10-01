@@ -2,6 +2,7 @@
 import { TheHeader, headerConfigs } from '~/widgets/header'
 import type { HeaderConfigKey } from '~/widgets/header'
 import { TheFooter, footerConfigs } from '~/widgets/footer'
+import { ScrollToTop } from '~/features/scroll-to-top'
 
 const route = useRoute()
 const localeHead = useLocaleHead({ seo: true })
@@ -25,6 +26,7 @@ const noFooterSpacing = computed(() => route.meta.noFooterSpacing === true)
         <slot />
       </main>
     </div>
+    <ScrollToTop />
     <TheFooter :class="noFooterSpacing ? '' : 'mt-8'" :config="footerConfig" />
   </div>
 </template>

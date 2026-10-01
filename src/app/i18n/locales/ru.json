@@ -26,6 +26,9 @@
     "contactTitle": "Связь с организаторами",
     "champWorkHours": "с 10:00 до 18:00 МСК"
   },
+  "scrollToTop": {
+    "label": "Наверх"
+  },
   "langSwitch": {
     "label": "Язык сайта"
   },
