@@ -6,8 +6,6 @@ export interface NavLink {
 
 export interface HeaderConfig {
   links: NavLink[]
-  /** Ссылка на регламент в подвале; если не задана — положение о Премии */
-  regulation?: NavLink
   cta?: {
     label: string
     labelKey?: string

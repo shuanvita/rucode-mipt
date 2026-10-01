@@ -43,7 +43,7 @@ const mergedItemClass = computed(() => twMerge(baseItemClass, props.itemClass))
           mergedItemClass,
           activeTab === index
             ? 'bg-(image:--stage-secret-gradient)'
-            : 'bg-(image:--participant-card-bg) enabled:hover:-translate-y-0.5 enabled:hover:brightness-125 enabled:active:translate-y-0',
+            : 'bg-(image:--participant-card-bg) enabled:hover:brightness-125 enabled:active:translate-y-0',
           item.disabled && 'cursor-not-allowed opacity-40',
         ]"
         @click="selectTab(index)"

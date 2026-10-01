@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { TheHeader, headerConfigs } from '~/widgets/header'
 import type { HeaderConfigKey } from '~/widgets/header'
-import { TheFooter } from '~/widgets/footer'
+import { TheFooter, footerConfigs } from '~/widgets/footer'
 
 const route = useRoute()
 const localeHead = useLocaleHead({ seo: true })
@@ -13,6 +13,7 @@ useHead(() => ({
 }))
 const headerKey = computed(() => (route.meta.headerConfig as HeaderConfigKey) ?? 'home')
 const config = computed(() => headerConfigs[headerKey.value] ?? headerConfigs.home)
+const footerConfig = computed(() => footerConfigs[headerKey.value] ?? footerConfigs.home)
 const noFooterSpacing = computed(() => route.meta.noFooterSpacing === true)
 </script>
 
@@ -24,6 +25,6 @@ const noFooterSpacing = computed(() => route.meta.noFooterSpacing === true)
         <slot />
       </main>
     </div>
-    <TheFooter :class="noFooterSpacing ? '' : 'mt-8'" :config="config" />
+    <TheFooter :class="noFooterSpacing ? '' : 'mt-8'" :config="footerConfig" />
   </div>
 </template>

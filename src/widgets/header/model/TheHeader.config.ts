@@ -81,11 +81,6 @@ export const headerConfigs: Record<HeaderConfigKey, HeaderConfig> = {
       { href: '#achievements', title: 'Достижения', titleKey: 'nav.champ.achievements' },
       { href: '#gallery', title: 'Фотогалерея', titleKey: 'nav.champ.gallery' },
     ],
-    regulation: {
-      href: 'https://rucode.net/wp-content/uploads/2026/04/reglament_mezhdunarodnogo_chempionata_rukod.pdf',
-      title: 'Регламент чемпионата',
-      titleKey: 'footer.champRegulation',
-    },
     cta: {
       label: 'Войти',
       labelKey: 'header.login',
