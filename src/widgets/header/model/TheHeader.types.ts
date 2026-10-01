@@ -18,4 +18,4 @@ export interface HeaderConfig {
 }
 
 export type HeaderConfigKey =
-  'home' | 'award2026' | 'award2025' | 'ai_champ' | 'aitesting' | 'champ'
+  'home' | 'award2026' | 'award2025' | 'ai_champ' | 'aitesting' | 'champ' | 'consortium'

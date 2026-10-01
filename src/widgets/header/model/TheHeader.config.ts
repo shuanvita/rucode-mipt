@@ -73,6 +73,17 @@ export const headerConfigs: Record<HeaderConfigKey, HeaderConfig> = {
       class: 'px-4 py-2 text-[11px]',
     },
   },
+  consortium: {
+    links: [
+      { href: '#main', title: 'Главное' },
+      { href: '#directions', title: 'Направления' },
+      { href: '#geography', title: 'География' },
+      { href: '#benefits', title: 'Преимущества' },
+      { href: '#gallery', title: 'Галерея' },
+      { href: '#forwho', title: 'Кого мы ждем?' },
+      { href: '#stages', title: 'Этапы' },
+    ],
+  },
   champ: {
     links: [
       { href: '#about', title: 'О чемпионате', titleKey: 'nav.champ.about' },
