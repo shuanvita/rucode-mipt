@@ -12,8 +12,8 @@ const { options, isEnabled } = useLanguageSwitch()
       :to="option.to"
       :lang="option.code"
       :aria-current="option.isActive ? 'true' : undefined"
-      class="hover:text-yellow-secondary text-[12px]/[1.2] font-bold tracking-wider uppercase transition-colors duration-200"
-      :class="option.isActive ? 'text-yellow-primary' : 'text-white'"
+      class="hover:text-yellow-secondary border-yellow-primary rounded-lg border p-2 text-[12px]/[1.2] font-bold tracking-wider uppercase transition-colors duration-200"
+      :class="option.isActive ? 'bg-yellow-primary text-dark-primary' : 'text-white'"
     >
       {{ option.code }}
     </NuxtLink>

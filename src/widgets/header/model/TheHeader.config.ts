@@ -81,12 +81,5 @@ export const headerConfigs: Record<HeaderConfigKey, HeaderConfig> = {
       { href: '#achievements', title: 'Достижения', titleKey: 'nav.champ.achievements' },
       { href: '#gallery', title: 'Фотогалерея', titleKey: 'nav.champ.gallery' },
     ],
-    cta: {
-      label: 'Войти',
-      labelKey: 'header.login',
-      to: 'https://edu.mipt.ru/member',
-      variant: 'primary',
-      class: 'px-4 py-2 text-[11px]',
-    },
   },
 }
