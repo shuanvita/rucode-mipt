@@ -12,7 +12,9 @@ const contacts = computed<FooterContacts>(() => ({
   ...props.config.contacts,
 }))
 const hasExtra = computed(() => !!contacts.value.extraGroups?.length)
-const regulation = computed(() => props.config.regulation ?? defaultFooterRegulation)
+const regulation = computed(() =>
+  props.config.regulation === undefined ? defaultFooterRegulation : props.config.regulation,
+)
 
 const socials = [
   {
@@ -51,7 +53,7 @@ const socials = [
       </NuxtLink>
 
       <div
-        class="order-2 flex flex-col gap-4 lg:order-0 lg:col-start-2 lg:items-start"
+        class="order-2 flex flex-col items-center gap-4 lg:order-0 lg:col-start-2 lg:items-start"
         :aria-label="$t('footer.nav')"
       >
         <NuxtLink
@@ -66,7 +68,11 @@ const socials = [
       </div>
 
       <div v-if="hasExtra" class="order-4 flex flex-col gap-6 lg:order-0 lg:col-start-3">
-        <div v-for="group in contacts.extraGroups" :key="group.email" class="flex flex-col gap-3">
+        <div
+          v-for="group in contacts.extraGroups"
+          :key="group.email"
+          class="flex flex-col items-center gap-3 text-center lg:items-start lg:text-left"
+        >
           <div v-if="group.title" class="max-w-64 text-[15px]/[1.4] font-bold">
             {{ group.titleKey ? $t(group.titleKey) : group.title }}
           </div>
@@ -81,7 +87,7 @@ const socials = [
       </div>
 
       <div
-        class="order-4 flex flex-col items-start lg:order-0"
+        class="order-4 flex flex-col items-center lg:order-0 lg:items-start"
         :class="hasExtra ? 'lg:col-start-4' : 'lg:col-start-3'"
       >
         <UiAction
@@ -106,17 +112,19 @@ const socials = [
           {{ contacts.phoneTitleKey ? $t(contacts.phoneTitleKey) : contacts.phoneTitle }}
         </div>
         <UiAction
+          v-if="contacts.phone"
           class="text-[15px] font-bold hover:underline"
           variant="custom"
           :to="contacts.phone.href"
         >
           {{ contacts.phone.label }}
         </UiAction>
-        <div class="mb-10 text-[13px]">
+        <div v-if="contacts.workHours" class="mb-10 text-[13px]">
           {{ contacts.workHoursKey ? $t(contacts.workHoursKey) : contacts.workHours }}
         </div>
 
         <UiAction
+          v-if="regulation"
           class="text-[12px] underline hover:no-underline"
           variant="custom"
           target="_blank"

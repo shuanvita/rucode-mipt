@@ -34,6 +34,8 @@ export const footerConfigs: Record<FooterConfigKey, FooterConfig> = {
       { href: '#videos', title: 'Видео' },
       { href: 'https://edu.mipt.ru/member/?rucode=1', title: 'Хочу участвовать' },
     ],
+    regulation: null,
+    contacts: { email: 'info@rucode.net', phone: null, workHours: null },
   },
   award2025: {
     links: [...awardLinks.slice(0, 4), { href: '#ceremony', title: 'Церемония' }, awardLinks[4]!],
@@ -46,6 +48,8 @@ export const footerConfigs: Record<FooterConfigKey, FooterConfig> = {
       { href: '#tasks', title: 'Задачи' },
       { href: '#preparation', title: 'Подготовка' },
     ],
+    regulation: null,
+    contacts: { email: 'info@rucode.net', phone: null, workHours: null },
   },
   aitesting: {
     links: [
@@ -54,6 +58,8 @@ export const footerConfigs: Record<FooterConfigKey, FooterConfig> = {
       { href: '#calendar', title: 'Календарь' },
       { href: '#partners', title: 'Партнёры' },
     ],
+    regulation: null,
+    contacts: { email: 'info@rucode.net' },
   },
   champ: {
     links: [
@@ -64,7 +70,7 @@ export const footerConfigs: Record<FooterConfigKey, FooterConfig> = {
       { href: '#gallery', title: 'Фотогалерея', titleKey: 'nav.champ.gallery' },
     ],
     regulation: {
-      href: 'https://rucode.net/wp-content/uploads/2026/04/reglament_mezhdunarodnogo_chempionata_rukod.pdf',
+      href: '/files/reglament_mezhdunarodnogo_chempionata_rukod.pdf',
       title: 'Регламент чемпионата',
       titleKey: 'footer.champRegulation',
     },

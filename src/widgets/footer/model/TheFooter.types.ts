@@ -5,30 +5,24 @@ export interface NavLink {
 }
 
 export interface FooterEmailGroup {
-  /** Заголовок группы; если не задан — показывается только email */
   title?: string
   titleKey?: string
   email: string
 }
 
 export interface FooterContacts {
-  /** Основной email в центральной колонке; null — не показывать */
   email: string | null
-  /** Дополнительная информация: отдельная колонка слева от основных контактов */
   extraGroups?: FooterEmailGroup[]
-  /** Заголовок над телефоном (например, «Связь с организаторами») */
   phoneTitle?: string
   phoneTitleKey?: string
-  /** Телефон для отображения и для tel:-ссылки */
-  phone: { label: string; href: string }
-  workHours: string
+  phone: { label: string; href: string } | null
+  workHours: string | null
   workHoursKey?: string
 }
 
 export interface FooterConfig {
   links: NavLink[]
-  regulation?: NavLink
-  /** Переопределяет контакты по умолчанию (см. defaultFooterContacts) */
+  regulation?: NavLink | null
   contacts?: Partial<FooterContacts>
 }
 
