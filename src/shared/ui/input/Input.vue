@@ -34,8 +34,8 @@ const inputAttrs = computed(() => {
 
 const inputClass = computed(() =>
   twMerge(
-    'placeholder:text-fg/40 focus:border-yellow-primary/50 focus:ring-yellow-primary/10 border-yellow-primary h-full w-full rounded-lg border bg-transparent px-4 py-2.5 text-sm transition-colors duration-200 outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-40',
-    props.error && 'border-red focus:border-red focus:ring-red/10',
+    'placeholder:text-purple-light/60 border-yellow-primary h-full w-full rounded-none border-0 border-b-2 bg-transparent px-5 py-3 text-sm transition-colors duration-200 outline-none focus:border-yellow-primary/60 disabled:cursor-not-allowed disabled:opacity-40',
+    props.error && 'border-red focus:border-red',
   ),
 )
 </script>

@@ -32,12 +32,16 @@ function emitBlur() {
 }
 
 const selectedCountry = computed(() => getPhoneCountry(country.value))
-const displayValue = computed(() => formatPhoneNumber(modelValue.value, selectedCountry.value.groups))
+const displayValue = computed(() =>
+  formatPhoneNumber(modelValue.value, selectedCountry.value.groups),
+)
 
 function handleInput(event: Event) {
   const maxDigits = selectedCountry.value.groups.reduce((sum, size) => sum + size, 0)
-  const digits = (event.target as HTMLInputElement).value.replace(/\D/g, '').slice(0, maxDigits)
+  const input = event.target as HTMLInputElement
+  const digits = input.value.replace(/\D/g, '').slice(0, maxDigits)
   modelValue.value = digits
+  input.value = formatPhoneNumber(digits, selectedCountry.value.groups)
 }
 
 const rootRef = ref<HTMLElement | null>(null)
@@ -104,13 +108,10 @@ function handleTriggerKeydown(event: KeyboardEvent) {
 }
 
 const BASE_WRAPPER_CLASS =
-  'focus-within:border-yellow-primary/50 focus-within:ring-yellow-primary/10 border-yellow-primary flex h-full w-full items-center gap-2 rounded-lg border px-4 py-2.5 transition-colors duration-200 focus-within:ring-2 has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-40'
+  'focus-within:border-yellow-primary/60 border-yellow-primary flex h-full w-full items-center gap-2 rounded-none border-b-2 px-5 py-3 transition-colors duration-200 has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-40'
 
 const wrapperClass = computed(() =>
-  twMerge(
-    BASE_WRAPPER_CLASS,
-    props.error && 'border-red focus-within:border-red focus-within:ring-red/10',
-  ),
+  twMerge(BASE_WRAPPER_CLASS, props.error && 'border-red focus-within:border-red'),
 )
 </script>
 
@@ -149,7 +150,7 @@ const wrapperClass = computed(() =>
           :name="name"
           placeholder="(___) ___-__-__"
           :disabled="disabled"
-          class="placeholder:text-fg/40 h-full w-full bg-transparent text-sm outline-none disabled:cursor-not-allowed"
+          class="placeholder:text-purple-light/60 h-full w-full bg-transparent text-sm outline-none disabled:cursor-not-allowed"
           :aria-invalid="ariaInvalid"
           :aria-describedby="ariaDescribedby"
           @input="handleInput"

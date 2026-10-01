@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import type { AiTestingDemoProps } from '~/widgets/ai_testing/demo/model/AiTestingDemo.types.ts'
+import { ParticipationFormModal } from '~/features/participation-form'
 
 defineProps<AiTestingDemoProps>()
+
+const isFormOpen = ref(false)
 </script>
 
 <template>
@@ -42,8 +45,12 @@ defineProps<AiTestingDemoProps>()
           </div>
         </div>
         <UiText class="text-center lg:text-left">{{ footerText }}</UiText>
-        <UiAction class="self-center lg:self-start">{{ btnText }}</UiAction>
+        <UiAction class="self-center lg:self-start" @click="isFormOpen = true">{{
+          btnText
+        }}</UiAction>
       </div>
     </div>
   </section>
+
+  <ParticipationFormModal v-model="isFormOpen" :endpoint="formEndpoint" />
 </template>

@@ -46,5 +46,8 @@ onMounted(() => {
     </div>
   </section>
 
-  <ParticipationFormModal v-model="isFormOpen" />
+  <ParticipationFormModal
+    v-model="isFormOpen"
+    description="Оставьте ваши контактные данные для участия в фестивале RuCode. Мы отправим вам письмо на указанный e-mail, как только начнётся регистрация на мероприятия."
+  />
 </template>

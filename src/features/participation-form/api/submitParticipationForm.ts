@@ -6,14 +6,11 @@ export interface SubmitParticipationResult {
   error?: string
 }
 
-/**
- * Отправляет заявку на существующий внешний backend.
- * Формат тела запроса (имена полей, content-type) не задокументирован — использованы
- * разумные предположения (FormData, поля surname/name/patronymic/email/phone/region).
- * При уточнении контракта менять нужно только этот файл.
- */
+export const DEFAULT_PARTICIPATION_ENDPOINT = '/new/regMerAdmin25.php'
+
 export async function submitParticipationForm(
   data: ParticipationFormData,
+  endpoint: string = DEFAULT_PARTICIPATION_ENDPOINT,
 ): Promise<SubmitParticipationResult> {
   const body = new FormData()
   body.append('surname', data.surname.trim())
@@ -24,7 +21,7 @@ export async function submitParticipationForm(
   body.append('region', data.region)
 
   try {
-    await $fetch('/new/regMerAdmin25.php', { method: 'POST', body })
+    await $fetch(endpoint, { method: 'POST', body })
     return { success: true }
   } catch (error) {
     if (import.meta.dev) {

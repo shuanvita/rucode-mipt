@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { onKeyStroke, useScrollLock } from '@vueuse/core'
 
-type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | 'full'
+type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full'
 
 interface ModalProps {
-  size?: 'sm' | 'md' | 'lg' | 'xl' | 'full'
+  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full'
+  fullscreenOnMobile?: boolean
 }
 
-const props = withDefaults(defineProps<ModalProps>(), { size: 'md' })
+const props = withDefaults(defineProps<ModalProps>(), { size: 'md', fullscreenOnMobile: false })
 const panelRef = ref<HTMLElement>()
 const isLocked = useScrollLock(import.meta.client ? document.body : null)
 const isOpen = defineModel<boolean>({ required: true })
@@ -31,6 +32,7 @@ const sizeClasses: Record<ModalSize, string> = {
   md: 'max-w-md rounded-2xl max-h-[90dvh]',
   lg: 'max-w-lg rounded-2xl max-h-[90dvh]',
   xl: 'max-w-xl rounded-2xl max-h-[90dvh]',
+  '2xl': 'max-w-2xl rounded-2xl max-h-[90dvh]',
   full: 'max-w-[100vw] h-[100vh] max-h-[100vh] rounded-none',
 }
 
@@ -51,6 +53,7 @@ watch(isOpen, async (value) => {
       <div
         v-if="isOpen"
         class="fixed inset-0 z-999 flex items-center justify-center bg-black/40 p-4"
+        :class="fullscreenOnMobile && 'max-md:p-0'"
         role="dialog"
         aria-modal="true"
         @click="closeOnOverlayClick"
@@ -61,6 +64,8 @@ watch(isOpen, async (value) => {
           :class="[
             'bg-dark-primary relative flex w-full max-w-250 flex-col rounded-2xl shadow-xl outline-none',
             modalSizeClass,
+            fullscreenOnMobile &&
+              'max-md:h-dvh max-md:max-h-dvh max-md:max-w-none max-md:rounded-none',
           ]"
           v-bind="$attrs"
           @click.stop

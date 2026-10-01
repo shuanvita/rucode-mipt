@@ -1,13 +1,18 @@
 <script setup lang="ts">
-// TODO Уточнить по форме. Какие поля ожидает бек + endpoint отправки. Стилизация формы сделать как в production
+// TODO Уточнить по форме. Какие поля ожидает бек + endpoint отправки
 import { useParticipationForm } from '../api/useParticipationForm'
 import ParticipationFormFields from './ParticipationFormFields.vue'
 import ParticipationFormSuccess from './ParticipationFormSuccess.vue'
 
+const props = defineProps<{
+  endpoint?: string
+  description?: string
+}>()
+
 const isOpen = defineModel<boolean>({ required: true })
 
 const { formData, errors, status, submitErrorMessage, isValid, touch, submit, reset } =
-  useParticipationForm()
+  useParticipationForm(() => props.endpoint)
 
 watch(isOpen, (value) => {
   if (!value) reset()
@@ -15,15 +20,26 @@ watch(isOpen, (value) => {
 </script>
 
 <template>
-  <UiModal v-model="isOpen" size="xl">
-    <ParticipationFormSuccess v-if="status === 'success'" @close="isOpen = false" />
+  <UiModal v-model="isOpen" size="2xl" fullscreen-on-mobile>
+    <ParticipationFormSuccess v-if="status === 'success'" />
 
     <form v-else class="flex flex-col gap-5" @submit.prevent="submit">
-      <ParticipationFormFields v-model:form-data="formData" :errors="errors" @blur="touch" />
+      <ParticipationFormFields
+        v-model:form-data="formData"
+        :errors="errors"
+        :description="description"
+        @blur="touch"
+      />
 
-      <UiAction type="submit" class="w-full" :disabled="status === 'submitting' || !isValid">
-        {{ status === 'submitting' ? 'Отправка…' : 'Отправить форму' }}
-      </UiAction>
+      <div class="flex justify-center">
+        <button
+          type="submit"
+          class="cursor-pointer rounded-[45px] bg-yellow-400 px-10 py-5 text-center font-semibold text-black transition-opacity disabled:opacity-40 max-md:px-5 max-md:py-3"
+          :disabled="status === 'submitting' || !isValid"
+        >
+          {{ status === 'submitting' ? 'Отправка…' : 'Отправить форму' }}
+        </button>
+      </div>
 
       <p v-if="status === 'error'" class="text-destructive text-sm" role="alert">
         {{ submitErrorMessage }}

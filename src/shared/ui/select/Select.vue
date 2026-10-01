@@ -110,13 +110,13 @@ function handleTriggerKeydown(event: KeyboardEvent) {
 }
 
 const BASE_TRIGGER_CLASS =
-  'text-fg focus:border-yellow-primary/50 focus:ring-yellow-primary/10 border-yellow-primary flex h-full w-full items-center justify-between gap-2 rounded-lg border bg-transparent px-4 py-2.5 text-sm transition-colors duration-200 outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-40'
+  'text-fg border-yellow-primary focus:border-yellow-primary/60 flex h-full min-h-12 w-full cursor-pointer items-center justify-between gap-2 rounded-none border-0 border-b-2 bg-transparent px-5 py-3 text-sm transition-colors duration-200 outline-none disabled:cursor-not-allowed disabled:opacity-40'
 
 const triggerClass = computed(() =>
   twMerge(
     BASE_TRIGGER_CLASS,
-    !selectedOption.value && 'text-fg/40',
-    props.error && 'border-red focus:border-red focus:ring-red/10',
+    !selectedOption.value && 'text-purple-light/60',
+    props.error && 'border-red focus:border-red',
   ),
 )
 </script>

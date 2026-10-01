@@ -4,6 +4,7 @@ import type { ParticipationFormData, ParticipationFormErrors } from '~/features/
 
 defineProps<{
   errors: ParticipationFormErrors
+  description?: string
 }>()
 
 const emit = defineEmits<{ blur: [field: keyof ParticipationFormData] }>()
@@ -12,10 +13,7 @@ const formData = defineModel<ParticipationFormData>('formData', { required: true
 </script>
 
 <template>
-  <UiText as="p" class="text-fg/80">
-    Оставьте ваши контактные данные для участия в фестивале RuCode. Мы отправим вам письмо на
-    указанный e-mail, как только начнётся регистрация на мероприятия.
-  </UiText>
+  <UiText v-if="description" as="p" class="text-fg/80">{{ description }}</UiText>
 
   <div class="grid grid-cols-2 items-start gap-x-6 gap-y-5 max-md:grid-cols-1">
     <UiInput
