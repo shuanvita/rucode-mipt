@@ -24,7 +24,15 @@ defineProps<AiTestingDemoProps>()
             :key="card.id"
             class="flex flex-col items-center gap-3"
           >
-            <NuxtPicture :class="['max-w-25', { 'size-20': index % 2 === 0 }]" :src="card.image" alt="" preload />
+            <NuxtPicture
+              :class="['flex max-w-25 justify-center', { 'max-lg:self-center': index % 2 === 0 }]"
+              :img-attrs="{
+                class: index % 2 === 0 ? 'size-20 object-contain lg:size-auto' : '',
+              }"
+              :src="card.image"
+              alt=""
+              preload
+            />
             <div
               v-if="card.text"
               class="flex w-51 max-w-full items-center justify-center rounded-lg border border-purple-500 bg-neutral-800 p-1"

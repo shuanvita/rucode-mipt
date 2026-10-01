@@ -25,6 +25,9 @@ watch(
   },
 )
 
+const { locale } = useI18n()
+watch(locale, close)
+
 onKeyStroke('Escape', () => {
   if (props.modelValue) close()
 })
@@ -69,11 +72,11 @@ onKeyStroke('Escape', () => {
           </NuxtLink>
         </nav>
 
-        <template v-if="config.cta.items?.length">
+        <template v-if="config.cta?.items?.length">
           <hr class="mt-6 mb-4 border-t-white/15" />
 
           <span class="text-yellow-primary text-[14px] font-bold tracking-wider uppercase">
-            {{ config.cta.label }}
+            {{ config.cta.labelKey ? $t(config.cta.labelKey) : config.cta.label }}
           </span>
 
           <nav class="mt-3 flex flex-col gap-3" aria-label="Мероприятия">
@@ -91,7 +94,7 @@ onKeyStroke('Escape', () => {
         </template>
 
         <UiAction
-          v-else
+          v-else-if="config.cta"
           class="mt-6 self-start"
           :to="config.cta.to"
           :variant="config.cta.variant ?? 'primary'"
