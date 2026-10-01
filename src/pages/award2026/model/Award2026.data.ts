@@ -157,7 +157,7 @@ const nominationsTabs: NominationsTabsProps = {
           ],
           partner: {
             name: 'МТС',
-            logo: '/images/award2026/mts.png',
+            logo: '/images/partners/mts.png',
             role: 'Генеральный партнёр',
           },
         },

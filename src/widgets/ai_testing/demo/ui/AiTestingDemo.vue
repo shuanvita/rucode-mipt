@@ -19,8 +19,12 @@ defineProps<AiTestingDemoProps>()
         >
         <UiText class="text-center lg:text-left">{{ text }}</UiText>
         <div class="flex flex-col items-center gap-6 lg:flex-row">
-          <div v-for="card in cards" :key="card.id" class="flex flex-col items-center gap-3">
-            <NuxtPicture class="max-w-25" :src="card.image" alt="" preload />
+          <div
+            v-for="(card, index) in cards"
+            :key="card.id"
+            class="flex flex-col items-center gap-3"
+          >
+            <NuxtPicture :class="['max-w-25', { 'size-20': index % 2 === 0 }]" :src="card.image" alt="" preload />
             <div
               v-if="card.text"
               class="flex w-51 max-w-full items-center justify-center rounded-lg border border-purple-500 bg-neutral-800 p-1"
