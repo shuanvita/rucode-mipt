@@ -1,4 +1,5 @@
 import type { HeroSectionProps } from '~/widgets/consortium/hero'
+import type { FestivalSectionProps } from '~/widgets/consortium/festival'
 import { createFallbackBlock } from '~/shared/api'
 import type { ContentPage } from '~/shared/api'
 
@@ -21,8 +22,34 @@ const hero: HeroSectionProps = {
   image: '/images/consortium/hero.webp',
 }
 
+const festival: FestivalSectionProps = {
+  title: 'Фестиваль RuCode: главное',
+  cards: [
+    {
+      title: '30+',
+      description: 'ведущих вузов-соорганизаторов',
+      icon: '/images/consortium/festival-1.svg',
+    },
+    {
+      title: '5 лет',
+      description: 'успешной работы',
+      icon: '/images/consortium/festival-2.svg',
+    },
+    {
+      title: '1 000 000',
+      description: 'участников фестиваля за 5 лет',
+      icon: '/images/consortium/festival-3.svg',
+    },
+    {
+      title: 'а ещё…',
+      description: 'поддержка государства и бизнеса',
+      icon: '/images/consortium/festival-4.svg',
+    },
+  ],
+}
+
 export const consortiumPageData: ContentPage = {
   slug: '/consortium',
   version: 1,
-  blocks: [createFallbackBlock('hero', 10, hero)],
+  blocks: [createFallbackBlock('hero', 10, hero), createFallbackBlock('festival', 20, festival)],
 }
