@@ -97,7 +97,10 @@ function handleTriggerKeydown(event: KeyboardEvent) {
     case 'Enter':
     case ' ':
       event.preventDefault()
-      if (activeIndex.value >= 0) selectOption(props.options?.[activeIndex.value])
+      if (activeIndex.value >= 0) {
+        const option = props.options?.[activeIndex.value]
+        if (option) selectOption(option)
+      }
       break
     case 'Escape':
       event.preventDefault()

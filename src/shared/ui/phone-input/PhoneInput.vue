@@ -13,7 +13,9 @@ const props = withDefaults(
     disabled?: boolean
   }>(),
   {
+    name: 'phone',
     disabled: false,
+    errorMessage: '',
   },
 )
 
@@ -95,7 +97,10 @@ function handleTriggerKeydown(event: KeyboardEvent) {
     case 'Enter':
     case ' ':
       event.preventDefault()
-      if (activeIndex.value >= 0) selectCountry(PHONE_COUNTRIES[activeIndex.value])
+      if (activeIndex.value >= 0) {
+        const country = PHONE_COUNTRIES[activeIndex.value]
+        if (country) selectCountry(country)
+      }
       break
     case 'Escape':
       event.preventDefault()

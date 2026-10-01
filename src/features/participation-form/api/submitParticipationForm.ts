@@ -1,5 +1,5 @@
 import { getPhoneCountry } from '~/shared/config'
-import type { ParticipationFormData } from '../model/ParticipationForm.types'
+import type { ParticipationFormData } from '~/features/participation-form'
 
 export interface SubmitParticipationResult {
   success: boolean

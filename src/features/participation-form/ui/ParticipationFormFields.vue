@@ -61,7 +61,7 @@ const formData = defineModel<ParticipationFormData>('formData', { required: true
     :error-message="errors.region"
     @update:model-value="
       (value) => {
-        formData.region = value
+        formData.region = value ?? ''
         emit('blur', 'region')
       }
     "

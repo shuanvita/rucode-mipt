@@ -5,7 +5,7 @@
   "scripts": {
     "build": "nuxt build",
     "start": "node .output/server/index.mjs",
-    "dev": "steiger ./src && vitest run --reporter=minimal && nuxt dev",
+    "dev": "nuxi typecheck && steiger ./src && vitest run --reporter=minimal && nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
@@ -13,6 +13,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "format": "prettier --write .",
+    "typecheck": "nuxi typecheck",
     "format:check": "prettier --check ."
   },
   "dependencies": {
@@ -44,6 +45,7 @@
     "prettier-plugin-tailwindcss": "^0.8.1",
     "steiger": "^0.6.0",
     "tailwind-merge": "^3.6.0",
-    "vitest": "^5.0.0"
+    "vitest": "^5.0.0",
+    "vue-tsc": "^3.3.11"
   }
 }

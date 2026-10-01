@@ -17,8 +17,16 @@ export const PHONE_COUNTRIES: PhoneCountry[] = [
 
 export const DEFAULT_PHONE_COUNTRY = 'RU'
 
+const FALLBACK_PHONE_COUNTRY: PhoneCountry = {
+  code: 'RU',
+  name: 'Россия',
+  dialCode: '7',
+  flag: 'flag-ru',
+  groups: [3, 3, 2, 2],
+}
+
 export function getPhoneCountry(code: string): PhoneCountry {
-  return PHONE_COUNTRIES.find((country) => country.code === code) ?? PHONE_COUNTRIES[3]
+  return PHONE_COUNTRIES.find((country) => country.code === code) ?? FALLBACK_PHONE_COUNTRY
 }
 
 export function getPhoneDigitsLength(code: string): number {
