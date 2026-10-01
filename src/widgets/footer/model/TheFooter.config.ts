@@ -61,6 +61,19 @@ export const footerConfigs: Record<FooterConfigKey, FooterConfig> = {
     regulation: null,
     contacts: { email: 'info@rucode.net' },
   },
+  consortium: {
+    links: [
+      { href: '#main', title: 'Главное' },
+      { href: '#directions', title: 'Направления' },
+      { href: '#geography', title: 'География' },
+      { href: '#benefits', title: 'Преимущества' },
+      { href: '#gallery', title: 'Галерея' },
+      { href: '#forwho', title: 'Кого мы ждем?' },
+      { href: '#stages', title: 'Этапы' },
+    ],
+    regulation: null,
+    contacts: { email: 'info@rucode.net', phone: null, workHours: null },
+  },
   champ: {
     links: [
       { href: '#about', title: 'О чемпионате', titleKey: 'nav.champ.about' },

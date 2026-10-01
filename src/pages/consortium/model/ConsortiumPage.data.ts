@@ -12,7 +12,6 @@ const hero: HeroSectionProps = {
     'Создаём среду для развития науки и технологий',
   ],
   action: {
-    to: 'https://edu.mipt.ru/member/?rucode=1',
     text: 'Присоединиться',
   },
   document: {

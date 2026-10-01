@@ -3,7 +3,6 @@ export interface HeroSectionProps {
   title: string
   tags: string[]
   action: {
-    to: string
     text: string
   }
   document: {

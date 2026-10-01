@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import type { HeroSectionProps } from '~/widgets/consortium/hero'
+import { ConsortiumFormModal } from '~/features/consortium-form'
 
 defineProps<HeroSectionProps>()
+
+const isFormOpen = ref(false)
 </script>
 
 <template>
@@ -36,7 +39,7 @@ defineProps<HeroSectionProps>()
             </UiText>
           </li>
         </ul>
-        <UiAction class="h-13 px-10" :to="action.to">{{ action.text }}</UiAction>
+        <UiAction class="h-13 px-10" @click="isFormOpen = true">{{ action.text }}</UiAction>
       </div>
       <div class="hidden flex-col items-center gap-6 lg:flex">
         <NuxtPicture
@@ -64,5 +67,7 @@ defineProps<HeroSectionProps>()
         {{ document.text }}
       </UiAction>
     </div>
+
+    <ConsortiumFormModal v-model="isFormOpen" />
   </section>
 </template>
