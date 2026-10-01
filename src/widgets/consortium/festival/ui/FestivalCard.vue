@@ -6,7 +6,7 @@ defineProps<FestivalCardProps>()
 
 <template>
   <div
-    class="relative z-10 size-full rounded-[40px] bg-linear-to-b from-white/35 via-white/10 to-white/20 p-[10px] backdrop-blur-sm"
+    class="size-full rounded-[40px] bg-linear-to-b from-white/35 via-white/10 to-white/20 p-[10px] backdrop-blur-sm"
   >
     <div
       class="bg-dark-primary relative flex size-full min-h-81.5 flex-col gap-4 overflow-hidden rounded-[30px] px-6 pt-8 pb-8 lg:px-5 xl:px-6"
@@ -33,7 +33,7 @@ defineProps<FestivalCardProps>()
         width="96"
         height="96"
         loading="lazy"
-        class="pointer-events-none relative mt-auto size-24 self-center"
+        class="relative mt-auto size-24 self-center"
       />
     </div>
   </div>

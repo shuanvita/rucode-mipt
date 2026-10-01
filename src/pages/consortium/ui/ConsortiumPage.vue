@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { HeroSection } from '~/widgets/consortium/hero'
 import { FestivalSection } from '~/widgets/consortium/festival'
+import { DirectionsWork } from '~/widgets/consortium/directions'
 
 import { consortiumPageData } from '../model/ConsortiumPage.data.ts'
 
@@ -9,10 +10,12 @@ import { usePageContent, useContentBlocks, ContentBlockRender } from '~/shared/a
 const blockComponents: Record<string, Component> = {
   hero: HeroSection,
   festival: FestivalSection,
+  directions: DirectionsWork,
 }
 
 const anchorIds: Record<string, string> = {
   festival: 'main',
+  directions: 'directions',
 }
 
 const { data } = await usePageContent('/consortium', consortiumPageData)
