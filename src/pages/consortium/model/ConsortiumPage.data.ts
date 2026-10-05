@@ -3,6 +3,7 @@ import type { FestivalSectionProps } from '~/widgets/consortium/festival'
 import type { DirectionsWorkProps } from '~/widgets/consortium/directions'
 import type { BenefitsSectionProps } from '~/widgets/consortium/benefits'
 import type { ParticipantsSectionProps } from '~/widgets/consortium/participants'
+import type { GallerySectionProps } from '~/widgets/consortium/gallery'
 import type { StepsSectionProps } from '~/widgets/consortium/steps'
 import type { PersonQuoteProps } from '~/widgets/person-quote'
 import type { PlacesSectionProps } from './PlacesSection.types'
@@ -128,6 +129,53 @@ const steps: StepsSectionProps = {
   },
 }
 
+const gallery: GallerySectionProps = {
+  title: 'Галерея',
+  slides: [
+    {
+      image: '/images/consortium/gallery/video-1.webp',
+      title: 'УрФУ - Столица RuCode 2023',
+      videoUrl: 'https://kinescope.io/embed/898Co76bHe2phJfar1Ez2M',
+    },
+    {
+      image: '/images/consortium/gallery/video-2.webp',
+      title: 'Консорциум соорганизаторов Всероссийского фестиваля RuCode',
+      videoUrl: 'https://kinescope.io/embed/ahFe1mt3gTS2cbiHDVbQot',
+    },
+    {
+      image: '/images/consortium/gallery/video-3.webp',
+      title: 'Всероссийский Классный час RuCode',
+      videoUrl: 'https://kinescope.io/embed/rXZuJW68u2H7eDaYzwHLhr',
+    },
+    {
+      image: '/images/consortium/gallery/video-4.webp',
+      title: 'Вторая Всероссийская конференция GenAI Conf RuCode',
+      videoUrl: 'https://kinescope.io/embed/bQFVp2EQb2Lqhju2CrXTNh',
+    },
+    {
+      image: '/images/consortium/gallery/video-5.webp',
+      title: 'Festa RuCode',
+      videoUrl: 'https://kinescope.io/embed/criWgCpjrKvZBAcrcMYYuG',
+    },
+    {
+      image: '/images/consortium/gallery/video-6.webp',
+      title: 'Столица RuCode 2024 в Cеверо-Кавказском федеральном университете',
+      videoUrl: 'https://kinescope.io/embed/e2xNHqXZEvoWbmgi8AeUhR',
+    },
+    { image: '/images/consortium/gallery/photo-1.jpg' },
+    { image: '/images/consortium/gallery/photo-2.jpg' },
+    { image: '/images/consortium/gallery/photo-3.jpg' },
+    { image: '/images/consortium/gallery/photo-4.jpg' },
+    { image: '/images/consortium/gallery/photo-5.jpg' },
+    { image: '/images/consortium/gallery/photo-6.jpg' },
+    { image: '/images/consortium/gallery/photo-7.jpg' },
+    { image: '/images/consortium/gallery/photo-8.jpg' },
+    { image: '/images/consortium/gallery/photo-9.jpg' },
+    { image: '/images/consortium/gallery/photo-10.jpg' },
+    { image: '/images/consortium/gallery/photo-11.jpg' },
+  ],
+}
+
 const personQuote: PersonQuoteProps = {
   title: 'От первого лица',
   image: '/images/maleev.jpg',
@@ -150,7 +198,8 @@ export const consortiumPageData: ContentPage = {
     createFallbackBlock('consortium', 40, consortium),
     createFallbackBlock('benefits', 50, benefits),
     createFallbackBlock('personQuote', 60, personQuote),
-    createFallbackBlock('participants', 70, participants),
-    createFallbackBlock('steps', 80, steps),
+    createFallbackBlock('gallery', 70, gallery),
+    createFallbackBlock('participants', 80, participants),
+    createFallbackBlock('steps', 90, steps),
   ],
 }

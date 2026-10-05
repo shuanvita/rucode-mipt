@@ -15,22 +15,16 @@ const isFormOpen = ref(false)
         <li
           v-for="(step, index) in steps"
           :key="step.text"
-          class="steps-card flex items-center gap-x-7.5 rounded-2xl px-5 py-7.5 sm:px-10"
+          class="to-purple-primary/12 flex items-center gap-x-7.5 rounded-2xl border border-white/5 bg-linear-to-r from-white/3 px-5 py-7.5 sm:px-10"
         >
           <span
-            class="z-10 flex size-10 shrink-0 items-center justify-center rounded-full border border-[#333333] bg-[#1F1F1F] text-[16px] leading-5"
+            class="flex size-10 shrink-0 items-center justify-center rounded-full border border-[#333333] bg-[#1F1F1F] text-[16px] leading-5"
           >
             {{ index + 1 }}
           </span>
           <UiText>
             <UiText as="span" :html="step.text" />
-            <UiAction
-              v-if="step.link"
-              variant="custom"
-              :to="step.link.to"
-              target="_blank"
-              class="underline"
-            >
+            <UiAction v-if="step.link" variant="custom" :to="step.link.to" class="underline">
               {{ step.link.text }}
             </UiAction>
           </UiText>
@@ -44,10 +38,3 @@ const isFormOpen = ref(false)
     <ConsortiumFormModal v-model="isFormOpen" />
   </section>
 </template>
-
-<style scoped>
-.steps-card {
-  border: 1px solid rgb(255 255 255 / 0.05);
-  background: linear-gradient(90deg, rgb(255 255 255 / 0.03), rgb(182 87 255 / 0.12));
-}
-</style>

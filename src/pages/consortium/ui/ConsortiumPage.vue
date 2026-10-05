@@ -4,6 +4,7 @@ import { FestivalSection } from '~/widgets/consortium/festival'
 import { DirectionsWork } from '~/widgets/consortium/directions'
 import { BenefitsSection } from '~/widgets/consortium/benefits'
 import { ParticipantsSection } from '~/widgets/consortium/participants'
+import { GallerySection } from '~/widgets/consortium/gallery'
 import { StepsSection } from '~/widgets/consortium/steps'
 import { PersonQuote } from '~/widgets/person-quote'
 import PlacesSection from './PlacesSection.vue'
@@ -19,6 +20,7 @@ const blockComponents: Record<string, Component> = {
   consortium: PlacesSection,
   participants: ParticipantsSection,
   steps: StepsSection,
+  gallery: GallerySection,
   benefits: BenefitsSection,
   personQuote: PersonQuote,
 }
@@ -30,6 +32,7 @@ const anchorIds: Record<string, string> = {
   consortium: 'consortium',
   participants: 'forwho',
   steps: 'stages',
+  gallery: 'gallery',
 }
 
 const { data } = await usePageContent('/consortium', consortiumPageData)

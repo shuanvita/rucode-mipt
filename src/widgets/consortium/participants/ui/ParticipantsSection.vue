@@ -10,7 +10,9 @@ defineProps<ParticipantsSectionProps>()
       {{ title }}
     </UiHeading>
     <div class="relative z-10 mx-2.5 lg:mx-12.5">
-      <div class="participants-card space-y-9 rounded-2xl p-5 backdrop-blur-[48px] md:p-12.5">
+      <div
+        class="space-y-9 rounded-2xl border border-dashed border-white/20 bg-linear-160 from-white/2 to-white/10 p-5 backdrop-blur-[48px] md:p-12.5"
+      >
         <UiHeading v-if="subtitle" class="max-w-[80%] font-semibold uppercase" tag="h3">
           {{ subtitle }}
         </UiHeading>
@@ -36,10 +38,3 @@ defineProps<ParticipantsSectionProps>()
     </div>
   </section>
 </template>
-
-<style scoped>
-.participants-card {
-  border: 1px dashed rgb(255 255 255 / 0.2);
-  background: linear-gradient(160deg, rgb(255 255 255 / 0.02), rgb(255 255 255 / 0.1));
-}
-</style>
