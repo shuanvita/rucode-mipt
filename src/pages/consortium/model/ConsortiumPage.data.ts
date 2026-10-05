@@ -2,6 +2,7 @@ import type { HeroSectionProps } from '~/widgets/consortium/hero'
 import type { FestivalSectionProps } from '~/widgets/consortium/festival'
 import type { DirectionsWorkProps } from '~/widgets/consortium/directions'
 import type { BenefitsSectionProps } from '~/widgets/consortium/benefits'
+import type { ParticipantsSectionProps } from '~/widgets/consortium/participants'
 import type { PersonQuoteProps } from '~/widgets/person-quote'
 import type { PlacesSectionProps } from './PlacesSection.types'
 import { createFallbackBlock } from '~/shared/api'
@@ -95,6 +96,15 @@ const benefits: BenefitsSectionProps = {
   ],
 }
 
+const participants: ParticipantsSectionProps = {
+  title: 'Кто может стать участником консорциума?',
+  subtitle: 'Образовательные, общественные, коммерческие, государственные организации, которые:',
+  items: [
+    'Имеют необходимую инфраструктуру для проведения конференций, лекций, семинаров, чемпионатов по алгоритмическому программированию: оборудованные аудитории и компьютерные классы, стабильный высокоскоростный интернет и прочее;',
+    'Хотят и могут заниматься научно-просветительской деятельностью и проведением соревнований по алгоритмическому программированию; готовы привлекать к участию в чемпионатах по алгоритмическому программированию не менее 50 человек.',
+  ],
+}
+
 const personQuote: PersonQuoteProps = {
   title: 'От первого лица',
   image: '/images/maleev.jpg',
@@ -117,5 +127,6 @@ export const consortiumPageData: ContentPage = {
     createFallbackBlock('consortium', 40, consortium),
     createFallbackBlock('benefits', 50, benefits),
     createFallbackBlock('personQuote', 60, personQuote),
+    createFallbackBlock('participants', 70, participants),
   ],
 }

@@ -3,6 +3,7 @@ import { HeroSection } from '~/widgets/consortium/hero'
 import { FestivalSection } from '~/widgets/consortium/festival'
 import { DirectionsWork } from '~/widgets/consortium/directions'
 import { BenefitsSection } from '~/widgets/consortium/benefits'
+import { ParticipantsSection } from '~/widgets/consortium/participants'
 import { PersonQuote } from '~/widgets/person-quote'
 import PlacesSection from './PlacesSection.vue'
 
@@ -15,6 +16,7 @@ const blockComponents: Record<string, Component> = {
   festival: FestivalSection,
   directions: DirectionsWork,
   consortium: PlacesSection,
+  participants: ParticipantsSection,
   benefits: BenefitsSection,
   personQuote: PersonQuote,
 }
@@ -24,6 +26,7 @@ const anchorIds: Record<string, string> = {
   festival: 'main',
   directions: 'directions',
   consortium: 'consortium',
+  participants: 'forwho',
 }
 
 const { data } = await usePageContent('/consortium', consortiumPageData)
