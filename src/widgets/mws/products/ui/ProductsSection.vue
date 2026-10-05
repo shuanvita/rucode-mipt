@@ -10,6 +10,10 @@ const { prevClass, nextClass, navigation } = useSliderNavigation()
 const sliderOptions = {
   spaceBetween: 20,
   grabCursor: true,
+  autoHeight: true,
+  // Высота слайдера пересчитывается после загрузки lazy-картинок внутри карточек
+  observer: true,
+  observeSlideChildren: true,
   navigation,
 }
 </script>
