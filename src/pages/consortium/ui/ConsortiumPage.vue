@@ -2,6 +2,8 @@
 import { HeroSection } from '~/widgets/consortium/hero'
 import { FestivalSection } from '~/widgets/consortium/festival'
 import { DirectionsWork } from '~/widgets/consortium/directions'
+import { BenefitsSection } from '~/widgets/consortium/benefits'
+import { PersonQuote } from '~/widgets/person-quote'
 import PlacesSection from './PlacesSection.vue'
 
 import { consortiumPageData } from '../model/ConsortiumPage.data.ts'
@@ -13,9 +15,12 @@ const blockComponents: Record<string, Component> = {
   festival: FestivalSection,
   directions: DirectionsWork,
   consortium: PlacesSection,
+  benefits: BenefitsSection,
+  personQuote: PersonQuote,
 }
 
 const anchorIds: Record<string, string> = {
+  benefits: 'benefits',
   festival: 'main',
   directions: 'directions',
   consortium: 'consortium',

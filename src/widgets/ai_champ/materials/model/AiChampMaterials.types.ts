@@ -1,8 +1,4 @@
 export interface AiChampMaterialsProps {
-  title: string
-  imagePerson: string
-  namePerson: string
-  text: string
   footer: AiChampMaterialsFooterProps
 }
 

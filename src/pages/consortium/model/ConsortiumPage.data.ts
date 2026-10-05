@@ -1,6 +1,8 @@
 import type { HeroSectionProps } from '~/widgets/consortium/hero'
 import type { FestivalSectionProps } from '~/widgets/consortium/festival'
 import type { DirectionsWorkProps } from '~/widgets/consortium/directions'
+import type { BenefitsSectionProps } from '~/widgets/consortium/benefits'
+import type { PersonQuoteProps } from '~/widgets/person-quote'
 import type { PlacesSectionProps } from './PlacesSection.types'
 import { createFallbackBlock } from '~/shared/api'
 import type { ContentPage } from '~/shared/api'
@@ -80,6 +82,27 @@ const directions: DirectionsWorkProps = {
   ],
 }
 
+const benefits: BenefitsSectionProps = {
+  title: '7 причин присоединиться к консорциуму',
+  benefits: [
+    'Усиление имиджа вуза',
+    'Поиск партнёров для совместных проектов',
+    'Развитие карьерных возможностей студентов',
+    'Масштабные ИТ-мероприятия на ваших площадках',
+    'Привлечение талантливых абитуриентов',
+    'Повышение качества образовательных программ',
+    'Новые возможности для обмена опытом',
+  ],
+}
+
+const personQuote: PersonQuoteProps = {
+  title: 'От первого лица',
+  image: '/images/maleev.jpg',
+  name: 'Алексей Малеев',
+  role: 'Руководитель программного<br> комитета Всероссийского фестиваля RuCode',
+  text: 'Консорциум соорганизаторов&nbsp;— это&nbsp;основа успеха Фестиваля RuCode. Совместная работа ведущих вузов, компаний и&nbsp;экспертов позволяет создать уникальную платформу для&nbsp;развития молодых талантов в&nbsp;сфере IT. Только объединив усилия, мы&nbsp;можем достичь действительно значимых результатов и&nbsp;внести вклад в&nbsp;будущее нашей страны',
+}
+
 const consortium: PlacesSectionProps = {
   title: 'Площадки проведения',
 }
@@ -92,5 +115,7 @@ export const consortiumPageData: ContentPage = {
     createFallbackBlock('festival', 20, festival),
     createFallbackBlock('directions', 30, directions),
     createFallbackBlock('consortium', 40, consortium),
+    createFallbackBlock('benefits', 50, benefits),
+    createFallbackBlock('personQuote', 60, personQuote),
   ],
 }

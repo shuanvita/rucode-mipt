@@ -11,6 +11,7 @@ import { AiChampPreparation } from '~/widgets/ai_champ/preparation'
 import { EventsSlider } from '~/shared/ui/events-slider'
 import { PartnersSection } from '~/widgets/partners'
 import { AiChampMaterials } from '~/widgets/ai_champ/materials'
+import { PersonQuote } from '~/widgets/person-quote'
 
 const blockComponents: Record<string, Component> = {
   hero: AiChampHero,
@@ -20,6 +21,7 @@ const blockComponents: Record<string, Component> = {
   tasks: AiChampTasks,
   preparation: AiChampPreparation,
   courses: EventsSlider,
+  personQuote: PersonQuote,
   materials: AiChampMaterials,
   partners: PartnersSection,
 }

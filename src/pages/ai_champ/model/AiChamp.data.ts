@@ -6,6 +6,7 @@ import type { AiChampStagesProps } from '~/widgets/ai_champ/stages'
 import type { AiChampTasksProps } from '~/widgets/ai_champ/tasks'
 import type { AiChampPreparationProps } from '~/widgets/ai_champ/preparation'
 import type { EventsSliderProps } from '~/shared/ui/events-slider'
+import type { PersonQuoteProps } from '~/widgets/person-quote'
 import type { AiChampMaterialsProps } from '~/widgets/ai_champ/materials'
 import type { PartnersSectionProps } from '~/widgets/partners'
 
@@ -285,11 +286,14 @@ const courses: EventsSliderProps = {
   ],
 }
 
-const materials: AiChampMaterialsProps = {
+const personQuote: PersonQuoteProps = {
   title: 'Полезные материалы',
-  imagePerson: '/images/ai_champ/person.png',
-  namePerson: 'Александра Дунаева',
+  image: '/images/ai_champ/person.png',
+  name: 'Александра Дунаева',
   text: 'В конце октября вам предстоит отправить код своего лучшего решения на проверку. Позаботьтесь о том, чтобы сохранить код модели, которая показала наилучший результат. Также рекомендуется указывать seed в имени файла с ответами — это упростит воспроизведение результатов. Профессионалы используют для этого системы логирования экспериментов, такие как W&B, Comet, MLflow, ClearML или Aim. Ознакомьтесь с AutoML, например библиотекой <a class="text-yellow-primary underline hover:text-white hover:no-underline transition-all duration-200" href="https://developers.sber.ru/portal/products/lightautoml" target="_blank">LightAutoML</a> от Сбера. Это сэкономит время при решении некоторых задач.',
+}
+
+const materials: AiChampMaterialsProps = {
   footer: {
     image: '/images/ai_champ/notebook.png',
     text: 'Сборник задач по машинному обучению для школьников',
@@ -336,7 +340,8 @@ export const aiChampData: ContentPage = {
     createFallbackBlock('tasks', 50, tasks),
     createFallbackBlock('preparation', 60, preparation),
     createFallbackBlock('courses', 70, courses),
-    createFallbackBlock('materials', 80, materials),
+    createFallbackBlock('personQuote', 80, personQuote),
+    createFallbackBlock('materials', 85, materials),
     createFallbackBlock('partners', 90, partners),
   ],
 }
