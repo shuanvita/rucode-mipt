@@ -1,6 +1,6 @@
 import type { MediaCardProps } from '~/shared/ui/media-gallery'
 
 export interface VideoGalleryProps {
-  title: string
+  title?: string
   items: MediaCardProps[]
 }

@@ -42,3 +42,5 @@ export type HeaderConfigKey =
   | 'mws'
   | 'mts'
   | 'practikum'
+  | 'final2024'
+  | 'capital2024'

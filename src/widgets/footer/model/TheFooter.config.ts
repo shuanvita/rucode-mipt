@@ -109,6 +109,38 @@ export const footerConfigs: Record<FooterConfigKey, FooterConfig> = {
       workHours: null,
     },
   },
+  final2024: {
+    links: [
+      { href: '#about', title: 'О финале' },
+      { href: '#comments', title: 'Зачем участвовать' },
+      { href: '#program', title: 'Программа' },
+      { href: '#faq', title: 'Вопросы и ответы' },
+      { href: '#partners', title: 'Партнёры' },
+    ],
+    regulation: null,
+    contacts: {
+      email: 'info@rucode.net',
+      link: { label: 'Telegram', href: 'https://t.me/rucodefestival' },
+      phone: null,
+      workHours: null,
+    },
+  },
+  capital2024: {
+    links: [
+      { href: '#about', title: 'О Столице' },
+      { href: '#faces', title: 'Лица RuCode' },
+      { href: '#program', title: 'Программа' },
+      { href: '#gallery', title: 'Галерея' },
+      { href: '#partners', title: 'Партнёры' },
+    ],
+    regulation: null,
+    contacts: {
+      email: 'info@rucode.net',
+      link: { label: 'Telegram', href: 'https://t.me/rucodefestival' },
+      phone: null,
+      workHours: null,
+    },
+  },
   champ: {
     links: [
       { href: '#about', title: 'О чемпионате', titleKey: 'nav.champ.about' },

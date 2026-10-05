@@ -17,7 +17,7 @@ function open(item: MediaCardProps, index: number) {
 
 <template>
   <section class="container space-y-6 text-center lg:space-y-10">
-    <UiHeading class="text-purple-primary" tag="h2">{{ title }}</UiHeading>
+    <UiHeading v-if="title" class="text-purple-primary" tag="h2">{{ title }}</UiHeading>
     <UiMediaGallery :items="items" :columns="3" @select="open" />
     <UiModal v-model="isOpen" size="lg">
       <UiVideoFrame v-if="activeItem?.videoUrl" :src="activeItem.videoUrl" />

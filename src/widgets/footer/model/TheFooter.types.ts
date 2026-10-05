@@ -38,3 +38,5 @@ export type FooterConfigKey =
   | 'mws'
   | 'mts'
   | 'practikum'
+  | 'final2024'
+  | 'capital2024'
