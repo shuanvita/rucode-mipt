@@ -29,7 +29,7 @@ const anchorIds: Record<string, string> = {
   benefits: 'benefits',
   festival: 'main',
   directions: 'directions',
-  consortium: 'consortium',
+  consortium: 'geography',
   participants: 'forwho',
   steps: 'stages',
   gallery: 'gallery',
