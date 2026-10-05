@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ConsortiumCardProps } from '~/widgets/home/consortium'
+import type { ConsortiumCardProps } from '~/widgets/consortium-section'
 
 defineProps<Pick<ConsortiumCardProps, 'city' | 'items'>>()
 defineEmits<{ close: [] }>()

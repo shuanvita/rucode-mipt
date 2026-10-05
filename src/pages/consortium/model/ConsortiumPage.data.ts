@@ -1,6 +1,7 @@
 import type { HeroSectionProps } from '~/widgets/consortium/hero'
 import type { FestivalSectionProps } from '~/widgets/consortium/festival'
 import type { DirectionsWorkProps } from '~/widgets/consortium/directions'
+import type { PlacesSectionProps } from './PlacesSection.types'
 import { createFallbackBlock } from '~/shared/api'
 import type { ContentPage } from '~/shared/api'
 
@@ -79,6 +80,10 @@ const directions: DirectionsWorkProps = {
   ],
 }
 
+const consortium: PlacesSectionProps = {
+  title: 'Площадки проведения',
+}
+
 export const consortiumPageData: ContentPage = {
   slug: '/consortium',
   version: 1,
@@ -86,5 +91,6 @@ export const consortiumPageData: ContentPage = {
     createFallbackBlock('hero', 10, hero),
     createFallbackBlock('festival', 20, festival),
     createFallbackBlock('directions', 30, directions),
+    createFallbackBlock('consortium', 40, consortium),
   ],
 }

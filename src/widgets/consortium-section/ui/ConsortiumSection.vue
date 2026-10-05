@@ -6,10 +6,12 @@ import {
   usePreferredReducedMotion,
   useResizeObserver,
 } from '@vueuse/core'
-import type { ConsortiumSectionProps } from '~/widgets/home/consortium'
+import {
+  CONSORTIUM_MAP_HINT as hint,
+  CONSORTIUM_MAP_IMAGE as imageMap,
+  consortiumCards as cards,
+} from '../model/ConsortiumSection.data'
 import ConsortiumCard from './ConsortiumCard.vue'
-
-const props = defineProps<ConsortiumSectionProps>()
 
 const OFFSET = { right: 20, left: 4, bottom: 15, top: 4 } as const
 
@@ -22,7 +24,7 @@ const isLargeScreen = useMediaQuery('(min-width: 640px)')
 const reducedMotion = usePreferredReducedMotion()
 
 const activeId = ref<string | null>(null)
-const activeCard = computed(() => props.cards.find((card) => card.id === activeId.value) ?? null)
+const activeCard = computed(() => cards.find((card) => card.id === activeId.value) ?? null)
 
 function toggle(id: string) {
   return (activeId.value = activeId.value === id ? null : id)
@@ -105,79 +107,70 @@ useResizeObserver(mapRef, place)
 </script>
 
 <template>
-  <section class="container space-y-6 text-center lg:space-y-10">
-    <UiHeading class="text-purple-primary" tag="h2">{{ title }}</UiHeading>
-    <UiText class="mx-auto max-w-190">{{ description }}</UiText>
-
-    <div>
-      <UiText v-if="hint" class="mb-4 text-white/60" size="sm" weight="light">{{ hint }}</UiText>
-      <div ref="mapRef" class="relative mx-auto max-w-265">
-        <NuxtImg
-          :src="imageMap"
-          alt="Карта России"
-          width="1060"
-          loading="lazy"
-          class="pointer-events-none aspect-[1.82] w-full select-none"
+  <div class="text-center">
+    <UiText class="mb-4 text-white/60" size="sm" weight="light">{{ hint }}</UiText>
+    <div ref="mapRef" class="relative mx-auto max-w-265">
+      <NuxtImg
+        :src="imageMap"
+        alt="Карта России"
+        width="1060"
+        loading="lazy"
+        class="pointer-events-none aspect-[1.82] w-full select-none"
+      />
+      <button
+        v-for="card in cards"
+        :key="card.id"
+        type="button"
+        data-consortium-pin
+        :aria-label="card.city"
+        :aria-expanded="card.id === activeId"
+        :aria-controls="card.id === activeId ? popupId : undefined"
+        :style="{ left: card.coordinates.x, top: card.coordinates.y }"
+        class="consortium-pin group absolute size-2.5 cursor-pointer rounded-full outline-offset-4 outline-white transition duration-200 after:absolute after:-inset-2.5 hover:z-20 focus-visible:z-20 focus-visible:outline-2 min-[360px]:size-3 min-[450px]:size-4"
+        @click="toggle(card.id)"
+      >
+        <span
+          v-if="card.id === activeId"
+          aria-hidden="true"
+          class="absolute inset-0 rounded-full bg-(--point-color) opacity-60 motion-safe:animate-ping"
         />
-        <button
-          v-for="card in cards"
-          :key="card.id"
-          type="button"
-          data-consortium-pin
-          :aria-label="card.city"
-          :aria-expanded="card.id === activeId"
-          :aria-controls="card.id === activeId ? popupId : undefined"
-          :style="{ left: card.coordinates.x, top: card.coordinates.y }"
-          class="consortium-pin group absolute size-2.5 cursor-pointer rounded-full outline-offset-4 outline-white transition duration-200 after:absolute after:-inset-2.5 hover:z-20 focus-visible:z-20 focus-visible:outline-2 min-[360px]:size-3 min-[450px]:size-4"
-          @click="toggle(card.id)"
+        <UiText
+          v-else
+          as="span"
+          size="xs"
+          aria-hidden="true"
+          class="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 rounded-md bg-black/75 px-2 py-1 whitespace-nowrap text-white opacity-0 transition-opacity group-hover:opacity-100"
         >
-          <span
-            v-if="card.id === activeId"
-            aria-hidden="true"
-            class="absolute inset-0 rounded-full bg-(--point-color) opacity-60 motion-safe:animate-ping"
-          />
-          <UiText
-            v-else
-            as="span"
-            size="xs"
-            aria-hidden="true"
-            class="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 rounded-md bg-black/75 px-2 py-1 whitespace-nowrap text-white opacity-0 transition-opacity group-hover:opacity-100"
-          >
-            {{ card.city }}
-          </UiText>
-        </button>
+          {{ card.city }}
+        </UiText>
+      </button>
 
-        <div
-          v-if="activeCard && isLargeScreen"
-          :id="popupId"
-          ref="popupRef"
-          :style="popupStyle"
-          class="absolute z-30 w-121 max-w-full"
-        >
-          <ConsortiumCard
-            :key="activeCard.id"
-            :city="activeCard.city"
-            :items="activeCard.items"
-            :style="cardOrigin"
-            @close="closeFromCard"
-          />
-        </div>
-      </div>
-
-      <div v-if="activeCard && !isLargeScreen" :id="popupId" ref="mobileCardRef" class="mt-4">
+      <div
+        v-if="activeCard && isLargeScreen"
+        :id="popupId"
+        ref="popupRef"
+        :style="popupStyle"
+        class="absolute z-30 w-121 max-w-full"
+      >
         <ConsortiumCard
           :key="activeCard.id"
           :city="activeCard.city"
           :items="activeCard.items"
+          :style="cardOrigin"
           @close="closeFromCard"
         />
       </div>
     </div>
 
-    <UiAction v-if="action" :to="action.to" class="py-5">
-      {{ action.text }}
-    </UiAction>
-  </section>
+    <div v-if="activeCard && !isLargeScreen" :id="popupId" ref="mobileCardRef" class="mt-4">
+      <ConsortiumCard
+        :key="activeCard.id"
+        :city="activeCard.city"
+        :items="activeCard.items"
+        @close="closeFromCard"
+      />
+    </div>
+  </div>
 </template>
 
 <style scoped>

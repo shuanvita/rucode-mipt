@@ -2,6 +2,7 @@
 import { HeroSection } from '~/widgets/consortium/hero'
 import { FestivalSection } from '~/widgets/consortium/festival'
 import { DirectionsWork } from '~/widgets/consortium/directions'
+import PlacesSection from './PlacesSection.vue'
 
 import { consortiumPageData } from '../model/ConsortiumPage.data.ts'
 
@@ -11,11 +12,13 @@ const blockComponents: Record<string, Component> = {
   hero: HeroSection,
   festival: FestivalSection,
   directions: DirectionsWork,
+  consortium: PlacesSection,
 }
 
 const anchorIds: Record<string, string> = {
   festival: 'main',
   directions: 'directions',
+  consortium: 'consortium',
 }
 
 const { data } = await usePageContent('/consortium', consortiumPageData)

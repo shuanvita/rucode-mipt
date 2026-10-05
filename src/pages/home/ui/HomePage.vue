@@ -8,7 +8,7 @@ import { AchievementsSection } from '~/widgets/home/achievements'
 import { PartnersSection } from '~/widgets/partners'
 import { TracksSection } from '~/widgets/home/tracks'
 import { CalendarSection } from '~/widgets/home/calendar'
-import { ConsortiumSection } from '~/widgets/home/consortium'
+import HomeConsortium from './HomeConsortium.vue'
 import { PhotoGallery } from '~/widgets/home/photo-gallery'
 import { VideoGallery } from '~/widgets/home/video-gallery'
 
@@ -18,7 +18,7 @@ const blockComponents: Record<string, Component> = {
   achievements: AchievementsSection,
   tracks: TracksSection,
   calendar: CalendarSection,
-  consortium: ConsortiumSection,
+  consortium: HomeConsortium,
   partners: PartnersSection,
   photos: PhotoGallery,
   videos: VideoGallery,
