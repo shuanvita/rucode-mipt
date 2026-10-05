@@ -21,7 +21,12 @@ onClickOutside(ctaDropdownRef, () => toggleCtaDropdown(false))
   <header class="container flex max-w-300 items-center justify-between px-10 pt-6">
     <div class="flex items-center gap-3 lg:gap-5">
       <UiAction variant="custom" class="max-w-25 lg:max-w-31" to="/">
-        <NuxtPicture width="167" height="110" src="logo.svg" :alt="$t('header.logoAlt')" />
+        <NuxtPicture
+          :width="config.logo?.width ?? 167"
+          :height="config.logo?.height ?? 110"
+          :src="config.logo?.src ?? 'logo.svg'"
+          :alt="$t('header.logoAlt')"
+        />
       </UiAction>
       <template v-if="config.partnerLogo">
         <span class="text-[20px] leading-none font-bold text-white lg:text-[20px]">X</span>

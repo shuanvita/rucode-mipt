@@ -84,6 +84,16 @@ export const footerConfigs: Record<FooterConfigKey, FooterConfig> = {
       workHours: null,
     },
   },
+  mts: {
+    links: [],
+    regulation: null,
+    contacts: {
+      email: 'info@rucode.net',
+      link: { label: 'job.mts.ru', href: 'https://job.mts.ru/' },
+      phone: null,
+      workHours: null,
+    },
+  },
   champ: {
     links: [
       { href: '#about', title: 'О чемпионате', titleKey: 'nav.champ.about' },

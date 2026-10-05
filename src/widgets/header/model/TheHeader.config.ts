@@ -88,6 +88,18 @@ export const headerConfigs: Record<HeaderConfigKey, HeaderConfig> = {
     links: [],
     partnerLogo: { src: '/images/partners/mts-white.png', alt: 'MWS', to: 'https://job.mts.ru/' },
   },
+  mts: {
+    logo: { src: '/rucode-logo-mts.svg', width: 122, height: 107 },
+    links: [
+      { href: '#benefits', title: 'Преимущества' },
+      { href: '#internship', title: 'Стажировки' },
+      { href: '#skills', title: 'Тестскиллс' },
+      { href: '#products', title: 'Направления и продукты' },
+      { href: '#faq', title: 'Вопросы и ответы' },
+      { href: '#contacts', title: 'Контакты' },
+    ],
+    partnerLogo: { src: '/images/partners/mts.png', alt: 'МТС', to: 'https://job.mts.ru/' },
+  },
   champ: {
     links: [
       { href: '#about', title: 'О чемпионате', titleKey: 'nav.champ.about' },

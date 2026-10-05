@@ -6,6 +6,11 @@ export interface NavLink {
 
 export interface HeaderConfig {
   links: NavLink[]
+  logo?: {
+    src: string
+    width: number
+    height: number
+  }
   partnerLogo?: {
     src: string
     alt: string
@@ -23,4 +28,12 @@ export interface HeaderConfig {
 }
 
 export type HeaderConfigKey =
-  'home' | 'award2026' | 'award2025' | 'ai_champ' | 'aitesting' | 'champ' | 'consortium' | 'mws'
+  | 'home'
+  | 'award2026'
+  | 'award2025'
+  | 'ai_champ'
+  | 'aitesting'
+  | 'champ'
+  | 'consortium'
+  | 'mws'
+  | 'mts'
