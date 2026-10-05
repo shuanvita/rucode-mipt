@@ -5,7 +5,7 @@
   "scripts": {
     "build": "nuxt build",
     "start": "node .output/server/index.mjs",
-    "dev": "nuxi typecheck && steiger ./src && nuxt dev",
+    "dev": "nuxi typecheck && steiger ./src && vitest run --reporter=minimal && nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",

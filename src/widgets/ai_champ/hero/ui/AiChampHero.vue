@@ -9,7 +9,7 @@ defineProps<AiChampHeroProps>()
     <div>
       <UiHeading class="mb-11 leading-none" tag="h1" :html="title" />
       <div class="space-y-4">
-        <UiText size="lg" v-for="text in description" :key="text">{{ text }}</UiText>
+        <UiText v-for="text in description" :key="text" size="lg">{{ text }}</UiText>
       </div>
     </div>
     <div class="relative self-center">
