@@ -37,3 +37,4 @@ export type FooterConfigKey =
   | 'consortium'
   | 'mws'
   | 'mts'
+  | 'practikum'

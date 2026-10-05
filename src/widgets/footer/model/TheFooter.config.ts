@@ -94,6 +94,21 @@ export const footerConfigs: Record<FooterConfigKey, FooterConfig> = {
       workHours: null,
     },
   },
+  practikum: {
+    links: [
+      { href: '#about', title: 'О практикуме' },
+      { href: '#stages', title: 'Этапы' },
+      { href: '#content', title: 'Материалы' },
+      { href: '#partners', title: 'Партнёры' },
+    ],
+    regulation: null,
+    contacts: {
+      email: 'info@rucode.net',
+      link: { label: 'Telegram чат', href: 'https://t.me/rucodefestival' },
+      phone: { label: '+7 (498) 713-91-89', href: 'tel:+74987139189' },
+      workHours: null,
+    },
+  },
   champ: {
     links: [
       { href: '#about', title: 'О чемпионате', titleKey: 'nav.champ.about' },

@@ -24,7 +24,7 @@ onClickOutside(ctaDropdownRef, () => toggleCtaDropdown(false))
         <NuxtPicture
           :width="config.logo?.width ?? 167"
           :height="config.logo?.height ?? 110"
-          :src="config.logo?.src ?? 'logo.svg'"
+          :src="config.logo?.src ?? '/logo.svg'"
           :alt="$t('header.logoAlt')"
         />
       </UiAction>
@@ -43,6 +43,15 @@ onClickOutside(ctaDropdownRef, () => toggleCtaDropdown(false))
           />
         </component>
       </template>
+      <NuxtImg
+        v-for="logo in config.supportLogos"
+        :key="logo.src"
+        class="h-9 w-auto lg:h-12"
+        :src="logo.src"
+        :alt="logo.alt"
+        format="png"
+        loading="eager"
+      />
     </div>
 
     <div class="hidden items-center gap-6 lg:flex">

@@ -47,7 +47,7 @@ const socials = [
           class="max-w-36"
           width="144"
           height="144"
-          src="logo-white.svg"
+          src="/logo-white.svg"
           :alt="$t('footer.logoAlt')"
         />
       </NuxtLink>

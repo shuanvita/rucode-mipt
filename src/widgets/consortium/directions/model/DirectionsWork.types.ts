@@ -1,5 +1,5 @@
 export interface DirectionsWorkProps {
-  title: string
+  title?: string
   cards: DirectionsCardProps[]
 }
 

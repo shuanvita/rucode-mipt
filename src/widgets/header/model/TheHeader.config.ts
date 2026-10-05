@@ -100,6 +100,18 @@ export const headerConfigs: Record<HeaderConfigKey, HeaderConfig> = {
     ],
     partnerLogo: { src: '/images/partners/mts.png', alt: 'МТС', to: 'https://job.mts.ru/' },
   },
+  practikum: {
+    supportLogos: [
+      { src: '/images/partners/minobr.png', alt: 'При грантовой поддержке Минобрнауки России' },
+      { src: '/images/partners/2231.png', alt: 'Десятилетие науки и технологий' },
+    ],
+    links: [
+      { href: '#about', title: 'О практикуме' },
+      { href: '#stages', title: 'Этапы' },
+      { href: '#content', title: 'Материалы' },
+      { href: '#partners', title: 'Партнёры' },
+    ],
+  },
   champ: {
     links: [
       { href: '#about', title: 'О чемпионате', titleKey: 'nav.champ.about' },

@@ -14,7 +14,7 @@ const borderDegrees = ['280deg', '76deg', '260deg', '100deg']
 
 <template>
   <section class="relative space-y-5 sm:space-y-10">
-    <UiHeading class="text-purple-primary container text-center font-black" tag="h2">
+    <UiHeading v-if="title" class="text-purple-primary container text-center font-black" tag="h2">
       {{ title }}
     </UiHeading>
     <ul class="container grid gap-5 md:grid-cols-2 md:gap-x-4">

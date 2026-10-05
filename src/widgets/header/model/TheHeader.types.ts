@@ -16,6 +16,10 @@ export interface HeaderConfig {
     alt: string
     to?: string
   }
+  supportLogos?: {
+    src: string
+    alt: string
+  }[]
   cta?: {
     label: string
     labelKey?: string
@@ -37,3 +41,4 @@ export type HeaderConfigKey =
   | 'consortium'
   | 'mws'
   | 'mts'
+  | 'practikum'
