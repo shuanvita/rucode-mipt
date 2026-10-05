@@ -74,6 +74,11 @@ export const footerConfigs: Record<FooterConfigKey, FooterConfig> = {
     regulation: null,
     contacts: { email: 'info@rucode.net', phone: null, workHours: null },
   },
+  mws: {
+    links: [],
+    regulation: null,
+    contacts: { email: 'info@rucode.net', phone: null, workHours: null },
+  },
   champ: {
     links: [
       { href: '#about', title: 'О чемпионате', titleKey: 'nav.champ.about' },

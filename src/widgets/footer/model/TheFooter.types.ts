@@ -27,4 +27,4 @@ export interface FooterConfig {
 }
 
 export type FooterConfigKey =
-  'home' | 'award2026' | 'award2025' | 'ai_champ' | 'aitesting' | 'champ' | 'consortium'
+  'home' | 'award2026' | 'award2025' | 'ai_champ' | 'aitesting' | 'champ' | 'consortium' | 'mws'

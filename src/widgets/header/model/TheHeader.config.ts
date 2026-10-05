@@ -84,6 +84,9 @@ export const headerConfigs: Record<HeaderConfigKey, HeaderConfig> = {
       { href: '#stages', title: 'Этапы' },
     ],
   },
+  mws: {
+    links: [],
+  },
   champ: {
     links: [
       { href: '#about', title: 'О чемпионате', titleKey: 'nav.champ.about' },
