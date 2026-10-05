@@ -92,13 +92,7 @@ function open(slide: GallerySlide) {
     </div>
 
     <UiModal v-model="isOpen" size="2xl">
-      <iframe
-        v-if="activeSlide?.videoUrl"
-        :src="activeSlide.videoUrl"
-        class="aspect-video w-full rounded-xl"
-        allow="autoplay; encrypted-media; fullscreen"
-        allowfullscreen
-      />
+      <UiVideoFrame v-if="activeSlide?.videoUrl" :src="activeSlide.videoUrl" />
       <NuxtImg
         v-else-if="activeSlide"
         :src="activeSlide.image"

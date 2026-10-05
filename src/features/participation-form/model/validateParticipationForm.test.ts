@@ -11,6 +11,8 @@ function validForm() {
     phone: '9161234567',
     phoneCountry: 'RU',
     region: 'moscow',
+    role: '',
+    events: [],
     agreement: true,
   }
 }

@@ -19,6 +19,9 @@ export async function submitParticipationForm(
   body.append('email', data.email.trim())
   body.append('phone', `+${getPhoneCountry(data.phoneCountry).dialCode}${data.phone}`)
   body.append('region', data.region)
+  if (data.role) body.append('role', data.role)
+  // TODO Уточнить у бека формат передачи списка мероприятий (в референсе поле mer)
+  data.events.forEach((event) => body.append('mer[]', event))
 
   try {
     await $fetch(endpoint, { method: 'POST', body })

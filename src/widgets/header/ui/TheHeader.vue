@@ -8,6 +8,8 @@ defineProps<{
   config: HeaderConfig
 }>()
 
+const UiAction = resolveComponent('UiAction')
+
 const [isMenuOpen, toggleMenu] = useToggle(false)
 
 const [isCtaDropdownOpen, toggleCtaDropdown] = useToggle(false)
@@ -17,9 +19,26 @@ onClickOutside(ctaDropdownRef, () => toggleCtaDropdown(false))
 
 <template>
   <header class="container flex max-w-300 items-center justify-between px-10 pt-6">
-    <UiAction variant="custom" class="max-w-25 lg:max-w-31" to="/">
-      <NuxtPicture width="167" height="110" src="logo.svg" :alt="$t('header.logoAlt')" />
-    </UiAction>
+    <div class="flex items-center gap-3 lg:gap-5">
+      <UiAction variant="custom" class="max-w-25 lg:max-w-31" to="/">
+        <NuxtPicture width="167" height="110" src="logo.svg" :alt="$t('header.logoAlt')" />
+      </UiAction>
+      <template v-if="config.partnerLogo">
+        <span class="text-[20px] leading-none font-bold text-white lg:text-[20px]">X</span>
+        <component
+          :is="config.partnerLogo.to ? UiAction : 'div'"
+          v-bind="config.partnerLogo.to ? { to: config.partnerLogo.to, variant: 'custom' } : {}"
+        >
+          <NuxtImg
+            class="h-14 w-auto lg:h-18"
+            :src="config.partnerLogo.src"
+            :alt="config.partnerLogo.alt"
+            format="png"
+            loading="eager"
+          />
+        </component>
+      </template>
+    </div>
 
     <div class="hidden items-center gap-6 lg:flex">
       <nav class="flex items-center gap-5" :aria-label="$t('header.mainNav')">
@@ -76,6 +95,7 @@ onClickOutside(ctaDropdownRef, () => toggleCtaDropdown(false))
     </div>
 
     <UiAction
+      v-if="config.links.length || config.cta"
       class="focus-visible:outline-ring flex h-8 w-8 items-center justify-center lg:hidden"
       :aria-label="$t('header.openMenu')"
       variant="custom"
@@ -83,6 +103,11 @@ onClickOutside(ctaDropdownRef, () => toggleCtaDropdown(false))
     >
       <UiSvg name="burger" class="h-15 w-15" />
     </UiAction>
-    <MobileMenu :model-value="isMenuOpen" :config="config" @update:model-value="toggleMenu" />
+    <MobileMenu
+      v-if="config.links.length || config.cta"
+      :model-value="isMenuOpen"
+      :config="config"
+      @update:model-value="toggleMenu"
+    />
   </header>
 </template>

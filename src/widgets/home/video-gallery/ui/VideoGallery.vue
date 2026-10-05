@@ -20,13 +20,7 @@ function open(item: MediaCardProps, index: number) {
     <UiHeading class="text-purple-primary" tag="h2">{{ title }}</UiHeading>
     <UiMediaGallery :items="items" :columns="3" @select="open" />
     <UiModal v-model="isOpen" size="lg">
-      <iframe
-        v-if="activeItem?.videoUrl"
-        :src="activeItem.videoUrl"
-        class="aspect-video w-full rounded-xl"
-        allow="autoplay; encrypted-media; fullscreen"
-        allowfullscreen
-      />
+      <UiVideoFrame v-if="activeItem?.videoUrl" :src="activeItem.videoUrl" />
       <img
         v-else-if="activeItem"
         :src="activeItem.image"

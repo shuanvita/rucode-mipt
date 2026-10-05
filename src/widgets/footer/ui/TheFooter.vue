@@ -108,6 +108,15 @@ const socials = [
           {{ contacts.email }}
         </UiAction>
 
+        <UiAction
+          v-if="contacts.link"
+          class="mb-4 text-[15px] font-bold hover:underline"
+          variant="custom"
+          :to="contacts.link.href"
+        >
+          {{ contacts.link.label }}
+        </UiAction>
+
         <div v-if="contacts.phoneTitle" class="mb-4 text-[15px] font-bold">
           {{ contacts.phoneTitleKey ? $t(contacts.phoneTitleKey) : contacts.phoneTitle }}
         </div>

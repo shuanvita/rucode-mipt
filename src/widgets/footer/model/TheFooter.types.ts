@@ -12,6 +12,7 @@ export interface FooterEmailGroup {
 
 export interface FooterContacts {
   email: string | null
+  link?: { label: string; href: string }
   extraGroups?: FooterEmailGroup[]
   phoneTitle?: string
   phoneTitleKey?: string

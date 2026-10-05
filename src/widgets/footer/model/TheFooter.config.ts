@@ -77,7 +77,12 @@ export const footerConfigs: Record<FooterConfigKey, FooterConfig> = {
   mws: {
     links: [],
     regulation: null,
-    contacts: { email: 'info@rucode.net', phone: null, workHours: null },
+    contacts: {
+      email: 'info@rucode.net',
+      link: { label: 'job.mts.ru', href: 'https://job.mts.ru/' },
+      phone: null,
+      workHours: null,
+    },
   },
   champ: {
     links: [

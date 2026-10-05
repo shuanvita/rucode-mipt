@@ -1,2 +1,7 @@
 export { default as ParticipationFormModal } from './ui/ParticipationFormModal.vue'
-export type { ParticipationFormData, ParticipationFormErrors } from './model/ParticipationForm.types'
+export type {
+  ParticipationFormData,
+  ParticipationFormErrors,
+  ParticipationOption,
+  ParticipationOptionGroup,
+} from './model/ParticipationForm.types'

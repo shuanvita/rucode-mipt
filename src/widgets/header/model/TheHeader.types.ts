@@ -6,6 +6,11 @@ export interface NavLink {
 
 export interface HeaderConfig {
   links: NavLink[]
+  partnerLogo?: {
+    src: string
+    alt: string
+    to?: string
+  }
   cta?: {
     label: string
     labelKey?: string

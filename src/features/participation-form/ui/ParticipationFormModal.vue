@@ -3,10 +3,13 @@
 import { useParticipationForm } from '../api/useParticipationForm'
 import ParticipationFormFields from './ParticipationFormFields.vue'
 import ParticipationFormSuccess from './ParticipationFormSuccess.vue'
+import type { ParticipationOptionGroup } from '../model/ParticipationForm.types'
 
 const props = defineProps<{
   endpoint?: string
   description?: string
+  roleGroup?: ParticipationOptionGroup
+  eventsGroup?: ParticipationOptionGroup
 }>()
 
 const isOpen = defineModel<boolean>({ required: true })
@@ -28,6 +31,8 @@ watch(isOpen, (value) => {
         v-model:form-data="formData"
         :errors="errors"
         :description="description"
+        :role-group="roleGroup"
+        :events-group="eventsGroup"
         @blur="touch"
       />
 

@@ -1,15 +1,26 @@
 <script setup lang="ts">
 import { RUSSIAN_REGIONS } from '~/shared/config'
-import type { ParticipationFormData, ParticipationFormErrors } from '~/features/participation-form'
+import type {
+  ParticipationFormData,
+  ParticipationFormErrors,
+  ParticipationOptionGroup,
+} from '~/features/participation-form'
 
 defineProps<{
   errors: ParticipationFormErrors
   description?: string
+  roleGroup?: ParticipationOptionGroup
+  eventsGroup?: ParticipationOptionGroup
 }>()
 
 const emit = defineEmits<{ blur: [field: keyof ParticipationFormData] }>()
 
 const formData = defineModel<ParticipationFormData>('formData', { required: true })
+
+function toggleEvent(value: string, checked: boolean) {
+  const rest = formData.value.events.filter((item) => item !== value)
+  formData.value.events = checked ? [...rest, value] : rest
+}
 </script>
 
 <template>
@@ -67,6 +78,34 @@ const formData = defineModel<ParticipationFormData>('formData', { required: true
     "
     @blur="emit('blur', 'region')"
   />
+
+  <div v-if="roleGroup || eventsGroup" class="grid items-start gap-x-6 gap-y-5 md:grid-cols-2">
+    <fieldset v-if="roleGroup" class="flex flex-col gap-3">
+      <legend class="mb-4 text-[13px] leading-5.5">{{ roleGroup.legend }}</legend>
+      <UiRadio
+        v-for="option in roleGroup.options"
+        :key="option.value"
+        v-model="formData.role"
+        name="role"
+        :value="option.value"
+      >
+        {{ option.label }}
+      </UiRadio>
+    </fieldset>
+
+    <fieldset v-if="eventsGroup" class="flex flex-col gap-3">
+      <legend class="mb-4 text-[13px] leading-5.5">{{ eventsGroup.legend }}</legend>
+      <UiCheckbox
+        v-for="option in eventsGroup.options"
+        :key="option.value"
+        name="events"
+        :model-value="formData.events.includes(option.value)"
+        @update:model-value="toggleEvent(option.value, $event)"
+      >
+        {{ option.label }}
+      </UiCheckbox>
+    </fieldset>
+  </div>
 
   <UiCheckbox
     :model-value="formData.agreement"

@@ -86,6 +86,7 @@ export const headerConfigs: Record<HeaderConfigKey, HeaderConfig> = {
   },
   mws: {
     links: [],
+    partnerLogo: { src: '/images/partners/mts-white.png', alt: 'MWS', to: 'https://job.mts.ru/' },
   },
   champ: {
     links: [
