@@ -3,6 +3,7 @@ import type { FestivalSectionProps } from '~/widgets/consortium/festival'
 import type { DirectionsWorkProps } from '~/widgets/consortium/directions'
 import type { BenefitsSectionProps } from '~/widgets/consortium/benefits'
 import type { ParticipantsSectionProps } from '~/widgets/consortium/participants'
+import type { StepsSectionProps } from '~/widgets/consortium/steps'
 import type { PersonQuoteProps } from '~/widgets/person-quote'
 import type { PlacesSectionProps } from './PlacesSection.types'
 import { createFallbackBlock } from '~/shared/api'
@@ -105,6 +106,28 @@ const participants: ParticipantsSectionProps = {
   ],
 }
 
+const steps: StepsSectionProps = {
+  title: 'Как стать участником консорциума?<br> 5 простых шагов',
+  steps: [
+    {
+      text: 'Ознакомиться с ',
+      link: {
+        to: '/files/polozhenie-o-konsorcziume-1.pdf',
+        text: 'Положением о консорциуме соорганизаторов',
+      },
+    },
+    { text: 'Подать заявку на сайте' },
+    {
+      text: 'Принять участие в установочной встрече с представителем координатора консорциума',
+    },
+    { text: 'Подписать Соглашение о сотрудничестве' },
+    { text: 'Стать участником консорциума соорганизаторов RuCode' },
+  ],
+  action: {
+    text: 'Подать заявку',
+  },
+}
+
 const personQuote: PersonQuoteProps = {
   title: 'От первого лица',
   image: '/images/maleev.jpg',
@@ -128,5 +151,6 @@ export const consortiumPageData: ContentPage = {
     createFallbackBlock('benefits', 50, benefits),
     createFallbackBlock('personQuote', 60, personQuote),
     createFallbackBlock('participants', 70, participants),
+    createFallbackBlock('steps', 80, steps),
   ],
 }
