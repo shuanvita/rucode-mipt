@@ -1,9 +1,9 @@
 export interface PartnersSectionProps {
   items: {
     title: string
-    titleClass?: string
+    /** Цвет заголовка группы; по умолчанию purple. */
+    titleTone?: 'purple' | 'yellow'
     text?: string
-    textClass?: string
     images: {
       src: string
       alt: string

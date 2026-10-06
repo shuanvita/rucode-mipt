@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import { flushPromises } from '@vue/test-utils'
 import { mountSuspended, registerEndpoint } from '@nuxt/test-utils/runtime'
 
@@ -10,9 +10,12 @@ const page = (slug: string): ContentPage => ({ slug, version: 1, blocks: [] })
 // useAsyncData кэширует данные по ключу — в каждом тесте нужен свой slug
 let counter = 0
 
-function mountProbe(fallback: PageContentFallback, { withCms = false } = {}) {
+function mountProbe(
+  fallback: PageContentFallback,
+  { withCms = false, cmsResponse }: { withCms?: boolean; cmsResponse?: unknown } = {},
+) {
   const slug = `/probe/${counter++}`
-  if (withCms) registerEndpoint(`/api/cms${slug}`, () => page('cms'))
+  if (withCms) registerEndpoint(`/api/cms${slug}`, () => cmsResponse ?? page('cms'))
 
   return mountSuspended(
     defineComponent({
@@ -59,6 +62,16 @@ describe('usePageContent', () => {
     await useNuxtApp().$i18n.setLocale('en')
     const wrapper = await mountProbe({ ru: page('ru-fallback') })
     expect(wrapper.text()).toBe('ru-fallback')
+  })
+
+  it('невалидный ответ CMS игнорирует и берёт локальные данные', async () => {
+    const error = vi.spyOn(console, 'error').mockImplementation(() => {})
+    const wrapper = await mountProbe(page('local'), {
+      withCms: true,
+      cmsResponse: { slug: 'broken', blocks: 'oops' },
+    })
+    expect(wrapper.text()).toBe('local')
+    error.mockRestore()
   })
 
   it('принимает одиночный ContentPage как русский фолбэк', async () => {

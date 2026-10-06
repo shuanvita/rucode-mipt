@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { sanitizeRichText } from '~/shared/lib/sanitizeRichText'
 type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 
 defineProps<{
@@ -19,7 +20,7 @@ const classes: Record<HeadingTag, string> = {
 
 <template>
   <component :is="tag" :class="['leading-[1.1] font-bold tracking-wider', classes[as ?? tag]]">
-    <div v-if="html" v-html="html" />
+    <div v-if="html" v-html="sanitizeRichText(html)" />
     <slot v-else />
   </component>
 </template>

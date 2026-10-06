@@ -476,17 +476,22 @@ const telegram: FinalTelegramProps = {
 export const capital2024PageData: ContentPage = {
   slug: '/capital-2024',
   version: 1,
+  meta: {
+    title: 'Столица RuCode 2024',
+    description:
+      'Столица RuCode 2024 — Всероссийский ИТ фестиваль по искусственному интеллекту и алгоритмическому программированию в Ставрополе (СКФУ), 19 октября 2024 года.',
+  },
   blocks: [
-    createFallbackBlock('hero', 10, hero),
-    createFallbackBlock('about', 20, about),
-    createFallbackBlock('faces', 30, faces),
-    createFallbackBlock('program', 40, program),
-    createFallbackBlock('photos2024', 50, photos2024),
-    createFallbackBlock('videos2024', 60, videos2024),
-    createFallbackBlock('photos2023', 70, photos2023),
-    createFallbackBlock('videos2023', 80, videos2023),
-    createFallbackBlock('organizers', 90, organizers),
-    createFallbackBlock('partners', 100, partners),
+    createFallbackBlock('capital2024.hero', 10, hero, { id: 'hero' }),
+    createFallbackBlock('capital2024.about', 20, about, { id: 'about', anchor: 'about' }),
+    createFallbackBlock('peopleSlider', 30, faces, { id: 'faces', anchor: 'faces' }),
+    createFallbackBlock('capital2024.program', 40, program, { id: 'program', anchor: 'program' }),
+    createFallbackBlock('photoGallery', 50, photos2024, { id: 'photos2024', anchor: 'gallery' }),
+    createFallbackBlock('videoGallery', 60, videos2024, { id: 'videos2024' }),
+    createFallbackBlock('photoGallery', 70, photos2023, { id: 'photos2023' }),
+    createFallbackBlock('videoGallery', 80, videos2023, { id: 'videos2023' }),
+    createFallbackBlock('organizers', 90, organizers, { anchor: 'organizers' }),
+    createFallbackBlock('partners', 100, partners, { anchor: 'partners' }),
     createFallbackBlock('telegram', 110, telegram),
   ],
 }

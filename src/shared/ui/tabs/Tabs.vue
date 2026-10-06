@@ -26,7 +26,7 @@ function selectTab(index: number) {
 
 const baseWrapperClass = 'flex flex-col items-center justify-center gap-4 lg:flex-row lg:gap-11'
 const baseItemClass =
-  'min-w-[305px] cursor-pointer rounded-[45px] px-11 py-3 text-[24px] font-extrabold tracking-[5%] uppercase transition duration-200 ease-out lg:min-w-auto lg:px-12'
+  'min-w-[305px] cursor-pointer rounded-pill px-11 py-3 text-[24px] font-extrabold tracking-[5%] uppercase transition duration-200 ease-out lg:min-w-auto lg:px-12'
 const mergedWrapperClass = computed(() => twMerge(baseWrapperClass, props.wrapperClass))
 const mergedItemClass = computed(() => twMerge(baseItemClass, props.itemClass))
 </script>

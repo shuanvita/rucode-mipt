@@ -13,7 +13,7 @@ const isLink = computed(() => !!props.to && !props.disabled)
 const tag = computed(() => (isLink.value ? resolveComponent('NuxtLink') : 'button'))
 
 const baseClasses =
-  'group focus-visible:outline-ring cursor-pointer inline-flex items-center justify-center gap-1.5 rounded-[45px] tracking-widest transition-colors duration-200 focus-visible:outline-1 focus-visible:outline-offset-1'
+  'group focus-visible:outline-ring cursor-pointer inline-flex items-center justify-center gap-1.5 rounded-pill tracking-widest transition-colors duration-200 focus-visible:outline-1 focus-visible:outline-offset-1'
 
 const variants: Record<ActionVariant, string> = {
   primary:

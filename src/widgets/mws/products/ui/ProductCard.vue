@@ -6,7 +6,7 @@ defineProps<ProductCardProps>()
 
 <template>
   <article
-    class="relative flex min-h-112.5 flex-col overflow-hidden rounded-[17px] border border-white p-5 min-[400px]:rounded-[45px] min-[400px]:border-3 md:p-12 lg:block lg:pr-[45%]"
+    class="min-[400px]:rounded-pill relative flex min-h-112.5 flex-col overflow-hidden rounded-[17px] border border-white p-5 min-[400px]:border-3 md:p-12 lg:block lg:pr-[45%]"
   >
     <UiHeading tag="h3" as="h2" :html="title" />
     <UiText class="mt-6 max-w-162.5" size="xl">{{ description }}</UiText>

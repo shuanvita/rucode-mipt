@@ -314,16 +314,27 @@ const partners: PartnersSectionProps = {
 export const mwsPageData: ContentPage = {
   slug: '/mws',
   version: 1,
+  meta: {
+    title: 'RuCode × MWS',
+    description:
+      'RuCode.навигатор: карьера — присоединяйся к ИТ-команде MWS (МТС Web Services): стажировки, направления, технологический стек и вакансии.',
+  },
   blocks: [
-    createFallbackBlock('hero', 10, hero),
-    createFallbackBlock('benefits', 20, benefits),
-    createFallbackBlock('products', 30, products),
-    createFallbackBlock('stack', 40, stack),
-    createFallbackBlock('internship', 50, internship),
-    createFallbackBlock('resume', 60, resume),
-    createFallbackBlock('directions', 70, directions),
-    createFallbackBlock('contacts', 80, contacts),
-    createFallbackBlock('faq', 90, faq),
-    createFallbackBlock('partners', 100, partners),
+    createFallbackBlock('mws.hero', 10, hero, { id: 'hero' }),
+    createFallbackBlock('mws.benefits', 20, benefits, { id: 'benefits', anchor: 'benefits' }),
+    createFallbackBlock('mws.products', 30, products, { id: 'products', anchor: 'products' }),
+    createFallbackBlock('mws.stack', 40, stack, { id: 'stack', anchor: 'stack' }),
+    createFallbackBlock('mws.internship', 50, internship, {
+      id: 'internship',
+      anchor: 'internship',
+    }),
+    createFallbackBlock('mws.resume', 60, resume, { id: 'resume', anchor: 'resume' }),
+    createFallbackBlock('mws.directions', 70, directions, {
+      id: 'directions',
+      anchor: 'directions',
+    }),
+    createFallbackBlock('mws.contacts', 80, contacts, { id: 'contacts', anchor: 'contacts' }),
+    createFallbackBlock('faq', 90, faq, { anchor: 'faq' }),
+    createFallbackBlock('partners', 100, partners, { anchor: 'partners' }),
   ],
 }

@@ -332,16 +332,25 @@ const partners: PartnersSectionProps = {
 export const aiChampData: ContentPage = {
   slug: '/ai_champ',
   version: 1,
+  meta: {
+    title:
+      'Всероссийский фестиваль по искусственному интеллекту и алгоритмическому программированию',
+    description:
+      'Прокачай скиллы по искусственному интеллекту и программированию, заяви о себе на чемпионате и построй свою карьеру в IT на фестивале RuCode: бесплатные курсы и интенсивы, чемпионаты, конференции, HR-лекции и IT стажировки.',
+  },
   blocks: [
-    createFallbackBlock('hero', 10, hero),
-    createFallbackBlock('benefits', 20, benefits),
-    createFallbackBlock('leagues', 30, leagues),
-    createFallbackBlock('stages', 40, stages),
-    createFallbackBlock('tasks', 50, tasks),
-    createFallbackBlock('preparation', 60, preparation),
-    createFallbackBlock('courses', 70, courses),
+    createFallbackBlock('aiChamp.hero', 10, hero, { id: 'hero' }),
+    createFallbackBlock('aiChamp.benefits', 20, benefits, { id: 'benefits' }),
+    createFallbackBlock('aiChamp.leagues', 30, leagues, { id: 'leagues', anchor: 'leagues' }),
+    createFallbackBlock('aiChamp.stages', 40, stages, { id: 'stages', anchor: 'stages' }),
+    createFallbackBlock('aiChamp.tasks', 50, tasks, { id: 'tasks', anchor: 'tasks' }),
+    createFallbackBlock('aiChamp.preparation', 60, preparation, {
+      id: 'preparation',
+      anchor: 'preparation',
+    }),
+    createFallbackBlock('eventsSlider', 70, courses, { id: 'courses' }),
     createFallbackBlock('personQuote', 80, personQuote),
-    createFallbackBlock('materials', 85, materials),
+    createFallbackBlock('aiChamp.materials', 85, materials, { id: 'materials' }),
     createFallbackBlock('partners', 90, partners),
   ],
 }

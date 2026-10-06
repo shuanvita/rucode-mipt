@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { sanitizeRichText } from '~/shared/lib/sanitizeRichText'
 import type { StagesSectionProps } from '~/widgets/practikum/stages'
 
 const props = defineProps<StagesSectionProps>()
@@ -40,7 +41,7 @@ const rows = computed(() => [
                 <div class="flex h-full flex-1 flex-col justify-center gap-2">
                   <p
                     class="text-[14px] leading-[1.6] font-semibold tracking-wider uppercase"
-                    v-html="step.title"
+                    v-html="sanitizeRichText(step.title)"
                   />
                   <UiText
                     v-if="step.note"

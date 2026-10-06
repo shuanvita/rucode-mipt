@@ -2,43 +2,13 @@
 import { aiChampData } from '../model/AiChamp.data'
 
 import { usePageContent, useContentBlocks, ContentBlockRender } from '~/shared/api'
-import { AiChampHero } from '~/widgets/ai_champ/hero'
-import { AiChampBenefits } from '~/widgets/ai_champ/benefits'
-import { AiChampLeagues } from '~/widgets/ai_champ/leagues'
-import { AiChampStages } from '~/widgets/ai_champ/stages'
-import { AiChampTasks } from '~/widgets/ai_champ/tasks'
-import { AiChampPreparation } from '~/widgets/ai_champ/preparation'
-import { EventsSlider } from '~/shared/ui/events-slider'
-import { PartnersSection } from '~/widgets/partners'
-import { AiChampMaterials } from '~/widgets/ai_champ/materials'
-import { PersonQuote } from '~/widgets/person-quote'
-
-const blockComponents: Record<string, Component> = {
-  hero: AiChampHero,
-  benefits: AiChampBenefits,
-  leagues: AiChampLeagues,
-  stages: AiChampStages,
-  tasks: AiChampTasks,
-  preparation: AiChampPreparation,
-  courses: EventsSlider,
-  personQuote: PersonQuote,
-  materials: AiChampMaterials,
-  partners: PartnersSection,
-}
-
-const anchorIds: Record<string, string> = {
-  leagues: 'leagues',
-  stages: 'stages',
-  tasks: 'tasks',
-  preparation: 'preparation',
-}
 
 const { data } = await usePageContent('/ai_champ', aiChampData)
-const blocks = useContentBlocks(() => data.value?.page.blocks, blockComponents, '/ai_champ')
+const blocks = useContentBlocks(() => data.value?.page.blocks, '/ai_champ')
 </script>
 
 <template>
   <div class="space-y-15">
-    <ContentBlockRender :blocks="blocks" :components="blockComponents" :anchor-ids="anchorIds" />
+    <ContentBlockRender :blocks="blocks" />
   </div>
 </template>

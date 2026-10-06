@@ -6,7 +6,7 @@ import type { ParticipantsSectionProps } from '~/widgets/consortium/participants
 import type { GallerySectionProps } from '~/widgets/consortium/gallery'
 import type { StepsSectionProps } from '~/widgets/consortium/steps'
 import type { PersonQuoteProps } from '~/widgets/person-quote'
-import type { PlacesSectionProps } from './PlacesSection.types'
+import type { PlacesSectionProps } from '~/widgets/consortium-section'
 import { createFallbackBlock } from '~/shared/api'
 import type { ContentPage } from '~/shared/api'
 
@@ -191,15 +191,32 @@ const consortium: PlacesSectionProps = {
 export const consortiumPageData: ContentPage = {
   slug: '/consortium',
   version: 1,
+  meta: {
+    title: 'Консорциум RuCode',
+    description:
+      'Консорциум RuCode — сеть научно-образовательных организаций, которые совместно проводят фестиваль по искусственному интеллекту и алгоритмическому программированию.',
+  },
   blocks: [
-    createFallbackBlock('hero', 10, hero),
-    createFallbackBlock('festival', 20, festival),
-    createFallbackBlock('directions', 30, directions),
-    createFallbackBlock('consortium', 40, consortium),
-    createFallbackBlock('benefits', 50, benefits),
+    createFallbackBlock('consortium.hero', 10, hero, { id: 'hero' }),
+    createFallbackBlock('consortium.festival', 20, festival, { id: 'festival', anchor: 'main' }),
+    createFallbackBlock('directionsWork', 30, directions, {
+      id: 'directions',
+      anchor: 'directions',
+    }),
+    createFallbackBlock('consortium.places', 40, consortium, {
+      id: 'consortium',
+      anchor: 'geography',
+    }),
+    createFallbackBlock('consortium.benefits', 50, benefits, {
+      id: 'benefits',
+      anchor: 'benefits',
+    }),
     createFallbackBlock('personQuote', 60, personQuote),
-    createFallbackBlock('gallery', 70, gallery),
-    createFallbackBlock('participants', 80, participants),
-    createFallbackBlock('steps', 90, steps),
+    createFallbackBlock('consortium.gallery', 70, gallery, { id: 'gallery', anchor: 'gallery' }),
+    createFallbackBlock('consortium.participants', 80, participants, {
+      id: 'participants',
+      anchor: 'forwho',
+    }),
+    createFallbackBlock('consortium.steps', 90, steps, { id: 'steps', anchor: 'stages' }),
   ],
 }

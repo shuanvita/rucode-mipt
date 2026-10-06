@@ -7,7 +7,7 @@ export interface TrackCardProps {
   id: string
   image?: string
   tag?: string
-  tagClass?: string
+  tagColor?: 'blue' | 'emerald' | 'amber' | 'rose'
   text?: string
   links?: {
     id: string

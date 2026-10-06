@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { sanitizeRichText } from '~/shared/lib/sanitizeRichText'
 type TextTag = 'p' | 'span' | 'div'
 type TextSize = 'xs' | 'sm' | 'base' | 'lg' | 'xl' | 'custom'
 type TextWeight = 'light' | 'normal' | 'medium' | 'semibold' | 'bold' | 'extrabold' | 'black'
@@ -44,7 +45,7 @@ const weightClasses: Record<TextWeight, string> = {
     :is="as"
     v-if="html"
     :class="[sizeClasses[size], weightClasses[weight], { truncate, 'min-w-0': truncate }]"
-    v-html="html"
+    v-html="sanitizeRichText(html)"
   />
   <component
     :is="as"

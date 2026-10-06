@@ -6,7 +6,7 @@ defineProps<AiChampTaskCardProps>()
 
 <template>
   <article
-    class="relative flex min-h-32.5 w-full flex-col justify-center overflow-hidden rounded-lg border border-[#6D6D6D] bg-[#1A1C21] p-7 pt-15 lg:pt-7"
+    class="border-muted bg-surface relative flex min-h-32.5 w-full flex-col justify-center overflow-hidden rounded-lg border p-7 pt-15 lg:pt-7"
   >
     <div
       :class="[

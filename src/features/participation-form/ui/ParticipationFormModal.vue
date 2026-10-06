@@ -39,7 +39,7 @@ watch(isOpen, (value) => {
       <div class="flex justify-center">
         <button
           type="submit"
-          class="cursor-pointer rounded-[45px] bg-yellow-400 px-10 py-5 text-center font-semibold text-black transition-opacity disabled:opacity-40 max-md:px-5 max-md:py-3"
+          class="rounded-pill cursor-pointer bg-yellow-400 px-10 py-5 text-center font-semibold text-black transition-opacity disabled:opacity-40 max-md:px-5 max-md:py-3"
           :disabled="status === 'submitting' || !isValid"
         >
           {{ status === 'submitting' ? 'Отправка…' : 'Отправить форму' }}

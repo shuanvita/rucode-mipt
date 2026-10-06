@@ -20,7 +20,7 @@ describe('champPageDataEn', () => {
   })
 
   it('сохраняет бренд RUCODE_ в заголовке hero', () => {
-    const hero = champPageDataEn.blocks.find((block) => block.type === 'hero')?.data as {
+    const hero = champPageDataEn.blocks.find((block) => block.id === 'hero')?.data as {
       title: string
     }
     expect(hero.title).toBe('International Contest RUCODE_')
@@ -37,7 +37,7 @@ describe('champPageDataEn', () => {
   })
 
   it('собирает этапы «Как проходит» из content0..content4', () => {
-    const how = champPageDataEn.blocks.find((block) => block.type === 'how')?.data as {
+    const how = champPageDataEn.blocks.find((block) => block.id === 'how')?.data as {
       stages: { title: string; note?: string; list?: string[] }[]
     }
     expect(how.stages).toHaveLength(5)
@@ -46,7 +46,7 @@ describe('champPageDataEn', () => {
   })
 
   it('делает ссылки в FAQ открывающимися в новой вкладке и без стилей старого сайта', () => {
-    const faq = champPageDataEn.blocks.find((block) => block.type === 'faq')?.data as {
+    const faq = champPageDataEn.blocks.find((block) => block.id === 'faq')?.data as {
       items: { answer?: string }[]
     }
     const withLinks = faq.items.filter((item) => item.answer?.includes('<a '))
@@ -58,7 +58,7 @@ describe('champPageDataEn', () => {
   })
 
   it('переводит alt партнёров', () => {
-    const partners = champPageDataEn.blocks.find((block) => block.type === 'partners')?.data as {
+    const partners = champPageDataEn.blocks.find((block) => block.id === 'partners')?.data as {
       items: { images: { alt: string }[] }[]
     }
     expect(partners.items.flatMap((item) => item.images.map((image) => image.alt))).toEqual([

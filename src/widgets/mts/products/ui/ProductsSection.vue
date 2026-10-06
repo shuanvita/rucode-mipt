@@ -10,7 +10,7 @@ defineProps<ProductsSectionProps>()
     <ul class="flex flex-wrap justify-center gap-x-4 gap-y-8.5 sm:gap-x-11">
       <li v-for="card in cards" :key="card.title" class="w-[calc(50%-8px)] sm:w-86">
         <article
-          class="relative isolate grid overflow-hidden rounded-[17px] border border-white min-[400px]:rounded-[45px] min-[400px]:border-3"
+          class="min-[400px]:rounded-pill relative isolate grid overflow-hidden rounded-[17px] border border-white min-[400px]:border-3"
         >
           <NuxtImg
             class="col-start-1 row-start-1 h-auto w-full"

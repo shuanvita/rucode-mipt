@@ -244,13 +244,20 @@ const partners: PartnersSectionProps = {
 export const aiTestingData: ContentPage = {
   slug: '/aitesting',
   version: 1,
+  meta: {
+    title: 'Всероссийское тестирование RuCode по искусственному интеллекту',
+    description:
+      'Прими участие во Всероссийском тестировании и узнай, насколько хорошо ты разбираешься в технологиях искусственного интеллекта!',
+    ogTitle:
+      'Прими участие во Всероссийском тестировании и узнай, насколько хорошо ты разбираешься в технологиях искусственного интеллекта!',
+  },
   blocks: [
-    createFallbackBlock('hero', 10, hero),
-    createFallbackBlock('format', 20, format),
-    createFallbackBlock('calendar', 30, calendar),
-    createFallbackBlock('demo', 40, demo),
-    createFallbackBlock('about', 50, about),
-    createFallbackBlock('championships', 60, championships),
-    createFallbackBlock('partners', 70, partners),
+    createFallbackBlock('aiTesting.hero', 10, hero, { id: 'hero' }),
+    createFallbackBlock('aiTesting.format', 20, format, { id: 'format', anchor: 'format' }),
+    createFallbackBlock('aiTesting.calendar', 30, calendar, { id: 'calendar', anchor: 'calendar' }),
+    createFallbackBlock('aiTesting.demo', 40, demo, { id: 'demo', anchor: 'demo' }),
+    createFallbackBlock('aiTesting.about', 50, about, { id: 'about' }),
+    createFallbackBlock('aiTesting.championships', 60, championships, { id: 'championships' }),
+    createFallbackBlock('partners', 70, partners, { anchor: 'partners' }),
   ],
 }

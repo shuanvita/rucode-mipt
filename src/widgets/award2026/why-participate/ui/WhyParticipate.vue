@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { sanitizeRichText } from '~/shared/lib/sanitizeRichText'
 import type { WhyParticipateProps } from '~/widgets/award2026/why-participate'
 
 defineProps<WhyParticipateProps>()
@@ -15,7 +16,7 @@ defineProps<WhyParticipateProps>()
       >
         <p
           class="text-[16px] font-bold tracking-[1.8px] text-white uppercase lg:text-[24px]"
-          v-html="card.title"
+          v-html="sanitizeRichText(card.title)"
         />
       </li>
     </ul>

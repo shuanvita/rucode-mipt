@@ -6,8 +6,8 @@ defineProps<EventsSliderCardProps>()
 
 <template>
   <article
-    class="relative flex h-full w-full flex-col items-center space-y-7 rounded-lg border bg-[#1A1C21] p-7 text-center transition-all duration-300"
-    :class="active ? 'border-purple-primary shadow-[0_0_20px_#b658ffcc]' : 'border-[#6D6D6D]'"
+    class="bg-surface relative flex h-full w-full flex-col items-center space-y-7 rounded-lg border p-7 text-center transition-all duration-300"
+    :class="active ? 'border-purple-primary shadow-[0_0_20px_#b658ffcc]' : 'border-muted'"
   >
     <div
       v-if="format"

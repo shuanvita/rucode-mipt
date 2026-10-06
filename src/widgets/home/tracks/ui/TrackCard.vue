@@ -2,6 +2,13 @@
 import type { TrackCardProps } from '~/widgets/home/tracks'
 
 defineProps<TrackCardProps>()
+
+const tagColorClasses = {
+  blue: 'text-blue-400 border-blue-400',
+  emerald: 'text-emerald-300 border-emerald-300',
+  amber: 'text-amber-400 border-amber-400',
+  rose: 'text-rose-500 border-rose-500',
+}
 </script>
 
 <template>
@@ -17,7 +24,7 @@ defineProps<TrackCardProps>()
     <UiText
       weight="semibold"
       size="lg"
-      :class="['place-self-center rounded-sm border p-2', tagClass]"
+      :class="['place-self-center rounded-sm border p-2', tagColor && tagColorClasses[tagColor]]"
       as="span"
       >{{ tag }}</UiText
     >

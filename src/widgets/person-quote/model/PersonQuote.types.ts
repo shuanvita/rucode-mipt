@@ -4,5 +4,4 @@ export interface PersonQuoteProps {
   name: string
   role?: string
   text: string
-  avatarClass?: string
 }

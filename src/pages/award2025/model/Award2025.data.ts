@@ -26,7 +26,7 @@ const about: InfoBlockProps = {
   title: 'О премии',
   description:
     'RuCode.Премия — кульминационное событие для подведения итогов фестиваля RuCode, награждения инициативных и вовлечённых участников фестиваля и выделения заслуг в области популяризации технологий искусственного интеллекта',
-  descriptionClass: 'max-w-171',
+  descriptionWidth: 'md',
 }
 
 const participants: AwardParticipantsProps = {
@@ -333,16 +333,31 @@ const cta: AwardCtaProps = {
 export const award2025Data: ContentPage = {
   slug: '/award2025',
   version: 1,
+  meta: {
+    title:
+      'Всероссийский фестиваль по искусственному интеллекту и алгоритмическому программированию',
+    description:
+      'Прокачай скиллы по искусственному интеллекту и программированию, заяви о себе на чемпионате и построй свою карьеру в IT на фестивале RuCode: бесплатные курсы и интенсивы, чемпионаты, конференции, HR-лекции и IT стажировки.',
+  },
   blocks: [
-    createFallbackBlock('hero', 10, hero),
-    createFallbackBlock('about', 20, about),
-    createFallbackBlock('participants', 30, participants),
-    createFallbackBlock('whyParticipate', 40, whyParticipate),
-    createFallbackBlock('nominationsTabs', 50, nominationsTabs),
-    createFallbackBlock('stagesTimeline', 60, stagesTimeline),
-    createFallbackBlock('awardCeremony', 70, awardCeremony),
-    createFallbackBlock('peopleSlider', 80, peopleSlider),
-    createFallbackBlock('partners', 90, partners),
-    createFallbackBlock('cta', 100, cta),
+    createFallbackBlock('award.hero', 10, hero, { id: 'hero' }),
+    createFallbackBlock('info', 20, about, { id: 'about', anchor: 'premium' }),
+    createFallbackBlock('award.participants', 30, participants, { id: 'participants' }),
+    createFallbackBlock('award2025.whyParticipate', 40, whyParticipate, { id: 'whyParticipate' }),
+    createFallbackBlock('award2025.nominationsTabs', 50, nominationsTabs, {
+      id: 'nominationsTabs',
+      anchor: 'nominations',
+    }),
+    createFallbackBlock('award.stagesTimeline', 60, stagesTimeline, {
+      id: 'stagesTimeline',
+      anchor: 'stages',
+    }),
+    createFallbackBlock('award2025.awardCeremony', 70, awardCeremony, {
+      id: 'awardCeremony',
+      anchor: 'ceremony',
+    }),
+    createFallbackBlock('peopleSlider', 80, peopleSlider, { anchor: 'committee' }),
+    createFallbackBlock('partners', 90, partners, { anchor: 'partners' }),
+    createFallbackBlock('award.cta', 100, cta, { id: 'cta' }),
   ],
 }

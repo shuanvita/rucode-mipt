@@ -6,7 +6,7 @@ defineProps<CalendarCardProps>()
 
 <template>
   <UiAction
-    class="shadow-3xl flex flex-col justify-start gap-2 rounded-lg border border-neutral-500 bg-[#1A1C21] px-2 py-3 shadow transition-shadow duration-200 hover:shadow-[0_0_20px_#b658ffcc]"
+    class="shadow-3xl bg-surface flex flex-col justify-start gap-2 rounded-lg border border-neutral-500 px-2 py-3 shadow transition-shadow duration-200 hover:shadow-[0_0_20px_#b658ffcc]"
     :to="link"
     variant="custom"
   >

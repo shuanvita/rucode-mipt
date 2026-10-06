@@ -194,11 +194,19 @@ const partners: PartnersSectionProps = {
 export const practicumPageData: ContentPage = {
   slug: '/practikum',
   version: 1,
+  meta: {
+    title: 'RuCode.Практикум',
+    description:
+      'Проводите современные занятия по искусственному интеллекту и машинному обучению с готовыми материалами: сценарии классных часов и практические задания для студентов.',
+  },
   blocks: [
-    createFallbackBlock('hero', 10, hero),
-    createFallbackBlock('about', 20, about),
-    createFallbackBlock('stages', 30, stages),
-    createFallbackBlock('materials', 40, materials),
-    createFallbackBlock('partners', 50, partners),
+    createFallbackBlock('practikum.hero', 10, hero, { id: 'hero' }),
+    createFallbackBlock('directionsWork', 20, about, { id: 'about', anchor: 'about' }),
+    createFallbackBlock('practikum.stages', 30, stages, { id: 'stages', anchor: 'stages' }),
+    createFallbackBlock('practikum.materials', 40, materials, {
+      id: 'materials',
+      anchor: 'content',
+    }),
+    createFallbackBlock('partners', 50, partners, { anchor: 'partners' }),
   ],
 }

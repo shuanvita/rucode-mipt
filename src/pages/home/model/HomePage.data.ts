@@ -5,7 +5,7 @@ import type { PartnersSectionProps } from '~/widgets/partners'
 import { createFallbackBlock } from '~/shared/api'
 import type { ContentPage } from '~/shared/api'
 import type { CalendarSectionProps } from '~/widgets/home/calendar'
-import type { HomeConsortiumProps } from './HomeConsortium.types'
+import type { PlacesSectionProps } from '~/widgets/consortium-section'
 import type { PhotoGalleryProps } from '~/widgets/home/photo-gallery'
 import type { VideoGalleryProps } from '~/widgets/home/video-gallery'
 
@@ -21,7 +21,7 @@ const about: InfoBlockProps = {
   title: 'О фестивале',
   description:
     'Всероссийский фестиваль RuCode: искусственный интеллект в пространстве науки и технологий — объединяет всех, кто интересуется применением ИИ в научных исследованиях, образовании и технике. Программа фестиваля включает четыре направления: научпоп, образование, достижения и карьера, где участников ждут лекции и подкасты, научно-популярные тесты, а также чемпионат по искусственному интеллекту. Организаторами фестиваля, наряду с МФТИ, выступают российские вузы, научные центры и образовательные организации и ведущие ИТ-компании России. Выбирай свой трек и участвуй в фестивале RuCode! Уже открыта регистрация на <a class="text-purple-primary underline hover:text-fg hover:no-underline transition-all duration-200" href="/champ">чемпионат РуКод по алгоритмическому программированию</a>.',
-  descriptionClass: 'max-w-180',
+  descriptionWidth: 'lg',
   isBackground: true,
 }
 
@@ -53,7 +53,7 @@ const tracks = {
       id: crypto.randomUUID(),
       image: '/images/home/track-1.png',
       tag: '#научпоп',
-      tagClass: 'text-blue-400 border-blue-400',
+      tagColor: 'blue',
       text: 'Рассказываем простым языком и доступно объясняем о возможностях применения искусственного интеллекта и достижениях российских исследователей в этой области.',
       links: [
         {
@@ -72,7 +72,7 @@ const tracks = {
       id: crypto.randomUUID(),
       image: '/images/home/track-2.png',
       tag: '#образование',
-      tagClass: 'text-emerald-300 border-emerald-300',
+      tagColor: 'emerald',
       text: 'В образовательный трек фестиваля RuCode входят онлайн-курсы по искусственному интеллекту и алгоритмическому программированию, интенсивы с лекциями от ведущих экспертов отрасли.',
       links: [
         {
@@ -91,7 +91,7 @@ const tracks = {
       id: crypto.randomUUID(),
       image: '/images/home/track-3.png',
       tag: '#достижения',
-      tagClass: 'text-amber-400 border-amber-400',
+      tagColor: 'amber',
       text: 'Участники могут посоревноваться на разных уровнях чемпионата по искусственному интеллекту, проверить себя в тестировании и побороться за престижную премию Rucode.',
       links: [
         {
@@ -120,7 +120,7 @@ const tracks = {
       id: crypto.randomUUID(),
       image: '/images/home/track-4.png',
       tag: '#карьера',
-      tagClass: 'text-rose-500 border-rose-500',
+      tagColor: 'rose',
       text: 'Участвуй в карьерных лекциях от HR экспертов и строй успешную карьеру в IT, используя навыки и достижения, полученные в образовательных программах и чемпионатах RuCode.',
       links: [
         {
@@ -318,7 +318,7 @@ const calendar: CalendarSectionProps = {
   ],
 }
 
-const consortium: HomeConsortiumProps = {
+const consortium: PlacesSectionProps = {
   title: 'Консорциум организаторов RuCode',
   description:
     'Консорциум — это сеть научно-образовательных организаций с множеством возможностей для развития тесного сотрудничества и совместного проведения крупных мероприятий, проектной деятельности и программ в ИТ-образовательном пространстве.',
@@ -490,15 +490,24 @@ const videos: VideoGalleryProps = {
 export const homePageData: ContentPage = {
   slug: '/',
   version: 1,
+  meta: {
+    title:
+      'Всероссийский фестиваль по искусственному интеллекту и алгоритмическому программированию',
+    description:
+      'Прокачай скиллы по искусственному интеллекту и программированию, заяви о себе на чемпионате и построй свою карьеру в IT на фестивале RuCode: бесплатные курсы и интенсивы, чемпионаты, конференции, HR-лекции и IT стажировки.',
+  },
   blocks: [
-    createFallbackBlock('hero', 10, hero),
-    createFallbackBlock('about', 20, about),
+    createFallbackBlock('home.hero', 10, hero, { id: 'hero' }),
+    createFallbackBlock('info', 20, about, { id: 'about' }),
     createFallbackBlock('achievements', 30, achievements),
-    createFallbackBlock('tracks', 40, tracks),
-    createFallbackBlock('calendar', 50, calendar),
-    createFallbackBlock('consortium', 60, consortium),
+    createFallbackBlock('home.tracks', 40, tracks, { id: 'tracks', anchor: 'tracks' }),
+    createFallbackBlock('home.calendar', 50, calendar, { id: 'calendar', anchor: 'calendar' }),
+    createFallbackBlock('consortium.places', 60, consortium, {
+      id: 'consortium',
+      anchor: 'consortium',
+    }),
     createFallbackBlock('partners', 80, partners),
-    createFallbackBlock('photos', 90, photos),
-    createFallbackBlock('videos', 100, videos),
+    createFallbackBlock('photoGallery', 90, photos, { id: 'photos' }),
+    createFallbackBlock('videoGallery', 100, videos, { id: 'videos', anchor: 'videos' }),
   ],
 }

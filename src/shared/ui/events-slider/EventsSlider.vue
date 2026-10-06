@@ -109,7 +109,7 @@ function cardStyle() {
             :aria-label="`Перейти к слайду ${index + 1}`"
             :aria-current="mobileSwiper?.activeIndex?.value === index"
             class="size-2 rounded-full transition-colors not-disabled:cursor-pointer"
-            :class="mobileSwiper?.activeIndex?.value === index ? 'bg-white' : 'bg-[#6D6D6D]'"
+            :class="mobileSwiper?.activeIndex?.value === index ? 'bg-white' : 'bg-muted'"
             @click="mobileSwiper?.to(index)"
           />
         </div>

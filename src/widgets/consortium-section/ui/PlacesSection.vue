@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ConsortiumSection } from '~/widgets/consortium-section'
-import type { HomeConsortiumProps } from '../model/HomeConsortium.types'
+import ConsortiumSection from './ConsortiumSection.vue'
+import type { PlacesSectionProps } from '../model/PlacesSection.types'
 
-defineProps<HomeConsortiumProps>()
+defineProps<PlacesSectionProps>()
 </script>
 
 <template>

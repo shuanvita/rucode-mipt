@@ -61,26 +61,12 @@ const blockData: typeof ru = {
   },
   numbers: {
     title: toPlain(en.stats2025.title),
-    numbersOne: {
-      ...ru.numbers.numbersOne,
-      title: years.number,
-      text: toLines(years.description),
-    },
-    numbersTwo: {
-      ...ru.numbers.numbersTwo,
-      title: participants.number,
-      text: toLines(participants.description),
-    },
-    numbersThree: {
-      ...ru.numbers.numbersThree,
-      title: venues.number,
-      text: toLines(venues.description),
-    },
-    numbersFour: {
-      ...ru.numbers.numbersFour,
-      title: applications.number,
-      text: toLines(applications.description),
-    },
+    items: translateEach(
+      'numbers.items',
+      ru.numbers.items,
+      [years, participants, venues, applications],
+      (item, stat) => ({ ...item, title: stat.number, text: toLines(stat.description) }),
+    ),
   },
   divisions: {
     title: en.aboutDivision.title,
@@ -173,6 +159,6 @@ export const champPageDataEn: ContentPage = {
   ...champPageData,
   blocks: champPageData.blocks.map((block) => ({
     ...block,
-    data: blockData[block.type as keyof typeof blockData] ?? block.data,
+    data: blockData[block.id as keyof typeof blockData] ?? block.data,
   })),
 }

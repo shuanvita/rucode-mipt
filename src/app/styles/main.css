@@ -4,26 +4,52 @@
   --font-sans: 'Montserrat', sans-serif;
   --default-font-size: 16px;
   --default-line-height: 1.5;
+  --radius-pill: 45px;
+  --radius-tag: 9px;
+  --color-surface: #1a1c21;
+  --color-muted: #6d6d6d;
   --color-dark-primary: #202124;
-  --color-purple-primary: #B657FF;
-  --color-purple-light: #D29CFF;
-  --color-yellow-primary: #FFD102;
+  --color-purple-primary: #b657ff;
+  --color-purple-light: #d29cff;
+  --color-yellow-primary: #ffd102;
   --color-yellow-secondary: #cba603;
   --color-brand-red: #ff0032;
   --color-brand-red-hover: #cc0028;
   --color-fg: #ffffff;
-  --color-red: #FF5252;
-  --color-destructive: #FF5252;
+  --color-red: #ff5252;
+  --color-destructive: #ff5252;
 
   --color-btn-primary: oklch(0.852 0.199 91.936);
   --color-btn-primary-hover: #cba603;
 
   --color-footer: #141516;
 
-  --participant-card-bg: linear-gradient(0deg, rgba(181, 89, 245, 0.09), rgba(181, 89, 245, 0.09)), linear-gradient(104.95deg, rgba(202, 255, 51, 0.05) -32.77%, rgba(202, 255, 51, 0) 27.02%), url('/images/award2026/participants-bg.png');
-  --cta-bg: linear-gradient(267.5deg, rgba(181, 89, 245, 0.09) 38.7%, rgba(181, 89, 245, 0.1) 40.67%, rgba(28, 28, 28, 0) 99.81%), linear-gradient(106.06deg, rgba(202, 255, 51, 0.05) -29.45%, rgba(202, 255, 51, 0) 27.86%), url('/images/award2026/participants-bg.png');
-  --stage-active-gradient: linear-gradient(0deg, #B657FF 0%, #B657FF 100%), linear-gradient(0deg, rgba(192, 2, 255, 0.09) 0%, rgba(192, 2, 255, 0.09) 100%), url('/images/award2026/participants-bg.png');
-  --stage-secret-gradient: linear-gradient(106deg, rgba(202, 255, 51, 0.05) -29.45%, rgba(202, 255, 51, 0.00) 27.86%), linear-gradient(267deg, rgba(181, 89, 245, 0.20) 0.15%, rgba(181, 89, 245, 0.15) 40.67%, rgba(255, 255, 255, 0.10) 99.81%), url('/images/award2026/participants-bg.png');
+  --participant-card-bg:
+    linear-gradient(0deg, rgba(181, 89, 245, 0.09), rgba(181, 89, 245, 0.09)),
+    linear-gradient(104.95deg, rgba(202, 255, 51, 0.05) -32.77%, rgba(202, 255, 51, 0) 27.02%),
+    url('/images/award2026/participants-bg.png');
+  --cta-bg:
+    linear-gradient(
+      267.5deg,
+      rgba(181, 89, 245, 0.09) 38.7%,
+      rgba(181, 89, 245, 0.1) 40.67%,
+      rgba(28, 28, 28, 0) 99.81%
+    ),
+    linear-gradient(106.06deg, rgba(202, 255, 51, 0.05) -29.45%, rgba(202, 255, 51, 0) 27.86%),
+    url('/images/award2026/participants-bg.png');
+  --stage-active-gradient:
+    linear-gradient(0deg, #b657ff 0%, #b657ff 100%),
+    linear-gradient(0deg, rgba(192, 2, 255, 0.09) 0%, rgba(192, 2, 255, 0.09) 100%),
+    url('/images/award2026/participants-bg.png');
+  --stage-secret-gradient:
+    linear-gradient(106deg, rgba(202, 255, 51, 0.05) -29.45%, rgba(202, 255, 51, 0) 27.86%),
+    linear-gradient(
+      267deg,
+      rgba(181, 89, 245, 0.2) 0.15%,
+      rgba(181, 89, 245, 0.15) 40.67%,
+      rgba(255, 255, 255, 0.1) 99.81%
+    ),
+    url('/images/award2026/participants-bg.png');
 }
 
 html {

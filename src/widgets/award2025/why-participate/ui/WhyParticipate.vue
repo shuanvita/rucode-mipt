@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { sanitizeRichText } from '~/shared/lib/sanitizeRichText'
 import type { WhyParticipateProps } from '~/widgets/award2025/why-participate'
 import { chunk } from '~/shared/lib/chunk.ts'
 
@@ -26,7 +27,7 @@ const columns = computed(() => chunk(props.cards, CARDS_PER_COLUMN))
         >
           <p
             class="text-[14px] font-bold tracking-[1.8px] text-white uppercase lg:text-[24px]"
-            v-html="card.title"
+            v-html="sanitizeRichText(card.title)"
           />
         </div>
       </div>

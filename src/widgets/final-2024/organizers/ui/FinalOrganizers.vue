@@ -19,7 +19,7 @@ defineProps<FinalOrganizersProps>()
         >
           <span class="flex w-full flex-1 items-center justify-center overflow-hidden px-4 pt-3">
             <NuxtImg
-              :class="['max-h-full max-w-full object-contain', item.logoClass]"
+              class="max-h-full max-w-full object-contain"
               :src="item.logo"
               :alt="item.name"
               loading="lazy"

@@ -58,26 +58,32 @@ const about: ChampAboutProps = {
 
 const numbers: ChampNumbersProps = {
   title: 'Рукод 2025 в цифрах',
-  numbersOne: {
-    title: '7',
-    text: 'лет существования\nЧемпионата\n«РуКод»',
-    image: '/images/champ/numbers-1.svg',
-  },
-  numbersTwo: {
-    title: '99',
-    text: 'участников\nСуперфинала',
-    image: '/images/champ/numbers-4.svg',
-  },
-  numbersThree: {
-    title: '44',
-    text: 'площадки\nв России\nи зарубежом',
-    image: '/images/champ/numbers-1.png',
-  },
-  numbersFour: {
-    title: '9800',
-    text: 'заявок на участие',
-    image: '/images/champ/numbers-2.png',
-  },
+  items: [
+    {
+      id: 'n1',
+      title: '7',
+      text: 'лет существования\nЧемпионата\n«РуКод»',
+      image: '/images/champ/numbers-1.svg',
+    },
+    {
+      id: 'n2',
+      title: '99',
+      text: 'участников\nСуперфинала',
+      image: '/images/champ/numbers-4.svg',
+    },
+    {
+      id: 'n3',
+      title: '44',
+      text: 'площадки\nв России\nи зарубежом',
+      image: '/images/champ/numbers-1.png',
+    },
+    {
+      id: 'n4',
+      title: '9800',
+      text: 'заявок на участие',
+      image: '/images/champ/numbers-2.png',
+    },
+  ],
 }
 
 const divisions: ChampDivisionsProps = {
@@ -395,7 +401,7 @@ const partners: PartnersSectionProps = {
   items: [
     {
       title: 'Генеральный партнёр',
-      titleClass: 'text-yellow-primary',
+      titleTone: 'yellow',
       images: [
         {
           src: '/images/partners/mts.png',
@@ -406,7 +412,7 @@ const partners: PartnersSectionProps = {
     },
     {
       title: 'Партнёры',
-      titleClass: 'text-yellow-primary',
+      titleTone: 'yellow',
       images: [
         {
           src: '/images/partners/sber.svg',
@@ -422,18 +428,18 @@ export const champPageData: ContentPage = {
   slug: '/champ',
   version: 1,
   blocks: [
-    createFallbackBlock('hero', 10, hero),
-    createFallbackBlock('about', 20, about),
-    createFallbackBlock('numbers', 30, numbers),
-    createFallbackBlock('divisions', 40, divisions),
-    createFallbackBlock('tracks', 50, tracks),
-    createFallbackBlock('why', 60, why),
-    createFallbackBlock('how', 70, how),
-    createFallbackBlock('achievements', 80, achievements),
-    createFallbackBlock('venues', 90, venues),
+    createFallbackBlock('champ.hero', 10, hero, { id: 'hero' }),
+    createFallbackBlock('champ.about', 20, about, { id: 'about', anchor: 'about' }),
+    createFallbackBlock('champ.numbers', 30, numbers, { id: 'numbers' }),
+    createFallbackBlock('champ.divisions', 40, divisions, { id: 'divisions' }),
+    createFallbackBlock('champ.tracks', 50, tracks, { id: 'tracks' }),
+    createFallbackBlock('champ.why', 60, why, { id: 'why', anchor: 'why' }),
+    createFallbackBlock('champ.how', 70, how, { id: 'how', anchor: 'how' }),
+    createFallbackBlock('achievements', 80, achievements, { anchor: 'achievements' }),
+    createFallbackBlock('champ.venues', 90, venues, { id: 'venues' }),
     createFallbackBlock('partners', 100, partners),
-    createFallbackBlock('gallery', 110, gallery),
-    createFallbackBlock('faq', 120, faq),
+    createFallbackBlock('champ.gallery', 110, gallery, { id: 'gallery', anchor: 'gallery' }),
+    createFallbackBlock('champ.faq', 120, faq, { id: 'faq' }),
   ],
 }
 

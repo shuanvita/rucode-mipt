@@ -14,7 +14,8 @@
     "test:watch": "vitest",
     "format": "prettier --write .",
     "typecheck": "nuxi typecheck",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "manifest": "node scripts/build-manifest.mjs"
   },
   "dependencies": {
     "@nuxt/eslint": "^1.17.0",
@@ -46,6 +47,7 @@
     "steiger": "^0.6.0",
     "tailwind-merge": "^3.6.0",
     "vitest": "^5.0.0",
-    "vue-tsc": "^3.3.11"
+    "vue-tsc": "^3.3.11",
+    "zod": "^3.25.76"
   }
 }

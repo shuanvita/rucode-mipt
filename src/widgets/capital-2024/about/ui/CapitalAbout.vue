@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { sanitizeRichText } from '~/shared/lib/sanitizeRichText'
 import type { CapitalAboutProps } from '~/widgets/capital-2024/about'
 
 defineProps<CapitalAboutProps>()
@@ -26,7 +27,7 @@ defineProps<CapitalAboutProps>()
         }}</span>
         <span
           class="invisible absolute right-1/2 z-50 mt-3 w-81.5 max-w-[90vw] translate-x-1/2 rounded bg-black p-2.5 text-[13px]/[1.4] opacity-0 transition-opacity duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100 [&_a]:underline"
-          v-html="invitation.hint"
+          v-html="sanitizeRichText(invitation.hint)"
         />
       </div>
     </div>
@@ -48,7 +49,7 @@ defineProps<CapitalAboutProps>()
         </div>
         <div class="flex flex-col gap-y-3 text-[15px]/[1.4] sm:text-[16px]/[1.4]">
           <template v-for="(paragraph, index) in paragraphs" :key="index">
-            <p class="[&_a]:underline" v-html="paragraph" />
+            <p class="[&_a]:underline" v-html="sanitizeRichText(paragraph)" />
             <NuxtImg
               v-if="index === 0"
               class="my-2 size-min"

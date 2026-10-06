@@ -5,6 +5,5 @@ export interface FinalOrganizersProps {
     city: string
     logo: string
     to: string
-    logoClass?: string
   }[]
 }

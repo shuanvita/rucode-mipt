@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { sanitizeRichText } from '~/shared/lib/sanitizeRichText'
 import type { CapitalProgramProps } from '~/widgets/capital-2024/program'
 
 defineProps<CapitalProgramProps>()
@@ -19,7 +20,11 @@ const opened = ref<Record<number, boolean>>({})
       >
         <div class="flex flex-col gap-y-4 pt-2 text-[15px]/[1.5] lg:text-[16px]/[1.5]">
           <p class="text-purple-light font-bold">{{ item.place }}</p>
-          <p v-if="item.content" class="[&_b]:text-yellow-primary" v-html="item.content" />
+          <p
+            v-if="item.content"
+            class="[&_b]:text-yellow-primary"
+            v-html="sanitizeRichText(item.content)"
+          />
           <UiAction v-if="item.video" class="self-start" variant="secondary" :to="item.video">
             Смотреть видеозапись
           </UiAction>

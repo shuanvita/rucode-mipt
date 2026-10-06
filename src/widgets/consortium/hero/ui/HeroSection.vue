@@ -33,7 +33,7 @@ const isFormOpen = ref(false)
           <li v-for="tag in tags" :key="tag">
             <UiText
               as="span"
-              class="block rounded-[45px] border border-white px-4 py-1 text-center lg:px-5 lg:py-2"
+              class="rounded-pill block border border-white px-4 py-1 text-center lg:px-5 lg:py-2"
             >
               {{ tag }}
             </UiText>

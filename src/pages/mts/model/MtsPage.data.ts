@@ -198,15 +198,23 @@ const contacts: ContactsSectionProps = {
 export const mtsPageData: ContentPage = {
   slug: '/mts',
   version: 1,
+  meta: {
+    title: 'RuCode × МТС',
+    description:
+      'Присоединяйся к МТС: оплачиваемые стажировки, программы МТС Старт, ПРО и Лидер, направления и продукты экосистемы, вакансии.',
+  },
   blocks: [
-    createFallbackBlock('hero', 10, hero),
-    createFallbackBlock('benefits', 20, benefits),
-    createFallbackBlock('internship', 30, internship),
-    createFallbackBlock('resume', 40, resume),
-    createFallbackBlock('testskills', 50, testskills),
-    createFallbackBlock('products', 60, products),
-    createFallbackBlock('response', 70, response),
-    createFallbackBlock('faq', 80, faq),
-    createFallbackBlock('contacts', 90, contacts),
+    createFallbackBlock('mts.hero', 10, hero, { id: 'hero' }),
+    createFallbackBlock('mws.benefits', 20, benefits, { id: 'benefits', anchor: 'benefits' }),
+    createFallbackBlock('mts.internship', 30, internship, {
+      id: 'internship',
+      anchor: 'internship',
+    }),
+    createFallbackBlock('actionSection', 40, resume, { id: 'resume', anchor: 'resume' }),
+    createFallbackBlock('actionSection', 50, testskills, { id: 'testskills', anchor: 'skills' }),
+    createFallbackBlock('mts.products', 60, products, { id: 'products', anchor: 'products' }),
+    createFallbackBlock('actionSection', 70, response, { id: 'response' }),
+    createFallbackBlock('faq', 80, faq, { anchor: 'faq' }),
+    createFallbackBlock('mws.contacts', 90, contacts, { id: 'contacts', anchor: 'contacts' }),
   ],
 }

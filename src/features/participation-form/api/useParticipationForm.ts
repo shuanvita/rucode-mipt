@@ -11,6 +11,7 @@ export type ParticipationFormStatus = 'idle' | 'submitting' | 'success' | 'error
 type TouchedFields = Partial<Record<keyof ParticipationFormData, boolean>>
 
 export function useParticipationForm(endpoint?: MaybeRefOrGetter<string | undefined>) {
+  const { public: publicConfig } = useRuntimeConfig()
   const formData = reactive(createEmptyParticipationForm())
   const touched = reactive<TouchedFields>({})
   const status = ref<ParticipationFormStatus>('idle')
@@ -44,7 +45,10 @@ export function useParticipationForm(endpoint?: MaybeRefOrGetter<string | undefi
     if (!isValid.value) return
 
     status.value = 'submitting'
-    const result = await submitParticipationForm(formData, toValue(endpoint))
+    const result = await submitParticipationForm(
+      formData,
+      toValue(endpoint) ?? publicConfig.participationEndpoint,
+    )
 
     if (result.success) {
       status.value = 'success'

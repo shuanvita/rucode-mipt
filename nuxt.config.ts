@@ -15,6 +15,20 @@ export default defineNuxtConfig({
 
   features: { inlineStyles: true },
 
+  // Приватные ключи задаются только на сервере: NUXT_CMS_BASE_URL, NUXT_CMS_TOKEN, NUXT_REVALIDATE_SECRET.
+  runtimeConfig: {
+    cmsBaseUrl: '',
+    cmsToken: '',
+    revalidateSecret: '',
+    public: {
+      // NUXT_PUBLIC_PARTICIPATION_ENDPOINT, NUXT_PUBLIC_CONSORTIUM_ENDPOINT
+      participationEndpoint: '/new/regMerAdmin25.php',
+      consortiumEndpoint: '/new/regConsortium.php',
+    },
+  },
+
+  plugins: ['~/app/block-registry/plugin'],
+
   nitro: {
     preset: 'node-server',
   },

@@ -35,9 +35,7 @@ const sliderOptions = {
             <div v-if="item.title" class="text-yellow-primary text-center text-[18px] font-bold">
               {{ item.title }}
             </div>
-            <div
-              class="w-full space-y-4 rounded-lg border border-[#6D6D6D] bg-[#1A1C21] p-7 text-center"
-            >
+            <div class="border-muted bg-surface w-full space-y-4 rounded-lg border p-7 text-center">
               <UiText v-for="text in item.description" :key="text">
                 {{ text }}
               </UiText>
@@ -65,7 +63,7 @@ const sliderOptions = {
             :aria-label="`Перейти к слайду ${index + 1}`"
             :aria-current="swiper?.activeIndex?.value === index"
             class="size-2 rounded-full transition-colors not-disabled:cursor-pointer"
-            :class="swiper?.activeIndex?.value === index ? 'bg-white' : 'bg-[#6D6D6D]'"
+            :class="swiper?.activeIndex?.value === index ? 'bg-white' : 'bg-muted'"
             @click="swiper?.to(index)"
           />
         </div>

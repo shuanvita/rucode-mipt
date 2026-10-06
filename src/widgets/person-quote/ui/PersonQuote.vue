@@ -10,10 +10,7 @@ defineProps<PersonQuoteProps>()
     <div class="mx-auto flex max-w-251.75 flex-col items-center gap-10 md:flex-row">
       <div class="flex max-w-80 flex-col items-center gap-4 text-center md:min-w-65">
         <div class="avatar-decorations relative w-fit">
-          <div
-            class="relative z-20 size-40 overflow-hidden rounded-full bg-white/5 sm:size-45"
-            :class="avatarClass"
-          >
+          <div class="relative z-20 size-40 overflow-hidden rounded-full bg-white/5 sm:size-45">
             <NuxtImg
               :src="image"
               alt=""

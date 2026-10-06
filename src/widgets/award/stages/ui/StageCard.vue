@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { sanitizeRichText } from '~/shared/lib/sanitizeRichText'
 import type { StageCardProps } from '~/widgets/award/stages'
 
 defineProps<Omit<StageCardProps, 'span'>>()
@@ -20,7 +21,7 @@ defineProps<Omit<StageCardProps, 'span'>>()
       >
         {{ number }}
       </div>
-      <p class="text-[16px]" v-html="description" />
+      <p class="text-[16px]" v-html="sanitizeRichText(description)" />
     </div>
   </div>
 </template>
