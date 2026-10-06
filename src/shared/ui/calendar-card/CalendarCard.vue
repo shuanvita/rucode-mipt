@@ -12,7 +12,7 @@ defineProps<CalendarCardProps>()
   >
     <div
       :class="[
-        'self-end rounded-md px-2 py-1 text-[14px] font-semibold text-black',
+        'mr-5 self-end rounded-md px-2 py-1 text-[14px] font-semibold text-black',
         format.color || 'bg-yellow-primary',
       ]"
     >
