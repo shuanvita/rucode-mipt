@@ -82,15 +82,81 @@ const materials: MaterialsSectionProps = {
       items: [
         {
           title: 'Разбор задачи «Предсказание отмены бронирования»',
-          content: 'Материалы доступны после регистрации.',
+          description:
+            'Научим решать задачи как по имеющимся данным о бронировании номера в отеле предсказать: будет ли отменено бронирование или нет',
+          presentationTo: 'https://disk.yandex.ru/d/mIegfy3fNIpmfg',
+          allMaterialsTo: '#',
         },
         {
           title: 'Разбор задачи «Мастер кадра»',
-          content: 'Материалы доступны после регистрации.',
+          description:
+            'Научим решению задач классификации изображений, а также познакомим с архитектурой Vision Transformer',
+          presentationTo: 'https://disk.yandex.ru/d/0aqMLFyYK03f7Q',
+          allMaterialsTo: '#',
         },
       ],
     },
-    { label: 'Для учителей школ и СПО', items: [] },
+    {
+      label: 'Для учителей школ и СПО',
+      items: [
+        {
+          title: 'Искусственный интеллект и нейротворчество',
+          description:
+            'Узнайте, как нейросети создают изображения, и научитесь использовать их для собственного цифрового творчества.',
+          presentationTo: 'https://disk.yandex.ru/i/dt9msyL4JV1W1A',
+          allMaterialsTo: '#',
+        },
+        {
+          title: 'Кибербезопасность',
+          description:
+            'Погрузитесь в мир цифровой защиты: познакомьтесь с профессией эксперта по кибербезопасности и узнайте, как ИИ помогает бороться с киберугрозами.',
+          presentationTo: 'https://disk.yandex.ru/i/Foc2VbnaEOy9wg',
+          allMaterialsTo: '#',
+        },
+        {
+          title: 'Есть ли у языковых моделей сознание',
+          description:
+            'Разберитесь, как работают современные языковые модели и как использовать их для создания осмысленных и качественных текстов.',
+          presentationTo: 'https://disk.yandex.ru/i/lDvn_AricboWvw',
+          allMaterialsTo: '#',
+        },
+        {
+          title: 'Что нужно знать, чтобы стать специалистом по искусственному интеллекту?',
+          description:
+            'Познакомьтесь с основами ИИ — от математики до нейросетей — и узнайте, с чего начать путь к профессии будущего.',
+          presentationTo: 'https://disk.yandex.ru/i/clt4Vz422Ooujg',
+          allMaterialsTo: '#',
+        },
+        {
+          title: 'Нейросети и музыка',
+          description:
+            'Узнайте, как ИИ создаёт музыку, и попробуйте сами сгенерировать мелодии с помощью нейросетей.',
+          presentationTo: 'https://disk.yandex.ru/i/t9LGFsLWKczv6g',
+          allMaterialsTo: '#',
+        },
+        {
+          title: 'Искусственный интеллект — помощник современного школьника',
+          description:
+            'Исследуйте, как ИИ может помогать в учёбе: от генерации ответов до творческих задач, и научитесь правильно с ним взаимодействовать.',
+          presentationTo: 'https://disk.yandex.ru/i/gWLxJ3QVAI4eBg',
+          allMaterialsTo: '#',
+        },
+        {
+          title: 'Открывая планету заново: роль ИИ',
+          description:
+            'Увидьте, как ИИ меняет географию: от карт и спутниковых данных до анализа природных процессов.',
+          presentationTo: 'https://disk.yandex.ru/i/vpCtl2INRyW7ow',
+          allMaterialsTo: '#',
+        },
+        {
+          title: 'Новые горизонты в науках о земле с ИИ',
+          description:
+            'Узнайте, как ИИ помогает сельскому хозяйству: анализирует почвы, предсказывает урожайность и отслеживает изменения климата.',
+          presentationTo: 'https://disk.yandex.ru/i/pkzQk9nFDetPjA',
+          allMaterialsTo: '#',
+        },
+      ],
+    },
   ],
   action: { text: 'Скачать сертификат о проведении', to: MEMBER_URL },
 }

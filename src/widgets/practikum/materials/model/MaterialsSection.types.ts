@@ -10,8 +10,12 @@ export interface MaterialsSectionProps {
 
 export interface MaterialsTab {
   label: string
-  items: {
-    title: string
-    content: string
-  }[]
+  items: MaterialsItem[]
+}
+
+export interface MaterialsItem {
+  title: string
+  description: string
+  presentationTo?: string
+  allMaterialsTo?: string
 }
