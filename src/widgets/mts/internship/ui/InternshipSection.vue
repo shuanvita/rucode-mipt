@@ -25,7 +25,7 @@ defineProps<InternshipSectionProps>()
       </li>
     </ul>
     <div class="flex justify-center">
-      <UiAction variant="mws" :to="action.to">{{ action.text }}</UiAction>
+      <UiAction variant="red" :to="action.to">{{ action.text }}</UiAction>
     </div>
   </section>
 </template>

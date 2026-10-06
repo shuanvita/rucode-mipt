@@ -9,7 +9,7 @@ defineProps<HeroSectionProps>()
     class="container mt-6 grid grid-cols-[minmax(0,1fr)] sm:mt-12 lg:mt-0 lg:grid-cols-2 lg:items-center lg:gap-10"
   >
     <div class="col-start-1 row-start-1 flex flex-col items-start gap-17.5 md:gap-10">
-      <UiHeading class="text-mws-red font-black" tag="h1" :html="title" />
+      <UiHeading class="text-brand-red font-black" tag="h1" :html="title" />
       <UiText class="max-w-120 pr-22 sm:pr-0" size="xl" :html="description" />
     </div>
     <NuxtPicture

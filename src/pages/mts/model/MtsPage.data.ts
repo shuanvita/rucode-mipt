@@ -84,7 +84,7 @@ const testskills: ActionSectionProps = {
   action: {
     text: 'Пройти тестирование',
     to: 'https://edu.mipt.ru/member/meroprijatija/test-rucode-hardskils/',
-    variant: 'mws-outline',
+    variant: 'red-outline',
   },
 }
 

@@ -11,7 +11,7 @@ const isFormOpen = ref(false)
   <section class="container mt-6 grid grid-cols-[minmax(0,1fr)] sm:mt-12 lg:mt-20">
     <div class="col-start-1 row-start-1 flex flex-col items-start gap-5 lg:gap-10">
       <UiHeading tag="h1" :html="title" />
-      <UiAction variant="mws" @click="isFormOpen = true">{{ action.text }}</UiAction>
+      <UiAction variant="red" @click="isFormOpen = true">{{ action.text }}</UiAction>
       <div class="space-y-5">
         <UiHeading class="font-black" tag="h3" as="h2" :html="subtitle" />
         <UiText class="max-w-120 pr-20 sm:pr-0" size="xl">{{ description }}</UiText>

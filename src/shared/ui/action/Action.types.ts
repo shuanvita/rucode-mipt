@@ -1,4 +1,4 @@
-export type ActionVariant = 'primary' | 'secondary' | 'ghost' | 'mws' | 'mws-outline' | 'custom'
+export type ActionVariant = 'primary' | 'secondary' | 'ghost' | 'red' | 'red-outline' | 'custom'
 
 export interface ActionProps {
   to?: string

@@ -4,6 +4,6 @@ export interface ActionSectionProps {
   action: {
     text: string
     to: string
-    variant?: 'mws' | 'mws-outline'
+    variant?: 'red' | 'red-outline'
   }
 }

@@ -9,7 +9,7 @@ defineProps<ActionSectionProps>()
     <UiHeading class="text-purple-primary text-center font-black" tag="h2">{{ title }}</UiHeading>
     <div class="flex flex-col items-center gap-4 sm:gap-7.5">
       <UiText v-if="description" class="max-w-233 text-center" size="xl">{{ description }}</UiText>
-      <UiAction :variant="action.variant ?? 'mws'" :to="action.to">{{ action.text }}</UiAction>
+      <UiAction :variant="action.variant ?? 'red'" :to="action.to">{{ action.text }}</UiAction>
     </div>
   </section>
 </template>
