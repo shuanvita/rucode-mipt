@@ -5,7 +5,7 @@ defineProps<FinalHeroProps>()
 </script>
 
 <template>
-  <section class="relative container flex flex-col max-lg:items-center lg:min-h-130">
+  <section class="relative container flex flex-col max-lg:items-center">
     <div class="relative z-10 flex flex-col max-lg:items-center">
       <NuxtImg
         class="w-50 max-w-full lg:w-88"

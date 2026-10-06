@@ -28,13 +28,7 @@ defineProps<FinalAboutProps>()
         </ul>
       </div>
     </div>
-    <UiAction
-      class="bg-[#7b7b76] px-10 py-4.5 text-[13px] font-extrabold text-[#020200] uppercase max-md:self-center"
-      variant="custom"
-      disabled
-      >{{ action.text }}</UiAction
-    >
-
+    <UiAction class="pointer-events-none self-start">{{ action.text }}</UiAction>
     <div class="mt-10 flex flex-col gap-y-6 lg:mt-32 lg:gap-y-15">
       <div class="relative self-center">
         <UiHeading class="text-purple-primary text-center font-black" tag="h2">{{

@@ -18,7 +18,7 @@ defineProps<CapitalHeroProps>()
         <div class="flex max-w-111.5 flex-col gap-y-5 max-lg:items-center max-lg:text-center">
           <div class="flex flex-col items-start gap-y-3 max-lg:items-center">
             <span
-              class="rounded bg-[#9237D2] p-2 text-[16px]/[1.25] font-bold sm:text-[22px]/[1.46]"
+              class="rounded bg-[#9237D2] p-2 text-base/tight font-bold sm:text-[22px]/[1.46]"
               >{{ badge }}</span
             >
             <UiHeading class="max-w-91.5 normal-case" tag="h3" as="h4">{{ lead }}</UiHeading>
