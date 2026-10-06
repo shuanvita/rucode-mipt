@@ -1,6 +1,4 @@
 // Генерирует манифест блоков: `npm run manifest [путь]` (по умолчанию .output/manifest.json).
-// Манифест строится из реестра блоков, а реестр требует окружения Nuxt (алиасы, автоимпорты),
-// поэтому генерация выполняется как vitest-тест `src/app/block-registry/manifest.test.ts`.
 import { spawnSync } from 'node:child_process'
 
 const out = process.argv[2] ?? '.output/manifest.json'

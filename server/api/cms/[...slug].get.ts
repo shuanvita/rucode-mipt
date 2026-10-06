@@ -28,9 +28,6 @@ async function requestPage(config: CmsRuntimeConfig, slug: string, preview?: str
   }
 }
 
-// Кэшируются только опубликованные страницы. Черновики (`?preview=`) идут мимо этой функции:
-// `shouldBypassCache` в Nitro пропускает чтение кэша, но результат всё равно записывает,
-// и черновик попал бы в кэш опубликованной страницы.
 const getPublishedPage = defineCachedFunction(
   (config: CmsRuntimeConfig, slug: string) => requestPage(config, slug),
   {
@@ -41,11 +38,6 @@ const getPublishedPage = defineCachedFunction(
   },
 )
 
-/**
- * Прокси страниц из бэкенда CMS: `GET {cmsBaseUrl}/pages/{slug}`.
- * Токен чтения хранится только на сервере. Если CMS не настроена или страницы нет,
- * отвечаем 404, а сайт использует локальные данные.
- */
 export default defineEventHandler(async (event) => {
   const { cmsBaseUrl, cmsToken } = useRuntimeConfig(event)
   if (!cmsBaseUrl) {

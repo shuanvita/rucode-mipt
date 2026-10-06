@@ -9,8 +9,6 @@ export default defineEventHandler(async (event) => {
   const { revalidateSecret } = useRuntimeConfig(event)
   const received = Buffer.from(getHeader(event, 'x-revalidate-secret') ?? '')
   const expected = Buffer.from(revalidateSecret)
-
-  // Сравнение за постоянное время, чтобы секрет нельзя было подобрать по задержке ответа
   if (
     !revalidateSecret ||
     received.length !== expected.length ||
