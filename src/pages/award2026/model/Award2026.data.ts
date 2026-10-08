@@ -199,6 +199,7 @@ const peopleSlider: PeopleSliderProps = {
     {
       name: 'Дмитрий Ливанов',
       text: 'Ректор МФТИ. Председатель Оргкомитета',
+      photo: '/images/livanov.jpg',
     },
     {
       name: 'Алексей Малеев',
