@@ -8,9 +8,8 @@ import { fetchCmsPage } from '~/shared/api'
 definePageMeta({
   middleware: async (to) => {
     const slug = `/${[to.params.slug].flat().join('/')}`
-    const preview = typeof to.query.preview === 'string' ? to.query.preview : undefined
     try {
-      const page = await fetchCmsPage(slug, preview)
+      const page = await fetchCmsPage(slug)
       if (page.headerConfig) to.meta.headerConfig = page.headerConfig
       if (page.noFooterSpacing) to.meta.noFooterSpacing = true
     } catch {

@@ -15,10 +15,9 @@ export default defineNuxtConfig({
 
   features: { inlineStyles: true },
 
-  // Приватные ключи задаются только на сервере: NUXT_CMS_BASE_URL, NUXT_CMS_TOKEN, NUXT_REVALIDATE_SECRET.
+  // Приватные ключи задаются только на сервере: NUXT_CMS_BASE_URL, NUXT_REVALIDATE_SECRET.
   runtimeConfig: {
     cmsBaseUrl: '',
-    cmsToken: '',
     revalidateSecret: '',
     public: {
       // NUXT_PUBLIC_PARTICIPATION_ENDPOINT, NUXT_PUBLIC_CONSORTIUM_ENDPOINT

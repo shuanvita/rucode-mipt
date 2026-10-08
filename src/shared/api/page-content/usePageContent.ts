@@ -12,10 +12,8 @@ async function resolveSource(source?: PageContentSource) {
   return typeof source === 'function' ? await source() : source
 }
 
-export async function fetchCmsPage(slug: string, preview?: string) {
-  const response = await $fetch<unknown>(`/api/cms${slug === '/' ? '/index' : slug}`, {
-    query: preview ? { preview } : undefined,
-  })
+export async function fetchCmsPage(slug: string) {
+  const response = await $fetch<unknown>(`/api/cms${slug === '/' ? '/index' : slug}`)
   try {
     return parseContentPage(response)
   } catch (error) {
@@ -26,11 +24,10 @@ export async function fetchCmsPage(slug: string, preview?: string) {
 
 /**
  * Загружает страницу из CMS (`/api/cms<slug>`); если запрос не удался или ответ невалиден,
- * использует локальные данные. Черновик доступен по `?preview=<token>`.
+ * использует локальные данные.
  */
 export function usePageContent(slug: string, fallback: PageContentFallback) {
   const { locale } = useI18n()
-  const route = useRoute()
 
   const sources: Partial<Record<Locale, PageContentSource>> = isContentPage(fallback)
     ? { [DEFAULT_LOCALE]: fallback }
@@ -42,11 +39,8 @@ export function usePageContent(slug: string, fallback: PageContentFallback) {
     (await resolveSource(sources[DEFAULT_LOCALE])) ??
     (await resolveSource(Object.values(sources)[0]))
 
-  const getPreview = () =>
-    typeof route.query.preview === 'string' ? route.query.preview : undefined
-
   const result = useAsyncData(
-    computed(() => `cms:${slug}:${locale.value}:${getPreview() ?? ''}`),
+    computed(() => `cms:${slug}:${locale.value}`),
     async () => {
       const currentLocale = locale.value as Locale
 
@@ -57,7 +51,7 @@ export function usePageContent(slug: string, fallback: PageContentFallback) {
       }
 
       try {
-        const page = await fetchCmsPage(slug, getPreview())
+        const page = await fetchCmsPage(slug)
         // Если CMS не прислала метаданные, берём локальные, чтобы у страницы не пропал title
         if (!page.meta) {
           const localMeta = (await resolveLocalPage(currentLocale))?.meta
