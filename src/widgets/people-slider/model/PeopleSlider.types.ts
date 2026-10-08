@@ -5,7 +5,7 @@ export interface PeopleSliderProps {
 }
 
 export interface Person {
-  photo: string
+  photo?: string
   name: string
-  text: string
+  text?: string
 }
