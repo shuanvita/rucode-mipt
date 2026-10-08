@@ -52,7 +52,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          source: ".output"
+          source: '.output'
           target: ${{ env.DEPLOY_PATH }}
 
       - name: Deploy ecosystem.config.cjs to server
@@ -62,7 +62,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          source: "ecosystem.config.cjs"
+          source: 'ecosystem.config.cjs'
           target: ${{ env.DEPLOY_PATH }}
 
       - name: Restart application

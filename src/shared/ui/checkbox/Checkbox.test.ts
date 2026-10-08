@@ -5,7 +5,10 @@ import Checkbox from './Checkbox.vue'
 describe('Checkbox.vue', () => {
   it('переключает v-model по клику', async () => {
     const wrapper = await mountSuspended(Checkbox, {
-      props: { modelValue: false, 'onUpdate:modelValue': (v: boolean) => wrapper.setProps({ modelValue: v }) },
+      props: {
+        modelValue: false,
+        'onUpdate:modelValue': (v: boolean) => wrapper.setProps({ modelValue: v }),
+      },
       slots: { default: () => 'Согласие' },
     })
 

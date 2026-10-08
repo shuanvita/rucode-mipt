@@ -39,7 +39,8 @@ const categories: Category[] = [
   },
   {
     label: 'РџРµСЂСЃРѕРЅС‹',
-    description: 'РџРѕРґР°СЋС‚СЃСЏ С‚РѕР»СЊРєРѕ С„РёР·РёС‡РµСЃРєРёРµ Р»РёС†Р°. РРЅРґРёРІРёРґСѓР°Р»СЊРЅРѕРµ СѓС‡Р°СЃС‚РёРµ',
+    description:
+      'РџРѕРґР°СЋС‚СЃСЏ С‚РѕР»СЊРєРѕ С„РёР·РёС‡РµСЃРєРёРµ Р»РёС†Р°. РРЅРґРёРІРёРґСѓР°Р»СЊРЅРѕРµ СѓС‡Р°СЃС‚РёРµ',
     nominations: [
       {
         type: 'simple',
@@ -95,7 +96,8 @@ const categories: Category[] = [
   },
   {
     label: 'РћС‚ РњРўРЎ',
-    description: 'РЎРїРµС†РёР°Р»СЊРЅР°СЏ РЅРѕРјРёРЅР°С†РёСЏ РѕС‚ Р“РµРЅРµСЂР°Р»СЊРЅРѕРіРѕ РїР°СЂС‚РЅС‘СЂР°',
+    description:
+      'РЎРїРµС†РёР°Р»СЊРЅР°СЏ РЅРѕРјРёРЅР°С†РёСЏ РѕС‚ Р“РµРЅРµСЂР°Р»СЊРЅРѕРіРѕ РїР°СЂС‚РЅС‘СЂР°',
     nominations: [
       {
         type: 'partner',
@@ -123,7 +125,9 @@ const categories: Category[] = [
 
 <template>
   <section class="relative z-10 container flex flex-col items-center space-y-8 lg:space-y-15">
-    <UiHeading class="text-purple-primary text-center" tag="h2">РќР°РїСЂР°РІР»РµРЅРёСЏ Рё РЅРѕРјРёРЅР°С†РёРё</UiHeading>
+    <UiHeading class="text-purple-primary text-center" tag="h2"
+      >РќР°РїСЂР°РІР»РµРЅРёСЏ Рё РЅРѕРјРёРЅР°С†РёРё</UiHeading
+    >
     <UiTabs :items="categories">
       <template #default="{ index }">
         <div class="space-y-14">
