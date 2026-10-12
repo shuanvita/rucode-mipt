@@ -81,6 +81,8 @@ jobs:
       # Манифест блоков уходит в CMS после деплоя: без него админка не создаёт и не сохраняет страницы.
       # Шаг пропускается, пока не заданы секреты CMS_API_URL (например https://cms.example.ru/cms-api) и CMS_CI_KEY.
       - name: Publish block manifest to CMS
+        # Сбой отправки (CMS недоступна, неверный ключ) не должен ронять деплой: сайт к этому моменту уже выкачен.
+        continue-on-error: true
         env:
           CMS_API_URL: ${{ secrets.CMS_API_URL }}
           CMS_CI_KEY: ${{ secrets.CMS_CI_KEY }}
