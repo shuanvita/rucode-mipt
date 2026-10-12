@@ -19,6 +19,11 @@ export default defineNuxtConfig({
   runtimeConfig: {
     cmsBaseUrl: '',
     revalidateSecret: '',
+    // Прокси админки CMS (server/routes/cms-admin): NUXT_CMS_ADMIN_USER, NUXT_CMS_ADMIN_PASSWORD,
+    // NUXT_CMS_ADMIN_UPSTREAM. Без логина и пароля прокси отвечает 404.
+    cmsAdminUser: '',
+    cmsAdminPassword: '',
+    cmsAdminUpstream: 'http://127.0.0.1:3100',
     public: {
       // NUXT_PUBLIC_PARTICIPATION_ENDPOINT, NUXT_PUBLIC_CONSORTIUM_ENDPOINT
       participationEndpoint: '/new/regMerAdmin25.php',
