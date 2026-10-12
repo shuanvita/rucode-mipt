@@ -65,8 +65,8 @@ const personQuote = z.object({
   title: text().optional(),
   image: image(),
   name: text(),
-  role: text().optional(),
-  text: text(),
+  role: richText().optional(),
+  text: richText(),
 }) satisfies ZodType<PersonQuoteProps>
 
 const peopleSlider = z.object({
@@ -160,7 +160,7 @@ const directionsWork = z.object({
 const awardAction = z.object({ to: link().optional(), text: text().optional() })
 
 const awardHero = z.object({
-  title: text().optional(),
+  title: richText().optional(),
   action: awardAction.optional(),
   image: image().optional(),
   imageMobile: image().optional(),

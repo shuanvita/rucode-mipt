@@ -77,3 +77,19 @@ jobs:
             /usr/local/bin/pm2 delete nuxt-rucode || true
             /usr/local/bin/pm2 start ecosystem.config.cjs
             /usr/local/bin/pm2 save
+
+      # Манифест блоков уходит в CMS после деплоя: без него админка не создаёт и не сохраняет страницы.
+      # Шаг пропускается, пока не заданы секреты CMS_API_URL (например https://cms.example.ru/cms-api) и CMS_CI_KEY.
+      - name: Publish block manifest to CMS
+        env:
+          CMS_API_URL: ${{ secrets.CMS_API_URL }}
+          CMS_CI_KEY: ${{ secrets.CMS_CI_KEY }}
+        run: |
+          if [ -z "$CMS_API_URL" ] || [ -z "$CMS_CI_KEY" ]; then
+            echo "CMS_API_URL / CMS_CI_KEY не заданы, манифест не отправляется"
+            exit 0
+          fi
+          npm run manifest
+          curl --fail-with-body -sS -X PUT "${CMS_API_URL%/}/projects/rucode/manifest" \
+            -H "x-ci-key: $CMS_CI_KEY" -H "content-type: application/json" \
+            --data-binary @.output/manifest.json
