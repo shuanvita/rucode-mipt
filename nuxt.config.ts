@@ -82,6 +82,9 @@ export default defineNuxtConfig({
 
   image: {
     format: ['webp'],
+    // Файлы медиатеки CMS приходят абсолютными ссылками <домен>/cms-api/media/... (см. server/routes/cms-api/media);
+    // без разрешённого домена IPX отказывается их оптимизировать.
+    domains: ['nuxt.rucode.net'],
   },
 
   hooks: {
