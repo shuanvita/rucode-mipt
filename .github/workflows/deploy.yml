@@ -79,7 +79,8 @@ jobs:
             /usr/local/bin/pm2 save
 
       # Манифест блоков уходит в CMS после деплоя: без него админка не создаёт и не сохраняет страницы.
-      # Шаг пропускается, пока не заданы секреты CMS_API_URL (например https://cms.example.ru/cms-api) и CMS_CI_KEY.
+      # Отправка идёт через сайт (server/routes/cms-api/projects): CMS_API_URL = https://nuxt.rucode.net/cms-api,
+      # CMS_CI_KEY — ключ CI проекта (показывается один раз при create-project). Шаг пропускается, пока секреты не заданы.
       - name: Publish block manifest to CMS
         # Сбой отправки (CMS недоступна, неверный ключ) не должен ронять деплой: сайт к этому моменту уже выкачен.
         continue-on-error: true

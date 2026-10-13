@@ -19,7 +19,7 @@ function parseBlock(value: unknown, index: number): ContentBlock {
 }
 
 /**
- * Проверяет ответ CMS на соответствие `ContentPage` (см. docs/backend-integration-status.md).
+ * Проверяет ответ CMS на соответствие `ContentPage` (контракт `@crito/contract` в проекте crito-api).
  * Написана вручную: схемы zod нужны только манифесту и не должны попадать в клиентский бандл.
  * Содержимое `data` не проверяется: его валидирует бэкенд по схеме из манифеста.
  */
