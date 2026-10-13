@@ -20,6 +20,8 @@ import type { StagesTimelineProps } from '~/widgets/award/stages'
 import type { AwardCtaProps } from '~/widgets/award/cta'
 import type { ContactsSectionProps } from '~/widgets/mws/contacts'
 import type { PlacesSectionProps } from '~/widgets/consortium-section'
+import type { WhyParticipateProps } from '~/widgets/award2026/why-participate'
+import type { NominationsTabsProps } from '~/widgets/award2026/nominations-tabs'
 import type { EventsSliderProps } from '~/shared/ui/events-slider'
 import { image, itemId, link, richText, text } from './fields'
 
@@ -190,6 +192,40 @@ const awardCta = z.object({
   action: awardAction.optional(),
 }) satisfies ZodType<AwardCtaProps>
 
+const award2026WhyParticipate = z.object({
+  title: text().optional(),
+  // Заголовок карточки выводится через v-html (sanitizeRichText)
+  cards: z.array(z.object({ title: richText() })),
+}) satisfies ZodType<WhyParticipateProps>
+
+const award2026Nominations = z.object({
+  title: text().optional(),
+  description: text().optional(),
+  tabs: z.array(
+    z.object({
+      label: text(),
+      description: text().optional(),
+      nominations: z.array(
+        z.discriminatedUnion('type', [
+          z.object({
+            type: z.literal('simple'),
+            title: text(),
+            description: z.array(text()),
+          }),
+          z.object({
+            type: z.literal('partner'),
+            title: text(),
+            description: z.array(text()),
+            eligibility: z.array(text()),
+            partner: z.object({ name: text(), logo: image(), role: text() }),
+          }),
+        ]),
+      ),
+    }),
+  ),
+  action: z.object({ to: link(), text: text() }).optional(),
+}) satisfies ZodType<NominationsTabsProps>
+
 const contacts = z.object({
   title: text(),
   cards: z.array(
@@ -244,6 +280,8 @@ export const blockSchemas: Record<string, ZodType> = {
   'award.participants': awardParticipants,
   'award.stagesTimeline': awardStages,
   'award.cta': awardCta,
+  'award2026.whyParticipate': award2026WhyParticipate,
+  'award2026.nominationsTabs': award2026Nominations,
   'mws.contacts': contacts,
   'consortium.places': places,
   eventsSlider,
