@@ -22,6 +22,13 @@ import type { ContactsSectionProps } from '~/widgets/mws/contacts'
 import type { PlacesSectionProps } from '~/widgets/consortium-section'
 import type { WhyParticipateProps } from '~/widgets/award2026/why-participate'
 import type { NominationsTabsProps } from '~/widgets/award2026/nominations-tabs'
+import type { AiChampHeroProps } from '~/widgets/ai_champ/hero'
+import type { AiChampBenefitsProps } from '~/widgets/ai_champ/benefits'
+import type { AiChampLeaguesProps } from '~/widgets/ai_champ/leagues'
+import type { AiChampStagesProps } from '~/widgets/ai_champ/stages'
+import type { AiChampTasksProps } from '~/widgets/ai_champ/tasks'
+import type { AiChampPreparationProps } from '~/widgets/ai_champ/preparation'
+import type { AiChampMaterialsProps } from '~/widgets/ai_champ/materials'
 import type { EventsSliderProps } from '~/shared/ui/events-slider'
 import { image, itemId, link, richText, text } from './fields'
 
@@ -260,6 +267,85 @@ const eventsSlider = z.object({
   ),
 }) satisfies ZodType<EventsSliderProps>
 
+const aiChampAction = z.object({ to: link(), text: text() })
+
+const aiChampHero = z.object({
+  // Заголовок выводится через v-html (sanitizeRichText)
+  title: richText().optional(),
+  description: z.array(text()).optional(),
+  image: image().optional(),
+}) satisfies ZodType<AiChampHeroProps>
+
+const aiChampBenefits = z.object({
+  title: text(),
+  items: z.array(z.object({ id: text(), image: image(), text: text() })),
+  quote: text().optional(),
+}) satisfies ZodType<AiChampBenefitsProps>
+
+const aiChampLeagues = z.object({
+  title: text().optional(),
+  items: z
+    .array(
+      z.object({
+        id: text(),
+        title: text(),
+        description: z.array(text()).optional(),
+        image: image(),
+        reverse: z.boolean().optional(),
+      }),
+    )
+    .optional(),
+  action: aiChampAction.optional(),
+}) satisfies ZodType<AiChampLeaguesProps>
+
+const aiChampStages = z.object({
+  title: text().optional(),
+  items: z.array(
+    z.object({
+      id: text(),
+      // Абзацы выводятся через v-html (sanitizeRichText)
+      description: z.array(richText()).optional(),
+      reverse: z.boolean().optional(),
+    }),
+  ),
+}) satisfies ZodType<AiChampStagesProps>
+
+const aiChampTaskCard = z.object({
+  id: text(),
+  badge: z.object({ text: text(), variant: z.enum(['base', 'pro']) }).optional(),
+  title: text().optional(),
+  subtitle: text().optional(),
+  logo: image().optional(),
+  description: text().optional(),
+  footer: text().optional(),
+})
+
+const aiChampTasks = z.object({
+  title: text().optional(),
+  description: text().optional(),
+  subtitle: text().optional(),
+  btnText: text().optional(),
+  visibleCards: z.array(aiChampTaskCard).optional(),
+  hiddenCards: z.array(aiChampTaskCard).optional(),
+  hiddenContent: text().optional(),
+  hideText: text().optional(),
+  action: aiChampAction.optional(),
+}) satisfies ZodType<AiChampTasksProps>
+
+const aiChampPreparation = z.object({
+  title: text().optional(),
+  subtitle: text().optional(),
+  caption: text().optional(),
+  slides: z
+    .array(z.object({ title: text().optional(), description: z.array(text()).optional() }))
+    .optional(),
+  action: aiChampAction.optional(),
+}) satisfies ZodType<AiChampPreparationProps>
+
+const aiChampMaterials = z.object({
+  footer: z.object({ image: image(), text: text(), action: aiChampAction }),
+}) satisfies ZodType<AiChampMaterialsProps>
+
 /** type блока -> схема `data`. Блоки без схемы попадают в манифест как `readonly`. */
 export const blockSchemas: Record<string, ZodType> = {
   faq,
@@ -284,5 +370,12 @@ export const blockSchemas: Record<string, ZodType> = {
   'award2026.nominationsTabs': award2026Nominations,
   'mws.contacts': contacts,
   'consortium.places': places,
+  'aiChamp.hero': aiChampHero,
+  'aiChamp.benefits': aiChampBenefits,
+  'aiChamp.leagues': aiChampLeagues,
+  'aiChamp.stages': aiChampStages,
+  'aiChamp.tasks': aiChampTasks,
+  'aiChamp.preparation': aiChampPreparation,
+  'aiChamp.materials': aiChampMaterials,
   eventsSlider,
 }
