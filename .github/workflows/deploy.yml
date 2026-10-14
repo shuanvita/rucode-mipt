@@ -80,19 +80,25 @@ jobs:
 
       # Манифест блоков уходит в CMS после деплоя: без него админка не создаёт и не сохраняет страницы.
       # Отправка идёт через сайт (server/routes/cms-api/projects): CMS_API_URL = https://nuxt.rucode.net/cms-api,
-      # CMS_CI_KEY — ключ CI проекта (показывается один раз при create-project). Шаг пропускается, пока секреты не заданы.
+      # CMS_CI_KEY — ключ CI проекта (показывается один раз при create-project). Шаг пропускается (с предупреждением), пока секреты не заданы.
       - name: Publish block manifest to CMS
-        # Сбой отправки (CMS недоступна, неверный ключ) не должен ронять деплой: сайт к этому моменту уже выкачен.
-        continue-on-error: true
+        # Сайт к этому шагу уже выкачен, поэтому сбой не откатывает деплой, но делает job красным
+        # (раньше continue-on-error скрывал 401 от CMS).
         env:
           CMS_API_URL: ${{ secrets.CMS_API_URL }}
           CMS_CI_KEY: ${{ secrets.CMS_CI_KEY }}
+          # Уникальная версия на каждый деплой: дата без времени давала одинаковую версию в пределах дня.
+          MANIFEST_VERSION: ${{ github.sha }}
         run: |
           if [ -z "$CMS_API_URL" ] || [ -z "$CMS_CI_KEY" ]; then
-            echo "CMS_API_URL / CMS_CI_KEY не заданы, манифест не отправляется"
+            echo "::warning::CMS_API_URL / CMS_CI_KEY не заданы, манифест НЕ опубликован"
             exit 0
           fi
           npm run manifest
-          curl --fail-with-body -sS -X PUT "${CMS_API_URL%/}/projects/rucode/manifest" \
+          if ! curl --fail-with-body -sS -X PUT "${CMS_API_URL%/}/projects/rucode/manifest" \
             -H "x-ci-key: $CMS_CI_KEY" -H "content-type: application/json" \
-            --data-binary @.output/manifest.json
+            --data-binary @.output/manifest.json; then
+            echo "::error::Манифест блоков НЕ опубликован в CMS (проверьте CMS_API_URL и CMS_CI_KEY)"
+            exit 1
+          fi
+          echo "Манифест опубликован, версия $MANIFEST_VERSION"
