@@ -9,6 +9,4 @@ export interface AiTestingDemoProps {
   }[]
   footerText: string
   btnText: string
-  /** Endpoint отправки формы, которая открывается по клику на кнопку */
-  formEndpoint?: string
 }

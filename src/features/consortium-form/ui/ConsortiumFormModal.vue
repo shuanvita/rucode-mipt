@@ -3,15 +3,9 @@ import { useConsortiumForm } from '../api/useConsortiumForm'
 import ConsortiumFormFields from './ConsortiumFormFields.vue'
 import ConsortiumFormSuccess from './ConsortiumFormSuccess.vue'
 
-const props = defineProps<{
-  endpoint?: string
-}>()
-
 const isOpen = defineModel<boolean>({ required: true })
 
-const { formData, errors, status, submitErrorMessage, touch, submit, reset } = useConsortiumForm(
-  () => props.endpoint,
-)
+const { formData, errors, status, submitErrorMessage, touch, submit, reset } = useConsortiumForm()
 
 watch(isOpen, (value) => {
   if (!value) reset()

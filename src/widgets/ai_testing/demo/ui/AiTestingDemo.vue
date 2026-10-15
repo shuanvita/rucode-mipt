@@ -52,5 +52,5 @@ const isFormOpen = ref(false)
     </div>
   </section>
 
-  <ParticipationFormModal v-model="isFormOpen" :endpoint="formEndpoint" />
+  <ParticipationFormModal v-model="isFormOpen" />
 </template>

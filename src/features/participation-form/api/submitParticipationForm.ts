@@ -1,4 +1,5 @@
 import { getPhoneCountry } from '~/shared/config'
+import { submitCmsRequest, type CmsRequestFields } from '~/shared/api'
 import type { ParticipationFormData } from '~/features/participation-form'
 
 export interface SubmitParticipationResult {
@@ -6,30 +7,28 @@ export interface SubmitParticipationResult {
   error?: string
 }
 
-export const DEFAULT_PARTICIPATION_ENDPOINT = '/new/regMerAdmin25.php'
+/** Ключ формы в заявках CMS: по нему менеджеры фильтруют список. */
+export const PARTICIPATION_FORM_KEY = 'participation'
 
+/** Поля заявки для CMS: мероприятия остаются списком. */
+export function buildParticipationFields(data: ParticipationFormData): CmsRequestFields {
+  return {
+    surname: data.surname.trim(),
+    name: data.name.trim(),
+    patronymic: data.patronymic.trim(),
+    email: data.email.trim(),
+    phone: `+${getPhoneCountry(data.phoneCountry).dialCode}${data.phone}`,
+    region: data.region,
+    ...(data.role ? { role: data.role } : {}),
+    events: data.events,
+  }
+}
+
+/** Заявка сохраняется в CMS (`POST /api/cms-requests` -> crito-api), других получателей нет. */
 export async function submitParticipationForm(
   data: ParticipationFormData,
-  endpoint: string = DEFAULT_PARTICIPATION_ENDPOINT,
 ): Promise<SubmitParticipationResult> {
-  const body = new FormData()
-  body.append('surname', data.surname.trim())
-  body.append('name', data.name.trim())
-  body.append('patronymic', data.patronymic.trim())
-  body.append('email', data.email.trim())
-  body.append('phone', `+${getPhoneCountry(data.phoneCountry).dialCode}${data.phone}`)
-  body.append('region', data.region)
-  if (data.role) body.append('role', data.role)
-  // TODO Уточнить у бека формат передачи списка мероприятий (в референсе поле mer)
-  data.events.forEach((event) => body.append('mer[]', event))
-
-  try {
-    await $fetch(endpoint, { method: 'POST', body })
-    return { success: true }
-  } catch (error) {
-    if (import.meta.dev) {
-      console.error('[participation-form] ошибка отправки формы:', error)
-    }
-    return { success: false, error: 'Не удалось отправить форму. Попробуйте ещё раз позже.' }
-  }
+  const accepted = await submitCmsRequest(PARTICIPATION_FORM_KEY, buildParticipationFields(data))
+  if (accepted) return { success: true }
+  return { success: false, error: 'Не удалось отправить форму. Попробуйте ещё раз позже.' }
 }

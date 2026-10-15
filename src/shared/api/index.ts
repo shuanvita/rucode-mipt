@@ -20,5 +20,7 @@ export {
   resolveBlockType,
   resetBlockRegistry,
 } from './block-registry/registry'
+export { submitCmsRequest } from './cms-requests/submitCmsRequest'
+export type { CmsRequestFields } from './cms-requests/submitCmsRequest'
 export { defineBlock } from './block-registry/defineBlock'
 export type { BlockDefinition, BlockAlias, BlockCategory } from './block-registry/types'

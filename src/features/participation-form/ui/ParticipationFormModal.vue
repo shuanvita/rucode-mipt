@@ -1,12 +1,10 @@
 <script setup lang="ts">
-// TODO Уточнить по форме. Какие поля ожидает бек + endpoint отправки
 import { useParticipationForm } from '../api/useParticipationForm'
 import ParticipationFormFields from './ParticipationFormFields.vue'
 import ParticipationFormSuccess from './ParticipationFormSuccess.vue'
 import type { ParticipationOptionGroup } from '../model/ParticipationForm.types'
 
-const props = defineProps<{
-  endpoint?: string
+defineProps<{
   description?: string
   roleGroup?: ParticipationOptionGroup
   eventsGroup?: ParticipationOptionGroup
@@ -15,7 +13,7 @@ const props = defineProps<{
 const isOpen = defineModel<boolean>({ required: true })
 
 const { formData, errors, status, submitErrorMessage, isValid, touch, submit, reset } =
-  useParticipationForm(() => props.endpoint)
+  useParticipationForm()
 
 watch(isOpen, (value) => {
   if (!value) reset()

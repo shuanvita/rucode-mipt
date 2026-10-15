@@ -462,7 +462,6 @@ const aiTestingDemo = z.object({
   cards: z.array(z.object({ id: text(), image: image(), text: text().optional() })),
   footerText: text(),
   btnText: text(),
-  formEndpoint: link().optional(),
 }) satisfies ZodType<AiTestingDemoProps>
 
 const aiTestingAbout = z.object({

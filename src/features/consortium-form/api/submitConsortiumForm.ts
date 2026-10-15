@@ -1,4 +1,5 @@
 import { getPhoneCountry } from '~/shared/config'
+import { submitCmsRequest, type CmsRequestFields } from '~/shared/api'
 import type { ConsortiumFormData } from '~/features/consortium-form'
 
 export interface SubmitConsortiumResult {
@@ -6,33 +7,31 @@ export interface SubmitConsortiumResult {
   error?: string
 }
 
-// TODO Уточнить endpoint и набор полей, которые ожидает бек
-export const DEFAULT_CONSORTIUM_ENDPOINT = '/new/regConsortium.php'
+/** Ключ формы в заявках CMS: по нему менеджеры фильтруют список. */
+export const CONSORTIUM_FORM_KEY = 'consortium'
 
+/** Поля заявки для CMS: списки остаются списками. */
+export function buildConsortiumFields(data: ConsortiumFormData): CmsRequestFields {
+  return {
+    organization: data.organization.trim(),
+    name: data.name.trim(),
+    post: data.post.trim(),
+    email: data.email.trim(),
+    phone: `+${getPhoneCountry(data.phoneCountry).dialCode}${data.phone}`,
+    audience: data.audience,
+    audienceOther: data.audienceOther.trim(),
+    promotion: data.promotion,
+    promotionOther: data.promotionOther.trim(),
+    eventsExperience: data.eventsExperience,
+    partnershipExperience: data.partnershipExperience,
+  }
+}
+
+/** Заявка сохраняется в CMS (`POST /api/cms-requests` -> crito-api), других получателей нет. */
 export async function submitConsortiumForm(
   data: ConsortiumFormData,
-  endpoint: string = DEFAULT_CONSORTIUM_ENDPOINT,
 ): Promise<SubmitConsortiumResult> {
-  const body = new FormData()
-  body.append('organization', data.organization.trim())
-  body.append('name', data.name.trim())
-  body.append('post', data.post.trim())
-  body.append('email', data.email.trim())
-  body.append('phone', `+${getPhoneCountry(data.phoneCountry).dialCode}${data.phone}`)
-  body.append('audience', data.audience)
-  body.append('audienceOther', data.audienceOther.trim())
-  body.append('promotion', data.promotion.join(', '))
-  body.append('promotionOther', data.promotionOther.trim())
-  body.append('eventsExperience', data.eventsExperience)
-  body.append('partnershipExperience', data.partnershipExperience)
-
-  try {
-    await $fetch(endpoint, { method: 'POST', body })
-    return { success: true }
-  } catch (error) {
-    if (import.meta.dev) {
-      console.error('[consortium-form] ошибка отправки формы:', error)
-    }
-    return { success: false, error: 'Не удалось отправить форму. Попробуйте ещё раз позже.' }
-  }
+  const accepted = await submitCmsRequest(CONSORTIUM_FORM_KEY, buildConsortiumFields(data))
+  if (accepted) return { success: true }
+  return { success: false, error: 'Не удалось отправить форму. Попробуйте ещё раз позже.' }
 }

@@ -10,8 +10,7 @@ export type ConsortiumFormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
 type TouchedFields = Partial<Record<keyof ConsortiumFormData, boolean>>
 
-export function useConsortiumForm(endpoint?: MaybeRefOrGetter<string | undefined>) {
-  const { public: publicConfig } = useRuntimeConfig()
+export function useConsortiumForm() {
   const formData = reactive(createEmptyConsortiumForm())
   const touched = reactive<TouchedFields>({})
   const status = ref<ConsortiumFormStatus>('idle')
@@ -45,10 +44,7 @@ export function useConsortiumForm(endpoint?: MaybeRefOrGetter<string | undefined
     if (!isValid.value) return
 
     status.value = 'submitting'
-    const result = await submitConsortiumForm(
-      formData,
-      toValue(endpoint) ?? publicConfig.consortiumEndpoint,
-    )
+    const result = await submitConsortiumForm(formData)
 
     if (result.success) {
       status.value = 'success'
