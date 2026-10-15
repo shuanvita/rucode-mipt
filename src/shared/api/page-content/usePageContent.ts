@@ -3,6 +3,7 @@ import { DEFAULT_LOCALE } from '~/shared/config'
 import type { Locale } from '~/shared/config'
 import { parseContentPage } from './parseContentPage'
 import { usePageMeta } from './usePageMeta'
+import { usePreviewBridge } from './usePreviewBridge'
 
 function isContentPage(fallback: PageContentFallback): fallback is ContentPage {
   return 'blocks' in fallback
@@ -77,6 +78,7 @@ export function usePageContent(slug: string, fallback: PageContentFallback) {
     },
   )
 
+  usePreviewBridge(result.data, slug)
   usePageMeta(() => result.data.value?.page.meta)
 
   return result
