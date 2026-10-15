@@ -31,6 +31,14 @@ jobs:
           npm run lint:fsd
           npm run test
 
+      # Скриншоты блоков для каталога в админке CMS: пишутся в public/previews до сборки, чтобы попасть
+      # в .output/public; поле preview в манифест добавляет `npm run manifest`. Сбой не роняет деплой.
+      - name: Block screenshots
+        continue-on-error: true
+        run: |
+          npx playwright install --with-deps chromium
+          npm run block-shots
+
       - name: Build application
         run: npm run build
 

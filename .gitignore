@@ -1,5 +1,7 @@
 # Nuxt dev/build outputs
 .output
+# скриншоты блоков для каталога в админке CMS (npm run block-shots)
+public/previews
 .data
 .nuxt
 .nitro

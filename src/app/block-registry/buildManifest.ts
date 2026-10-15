@@ -9,6 +9,8 @@ export interface ManifestBlock {
   /** Блок без схемы нельзя редактировать в админке: его можно только включить, скрыть или переставить. */
   readonly: boolean
   aliases: BlockAlias[]
+  /** Путь картинки-превью (`/previews/<type>.png`), если скриншот блока сделан. */
+  preview?: string
   /** JSON Schema поля `data` (draft 2020-12). */
   schema?: Record<string, unknown>
 }
@@ -22,7 +24,11 @@ export interface BlockManifest {
 /** Манифест блоков проекта: его отправляют бэкенду при деплое (`PUT /projects/{id}/manifest`). */
 export function buildManifest(
   definitions: BlockDefinition[],
-  { project, version }: { project: string; version: string },
+  {
+    project,
+    version,
+    hasPreview = () => false,
+  }: { project: string; version: string; hasPreview?: (type: string) => boolean },
 ): BlockManifest {
   return {
     project,
@@ -35,6 +41,7 @@ export function buildManifest(
         schemaVersion: definition.schemaVersion,
         readonly: !definition.schema,
         aliases: definition.aliases ?? [],
+        ...(hasPreview(definition.type) ? { preview: `/previews/${definition.type}.png` } : {}),
         ...(definition.schema
           ? {
               schema: z.toJSONSchema(definition.schema as unknown as z.ZodType) as Record<

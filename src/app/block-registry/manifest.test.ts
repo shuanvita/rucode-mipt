@@ -1,5 +1,5 @@
-import { mkdirSync, writeFileSync } from 'node:fs'
-import { dirname } from 'node:path'
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
+import { dirname, resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 
 import { buildManifest } from './buildManifest'
@@ -8,6 +8,8 @@ import { blockDefinitionsWithSchemas } from './withSchemas'
 const manifest = buildManifest(blockDefinitionsWithSchemas, {
   project: 'rucode',
   version: process.env.MANIFEST_VERSION ?? new Date().toISOString().slice(0, 10),
+  // Скриншоты делает `npm run block-shots` (public/previews/<type>.png, в git не входят).
+  hasPreview: (type) => existsSync(resolve(process.cwd(), 'public/previews', `${type}.png`)),
 })
 
 describe('манифест блоков', () => {

@@ -31,6 +31,9 @@ export default defineNuxtConfig({
       // NUXT_PUBLIC_PREVIEW_ADMIN_ORIGINS: адреса админки CMS (через запятую), от которых принимается
       // черновик для предпросмотра. Пусто: принимается от любого окна, в которое встроен сайт.
       previewAdminOrigins: '',
+      // NUXT_PUBLIC_BLOCK_SHOT=1: включает служебную страницу /__block/<type> для скриншотов блоков
+      // (npm run block-shots). В проде не задаётся, страница отвечает 404.
+      blockShot: '',
     },
   },
 
