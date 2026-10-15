@@ -1,5 +1,11 @@
 import { afterEach, describe, expect, it } from 'vitest'
-import { highlightBlock, parseDraftMessage, parsePreviewMessage } from './usePreviewBridge'
+import {
+  blockIdFromEvent,
+  highlightBlock,
+  parseDraftMessage,
+  parsePreviewMessage,
+  parsePreviewMode,
+} from './usePreviewBridge'
 
 const block = { id: 'b1', type: 'faq', order: 10, enabled: true, data: {} }
 
@@ -41,6 +47,29 @@ describe('parsePreviewMessage: выбор блока', () => {
     expect(parsePreviewMessage({ source: 'crito-preview', type: 'select', blockId: 5 }, '/')).toBeNull()
     expect(parsePreviewMessage({ source: 'crito-preview', type: 'select' }, '/')).toBeNull()
     expect(parsePreviewMessage({ source: 'other', type: 'select', blockId: 'b1' }, '/')).toBeNull()
+  })
+})
+
+describe('parsePreviewMode', () => {
+  it('различает черновик и опубликованную версию, остальное выключает', () => {
+    expect(parsePreviewMode('1')).toBe('draft')
+    expect(parsePreviewMode('published')).toBe('published')
+    expect(parsePreviewMode('0')).toBeNull()
+    expect(parsePreviewMode(undefined)).toBeNull()
+    expect(parsePreviewMode(['1'])).toBeNull()
+  })
+})
+
+describe('blockIdFromEvent', () => {
+  afterEach(() => {
+    document.body.innerHTML = ''
+  })
+
+  it('находит блок по вложенному элементу', () => {
+    document.body.innerHTML = '<section data-block-id="a"><a href="/x"><span id="t">ссылка</span></a></section><p id="out"></p>'
+    expect(blockIdFromEvent(document.getElementById('t'))).toBe('a')
+    expect(blockIdFromEvent(document.getElementById('out'))).toBeNull()
+    expect(blockIdFromEvent(null)).toBeNull()
   })
 })
 

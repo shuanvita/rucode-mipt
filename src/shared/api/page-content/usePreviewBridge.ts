@@ -45,6 +45,22 @@ export function parseDraftMessage(data: unknown, slug: string): ContentPage | nu
   return message?.type === 'draft' ? message.page : null
 }
 
+/**
+ * Режим предпросмотра по параметру адреса: `1` принимает черновик из админки, `published` показывает
+ * опубликованное, но тоже подсвечивает блоки и отдаёт клики. Всё остальное: предпросмотр выключен.
+ */
+export function parsePreviewMode(value: unknown): 'draft' | 'published' | null {
+  if (value === '1') return 'draft'
+  if (value === 'published') return 'published'
+  return null
+}
+
+/** id блока, по которому кликнули (ближайший предок с `data-block-id`); null: клик мимо блоков. */
+export function blockIdFromEvent(target: EventTarget | null): string | null {
+  if (!(target instanceof Element)) return null
+  return target.closest(`[${BLOCK_ATTR}]`)?.getAttribute(BLOCK_ATTR) || null
+}
+
 /** true, пока страница открыта как предпросмотр: блоки помечаются `data-block-id`. */
 export function usePreviewActive() {
   return useState('crito-preview-active', () => false)
@@ -55,7 +71,8 @@ function ensureStyle() {
   const style = document.createElement('style')
   style.id = STYLE_ID
   // outline внутрь блока: не уезжает за края страницы и не меняет раскладку.
-  style.textContent = `[${HIGHLIGHT_ATTR}] { outline: 3px solid #6366f1 !important; outline-offset: -3px !important; transition: outline-color .2s; }`
+  // Жёлтый (yellow-500): тот же цвет, что у выбранного блока в списке редактора.
+  style.textContent = `[${HIGHLIGHT_ATTR}] { outline: 3px solid #eab308 !important; outline-offset: -3px !important; transition: outline-color .2s; }`
   document.head.append(style)
 }
 
@@ -88,7 +105,8 @@ export function usePreviewBridge(
   const active = usePreviewActive()
 
   onMounted(() => {
-    if (route.query[PREVIEW_QUERY] !== '1') return
+    const mode = parsePreviewMode(route.query[PREVIEW_QUERY])
+    if (!mode) return
     if (window.parent === window) return
     active.value = true
 
@@ -112,6 +130,9 @@ export function usePreviewBridge(
         return
       }
 
+      // В режиме «Опубликованная» черновик не применяется: показываем то, что видят посетители.
+      if (mode !== 'draft') return
+
       data.value = { page: message.page, isFallback: false }
       // Шапка и футер читаются из route.meta: подхватываем их, если вернутся на текущем рендере.
       route.meta.headerConfig = message.page.headerConfig
@@ -121,8 +142,22 @@ export function usePreviewBridge(
       })
     }
 
+    // Клик по блоку выбирает его в редакторе. Перехватываем в фазе захвата и гасим переход по ссылке:
+    // иначе клик по кнопке или ссылке увёл бы рамку со страницы, а выбор не сработал.
+    const onClick = (event: MouseEvent) => {
+      const blockId = blockIdFromEvent(event.target)
+      if (!blockId) return
+      event.preventDefault()
+      event.stopPropagation()
+      window.parent.postMessage({ source: CHANNEL, type: 'pick', blockId }, '*')
+    }
+
     window.addEventListener('message', onMessage)
-    onBeforeUnmount(() => window.removeEventListener('message', onMessage))
+    document.addEventListener('click', onClick, true)
+    onBeforeUnmount(() => {
+      window.removeEventListener('message', onMessage)
+      document.removeEventListener('click', onClick, true)
+    })
 
     // Админка не знает, когда страница готова принять черновик: сообщаем сами.
     window.parent.postMessage({ source: CHANNEL, type: 'ready' }, '*')
