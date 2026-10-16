@@ -61,6 +61,8 @@ export default defineNuxtConfig({
     app: 'app/entrypoint',
     pages: 'app/routes',
     layouts: 'app/layouts',
+    // Глобальный route-middleware, который кладёт шапку и отступ футера страницы из CMS в route.meta
+    middleware: 'app/page-meta',
   },
 
   components: [{ path: './shared/ui', prefix: 'ui', extensions: ['vue'] }],

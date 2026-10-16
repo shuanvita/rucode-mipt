@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ConsortiumPage } from '@/pages/consortium'
 
-definePageMeta({ headerConfig: 'consortium' })
+definePageMeta({ footerConfig: 'consortium' })
 </script>
 
 <template>

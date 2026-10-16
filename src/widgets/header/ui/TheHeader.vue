@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useToggle, onClickOutside } from '@vueuse/core'
-import type { HeaderConfig } from '../model/TheHeader.types'
+import type { HeaderData } from '../model/TheHeader.types'
 import { eventsMenu } from '../model/TheHeader.events'
 import { MobileMenu } from '~/widgets/header'
 import { LanguageSwitcher } from '~/features/language-switcher'
 
 const props = defineProps<{
-  config: HeaderConfig
+  config: HeaderData
 }>()
 
 // Шесть и больше ссылок не помещаются в строку на 1024–1280px: бургер держим до xl
@@ -41,7 +41,7 @@ onClickOutside(ctaDropdownRef, () => toggleCtaDropdown(false))
           <NuxtImg
             class="h-14 w-auto lg:h-18"
             :src="config.partnerLogo.src"
-            :alt="config.partnerLogo.alt"
+            :alt="config.partnerLogo.alt ?? ''"
             format="png"
             loading="eager"
           />
@@ -52,7 +52,7 @@ onClickOutside(ctaDropdownRef, () => toggleCtaDropdown(false))
         :key="logo.src"
         class="h-9 w-auto lg:h-12"
         :src="logo.src"
-        :alt="logo.alt"
+        :alt="logo.alt ?? ''"
         format="png"
         loading="eager"
       />

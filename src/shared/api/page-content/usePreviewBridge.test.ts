@@ -11,11 +11,17 @@ const block = { id: 'b1', type: 'faq', order: 10, enabled: true, data: {} }
 
 describe('parseDraftMessage', () => {
   it('принимает черновик админки и подставляет slug', () => {
+    const header = { links: [{ href: '#about', title: 'О нас' }] }
     const page = parseDraftMessage(
-      { source: 'crito-preview', type: 'draft', page: { blocks: [block], headerConfig: 'home' } },
+      { source: 'crito-preview', type: 'draft', page: { blocks: [block], header } },
       '/about',
     )
-    expect(page).toMatchObject({ slug: '/about', blocks: [block], headerConfig: 'home' })
+    expect(page).toMatchObject({ slug: '/about', blocks: [block], header })
+  })
+
+  it('отбрасывает черновик с шапкой не объектом', () => {
+    const broken = { source: 'crito-preview', type: 'draft', page: { blocks: [], header: 'шапка' } }
+    expect(parseDraftMessage(broken, '/')).toBeNull()
   })
 
   it('игнорирует чужие и неполные сообщения', () => {

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { useScrollLock, onKeyStroke } from '@vueuse/core'
-import type { HeaderConfig } from '../model/TheHeader.types'
+import type { HeaderData } from '../model/TheHeader.types'
 import { eventsMenu } from '../model/TheHeader.events'
 import { LanguageSwitcher } from '~/features/language-switcher'
 
 const props = defineProps<{
-  config: HeaderConfig
+  config: HeaderData
   modelValue: boolean
   wide?: boolean
 }>()

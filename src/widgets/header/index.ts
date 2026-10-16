@@ -1,6 +1,6 @@
 import TheHeader from './ui/TheHeader.vue'
 import MobileMenu from './ui/MobileMenu.vue'
 
-export type { HeaderConfigKey } from './model/TheHeader.types'
+export type { HeaderData, NavLink } from './model/TheHeader.types'
 export { TheHeader, MobileMenu }
-export { headerConfigs } from './model/TheHeader.config'
+export { defaultHeader, resolveHeader } from './model/TheHeader.default'

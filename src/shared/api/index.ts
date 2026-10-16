@@ -1,5 +1,6 @@
 export { usePageContent, fetchCmsPage } from './page-content/usePageContent'
 export { usePageMeta } from './page-content/usePageMeta'
+export { applyCmsPageMeta } from './page-content/applyCmsPageMeta'
 export { parseContentPage } from './page-content/parseContentPage'
 export { createFallbackBlock } from './page-content/createFallbackBlock'
 export { useContentBlocks } from './page-content/useContentBlocks'
@@ -7,6 +8,7 @@ export type { ResolvedBlock } from './page-content/useContentBlocks'
 export type {
   ContentPage,
   ContentPageMeta,
+  ContentPageHeader,
   ContentBlock,
   PageContentFallback,
   PageContentSource,

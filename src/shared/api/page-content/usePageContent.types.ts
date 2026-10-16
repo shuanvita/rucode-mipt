@@ -21,13 +21,24 @@ export interface ContentPageMeta {
   ogImage?: string
 }
 
+/**
+ * Шапка страницы из CMS (форма — `headerSchema` манифеста, см. `app/block-registry/schemas/header.ts`).
+ * Структурно совпадает с `HeaderData` виджета шапки: shared не импортирует виджеты.
+ */
+export interface ContentPageHeader {
+  links?: { href: string; title: string }[]
+  logo?: { src: string }
+  partnerLogo?: { src: string; alt?: string; to?: string }
+  supportLogos?: { src: string; alt?: string }[]
+}
+
 export interface ContentPage {
   slug: string
   version: number
   blocks: ContentBlock[]
   meta?: ContentPageMeta
-  /** Ключ конфигурации шапки и футера (`HeaderConfigKey`), используется страницами из CMS. */
-  headerConfig?: string
+  /** Шапка страницы; без неё сайт рисует шапку по умолчанию без своих ссылок. */
+  header?: ContentPageHeader
   noFooterSpacing?: boolean
 }
 

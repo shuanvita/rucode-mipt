@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { MwsPage } from '@/pages/mws'
 
-definePageMeta({ headerConfig: 'mws' })
+definePageMeta({ footerConfig: 'mws' })
 </script>
 
 <template>

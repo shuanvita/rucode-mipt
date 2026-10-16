@@ -134,8 +134,9 @@ export function usePreviewBridge(
       if (mode !== 'draft') return
 
       data.value = { page: message.page, isFallback: false }
-      // Шапка и футер читаются из route.meta: подхватываем их, если вернутся на текущем рендере.
-      route.meta.headerConfig = message.page.headerConfig
+      // Шапка читается из route.meta: подхватываем её, если вернётся на текущем рендере.
+      // Пустая шапка тоже присваивается: убранные в админке ссылки должны исчезнуть из предпросмотра.
+      route.meta.header = message.page.header
       route.meta.noFooterSpacing = message.page.noFooterSpacing
       void nextTick(() => {
         if (selectedId) highlightBlock(selectedId)

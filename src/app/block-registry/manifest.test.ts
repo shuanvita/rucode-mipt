@@ -33,6 +33,21 @@ describe('манифест блоков', () => {
     expect(json).toContain('"x-field":"richtext"')
   })
 
+  it('описывает форму шапки страницы: ссылки, логотип, партнёр, логотипы поддержки', () => {
+    const schema = manifest.headerSchema as {
+      properties: Record<
+        string,
+        { title?: string; properties?: Record<string, { 'x-field'?: string }> }
+      >
+    }
+    expect(Object.keys(schema.properties)).toEqual(['links', 'logo', 'partnerLogo', 'supportLogos'])
+    expect(schema.properties.links?.title).toBe('Ссылки в шапке')
+    const json = JSON.stringify(manifest.headerSchema)
+    expect(json).toContain('"x-field":"link"')
+    expect(json).toContain('"x-field":"image"')
+    expect(schema.properties.logo?.properties?.src?.['x-field']).toBe('image')
+  })
+
   // `npm run manifest` -> .output/manifest.json (в CI отправляется бэкенду)
   it.runIf(process.env.MANIFEST_OUT)('записывает манифест в файл', () => {
     const out = process.env.MANIFEST_OUT!

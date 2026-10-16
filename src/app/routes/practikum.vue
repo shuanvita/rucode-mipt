@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { PracticumPage } from '@/pages/practikum'
 
-definePageMeta({ headerConfig: 'practikum' })
+definePageMeta({ footerConfig: 'practikum' })
 </script>
 
 <template>

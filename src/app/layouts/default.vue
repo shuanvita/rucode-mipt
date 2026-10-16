@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { TheHeader, headerConfigs } from '~/widgets/header'
-import type { HeaderConfigKey } from '~/widgets/header'
+import { TheHeader, resolveHeader } from '~/widgets/header'
+import type { HeaderData } from '~/widgets/header'
 import { TheFooter, footerConfigs } from '~/widgets/footer'
+import type { FooterConfigKey } from '~/widgets/footer'
 import { ScrollToTop } from '~/features/scroll-to-top'
 
 const route = useRoute()
@@ -12,9 +13,13 @@ useHead(() => ({
   link: localeHead.value.link,
   meta: localeHead.value.meta,
 }))
-const headerKey = computed(() => (route.meta.headerConfig as HeaderConfigKey) ?? 'home')
-const config = computed(() => headerConfigs[headerKey.value] ?? headerConfigs.home)
-const footerConfig = computed(() => footerConfigs[headerKey.value] ?? footerConfigs.home)
+// Шапка приходит из CMS (`route.meta.header` кладёт middleware `cms-page-meta`) или из `definePageMeta`
+// у страниц с английской версией; без неё рисуется шапка по умолчанию (как на главной, без ссылок).
+const config = computed(() => resolveHeader(route.meta.header as Partial<HeaderData> | undefined))
+// Футер пока выбирается ключом из `definePageMeta` статических страниц; страницы из CMS получают футер главной.
+const footerConfig = computed(
+  () => footerConfigs[(route.meta.footerConfig as FooterConfigKey) ?? 'home'] ?? footerConfigs.home,
+)
 const noFooterSpacing = computed(() => route.meta.noFooterSpacing === true)
 </script>
 

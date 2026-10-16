@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { AiTesting } from '~/pages/aitesting'
 
-definePageMeta({ headerConfig: 'aitesting' })
+definePageMeta({ footerConfig: 'aitesting' })
 </script>
 
 <template>

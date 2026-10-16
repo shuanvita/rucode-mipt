@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { MtsPage } from '@/pages/mts'
 
-definePageMeta({ headerConfig: 'mts' })
+definePageMeta({ footerConfig: 'mts' })
 </script>
 
 <template>

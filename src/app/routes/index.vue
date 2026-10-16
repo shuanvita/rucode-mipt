@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { HomePage } from '@/pages/home'
-definePageMeta({ headerConfig: 'home' })
+definePageMeta({ footerConfig: 'home' })
 </script>
 
 <template>
