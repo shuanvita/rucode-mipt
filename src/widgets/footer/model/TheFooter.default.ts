@@ -1,4 +1,4 @@
-import type { FooterContacts, FooterData } from './TheFooter.types'
+import type { FooterContacts, FooterData, NavLink } from './TheFooter.types'
 
 /**
  * Футер по умолчанию: пустой. Кроме логотипа и соцсетей (они в шаблоне) всё задаётся в админке:
@@ -11,15 +11,23 @@ export const defaultFooter: FooterData = { links: [] }
  * Приводит `footer` из CMS (или `definePageMeta`) к данным футера. Показывается только заполненное: форма
  * в админке не умеет убирать необязательный объект целиком, поэтому недозаполненные ссылки, регламент,
  * телефон и почты отбрасываем, иначе на сайте появятся пустые ссылки. Запись с переводом (`titleKey`) остаётся.
+ * `headerLinks` передаётся, когда на странице включено «Те же ссылки в футере»: тогда они заменяют ссылки футера
+ * (даже если у шапки их нет: включённый флажок значит «ссылки как в шапке»).
  */
-export function resolveFooter(footer: Partial<FooterData> | undefined): FooterData {
+export function resolveFooter(
+  footer: Partial<FooterData> | undefined,
+  headerLinks?: NavLink[],
+): FooterData {
   const regulation =
     footer?.regulation?.href && (footer.regulation.title || footer.regulation.titleKey)
       ? footer.regulation
       : undefined
   const contacts = footer?.contacts ? resolveContacts(footer.contacts) : undefined
   return {
-    links: footer?.links?.filter((link) => link.href && (link.title || link.titleKey)) ?? [],
+    links:
+      headerLinks?.map((link) => ({ ...link })) ??
+      footer?.links?.filter((link) => link.href && (link.title || link.titleKey)) ??
+      [],
     ...(regulation ? { regulation } : {}),
     ...(contacts ? { contacts } : {}),
   }

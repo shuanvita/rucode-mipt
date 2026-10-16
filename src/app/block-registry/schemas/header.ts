@@ -22,6 +22,14 @@ export const headerSchema = z.object({
     )
     .meta({ title: 'Ссылки в шапке' })
     .optional(),
+  linksInFooter: z
+    .boolean()
+    .meta({
+      title: 'Те же ссылки в футере',
+      description:
+        'Ссылки шапки показываются и в футере этой страницы. Если выключено, ссылки футера задаются в настройках футера',
+    })
+    .optional(),
   logo: z
     .object({ src: image().meta({ title: 'Картинка' }) })
     .meta({ title: 'Свой логотип', description: 'Если не задан, показывается логотип RuCode' })

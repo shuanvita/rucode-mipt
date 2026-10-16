@@ -14,6 +14,7 @@ export function resolveHeader(header: Partial<HeaderData> | undefined): HeaderDa
   const supportLogos = header?.supportLogos?.filter((item) => item.src)
   return {
     links: header?.links?.filter((link) => link.href && (link.title || link.titleKey)) ?? [],
+    ...(header?.linksInFooter === true ? { linksInFooter: true } : {}),
     ...(logo ? { logo } : {}),
     ...(partnerLogo ? { partnerLogo } : {}),
     ...(supportLogos?.length ? { supportLogos } : {}),

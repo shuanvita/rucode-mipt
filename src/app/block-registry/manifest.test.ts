@@ -40,7 +40,14 @@ describe('манифест блоков', () => {
         { title?: string; properties?: Record<string, { 'x-field'?: string }> }
       >
     }
-    expect(Object.keys(schema.properties)).toEqual(['links', 'logo', 'partnerLogo', 'supportLogos'])
+    expect(Object.keys(schema.properties)).toEqual([
+      'links',
+      'linksInFooter',
+      'logo',
+      'partnerLogo',
+      'supportLogos',
+    ])
+    expect((schema.properties.linksInFooter as { type?: string }).type).toBe('boolean')
     expect(schema.properties.links?.title).toBe('Ссылки в шапке')
     const json = JSON.stringify(manifest.headerSchema)
     expect(json).toContain('"x-field":"link"')

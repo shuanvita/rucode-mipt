@@ -18,8 +18,12 @@ useHead(() => ({
 const config = computed(() => resolveHeader(route.meta.header as Partial<HeaderData> | undefined))
 // Футер, как и шапка, приходит из CMS (`route.meta.footer`) или из `definePageMeta` у страниц с английской
 // версией; без него рисуется пустой футер: только логотип и соцсети, остальное задаётся в админке.
+// Флажок шапки «Те же ссылки в футере» заменяет ссылки футера ссылками шапки.
 const footerConfig = computed(() =>
-  resolveFooter(route.meta.footer as Partial<FooterData> | undefined),
+  resolveFooter(
+    route.meta.footer as Partial<FooterData> | undefined,
+    config.value.linksInFooter ? config.value.links : undefined,
+  ),
 )
 const noFooterSpacing = computed(() => route.meta.noFooterSpacing === true)
 </script>

@@ -27,6 +27,8 @@ export interface ContentPageMeta {
  */
 export interface ContentPageHeader {
   links?: { href: string; title: string }[]
+  /** Те же ссылки показываются и в футере страницы. */
+  linksInFooter?: boolean
   logo?: { src: string }
   partnerLogo?: { src: string; alt?: string; to?: string }
   supportLogos?: { src: string; alt?: string }[]

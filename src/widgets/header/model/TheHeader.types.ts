@@ -10,6 +10,8 @@ export interface NavLink {
  */
 export interface HeaderData {
   links: NavLink[]
+  /** Показывать ссылки шапки и в футере этой страницы: свои ссылки футера тогда не используются. */
+  linksInFooter?: boolean
   logo?: {
     src: string
     width?: number

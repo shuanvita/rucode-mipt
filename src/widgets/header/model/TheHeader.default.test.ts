@@ -43,6 +43,12 @@ describe('resolveHeader', () => {
     expect(resolveHeader({ links }).links).toEqual(links)
   })
 
+  it('передаёт флажок «те же ссылки в футере» только когда он включён', () => {
+    expect(resolveHeader({ linksInFooter: true }).linksInFooter).toBe(true)
+    expect(resolveHeader({ linksInFooter: false })).not.toHaveProperty('linksInFooter')
+    expect(resolveHeader(undefined)).not.toHaveProperty('linksInFooter')
+  })
+
   it('не меняет общую шапку по умолчанию', () => {
     resolveHeader({ links: [{ href: '#a', title: 'A' }] }).links.push({ href: '#b', title: 'B' })
     expect(defaultHeader.links).toEqual([])

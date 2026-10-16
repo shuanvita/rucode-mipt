@@ -73,6 +73,26 @@ describe('resolveFooter', () => {
     expect(resolveFooter(footer)).toEqual(footer)
   })
 
+  it('ссылки шапки заменяют ссылки футера, если они переданы', () => {
+    const headerLinks = [{ href: '#about', title: 'О нас' }]
+    const footer = { links: [{ href: '#own', title: 'Свои' }], contacts: { email: 'a@rucode.net' } }
+    const config = resolveFooter(footer, headerLinks)
+    expect(config.links).toEqual(headerLinks)
+    expect(config.contacts).toEqual({ email: 'a@rucode.net' })
+    // без флажка свои ссылки футера
+    expect(resolveFooter(footer).links).toEqual(footer.links)
+  })
+
+  it('флажок «как в шапке» без ссылок в шапке даёт футер без ссылок, а не свои ссылки', () => {
+    expect(resolveFooter({ links: [{ href: '#own', title: 'Свои' }] }, []).links).toEqual([])
+  })
+
+  it('не позволяет менять ссылки шапки через футер', () => {
+    const headerLinks = [{ href: '#about', title: 'О нас' }]
+    resolveFooter(undefined, headerLinks).links.push({ href: '#b', title: 'B' })
+    expect(headerLinks).toHaveLength(1)
+  })
+
   it('не меняет общий футер по умолчанию', () => {
     resolveFooter(undefined).links.push({ href: '#b', title: 'B' })
     expect(defaultFooter.links).toEqual([])
