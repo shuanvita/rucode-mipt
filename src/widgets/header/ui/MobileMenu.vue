@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { useScrollLock, onKeyStroke } from '@vueuse/core'
 import type { HeaderConfig } from '../model/TheHeader.types'
+import { eventsMenu } from '../model/TheHeader.events'
 import { LanguageSwitcher } from '~/features/language-switcher'
 
 const props = defineProps<{
   config: HeaderConfig
   modelValue: boolean
+  wide?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -45,7 +47,10 @@ onKeyStroke('Escape', () => {
     >
       <div
         v-if="modelValue"
-        class="bg-dark-primary fixed inset-0 z-50 flex flex-col overflow-y-auto px-6 py-5 lg:hidden"
+        :class="[
+          'bg-dark-primary fixed inset-0 z-50 flex flex-col overflow-y-auto px-6 py-5',
+          wide ? 'xl:hidden' : 'lg:hidden',
+        ]"
         role="dialog"
         aria-modal="true"
         :aria-label="$t('header.mobileMenu')"
@@ -72,36 +77,24 @@ onKeyStroke('Escape', () => {
           </NuxtLink>
         </nav>
 
-        <template v-if="config.cta?.items?.length">
-          <hr class="mt-6 mb-4 border-t-white/15" />
+        <hr class="mt-6 mb-4 border-t-white/15" />
 
-          <span class="text-yellow-primary text-[14px] font-bold tracking-wider uppercase">
-            {{ config.cta.labelKey ? $t(config.cta.labelKey) : config.cta.label }}
-          </span>
+        <span class="text-yellow-primary text-[14px] font-bold tracking-wider uppercase">
+          {{ eventsMenu.label }}
+        </span>
 
-          <nav class="mt-3 flex flex-col gap-3" aria-label="Мероприятия">
-            <NuxtLink
-              v-for="item in config.cta.items"
-              :key="item.href"
-              class="text-[13px] font-medium tracking-wide text-white uppercase"
-              :to="item.href"
-              active-class="text-yellow-primary"
-              @click="close"
-            >
-              {{ item.title }}
-            </NuxtLink>
-          </nav>
-        </template>
-
-        <UiAction
-          v-else-if="config.cta"
-          class="mt-6 self-start"
-          :to="config.cta.to"
-          :variant="config.cta.variant ?? 'primary'"
-          @click="close"
-        >
-          {{ config.cta.labelKey ? $t(config.cta.labelKey) : config.cta.label }}
-        </UiAction>
+        <nav class="mt-3 flex flex-col gap-3" :aria-label="eventsMenu.label">
+          <NuxtLink
+            v-for="item in eventsMenu.items"
+            :key="item.href"
+            class="text-[13px] font-medium tracking-wide text-white uppercase"
+            :to="item.href"
+            active-class="text-yellow-primary"
+            @click="close"
+          >
+            {{ item.title }}
+          </NuxtLink>
+        </nav>
 
         <LanguageSwitcher class="mt-8" />
       </div>

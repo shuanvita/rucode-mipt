@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import { useToggle, onClickOutside } from '@vueuse/core'
 import type { HeaderConfig } from '../model/TheHeader.types'
+import { eventsMenu } from '../model/TheHeader.events'
 import { MobileMenu } from '~/widgets/header'
 import { LanguageSwitcher } from '~/features/language-switcher'
 
-defineProps<{
+const props = defineProps<{
   config: HeaderConfig
 }>()
+
+// Шесть и больше ссылок не помещаются в строку на 1024–1280px: бургер держим до xl
+const isWide = computed(() => props.config.links.length >= 6)
 
 const UiAction = resolveComponent('UiAction')
 
@@ -19,7 +23,7 @@ onClickOutside(ctaDropdownRef, () => toggleCtaDropdown(false))
 
 <template>
   <header class="container flex max-w-300 items-center justify-between px-10 pt-6">
-    <div class="flex items-center gap-3 lg:gap-5">
+    <div class="mr-4 flex shrink-0 items-center gap-3 lg:gap-5">
       <UiAction variant="custom" class="max-w-25 lg:max-w-31" to="/">
         <NuxtPicture
           :width="config.logo?.width ?? 167"
@@ -54,8 +58,8 @@ onClickOutside(ctaDropdownRef, () => toggleCtaDropdown(false))
       />
     </div>
 
-    <div class="hidden items-center gap-6 lg:flex">
-      <nav class="flex items-center gap-5" :aria-label="$t('header.mainNav')">
+    <div :class="['hidden items-center gap-6', isWide ? 'xl:flex' : 'lg:flex']">
+      <nav class="flex items-center gap-4 xl:gap-5":aria-label="$t('header.mainNav')">
         <UiAction
           v-for="link in config.links"
           :key="link.href"
@@ -68,22 +72,21 @@ onClickOutside(ctaDropdownRef, () => toggleCtaDropdown(false))
         </UiAction>
       </nav>
 
-      <div v-if="config.cta?.hasDropdown" ref="ctaDropdownRef" class="relative">
+      <div ref="ctaDropdownRef" class="relative">
         <UiAction
-          :class="config.cta.class"
           aria-haspopup="true"
           post-icon="arrow-down"
           :aria-expanded="isCtaDropdownOpen"
           @click="toggleCtaDropdown()"
         >
-          {{ config.cta.labelKey ? $t(config.cta.labelKey) : config.cta.label }}
+          {{ eventsMenu.label }}
         </UiAction>
 
         <ul
           v-show="isCtaDropdownOpen"
           class="absolute top-full right-0 z-99 mt-2 min-w-50 space-y-2 rounded-2xl bg-black/90 p-3"
         >
-          <li v-for="item in config.cta.items" :key="item.href">
+          <li v-for="item in eventsMenu.items" :key="item.href">
             <UiAction
               variant="custom"
               :to="item.href"
@@ -96,21 +99,14 @@ onClickOutside(ctaDropdownRef, () => toggleCtaDropdown(false))
         </ul>
       </div>
 
-      <UiAction
-        v-else-if="config.cta"
-        :to="config.cta.to"
-        :variant="config.cta.variant"
-        :class="config.cta.class"
-      >
-        {{ config.cta.labelKey ? $t(config.cta.labelKey) : config.cta.label }}
-      </UiAction>
-
       <LanguageSwitcher />
     </div>
 
     <UiAction
-      v-if="config.links.length || config.cta"
-      class="focus-visible:outline-ring flex h-8 w-8 items-center justify-center lg:hidden"
+      :class="[
+        'focus-visible:outline-ring flex h-8 w-8 items-center justify-center',
+        isWide ? 'xl:hidden' : 'lg:hidden',
+      ]"
       :aria-label="$t('header.openMenu')"
       variant="custom"
       @click="toggleMenu(true)"
@@ -118,8 +114,8 @@ onClickOutside(ctaDropdownRef, () => toggleCtaDropdown(false))
       <UiSvg name="burger" class="h-15 w-15" />
     </UiAction>
     <MobileMenu
-      v-if="config.links.length || config.cta"
       :model-value="isMenuOpen"
+      :wide="isWide"
       :config="config"
       @update:model-value="toggleMenu"
     />

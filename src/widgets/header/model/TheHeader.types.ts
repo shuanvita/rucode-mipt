@@ -20,15 +20,6 @@ export interface HeaderConfig {
     src: string
     alt: string
   }[]
-  cta?: {
-    label: string
-    labelKey?: string
-    to?: string
-    variant?: 'primary' | 'secondary' | 'custom'
-    class?: string
-    hasDropdown?: boolean
-    items?: NavLink[]
-  }
 }
 
 export type HeaderConfigKey =
