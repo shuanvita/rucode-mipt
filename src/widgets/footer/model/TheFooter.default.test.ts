@@ -1,8 +1,20 @@
 import { describe, expect, it } from 'vitest'
 import { footerConfigs } from './TheFooter.config'
-import { resolveFooter } from './TheFooter.default'
+import { defaultFooter, resolveFooter } from './TheFooter.default'
 
 const base = footerConfigs.home
+
+describe('defaultFooter', () => {
+  it('без своих ссылок: якоря главной на других страницах не работают', () => {
+    expect(defaultFooter.links).toEqual([])
+    expect(defaultFooter.regulation).toBeNull()
+    expect(defaultFooter.contacts).toBe(footerConfigs.home.contacts)
+  })
+
+  it('страница с контактами, но без ссылок, остаётся без ссылок', () => {
+    expect(resolveFooter({ contacts: { email: 'a@rucode.net' } }, defaultFooter).links).toEqual([])
+  })
+})
 
 describe('resolveFooter', () => {
   it('страница с одними ссылками получает контакты базового футера и не получает регламента', () => {

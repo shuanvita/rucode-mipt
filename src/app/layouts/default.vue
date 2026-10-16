@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { TheHeader, resolveHeader } from '~/widgets/header'
 import type { HeaderData } from '~/widgets/header'
-import { TheFooter, footerConfigs, resolveFooter } from '~/widgets/footer'
+import { TheFooter, defaultFooter, footerConfigs, resolveFooter } from '~/widgets/footer'
 import type { FooterConfigKey, FooterData } from '~/widgets/footer'
 import { ScrollToTop } from '~/features/scroll-to-top'
 
@@ -17,11 +17,12 @@ useHead(() => ({
 // у страниц с английской версией; без неё рисуется шапка по умолчанию (как на главной, без ссылок).
 const config = computed(() => resolveHeader(route.meta.header as Partial<HeaderData> | undefined))
 // Футер приходит из CMS (`route.meta.footer`); без него берётся ключ `footerConfig` из `definePageMeta`
-// статических страниц, а если ключа нет, футер главной.
+// статических страниц; без обоих рисуется футер по умолчанию (контакты главной, без ссылок: как у шапки).
 const footerConfig = computed(() => {
   const cms = route.meta.footer as Partial<FooterData> | undefined
-  if (cms) return resolveFooter(cms, footerConfigs.home)
-  return footerConfigs[(route.meta.footerConfig as FooterConfigKey) ?? 'home'] ?? footerConfigs.home
+  if (cms) return resolveFooter(cms, defaultFooter)
+  const key = route.meta.footerConfig as FooterConfigKey | undefined
+  return (key && footerConfigs[key]) || defaultFooter
 })
 const noFooterSpacing = computed(() => route.meta.noFooterSpacing === true)
 </script>
