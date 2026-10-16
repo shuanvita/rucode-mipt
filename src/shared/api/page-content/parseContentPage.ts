@@ -28,7 +28,10 @@ export function parseContentPage(value: unknown): ContentPage {
   if (typeof value.slug !== 'string') throw new Error('slug: ожидалась строка')
   if (typeof value.version !== 'number') throw new Error('version: ожидалось число')
   if (!Array.isArray(value.blocks)) throw new Error('blocks: ожидался массив')
-  if (value.header !== undefined && !isRecord(value.header)) throw new Error('header: ожидался объект')
+  if (value.header !== undefined && !isRecord(value.header))
+    throw new Error('header: ожидался объект')
+  if (value.footer !== undefined && !isRecord(value.footer))
+    throw new Error('footer: ожидался объект')
   if (value.noFooterSpacing !== undefined && typeof value.noFooterSpacing !== 'boolean')
     throw new Error('noFooterSpacing: ожидался boolean')
   if (value.meta !== undefined) {

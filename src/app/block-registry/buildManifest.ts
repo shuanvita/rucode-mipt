@@ -1,5 +1,6 @@
 import { z } from 'zod/v4'
 import type { BlockAlias, BlockCategory, BlockDefinition } from '~/shared/api'
+import { footerSchema } from './schemas/footer'
 import { headerSchema } from './schemas/header'
 
 export interface ManifestBlock {
@@ -22,6 +23,8 @@ export interface BlockManifest {
   blocks: ManifestBlock[]
   /** JSON Schema поля `header` страницы: по ней админка строит форму шапки. */
   headerSchema: Record<string, unknown>
+  /** JSON Schema поля `footer` страницы: по ней админка строит форму футера. */
+  footerSchema: Record<string, unknown>
 }
 
 /** Манифест блоков проекта: его отправляют бэкенду при деплое (`PUT /projects/{id}/manifest`). */
@@ -37,6 +40,7 @@ export function buildManifest(
     project,
     version,
     headerSchema: z.toJSONSchema(headerSchema as unknown as z.ZodType) as Record<string, unknown>,
+    footerSchema: z.toJSONSchema(footerSchema as unknown as z.ZodType) as Record<string, unknown>,
     blocks: definitions
       .map((definition) => ({
         type: definition.type,

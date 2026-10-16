@@ -137,6 +137,7 @@ export function usePreviewBridge(
       // Шапка читается из route.meta: подхватываем её, если вернётся на текущем рендере.
       // Пустая шапка тоже присваивается: убранные в админке ссылки должны исчезнуть из предпросмотра.
       route.meta.header = message.page.header
+      route.meta.footer = message.page.footer
       route.meta.noFooterSpacing = message.page.noFooterSpacing
       void nextTick(() => {
         if (selectedId) highlightBlock(selectedId)

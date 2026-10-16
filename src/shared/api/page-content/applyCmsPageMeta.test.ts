@@ -10,6 +10,17 @@ describe('applyCmsPageMeta', () => {
     expect(meta).toEqual({ header, noFooterSpacing: true })
   })
 
+  it('переносит футер в route.meta, без футера не трогает значение из definePageMeta', () => {
+    const footer = { links: [{ href: '#about', title: 'О нас' }] }
+    const meta: Record<string, unknown> = { footerConfig: 'champ' }
+    applyCmsPageMeta(meta, { footer })
+    expect(meta).toEqual({ footerConfig: 'champ', footer })
+
+    const without: Record<string, unknown> = { footer }
+    applyCmsPageMeta(without, {})
+    expect(without.footer).toBe(footer)
+  })
+
   it('без шапки в CMS не трогает значение из definePageMeta', () => {
     const local = { links: [{ href: '#about', title: 'О нас', titleKey: 'nav.about' }] }
     const meta: Record<string, unknown> = { header: local }
@@ -30,5 +41,19 @@ describe('parseContentPage: header', () => {
   it('отклоняет шапку не объектом', () => {
     expect(() => parseContentPage({ ...base, header: 'шапка' })).toThrow('header')
     expect(() => parseContentPage({ ...base, header: [] })).toThrow('header')
+  })
+})
+
+describe('parseContentPage: footer', () => {
+  const base = { slug: '/mts', version: 1, blocks: [] }
+
+  it('принимает страницу с футером и без него', () => {
+    expect(parseContentPage({ ...base, footer: { links: [] } }).footer).toEqual({ links: [] })
+    expect(parseContentPage(base).footer).toBeUndefined()
+  })
+
+  it('отклоняет футер не объектом', () => {
+    expect(() => parseContentPage({ ...base, footer: 'футер' })).toThrow('footer')
+    expect(() => parseContentPage({ ...base, footer: [] })).toThrow('footer')
   })
 })

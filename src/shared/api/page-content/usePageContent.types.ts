@@ -32,6 +32,23 @@ export interface ContentPageHeader {
   supportLogos?: { src: string; alt?: string }[]
 }
 
+/**
+ * Футер страницы из CMS (форма — `footerSchema` манифеста, см. `app/block-registry/schemas/footer.ts`).
+ * Структурно совпадает с `FooterData` виджета футера: shared не импортирует виджеты.
+ */
+export interface ContentPageFooter {
+  links?: { href: string; title: string }[]
+  regulation?: { href: string; title: string }
+  contacts?: {
+    email?: string
+    link?: { label: string; href: string }
+    phoneTitle?: string
+    phone?: { label: string; href: string }
+    workHours?: string
+    extraGroups?: { title?: string; email: string }[]
+  }
+}
+
 export interface ContentPage {
   slug: string
   version: number
@@ -39,6 +56,8 @@ export interface ContentPage {
   meta?: ContentPageMeta
   /** Шапка страницы; без неё сайт рисует шапку по умолчанию без своих ссылок. */
   header?: ContentPageHeader
+  /** Футер страницы; без него сайт рисует футер, выбранный ключом `footerConfig`, а если ключа нет, футер главной. */
+  footer?: ContentPageFooter
   noFooterSpacing?: boolean
 }
 

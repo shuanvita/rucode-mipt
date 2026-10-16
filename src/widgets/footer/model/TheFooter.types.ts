@@ -27,6 +27,23 @@ export interface FooterConfig {
   contacts?: Partial<FooterContacts>
 }
 
+/**
+ * Данные футера страницы из CMS (поле `footer` страницы, форма — `footerSchema` манифеста).
+ * В отличие от `FooterConfig` здесь только то, что редактор может задать: переводов (`titleKey`) нет.
+ */
+export interface FooterData {
+  links: NavLink[]
+  regulation?: { href: string; title: string }
+  contacts?: {
+    email?: string
+    link?: { label: string; href: string }
+    phoneTitle?: string
+    phone?: { label: string; href: string }
+    workHours?: string
+    extraGroups?: { title?: string; email: string }[]
+  }
+}
+
 export type FooterConfigKey =
   | 'home'
   | 'award2026'
