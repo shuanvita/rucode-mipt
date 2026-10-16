@@ -12,9 +12,10 @@ describe('applyCmsPageMeta', () => {
 
   it('переносит футер в route.meta, без футера не трогает значение из definePageMeta', () => {
     const footer = { links: [{ href: '#about', title: 'О нас' }] }
-    const meta: Record<string, unknown> = { footerConfig: 'champ' }
+    const local = { links: [{ href: '#about', title: 'О нас', titleKey: 'nav.about' }] }
+    const meta: Record<string, unknown> = { footer: local }
     applyCmsPageMeta(meta, { footer })
-    expect(meta).toEqual({ footerConfig: 'champ', footer })
+    expect(meta.footer).toBe(footer)
 
     const without: Record<string, unknown> = { footer }
     applyCmsPageMeta(without, {})

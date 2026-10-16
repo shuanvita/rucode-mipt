@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Final2024Page } from '@/pages/final-2024'
 
-definePageMeta({ footerConfig: 'final2024', noFooterSpacing: true })
+definePageMeta({ noFooterSpacing: true })
 </script>
 
 <template>

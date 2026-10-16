@@ -3,6 +3,9 @@ import type { ZodType } from 'zod/v4'
 import type { FooterData } from '~/widgets/footer'
 import { itemId, link, text } from './fields'
 
+// Ключей переводов (`titleKey` и др.) в форме нет: CMS отдаёт только русский текст, переводы остаются в коде
+// страниц с английской версией (`definePageMeta({ footer })`).
+
 /**
  * Форма футера страницы в админке (`footerSchema` манифеста, данные лежат в поле `footer` страницы).
  * Логотип и соцсети одинаковы на всех страницах и живут в коде виджета.
@@ -34,6 +37,13 @@ export const footerSchema = z.object({
     .optional(),
   contacts: z
     .object({
+      site: z
+        .object({
+          label: text().meta({ title: 'Текст', description: 'rucode.net' }),
+          href: link().meta({ title: 'Ссылка', description: 'https://rucode.net/' }),
+        })
+        .meta({ title: 'Ссылка на сайт', description: 'Жёлтая ссылка над почтой' })
+        .optional(),
       email: text().meta({ title: 'Почта' }).optional(),
       link: z
         .object({
@@ -64,8 +74,7 @@ export const footerSchema = z.object({
     })
     .meta({
       title: 'Контакты',
-      description:
-        'Если заданы, заменяют контакты по умолчанию целиком: чего здесь нет, того в футере не будет',
+      description: 'В футере показывается только то, что заполнено',
     })
     .optional(),
 }) satisfies ZodType<Partial<FooterData>>

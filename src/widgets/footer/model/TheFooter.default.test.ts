@@ -1,64 +1,45 @@
 import { describe, expect, it } from 'vitest'
-import { footerConfigs } from './TheFooter.config'
 import { defaultFooter, resolveFooter } from './TheFooter.default'
 
-const base = footerConfigs.home
-
-describe('defaultFooter', () => {
-  it('без своих ссылок: якоря главной на других страницах не работают', () => {
-    expect(defaultFooter.links).toEqual([])
-    expect(defaultFooter.regulation).toBeNull()
-    expect(defaultFooter.contacts).toBe(footerConfigs.home.contacts)
-  })
-
-  it('страница с контактами, но без ссылок, остаётся без ссылок', () => {
-    expect(resolveFooter({ contacts: { email: 'a@rucode.net' } }, defaultFooter).links).toEqual([])
-  })
-})
-
 describe('resolveFooter', () => {
-  it('страница с одними ссылками получает контакты базового футера и не получает регламента', () => {
+  it('без футера из CMS отдаёт пустой футер: ни ссылок, ни регламента, ни контактов', () => {
+    expect(resolveFooter(undefined)).toEqual(defaultFooter)
+    expect(defaultFooter).toEqual({ links: [] })
+    expect(resolveFooter({ links: [], contacts: {} })).toEqual({ links: [] })
+  })
+
+  it('страница с одними ссылками остаётся без контактов и регламента', () => {
     const links = [{ href: '#about', title: 'О нас' }]
-    expect(resolveFooter({ links }, base)).toEqual({
-      links,
-      regulation: null,
-      contacts: base.contacts,
-    })
+    expect(resolveFooter({ links })).toEqual({ links })
   })
 
-  it('заданные контакты заменяют контакты по умолчанию целиком', () => {
-    const { contacts } = resolveFooter(
-      { links: [], contacts: { email: 'a@rucode.net', workHours: 'с 10 до 18' } },
-      base,
-    )
-    expect(contacts).toEqual({ email: 'a@rucode.net', phone: null, workHours: 'с 10 до 18' })
+  it('показывает только заполненные контакты', () => {
+    expect(
+      resolveFooter({ contacts: { email: 'a@rucode.net', workHours: 'с 10 до 18' } }).contacts,
+    ).toEqual({ email: 'a@rucode.net', workHours: 'с 10 до 18' })
   })
 
-  it('сохраняет регламент, телефон, ссылку и дополнительные почты', () => {
+  it('сохраняет регламент, сайт, телефон, ссылку и дополнительные почты', () => {
     const footer = {
       links: [],
       regulation: { href: '/r.pdf', title: 'Регламент' },
       contacts: {
         email: 'a@rucode.net',
+        site: { label: 'rucode.net', href: 'https://rucode.net/' },
         link: { label: 'Telegram', href: 'https://t.me/x' },
         phoneTitle: 'Связь',
         phone: { label: '+7 495', href: 'tel:+7495' },
         extraGroups: [{ title: 'Поддержка', email: 's@rucode.net' }],
       },
     }
-    const config = resolveFooter(footer, base)
+    const config = resolveFooter(footer)
     expect(config.regulation).toEqual(footer.regulation)
-    expect(config.contacts).toMatchObject({
-      link: footer.contacts.link,
-      phone: footer.contacts.phone,
-      phoneTitle: 'Связь',
-      extraGroups: footer.contacts.extraGroups,
-    })
+    expect(config.contacts).toEqual(footer.contacts)
   })
 
-  it('отбрасывает недозаполненные ссылки, регламент, телефон и почты', () => {
-    const config = resolveFooter(
-      {
+  it('отбрасывает недозаполненные ссылки, регламент, сайт, телефон и почты', () => {
+    expect(
+      resolveFooter({
         links: [
           { href: '', title: 'Без адреса' },
           { href: '#a', title: '' },
@@ -67,26 +48,33 @@ describe('resolveFooter', () => {
         regulation: { href: '', title: 'Регламент' },
         contacts: {
           email: '',
+          site: { label: 'rucode.net', href: '' },
           link: { label: '', href: 'https://t.me/x' },
           phoneTitle: 'Связь',
           phone: { label: '+7 495', href: '' },
           extraGroups: [{ title: 'Пусто', email: '' }],
         },
-      },
-      base,
-    )
-    expect(config).toEqual({
-      links: [{ href: '#b', title: 'Есть' }],
-      regulation: null,
-      contacts: { email: null, phone: null, workHours: null },
-    })
+      }),
+    ).toEqual({ links: [{ href: '#b', title: 'Есть' }] })
   })
 
-  it('не меняет базовый футер', () => {
-    resolveFooter({ links: [{ href: '#a', title: 'A' }] }, base).links.push({
-      href: '#b',
-      title: 'B',
-    })
-    expect(base.links.map((link) => link.href)).not.toContain('#b')
+  it('оставляет записи с переводом по titleKey (страницы с английской версией)', () => {
+    const footer = {
+      links: [{ href: '#about', title: '', titleKey: 'nav.champ.about' }],
+      regulation: { href: '/r.pdf', title: '', titleKey: 'footer.champRegulation' },
+      contacts: {
+        phone: { label: '+7 495', href: 'tel:+7495' },
+        phoneTitle: 'Связь',
+        phoneTitleKey: 'footer.contactTitle',
+        workHours: 'с 10 до 18',
+        workHoursKey: 'footer.champWorkHours',
+      },
+    }
+    expect(resolveFooter(footer)).toEqual(footer)
+  })
+
+  it('не меняет общий футер по умолчанию', () => {
+    resolveFooter(undefined).links.push({ href: '#b', title: 'B' })
+    expect(defaultFooter.links).toEqual([])
   })
 })

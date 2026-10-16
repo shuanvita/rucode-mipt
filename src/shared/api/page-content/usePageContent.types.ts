@@ -41,6 +41,7 @@ export interface ContentPageFooter {
   regulation?: { href: string; title: string }
   contacts?: {
     email?: string
+    site?: { label: string; href: string }
     link?: { label: string; href: string }
     phoneTitle?: string
     phone?: { label: string; href: string }
@@ -56,7 +57,7 @@ export interface ContentPage {
   meta?: ContentPageMeta
   /** Шапка страницы; без неё сайт рисует шапку по умолчанию без своих ссылок. */
   header?: ContentPageHeader
-  /** Футер страницы; без него сайт рисует футер, выбранный ключом `footerConfig`, а если ключа нет, футер главной. */
+  /** Футер страницы; без него сайт рисует пустой футер (только логотип и соцсети). */
   footer?: ContentPageFooter
   noFooterSpacing?: boolean
 }

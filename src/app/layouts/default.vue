@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { TheHeader, resolveHeader } from '~/widgets/header'
 import type { HeaderData } from '~/widgets/header'
-import { TheFooter, defaultFooter, footerConfigs, resolveFooter } from '~/widgets/footer'
-import type { FooterConfigKey, FooterData } from '~/widgets/footer'
+import { TheFooter, resolveFooter } from '~/widgets/footer'
+import type { FooterData } from '~/widgets/footer'
 import { ScrollToTop } from '~/features/scroll-to-top'
 
 const route = useRoute()
@@ -16,14 +16,11 @@ useHead(() => ({
 // Шапка приходит из CMS (`route.meta.header` кладёт middleware `cms-page-meta`) или из `definePageMeta`
 // у страниц с английской версией; без неё рисуется шапка по умолчанию (как на главной, без ссылок).
 const config = computed(() => resolveHeader(route.meta.header as Partial<HeaderData> | undefined))
-// Футер приходит из CMS (`route.meta.footer`); без него берётся ключ `footerConfig` из `definePageMeta`
-// статических страниц; без обоих рисуется футер по умолчанию (контакты главной, без ссылок: как у шапки).
-const footerConfig = computed(() => {
-  const cms = route.meta.footer as Partial<FooterData> | undefined
-  if (cms) return resolveFooter(cms, defaultFooter)
-  const key = route.meta.footerConfig as FooterConfigKey | undefined
-  return (key && footerConfigs[key]) || defaultFooter
-})
+// Футер, как и шапка, приходит из CMS (`route.meta.footer`) или из `definePageMeta` у страниц с английской
+// версией; без него рисуется пустой футер: только логотип и соцсети, остальное задаётся в админке.
+const footerConfig = computed(() =>
+  resolveFooter(route.meta.footer as Partial<FooterData> | undefined),
+)
 const noFooterSpacing = computed(() => route.meta.noFooterSpacing === true)
 </script>
 

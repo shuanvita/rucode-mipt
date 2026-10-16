@@ -1,20 +1,15 @@
 <script setup lang="ts">
 // TODO Вынести config и types, т.к. для Header и Footer одинаковые. Убрать ClientOnly (доработать UiSvg / UiAction)
-import type { FooterConfig, FooterContacts } from '../model/TheFooter.types'
-import { defaultFooterContacts, defaultFooterRegulation } from '../model/TheFooter.config'
+import type { FooterContacts, FooterData } from '../model/TheFooter.types'
 
+// Кроме логотипа и соцсетей всё приходит в `config`: виджет ничего не подставляет по умолчанию.
 const props = defineProps<{
-  config: FooterConfig
+  config: FooterData
 }>()
 
-const contacts = computed<FooterContacts>(() => ({
-  ...defaultFooterContacts,
-  ...props.config.contacts,
-}))
+const contacts = computed<FooterContacts>(() => props.config.contacts ?? {})
 const hasExtra = computed(() => !!contacts.value.extraGroups?.length)
-const regulation = computed(() =>
-  props.config.regulation === undefined ? defaultFooterRegulation : props.config.regulation,
-)
+const regulation = computed(() => props.config.regulation)
 
 const socials = [
   {
@@ -91,12 +86,13 @@ const socials = [
         :class="hasExtra ? 'lg:col-start-4' : 'lg:col-start-3'"
       >
         <UiAction
+          v-if="contacts.site"
           class="text-yellow-primary hover:text-fg mb-5 text-[19px] font-bold lowercase transition-colors duration-200 hover:underline"
           variant="custom"
           target="_blank"
-          to="https://rucode.net/"
+          :to="contacts.site.href"
         >
-          rucode.net
+          {{ contacts.site.label }}
         </UiAction>
 
         <UiAction

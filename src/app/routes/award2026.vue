@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { Award2026 } from '@/pages/award2026'
-
-definePageMeta({ footerConfig: 'award2026' })
 </script>
 
 <template>

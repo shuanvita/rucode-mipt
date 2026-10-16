@@ -55,6 +55,7 @@ describe('манифест блоков', () => {
     expect(Object.keys(schema.properties)).toEqual(['links', 'regulation', 'contacts'])
     expect(schema.properties.links?.title).toBe('Ссылки в футере')
     expect(Object.keys(schema.properties.contacts?.properties ?? {})).toEqual([
+      'site',
       'email',
       'link',
       'phoneTitle',
