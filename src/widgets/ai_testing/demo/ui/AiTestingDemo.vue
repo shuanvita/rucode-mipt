@@ -4,11 +4,16 @@ import { ParticipationFormModal } from '~/features/participation-form'
 
 defineProps<AiTestingDemoProps>()
 
+// Два корня (секция и модалка): Vue не пробрасывает атрибуты фрагменту, поэтому id блока (anchor) вешаем на секцию сами.
+defineOptions({
+  inheritAttrs: false,
+})
+
 const isFormOpen = ref(false)
 </script>
 
 <template>
-  <section class="container lg:mt-40">
+  <section v-bind="$attrs" class="container lg:mt-40">
     <div class="grid gap-6 xl:grid-cols-[350px_1fr]">
       <div class="flex items-center justify-center">
         <NuxtPicture :src="image" alt="" preload />
