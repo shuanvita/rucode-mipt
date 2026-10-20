@@ -20,7 +20,7 @@
 ## Требования
 
 - Node.js 22+
-- npm (используется `package-lock.json` )
+- npm (используется `package-lock.json`)
 
 ## Установка
 
