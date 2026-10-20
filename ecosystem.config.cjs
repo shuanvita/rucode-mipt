@@ -25,11 +25,13 @@ module.exports = {
   apps: [
     {
       name: 'nuxt-rucode',
+      cwd: '/var/www/nuxt.rucode.net',
       port: 3000,
       exec_mode: 'cluster',
       instances: 'max',
       script: './.output/server/index.mjs',
-      interpreter: '/home/anvshurygin/.nvm/versions/node/v24.21.0/bin/node',
+      // interpreter: '/home/anvshurygin/.nvm/versions/node/v24.21.0/bin/node',
+      interpreter: '/usr/bin/node',
       env: {
         ...readEnvFile(SITE_ENV),
         NODE_ENV: 'production',
