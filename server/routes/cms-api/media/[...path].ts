@@ -1,3 +1,4 @@
+import { getCmsApiBase } from '../../../utils/cmsApiBase'
 import { getCmsMediaKey } from '../../../utils/cmsMedia'
 
 /**
@@ -12,13 +13,12 @@ export default defineEventHandler((event) => {
     throw createError({ statusCode: 405, message: 'Method Not Allowed' })
   }
 
-  const { cmsBaseUrl } = useRuntimeConfig(event)
-  const key = cmsBaseUrl ? getCmsMediaKey(event.path) : null
-  if (!cmsBaseUrl || !key) throw createError({ statusCode: 404, message: 'Not Found' })
+  const { cmsBaseUrl, cmsApiUrl } = useRuntimeConfig(event)
+  const apiBase = getCmsApiBase(cmsApiUrl, cmsBaseUrl)
+  const key = apiBase ? getCmsMediaKey(event.path) : null
+  if (!apiBase || !key) throw createError({ statusCode: 404, message: 'Not Found' })
 
-  // Происхождение API берётся из адреса публичного чтения: http://127.0.0.1:3200/public/rucode -> http://127.0.0.1:3200
-  const origin = new URL(cmsBaseUrl).origin
-  return proxyRequest(event, `${origin}/media/${key}`, {
+  return proxyRequest(event, `${apiBase}/media/${key}`, {
     headers: { authorization: '', cookie: '' },
   })
 })

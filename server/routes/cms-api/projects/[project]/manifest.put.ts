@@ -1,3 +1,4 @@
+import { getCmsApiBase } from '../../../../utils/cmsApiBase'
 import { getCmsManifestProject } from '../../../../utils/cmsManifest'
 
 /**
@@ -8,13 +9,12 @@ import { getCmsManifestProject } from '../../../../utils/cmsManifest'
  * Разрешён только этот метод и только этот путь; сессионные заголовки на API не пересылаются.
  */
 export default defineEventHandler((event) => {
-  const { cmsBaseUrl } = useRuntimeConfig(event)
-  const project = cmsBaseUrl ? getCmsManifestProject(event.path) : null
-  if (!cmsBaseUrl || !project) throw createError({ statusCode: 404, message: 'Not Found' })
+  const { cmsBaseUrl, cmsApiUrl } = useRuntimeConfig(event)
+  const apiBase = getCmsApiBase(cmsApiUrl, cmsBaseUrl)
+  const project = apiBase ? getCmsManifestProject(event.path) : null
+  if (!apiBase || !project) throw createError({ statusCode: 404, message: 'Not Found' })
 
-  // Происхождение API берётся из адреса публичного чтения: http://127.0.0.1:3200/public/rucode -> http://127.0.0.1:3200
-  const origin = new URL(cmsBaseUrl).origin
-  return proxyRequest(event, `${origin}/projects/${project}/manifest`, {
+  return proxyRequest(event, `${apiBase}/projects/${project}/manifest`, {
     headers: { authorization: '', cookie: '' },
   })
 })

@@ -18,6 +18,9 @@ export default defineNuxtConfig({
   // Приватные ключи задаются только на сервере: NUXT_CMS_BASE_URL, NUXT_REVALIDATE_SECRET.
   runtimeConfig: {
     cmsBaseUrl: '',
+    // NUXT_CMS_API_URL: корень API CMS для прокси манифеста и медиатеки (server/utils/cmsApiBase.ts).
+    // Пусто: происхождение NUXT_CMS_BASE_URL.
+    cmsApiUrl: '',
     revalidateSecret: '',
     // Прокси админки CMS (server/routes/cms-admin): NUXT_CMS_ADMIN_USER, NUXT_CMS_ADMIN_PASSWORD,
     // NUXT_CMS_ADMIN_UPSTREAM. Без логина и пароля прокси отвечает 404.
