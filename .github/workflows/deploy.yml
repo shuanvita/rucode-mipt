@@ -51,9 +51,12 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             rm -rf ${{ env.DEPLOY_PATH }}/.output
-            # Старый конфиг pm2 удаляется заранее: tar из scp-action падает с "File exists", если не может заменить файл
-            rm -f ${{ env.DEPLOY_PATH }}/ecosystem.config.cjs
             mkdir -p ${{ env.DEPLOY_PATH }}
+
+      # Конфиг pm2 едет внутри .output: отдельная копия в корне деплоя падала в tar с "File exists",
+      # когда сервер не давал заменить уже лежащий там файл. Папка .output пересоздаётся при каждом деплое.
+      - name: Add pm2 config to .output
+        run: cp ecosystem.config.cjs .output/ecosystem.config.cjs
 
       - name: Deploy .output to server
         uses: appleboy/scp-action@v0.1.7
@@ -63,16 +66,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           source: '.output'
-          target: ${{ env.DEPLOY_PATH }}
-
-      - name: Deploy ecosystem.config.cjs to server
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          source: 'ecosystem.config.cjs'
           target: ${{ env.DEPLOY_PATH }}
 
       - name: Restart application
@@ -85,7 +78,7 @@ jobs:
           script: |
             cd ${{ env.DEPLOY_PATH }}
             /usr/local/bin/pm2 delete nuxt-rucode || true
-            /usr/local/bin/pm2 start ecosystem.config.cjs
+            /usr/local/bin/pm2 start .output/ecosystem.config.cjs
             /usr/local/bin/pm2 save
 
       # Манифест блоков уходит в CMS после деплоя: без него админка не создаёт и не сохраняет страницы.
