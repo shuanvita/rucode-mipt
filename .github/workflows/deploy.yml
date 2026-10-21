@@ -51,6 +51,8 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             rm -rf ${{ env.DEPLOY_PATH }}/.output
+            # Старый конфиг pm2 удаляется заранее: tar из scp-action падает с "File exists", если не может заменить файл
+            rm -f ${{ env.DEPLOY_PATH }}/ecosystem.config.cjs
             mkdir -p ${{ env.DEPLOY_PATH }}
 
       - name: Deploy .output to server
