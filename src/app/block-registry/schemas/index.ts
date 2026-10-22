@@ -257,33 +257,67 @@ const award2026WhyParticipate = z.object({
   cards: z.array(z.object({ title: richText() })),
 }) satisfies ZodType<WhyParticipateProps>
 
+// Названия (title) и подсказки (description) показываются менеджерам в форме админки CMS.
 const award2026Nominations = z.object({
-  title: text().optional(),
-  description: text().optional(),
-  tabs: z.array(
-    z.object({
-      label: text(),
-      description: text().optional(),
-      nominations: z.array(
-        z.discriminatedUnion('type', [
-          z.object({
-            type: z.literal('simple'),
-            title: text(),
-            description: z.array(text()),
-            support: z.object({ text: text(), logo: image(), alt: text() }).optional(),
-          }),
-          z.object({
-            type: z.literal('partner'),
-            title: text(),
-            description: z.array(text()),
-            eligibility: z.array(text()),
-            partner: z.object({ name: text(), logo: image(), role: text() }),
-          }),
-        ]),
-      ),
-    }),
-  ),
-  action: z.object({ to: link(), text: text() }).optional(),
+  title: text().meta({ title: 'Заголовок блока' }).optional(),
+  description: text().meta({ title: 'Описание блока' }).optional(),
+  tabs: z
+    .array(
+      z.object({
+        label: text().meta({ title: 'Название вкладки' }),
+        description: text().meta({ title: 'Описание вкладки' }).optional(),
+        nominations: z
+          .array(
+            z.discriminatedUnion('type', [
+              z
+                .object({
+                  type: z.literal('simple'),
+                  title: text().meta({ title: 'Название номинации' }),
+                  description: z
+                    .array(text())
+                    .meta({ title: 'Описание', description: 'Каждый элемент списка это отдельный абзац' }),
+                  support: z
+                    .object({
+                      text: text().meta({ title: 'Текст' }),
+                      logo: image().meta({ title: 'Логотип' }),
+                      alt: text().meta({ title: 'Подпись к логотипу (alt)' }),
+                    })
+                    .meta({ title: 'Поддержка', description: 'Необязательно: текст и логотип под описанием' })
+                    .optional(),
+                })
+                .meta({ title: 'Простая номинация' }),
+              z
+                .object({
+                  type: z.literal('partner'),
+                  title: text().meta({ title: 'Название номинации' }),
+                  description: z
+                    .array(text())
+                    .meta({ title: 'Описание', description: 'Каждый элемент списка это отдельный абзац' }),
+                  eligibility: z
+                    .array(text())
+                    .meta({ title: 'Кто может участвовать', description: 'Каждый элемент списка это отдельный пункт' }),
+                  partner: z
+                    .object({
+                      name: text().meta({ title: 'Название партнёра' }),
+                      logo: image().meta({ title: 'Логотип' }),
+                      role: text().meta({ title: 'Роль партнёра' }),
+                    })
+                    .meta({ title: 'Партнёр' }),
+                })
+                .meta({ title: 'Номинация с партнёром' }),
+            ]),
+          )
+          .meta({ title: 'Номинации' }),
+      }),
+    )
+    .meta({ title: 'Вкладки' }),
+  action: z
+    .object({
+      to: link().meta({ title: 'Ссылка' }),
+      text: text().meta({ title: 'Текст кнопки' }),
+    })
+    .meta({ title: 'Кнопка' })
+    .optional(),
 }) satisfies ZodType<NominationsTabsProps>
 
 const contacts = z.object({
