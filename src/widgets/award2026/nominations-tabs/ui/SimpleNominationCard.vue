@@ -19,3 +19,4 @@ defineProps<SimpleNominationCard>()
       <NuxtPicture :src="support.logo" :alt="support.alt" class="h-8 w-auto" />
     </div>
   </div>
+</template>
