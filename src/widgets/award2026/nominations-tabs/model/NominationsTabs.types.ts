@@ -16,6 +16,11 @@ export interface SimpleNominationCard {
   type: 'simple'
   title: string
   description: string[]
+  support?: {
+    text: string
+    logo: string
+    alt: string
+  }
 }
 
 export interface PartnerNominationCard {

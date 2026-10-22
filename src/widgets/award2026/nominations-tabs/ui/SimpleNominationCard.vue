@@ -14,5 +14,8 @@ defineProps<SimpleNominationCard>()
         {{ text }}
       </UiText>
     </div>
+    <div v-if="support" class="mt-6 flex flex-col items-start gap-3">
+      <UiText class="text-white/80">{{ support.text }}</UiText>
+      <NuxtPicture :src="support.logo" :alt="support.alt" class="h-8 w-auto" />
+    </div>
   </div>
-</template>

@@ -99,6 +99,11 @@ const nominationsTabs: NominationsTabsProps = {
           description: [
             'Номинация для студентов, реализующих собственные проекты и исследования в области искусственного интеллекта. Возможно только индивидуальное участие',
           ],
+          support: {
+            text: 'При поддержке',
+            logo: '/images/partners/sber.svg',
+            alt: 'Сбербанк',
+          },
         },
         {
           type: 'simple',

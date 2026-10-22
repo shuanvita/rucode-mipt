@@ -270,6 +270,7 @@ const award2026Nominations = z.object({
             type: z.literal('simple'),
             title: text(),
             description: z.array(text()),
+            support: z.object({ text: text(), logo: image(), alt: text() }).optional(),
           }),
           z.object({
             type: z.literal('partner'),
