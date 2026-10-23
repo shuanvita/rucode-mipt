@@ -35,10 +35,13 @@ export default defineNuxtConfig({
       // NUXT_PUBLIC_BLOCK_SHOT=1: включает служебную страницу /__block/<type> для скриншотов блоков
       // (npm run block-shots). В проде не задаётся, страница отвечает 404.
       blockShot: '',
+      // NUXT_PUBLIC_METRIKA_COUNTER_ID: номер счётчика Яндекс Метрики (src/app/metrika). Задаётся только
+      // в site.rucode.env боевой копии rucode.net; на nuxt.rucode.net и локально пусто, счётчика нет.
+      metrikaCounterId: '',
     },
   },
 
-  plugins: ['~/app/block-registry/plugin'],
+  plugins: ['~/app/block-registry/plugin', '~/app/metrika/plugin.client'],
 
   nitro: {
     preset: 'node-server',
@@ -93,7 +96,7 @@ export default defineNuxtConfig({
     format: ['webp'],
     // Файлы медиатеки CMS приходят абсолютными ссылками <домен>/cms-api/media/... (см. server/routes/cms-api/media);
     // без разрешённого домена IPX отказывается их оптимизировать.
-    domains: ['nuxt.rucode.net'],
+    domains: ['nuxt.rucode.net', 'rucode.net'],
   },
 
   hooks: {

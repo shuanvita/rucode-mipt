@@ -2,9 +2,18 @@ const { existsSync, readFileSync } = require('node:fs')
 
 // Настройки CMS (NUXT_CMS_BASE_URL, NUXT_REVALIDATE_SECRET, NUXT_CMS_ADMIN_*) лежат вне репозитория,
 // чтобы деплой, который перезаписывает этот файл, их не затирал. Без файла сайт работает на локальных данных.
+// Общий файл site.env читают обе копии; различия копий (например NUXT_PUBLIC_I18N_BASE_URL с доменом копии)
+// лежат в необязательном site.<name>.env рядом и перекрывают общие значения.
 // Разбор написан вручную, без util.parseEnv: pm2 в CI может работать на старом Node, а ошибка в этом файле
 // не должна мешать запуску сайта, поэтому при любом сбое возвращаются пустые настройки.
-const SITE_ENV = '/home/anvshurygin/.config/rucode/site.env'
+const CONFIG_DIR = '/home/anvshurygin/.config/rucode'
+
+// Копии сайта на одном сервере. name, cwd и port согласованы с .github/workflows/deploy.yml и nginx:
+// менять вместе. Порт у каждой копии свой, иначе вторая не стартует.
+const SITES = [
+  { name: 'nuxt-rucode', cwd: '/var/www/nuxt.rucode.net', port: 3000 }, // тестовый стенд nuxt.rucode.net
+  { name: 'rucode', cwd: '/var/www/rucode.net', port: 3001 }, // прод rucode.net
+]
 
 function readEnvFile(file) {
   try {
@@ -22,22 +31,20 @@ function readEnvFile(file) {
 }
 
 module.exports = {
-  apps: [
-    {
-      name: 'nuxt-rucode',
-      cwd: '/var/www/nuxt.rucode.net',
-      port: 3000,
-      exec_mode: 'cluster',
-      instances: 'max',
-      script: './.output/server/index.mjs',
-      // interpreter: '/home/anvshurygin/.nvm/versions/node/v24.21.0/bin/node',
-      interpreter: '/usr/bin/node',
-      env: {
-        ...readEnvFile(SITE_ENV),
-        NODE_ENV: 'production',
-        PORT: 3000,
-        NITRO_HOST: '127.0.0.1',
-      },
+  apps: SITES.map(({ name, cwd, port }) => ({
+    name,
+    cwd,
+    port,
+    exec_mode: 'cluster',
+    instances: 'max',
+    script: './.output/server/index.mjs',
+    interpreter: '/usr/bin/node',
+    env: {
+      ...readEnvFile(`${CONFIG_DIR}/site.env`),
+      ...readEnvFile(`${CONFIG_DIR}/site.${name}.env`),
+      NODE_ENV: 'production',
+      PORT: port,
+      NITRO_HOST: '127.0.0.1',
     },
-  ],
+  })),
 }

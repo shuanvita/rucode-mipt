@@ -1,4 +1,4 @@
-name: Deploy to nuxt.rucode.net
+name: Deploy to nuxt.rucode.net and rucode.net
 
 on:
   push:
@@ -6,8 +6,11 @@ on:
       - main
   workflow_dispatch:
 
+# Сборка одна, .output выкладывается в две копии на одном сервере: тестовый стенд и прод.
+# Пути и имена pm2 согласованы с ecosystem.config.cjs (SITES) и nginx.
 env:
-  DEPLOY_PATH: /var/www/nuxt.rucode.net
+  STAGE_PATH: /var/www/nuxt.rucode.net
+  PROD_PATH: /var/www/rucode.net
 
 jobs:
   deploy:
@@ -50,15 +53,15 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            rm -rf ${{ env.DEPLOY_PATH }}/.output
-            mkdir -p ${{ env.DEPLOY_PATH }}
+            rm -rf ${{ env.STAGE_PATH }}/.output ${{ env.PROD_PATH }}/.output
+            mkdir -p ${{ env.STAGE_PATH }} ${{ env.PROD_PATH }}
 
       # Конфиг pm2 едет внутри .output: отдельная копия в корне деплоя падала в tar с "File exists",
       # когда сервер не давал заменить уже лежащий там файл. Папка .output пересоздаётся при каждом деплое.
       - name: Add pm2 config to .output
         run: cp ecosystem.config.cjs .output/ecosystem.config.cjs
 
-      - name: Deploy .output to server
+      - name: Deploy .output to nuxt.rucode.net
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -66,7 +69,17 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           source: '.output'
-          target: ${{ env.DEPLOY_PATH }}
+          target: ${{ env.STAGE_PATH }}
+
+      - name: Deploy .output to rucode.net
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          source: '.output'
+          target: ${{ env.PROD_PATH }}
 
       - name: Restart application
         uses: appleboy/ssh-action@v1.0.3
@@ -76,9 +89,14 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd ${{ env.DEPLOY_PATH }}
+            # Каждая копия перезапускается только своим процессом (--only), вторая не затрагивается.
+            # Конфиг берётся из .output своей копии: порт и cwd в нём задаёт SITES.
             /usr/local/bin/pm2 delete nuxt-rucode || true
-            /usr/local/bin/pm2 start .output/ecosystem.config.cjs
+            cd ${{ env.STAGE_PATH }}
+            /usr/local/bin/pm2 start .output/ecosystem.config.cjs --only nuxt-rucode
+            /usr/local/bin/pm2 delete rucode || true
+            cd ${{ env.PROD_PATH }}
+            /usr/local/bin/pm2 start .output/ecosystem.config.cjs --only rucode
             /usr/local/bin/pm2 save
 
       # Манифест блоков уходит в CMS после деплоя: без него админка не создаёт и не сохраняет страницы.
