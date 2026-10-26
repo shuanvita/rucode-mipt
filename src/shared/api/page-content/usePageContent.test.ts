@@ -2,7 +2,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { flushPromises } from '@vue/test-utils'
 import { mountSuspended, registerEndpoint } from '@nuxt/test-utils/runtime'
 
-import { usePageContent } from './usePageContent'
+import { fetchCmsPage, usePageContent } from './usePageContent'
 import type { ContentPage, PageContentFallback } from './usePageContent.types'
 
 const page = (slug: string): ContentPage => ({ slug, version: 1, blocks: [] })
@@ -89,5 +89,57 @@ describe('usePageContent', () => {
     await useNuxtApp().$i18n.setLocale('en')
     await flushPromises()
     expect(wrapper.text()).toBe('en-fallback')
+  })
+})
+
+describe('fetchCmsPage', () => {
+  // fetchCmsPage использует useNuxtApp(), поэтому вызываем его из setup компонента
+  function callTwice(slug: string) {
+    let results: ContentPage[] = []
+    return mountSuspended(
+      defineComponent({
+        async setup() {
+          results = await Promise.all([fetchCmsPage(slug), fetchCmsPage(slug)])
+          return () => h('div', results.map((item) => item.slug).join(','))
+        },
+      }),
+    )
+  }
+
+  it('делит один запрос между middleware и страницей', async () => {
+    const slug = `/probe/shared-${counter++}`
+    const handler = vi.fn(() => page('cms'))
+    registerEndpoint(`/api/cms${slug}`, handler)
+
+    const wrapper = await callTwice(slug)
+
+    expect(wrapper.text()).toBe('cms,cms')
+    expect(handler).toHaveBeenCalledTimes(1)
+  })
+
+  it('не запоминает ошибку: следующий вызов повторяет запрос', async () => {
+    const slug = `/probe/failed-${counter++}`
+    const handler = vi.fn(() => {
+      // 404: ofetch не повторяет его сам (в отличие от 500), так что считаются только наши вызовы
+      throw createError({ statusCode: 404 })
+    })
+    registerEndpoint(`/api/cms${slug}`, handler)
+
+    const attempt = () =>
+      mountSuspended(
+        defineComponent({
+          async setup() {
+            const failed = await fetchCmsPage(slug).then(
+              () => false,
+              () => true,
+            )
+            return () => h('div', String(failed))
+          },
+        }),
+      )
+
+    expect((await attempt()).text()).toBe('true')
+    expect((await attempt()).text()).toBe('true')
+    expect(handler).toHaveBeenCalledTimes(2)
   })
 })

@@ -13,7 +13,7 @@ async function resolveSource(source?: PageContentSource) {
   return typeof source === 'function' ? await source() : source
 }
 
-export async function fetchCmsPage(slug: string) {
+async function requestCmsPage(slug: string) {
   const response = await $fetch<unknown>(`/api/cms${slug === '/' ? '/index' : slug}`)
   try {
     return parseContentPage(response)
@@ -21,6 +21,37 @@ export async function fetchCmsPage(slug: string) {
     const reason = error instanceof Error ? error.message : String(error)
     throw new Error(`невалидный ответ CMS: ${reason}`, { cause: error })
   }
+}
+
+/** Сколько живёт общий запрос: за это время middleware и страница получают один и тот же ответ. */
+const CMS_REQUEST_TTL_MS = 3000
+
+// Запросы живут в рамках nuxtApp (на сервере это один HTTP-запрос посетителя), чтобы не смешивать посетителей.
+const cmsRequests = new WeakMap<object, Map<string, Promise<ContentPage>>>()
+
+/**
+ * Страницу читают и глобальный middleware (шапка и футер для `route.meta`), и сама страница (блоки):
+ * без общего запроса при каждом переходе в сеть уходят два одинаковых запроса.
+ * Ошибки не запоминаем: следующий вызов повторит запрос.
+ */
+export function fetchCmsPage(slug: string): Promise<ContentPage> {
+  const nuxtApp = useNuxtApp()
+  let requests = cmsRequests.get(nuxtApp)
+  if (!requests) {
+    requests = new Map()
+    cmsRequests.set(nuxtApp, requests)
+  }
+
+  const cached = requests.get(slug)
+  if (cached) return cached
+
+  const request = requestCmsPage(slug)
+  requests.set(slug, request)
+  const forget = () => {
+    if (requests.get(slug) === request) requests.delete(slug)
+  }
+  request.then(() => setTimeout(forget, CMS_REQUEST_TTL_MS), forget)
+  return request
 }
 
 /**
