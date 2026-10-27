@@ -27,6 +27,20 @@ describe('buildCmsRequestBody', () => {
     expect(long?.pageUrl).toHaveLength(2000)
   })
 
+  it('подписи: берутся только строки для имеющихся полей, неверные не отвергают заявку', () => {
+    expect(
+      buildCmsRequestBody({
+        form: 'f',
+        fields: { a: 'x', b: 'y' },
+        labels: { a: ' Вопрос А ', b: 5, ghost: 'Чужое поле', c: '' },
+      }),
+    ).toEqual({ form: 'f', fields: { a: 'x', b: 'y' }, labels: { a: 'Вопрос А' } })
+    expect(buildCmsRequestBody({ form: 'f', fields: { a: 'x' }, labels: ['x'] })).toEqual({
+      form: 'f',
+      fields: { a: 'x' },
+    })
+  })
+
   it('отвергает неверную форму данных', () => {
     for (const bad of [
       null,

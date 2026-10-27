@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {
   AUDIENCE_OPTIONS,
+  CONSORTIUM_QUESTIONS,
   OTHER_OPTION,
   PROMOTION_OPTIONS,
   YES_NO_OPTIONS,
@@ -77,7 +78,7 @@ function togglePromotion(option: string, checked: boolean) {
     <ConsortiumFormRadioGroup
       v-model="formData.audience"
       v-model:other="formData.audienceOther"
-      legend="Есть ли у Вас возможность привлечения на ИТ-чемпионат не менее 50 участников?"
+      :legend="CONSORTIUM_QUESTIONS.audience"
       name="audience"
       :options="AUDIENCE_OPTIONS"
       other-placeholder="Опишите свою ситуацию"
@@ -88,9 +89,7 @@ function togglePromotion(option: string, checked: boolean) {
     />
 
     <fieldset class="flex flex-col gap-3 text-[13px]">
-      <legend class="mb-4 leading-5.5">
-        Какие у Вашей организации есть возможности продвижения? (1 и более вариантов)
-      </legend>
+      <legend class="mb-4 leading-5.5">{{ CONSORTIUM_QUESTIONS.promotion }}</legend>
 
       <UiCheckbox
         v-for="option in PROMOTION_OPTIONS"
@@ -118,7 +117,7 @@ function togglePromotion(option: string, checked: boolean) {
 
     <ConsortiumFormRadioGroup
       v-model="formData.eventsExperience"
-      legend="Есть ли у Вашей организации опыт проведения ИТ-мероприятий?"
+      :legend="CONSORTIUM_QUESTIONS.eventsExperience"
       name="eventsExperience"
       :options="YES_NO_OPTIONS"
       :error="errors.eventsExperience"
@@ -127,7 +126,7 @@ function togglePromotion(option: string, checked: boolean) {
 
     <ConsortiumFormRadioGroup
       v-model="formData.partnershipExperience"
-      legend="Есть ли у Вашей организации опыт партнерского взаимодействия с ИТ-компаниями?"
+      :legend="CONSORTIUM_QUESTIONS.partnershipExperience"
       name="partnershipExperience"
       :options="YES_NO_OPTIONS"
       :error="errors.partnershipExperience"

@@ -4,7 +4,7 @@ import ParticipationFormFields from './ParticipationFormFields.vue'
 import ParticipationFormSuccess from './ParticipationFormSuccess.vue'
 import type { ParticipationOptionGroup } from '../model/ParticipationForm.types'
 
-defineProps<{
+const props = defineProps<{
   description?: string
   roleGroup?: ParticipationOptionGroup
   eventsGroup?: ParticipationOptionGroup
@@ -13,7 +13,7 @@ defineProps<{
 const isOpen = defineModel<boolean>({ required: true })
 
 const { formData, errors, status, submitErrorMessage, isValid, touch, submit, reset } =
-  useParticipationForm()
+  useParticipationForm(() => ({ roleGroup: props.roleGroup, eventsGroup: props.eventsGroup }))
 
 watch(isOpen, (value) => {
   if (!value) reset()

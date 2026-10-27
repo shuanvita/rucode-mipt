@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RUSSIAN_REGIONS } from '~/shared/config'
+import { PARTICIPATION_QUESTIONS } from '../model/ParticipationForm.types'
 import type {
   ParticipationFormData,
   ParticipationFormErrors,
@@ -29,7 +30,7 @@ function toggleEvent(value: string, checked: boolean) {
   <div class="grid grid-cols-2 items-start gap-x-6 gap-y-5 max-md:grid-cols-1">
     <UiInput
       v-model="formData.surname"
-      label="Фамилия"
+      :label="PARTICIPATION_QUESTIONS.surname"
       placeholder="Иванов"
       :error="!!errors.surname"
       :error-message="errors.surname"
@@ -37,17 +38,21 @@ function toggleEvent(value: string, checked: boolean) {
     />
     <UiInput
       v-model="formData.name"
-      label="Имя"
+      :label="PARTICIPATION_QUESTIONS.name"
       placeholder="Иван"
       :error="!!errors.name"
       :error-message="errors.name"
       @blur="emit('blur', 'name')"
     />
-    <UiInput v-model="formData.patronymic" label="Отчество" placeholder="Иванович" />
+    <UiInput
+      v-model="formData.patronymic"
+      :label="PARTICIPATION_QUESTIONS.patronymic"
+      placeholder="Иванович"
+    />
     <UiInput
       v-model="formData.email"
       type="email"
-      label="Ваш Email"
+      :label="PARTICIPATION_QUESTIONS.email"
       placeholder="Email"
       :error="!!errors.email"
       :error-message="errors.email"
@@ -65,7 +70,7 @@ function toggleEvent(value: string, checked: boolean) {
 
   <UiSelect
     :model-value="formData.region"
-    label="Регион"
+    :label="PARTICIPATION_QUESTIONS.region"
     placeholder="Выберите регион"
     :options="RUSSIAN_REGIONS"
     :error="!!errors.region"

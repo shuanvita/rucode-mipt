@@ -1,6 +1,7 @@
 import { getPhoneCountry } from '~/shared/config'
 import { submitCmsRequest, type CmsRequestFields } from '~/shared/api'
 import type { ConsortiumFormData } from '~/features/consortium-form'
+import { CONSORTIUM_QUESTIONS } from '../model/ConsortiumForm.types'
 
 export interface SubmitConsortiumResult {
   success: boolean
@@ -31,7 +32,11 @@ export function buildConsortiumFields(data: ConsortiumFormData): CmsRequestField
 export async function submitConsortiumForm(
   data: ConsortiumFormData,
 ): Promise<SubmitConsortiumResult> {
-  const accepted = await submitCmsRequest(CONSORTIUM_FORM_KEY, buildConsortiumFields(data))
+  const accepted = await submitCmsRequest(
+    CONSORTIUM_FORM_KEY,
+    buildConsortiumFields(data),
+    CONSORTIUM_QUESTIONS,
+  )
   if (accepted) return { success: true }
   return { success: false, error: 'Не удалось отправить форму. Попробуйте ещё раз позже.' }
 }

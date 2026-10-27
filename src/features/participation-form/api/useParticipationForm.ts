@@ -4,13 +4,14 @@ import {
   type ParticipationFormErrors,
 } from '../model/ParticipationForm.types'
 import { validateParticipationForm } from '../model/validateParticipationForm'
-import { submitParticipationForm } from './submitParticipationForm'
+import { submitParticipationForm, type ParticipationGroups } from './submitParticipationForm'
 
 export type ParticipationFormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
 type TouchedFields = Partial<Record<keyof ParticipationFormData, boolean>>
 
-export function useParticipationForm() {
+/** `getGroups`: актуальные группы вариантов блока, чтобы в заявку попали вопросы и названия, а не id. */
+export function useParticipationForm(getGroups: () => ParticipationGroups = () => ({})) {
   const formData = reactive(createEmptyParticipationForm())
   const touched = reactive<TouchedFields>({})
   const status = ref<ParticipationFormStatus>('idle')
@@ -44,7 +45,7 @@ export function useParticipationForm() {
     if (!isValid.value) return
 
     status.value = 'submitting'
-    const result = await submitParticipationForm(formData)
+    const result = await submitParticipationForm(formData, getGroups())
 
     if (result.success) {
       status.value = 'success'

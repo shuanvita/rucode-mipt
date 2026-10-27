@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { createEmptyConsortiumForm } from '../model/ConsortiumForm.types'
+import { CONSORTIUM_QUESTIONS, createEmptyConsortiumForm } from '../model/ConsortiumForm.types'
 import { buildConsortiumFields } from './submitConsortiumForm'
 
 describe('buildConsortiumFields', () => {
@@ -25,5 +25,12 @@ describe('buildConsortiumFields', () => {
       promotion: ['Публикации на ресурсах организации', 'Другое'],
       promotionOther: 'блог',
     })
+  })
+
+  it('у каждого поля заявки есть вопрос для менеджера', () => {
+    const fields = buildConsortiumFields(createEmptyConsortiumForm())
+    for (const key of Object.keys(fields)) {
+      expect(CONSORTIUM_QUESTIONS, `нет подписи для «${key}»`).toHaveProperty(key)
+    }
   })
 })

@@ -4,7 +4,7 @@ import { buildCmsRequestBody } from '../utils/cmsRequest'
  * Приём заявки с формы сайта: `POST /api/cms-requests` -> `POST {NUXT_CMS_BASE_URL}/requests`.
  *
  * Адрес CMS приватный (в браузер не попадает), поэтому форма отправляет заявку на сайт, а сервер
- * пересылает её в crito-api. Пересылается только проверенное тело `{ form, fields, pageUrl }`:
+ * пересылает её в crito-api. Пересылается только проверенное тело `{ form, fields, labels, pageUrl }`:
  * лишние ключи и заголовки посетителя в CMS не уходят. Без `NUXT_CMS_BASE_URL` отвечает 404,
  * и форма полагается на старый обработчик.
  */
